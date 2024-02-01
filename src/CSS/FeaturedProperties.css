@@ -1,0 +1,43 @@
+.FeaturedProperties{
+    display: flex;
+    width: 100%;
+    height: 50vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.FeaturedPropertiesImgWrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+    gap:20px;
+}
+
+.FeaturedPropertiesImgWrap img{
+    width:15%;
+}
+
+.FeaturedPropertiesCircleWrap{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    height: 10vh;
+    align-items: center;
+}
+
+.FeaturedPropertiesCirclesA{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+
+.FeaturedPropertiesCirclesB{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: red;
+}
