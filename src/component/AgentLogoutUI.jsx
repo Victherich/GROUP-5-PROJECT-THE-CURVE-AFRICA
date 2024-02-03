@@ -3,7 +3,7 @@ import React from 'react'
 const AgentLogout = () => {
   return (
     <div>
-      AgentLogout
+      AgentLogoutUI
     </div>
   )
 }

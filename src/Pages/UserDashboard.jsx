@@ -1,20 +1,15 @@
 import React from 'react'
 import UserLogoutUI from '../component/UserLogoutUI'
-import UserEditProfile from '../component/UserEditProfile'
-import UserInfo from '../component/UserInfo'
-import UserNotification from '../component/UserNotification'
-import UserSettings from '../component/UserSettings'
 import UserFavourite from '../component/UserFavourite'
+import UserDashboardSideBar from '../component/UserDashboardSideBar'
+import UserAccount from '../component/UserAccount'
 const UserDashboard = () => {
   return (
     <div>
-      UserDashBoard SideBar Here
-      <UserInfo/>
-      <UserEditProfile/>
-      <UserNotification/>
-      <UserSettings/>
+      <UserDashboardSideBar/>
+      <UserAccount/>
       <UserFavourite/>
-      {/* <UserLogoutUI/> */} //uncomment latter
+      <UserLogoutUI/> 
     </div>
   )
 }

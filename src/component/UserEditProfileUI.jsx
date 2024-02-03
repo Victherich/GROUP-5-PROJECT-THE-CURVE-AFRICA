@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserEditProfile = () => {
+const UserEditProfileUI = () => {
   return (
     <div>
       User Edit Profile
@@ -8,4 +8,4 @@ const UserEditProfile = () => {
   )
 }
 
-export default UserEditProfile
+export default UserEditProfileUI

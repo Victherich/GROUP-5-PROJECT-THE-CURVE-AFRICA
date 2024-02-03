@@ -12,7 +12,6 @@ import UserLogin from './Pages/UserLogin';
 import AboutUs from './Pages/AboutUs'
 import AgentDashboard from './Pages/AgentDashboard'
 import AgentLogin from './Pages/AgentLogin'
-import AgentsAllPropertiesList from './Pages/AgentsAllPropertiesList'
 import AgentSignUp from './Pages/AgentSignUp'
 import AgentListPage from './Pages/AgentsListPage'
 import ContactUs from './Pages/ContactUs'
@@ -25,6 +24,8 @@ import PrivacyPolicy from './Pages/PrivacyPolicy'
 import PropertyDetailPage from './Pages/PropertyDetailPage'
 import TermsAndConditions from './Pages/TermsAndConditions'
 import UserDashboard from './Pages/UserDashboard'
+import AnAgentForRentPropertyListPage from './Pages/AnAgentForRentPropertyListPage';
+import AnAgentForSalePropertiesListPage from './Pages/AnAgentForSalePropertiesListPage';
 
 const App = () => {
   return (
@@ -54,7 +55,9 @@ const App = () => {
       <PrivacyPolicy/>
       <PaymentOptions/>
       <EmailVerificationPage/>
-      <AgentListPage/> 
+      <AgentListPage/>
+      <AnAgentForRentPropertyListPage/>
+      <AnAgentForSalePropertiesListPage/> 
       <UserDashboard/> 
       <PropertyDetailPage/>
       
@@ -63,7 +66,8 @@ const App = () => {
       <AgentLogin/>
       <AgentSignUp/>
       <AgentDashboard/>
-      <AgentsAllPropertiesList/>
+      <AnAgentForRentPropertyListPage/>
+      <AnAgentForSalePropertiesListPage/>
       <TermsAndConditions/>
       <EmailVerificationPage/>
       <PropertyDetailPage/>
