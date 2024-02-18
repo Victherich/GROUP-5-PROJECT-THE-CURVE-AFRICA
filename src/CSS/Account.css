@@ -1,0 +1,78 @@
+.Account{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;    
+    /* background-color: whitesmoke; */
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.AccountUp{
+    display: flex;
+    justify-content: flex-start;
+    gap: 5%;
+    /* flex-direction: column; */
+    border-radius: 10px;
+    padding: 3%;
+    width: 95%;
+    height: 70%;
+    background-color: #def1ff;
+}
+
+.AccountUp span{
+    font-weight: 500;
+}
+
+.AccountUpLeft{
+    display: flex;
+    flex-direction: column;   
+    justify-content: space-around;
+    width: 50%;
+    height: 60%;
+     
+}
+
+.AccountUpRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;   
+}
+
+.AccountUpRight img{
+    width: 100%;
+    height: 100%;
+}
+
+.AccountDown{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 20%;
+    align-items: center;
+}
+
+.AccountDown button{
+    width: 10%;
+    height: 33%;
+    background-color: #0E9AFF;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    transition: 350ms;
+    transform: scale(1);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.AccountDown button:hover{
+    transform: scale(1.04);
+}
+
+.AccountDown button:active{
+    transform: scale(0.9);
+}

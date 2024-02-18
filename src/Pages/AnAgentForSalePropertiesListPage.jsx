@@ -3,7 +3,7 @@ import React from 'react'
 const AnAgentForSalePropertiesListPage = () => {
   return (
     <div>
-      An agnebt for sale properties list page
+      AnAgentForSalePropertiesListPage
     </div>
   )
 }

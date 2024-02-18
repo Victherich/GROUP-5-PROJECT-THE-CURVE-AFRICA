@@ -1,0 +1,286 @@
+.ForSale{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    justify-content:flex-start;
+    align-items: center;
+    padding: 2vh 0vh
+    /* background-color: #F90808; */
+}
+
+.PropertyForSaleHeading{
+    margin-bottom: 3vh;
+}
+
+.SearchAndFilter{
+    display: flex;
+    width: 100%;
+    height: 7vh;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    gap:1%;
+    margin-bottom: 2vh;
+}
+
+.SearchWrap{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    height: 90%;
+    /* background-color: blue; */
+    border-radius: 5px;
+    border:0.5px solid #0653C8;
+}
+
+.SearchAndFilter input{
+    outline: none;
+    width: 85%;
+    border-radius: 5px 0px 0px 5px;
+    border: none;
+    padding: 2%;
+    font-size: 1rem;
+}
+
+.SearchAndFilter input::placeholder{
+    font-size: 1rem;
+}
+
+.SearchIconWrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    background-color:#0E9AFF ;
+    border-radius: 0px 5px 5px 0px ;
+    cursor: pointer;
+}
+
+.SearchIconWrap img{
+    transition: 350ms;
+    transform: scale(1);
+}
+
+.SearchIconWrap img:hover{
+    transform: scale(1.3);
+}
+
+.SearchIconWrap img:active{
+    transform: scale(0.9);
+}
+
+.SearchAndFilter select{
+    height: 80%;   
+    outline: none;
+    border: 0.5px solid #0653C8;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.SearchAndFilter select option{
+    /* height: 80%;   
+    outline: none;
+    border: none; */
+    /* border-radius: 5px; */
+    cursor: pointer;
+    padding: 10%;  
+    /* background-color: red; */
+}
+
+.SearchAndFilter button{
+    height: 80%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 5%;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 350ms;
+    background-color: #0E9AFF;
+    color :white;
+    font-weight: bold;
+}
+
+.SearchAndFilter button:hover{
+    transform: scale(1.06);
+}
+
+.SearchAndFilter button:active{
+    transform: scale(0.9);
+}
+
+.ClearSearchWrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2vh;
+}
+
+.ClearSearchWrap button{
+    padding: 0.5%;
+    border-radius: 5px;
+    border: none;
+    background-color:#0E9AFF;
+    color: whitesmoke;
+    transform: scale(1);
+    transition: 350ms;
+    cursor: pointer;
+}
+
+.ClearSearchWrap button:hover{
+    transform: scale(1.05);
+}
+
+.ClearSearchWrap button:active{
+    transform: scale(0.9);
+}
+
+.Line{
+    display: flex;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin-bottom: 3vh;
+}
+
+.HomeHubRedandBlueWrap{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    /* margin-bottom: 6vh; */
+}
+
+.HomeHubRedandBlueWrap h1{
+    color:#F90808;
+}
+
+.HomeHubRedandBlueWrap span{
+    color:#0653C8;
+}
+
+.HomeHubRedandBlueWrap p{
+    font-style: italic;
+}
+
+
+.ForSaleProperties{
+    display: flex;
+    width: 100%;
+    height:max-content;
+    /* background-color: #0653C8; */
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    gap:2%; 
+    /* overflow-y: scroll; */
+    flex-wrap: wrap;
+}
+
+.ForSaleProperty{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 18%;
+    height: 50vh;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 2px ;
+    margin-bottom: 5vh;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    /* font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+}
+
+.ForSalePropertyImgWrap{
+    width: 100%;
+    height: 50%;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ForSalePropertyImgWrap img{
+    /* object-fit: cover; */
+    width: 100%;
+    height: 100%;
+    
+}
+
+.ForSalePropertyNamePriceButtonWrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    /* background-color: blue; */
+}
+
+.ForSalePropertyNameAndPrice{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    height: 55%;
+    gap: 10%;
+    /* background-color: red; */
+}
+
+.ForSalePropertyNameAndPrice h4{
+    text-align: center   ;
+    font-size: 0.9rem;
+}
+
+.ForSalePropertyNameAndPrice p{
+    font-size: 0.8rem;
+}
+
+.ForSalePropertyNameAndPrice span{
+    font-weight: 595;
+}
+
+.ForSalePropertyButtonsWrap{
+    display: flex;
+    justify-content: center;
+    gap:5%;
+    width: 100%;
+    padding: 0% 3%;
+    /* background-color: red; */
+}
+
+.ForSalePropertyButtonsWrap :nth-child(2){
+    background-color: whitesmoke;
+    color: #0653C8  ;
+    border: 0.5px solid #0653C8;
+}
+
+.ForSalePropertyButtonsWrap button{
+    /* padding: 4%; */
+    width: 35%;
+    height: 5vh;
+    cursor: pointer;
+    border-radius: 2px;
+    border: none;
+    background-color: #0E9AFF;
+    color: whitesmoke;
+    transform: scale(1);
+    transition: 350ms;
+    font-size: 0.7rem;
+}
+
+.ForSalePropertyButtonsWrap button:hover{
+    transform: scale(1.03);
+}
+
+.ForSalePropertyButtonsWrap button:active{
+    transform: scale(0.9);
+}

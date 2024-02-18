@@ -13,7 +13,7 @@ import AboutUs from './Pages/AboutUs'
 import AgentDashboard from './Pages/AgentDashboard'
 import AgentLogin from './Pages/AgentLogin'
 import AgentSignUp from './Pages/AgentSignUp'
-import AgentListPage from './Pages/AgentsListPage'
+import AllAgentsListPage from './Pages/AllAgentsListPage'
 import ContactUs from './Pages/ContactUs'
 import Disclaimer from './Pages/Disclaimer'
 import EmailVerificationPage from './Pages/EmailVerificationPage'
@@ -26,51 +26,52 @@ import TermsAndConditions from './Pages/TermsAndConditions'
 import UserDashboard from './Pages/UserDashboard'
 import AnAgentForRentPropertyListPage from './Pages/AnAgentForRentPropertyListPage';
 import AnAgentForSalePropertiesListPage from './Pages/AnAgentForSalePropertiesListPage';
-
+import AnAgentPropertiesListPage from './Pages/AnAgentPropertiesListPage';
+import AllPropertiesListPage from './Pages/AllPropertiesListPage';
+import HeaderDummy from './component/HeaderDummy';
+import FooterDummy from './component/FooterDummy';
 const App = () => {
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     {/* <Route path="/userlogin" element={<UserLogin/>}/> */}
-    //     <Route path='/usersignup' element={<UserSignUp/>}/>
-    //     <Route path="/" element ={<FeaturedProperties/>}/>
-    //     <Route element={<Private/>}>
-    //       <Route path="/landingpage" element={<LandingPage/>}/>
-    //     </Route>
-    //   </Routes>
-    // </BrowserRouter>
 
     <div>
       
-      {/* userPages */}
-      <UserLogin/>
-      <UserSignUp/>
-      <LandingPage/>
-      <ForSale/>
-      <ForRent/>
-      <AboutUs/>
-      <ContactUs/>
-      <Disclaimer/>
-      <TermsAndConditions/>
-      <PrivacyPolicy/>
-      <PaymentOptions/>
-      <EmailVerificationPage/>
-      <AgentListPage/>
-      <AnAgentForRentPropertyListPage/>
-      <AnAgentForSalePropertiesListPage/> 
-      <UserDashboard/> 
-      <PropertyDetailPage/>
-      
+      <BrowserRouter>
+      <HeaderDummy/>
+          <Routes>
+                {/* userPages */}
+                <Route path='/userlogin'  element={<UserLogin/>}/>
+                <Route path="/usersignUp" element={<UserSignUp/>}/>
+                <Route path ='/' element={<LandingPage/>}/>
+                <Route path="/forsale" element={<ForSale/>} />
+                <Route path="/forrent" element={<ForRent/>} />
+                <Route path="/aboutus" element={<AboutUs/>} />
+                <Route path="/contactus" element={<ContactUs/>} />
+                <Route path="/disclaimer" element={<Disclaimer/>} />
+                <Route path="/privacypolicy" element={<PrivacyPolicy/>} />
+                <Route path="/paymentoptions" element={<PaymentOptions/>} />
+                <Route path="/emailverificationpage" element={<EmailVerificationPage/>} />
+                <Route path="/allagentslistpage" element={<AllAgentsListPage/>} />
+                <Route path="/anagentpropertieslistpage" element={<AnAgentPropertiesListPage/>} />
+                <Route path="/userdashboard" element={<UserDashboard/>} /> 
+                <Route path="/propertydetailpage" element={<PropertyDetailPage/>} />
+                <Route path="/allpropertieslistpage" element={<AllPropertiesListPage/>} />
+                
 
-      {/* AgentPages */}
-      <AgentLogin/>
-      <AgentSignUp/>
-      <AgentDashboard/>
-      <AnAgentForRentPropertyListPage/>
-      <AnAgentForSalePropertiesListPage/>
-      <TermsAndConditions/>
-      <EmailVerificationPage/>
-      <PropertyDetailPage/>
+                {/* AgentPages */}
+                <Route path="/agentlogin" element={<AgentLogin/>} />
+                <Route path="/agentsignup" element={<AgentSignUp/>} />
+                <Private path="/agentdashboard" >
+                  <Route  element={<AgentDashboard/>} />
+                </Private>
+                
+                <Route path="/agentforrentproertylistpage" element={<AnAgentForRentPropertyListPage/>} />
+                <Route path="/agentforsalepropertylistpage" element={<AnAgentForSalePropertiesListPage/>} />
+                <Route path="/termsandconditions" element={<TermsAndConditions/>} />
+                <Route path="/emailverificationpage" element={<EmailVerificationPage/>} />
+                <Route path="/propertydetailpage" element={<PropertyDetailPage/>} />  
+          </Routes>  
+          <FooterDummy/>  
+      </BrowserRouter>
     </div>
   )
 }

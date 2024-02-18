@@ -1,13 +1,16 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
-import { Context } from './UserContext'
+import { UserContext } from './UserContext'
 import { useContext } from 'react'
+import { AgentContext } from './AgentContext'
 
 const Private = () => {
-const {user}=useContext(Context)
-console.log(user)
+  const {AgentToken}=useContext(AgentContext)
+  console.log(AgentToken)
 
-  return (user?<Outlet/>:<Navigate to='/'/>)
+return{
+}   // return (user?<Outlet/>:<Navigate to='/'/>)
+
 }
 
 export default Private

@@ -1,26 +1,26 @@
 
 import React from 'react';
-import { UserContext } from './UserContext';
+import { AgentContext } from './AgentContext';
 import { useContext } from 'react';
 import '../CSS/LogOutWarning.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-const UserLogOutWarning = () => {
-  const {setLogoutwarning,Userlogout}=useContext(UserContext)
+const AgentLogOutWarning = () => {
+  const {setLogoutwarning,Agentlogout}=useContext(AgentContext)
   // const navigate = useNavigate() //use later
 
 
-  const UserlogoutUrl = ""; // URL to be specified
+  const AgentlogoutUrl = ""; // URL to be specified
 const handleLogout = async (e)=>{
   e.preventDefault();
-  const response = axios.post(UserlogoutUrl);
+  const response = axios.post(AgentlogoutUrl);
   try{
     console.log(response.data);
     console.log("logout");
     setLogoutwarning(false);
-    Userlogout()
+    Agentlogout()
     // navigate('/') // use later
   }catch(error){
     console.error(error)
@@ -43,5 +43,5 @@ const handleLogout = async (e)=>{
   );
 };
 
-export default UserLogOutWarning;
+export default AgentLogOutWarning;
 

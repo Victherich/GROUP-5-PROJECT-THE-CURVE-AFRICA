@@ -3,37 +3,44 @@ import '../CSS/AgentPostedProperties.css'
 import data from './data.json'
 import axios from 'axios'
 import PostedImg from '../Images/woodex6 1.png'
-import { UserContext } from './UserContext'
+import { AgentContext } from './AgentContext'
 
-const UserFavourite = () => {
-  const [UserPostedProperties,setUserPostedProperties]=useState([])
-  const {setToggleUserViewDetailpage}=useContext(UserContext)
+const AgentPostedProperties = () => {
+  const{agentPostedProperties,setAgentPostedProperties}=useContext(AgentContext)
+  const {setToggleAgentViewDetailpage}=useContext(AgentContext)
 
   const url=""
 
 useEffect(()=>{
-    handleUserPostedProperties()
+    handleAgentPostedProperties()
 },[])
 
-const handleUserPostedProperties =async()=>{
+const handleAgentPostedProperties =async()=>{
    try{
     const response = await axios.get(url)
     console.log(response.data)
-      setUserPostedProperties(data)
+      setAgentPostedProperties(data)
    }catch(error){
     console.error(error)
    }
 
 }
 
+const handleDelete = (id)=>{
+  setAgentPostedProperties(agentPostedProperties.filter((e)=>e.id!==id))
+}
 
+
+const handleAddToSponsored = (id)=>{
+  
+}
 
   return (
     <div className='PostedPropertiesWrap'>
-      <h4>User Favourite</h4>
+      <h4>Posted Properties</h4>
       <div className='PostedProperties'>
-        {UserPostedProperties.map((d)=>(
-          <div className='ForSaleProperty'>
+        {agentPostedProperties.map((d)=>(
+          <div key={d.id} className='ForSaleProperty'>
           <div className='ForSalePropertyImgWrap'>
             <img src={PostedImg} alt="ForSalePropertyImg"/>
           </div>
@@ -45,9 +52,9 @@ const handleUserPostedProperties =async()=>{
                   <p><span>Location:</span> {d.location}</p>
             </div>    
             <div className='ForSalePropertyButtonsWrap'>
-              <button onClick={()=>setToggleUserViewDetailpage(true)}>View</button>
-              
-              <button>Remove</button>
+              <button onClick={()=>setToggleAgentViewDetailpage(true)}>View</button>
+              <button onClick={()=>handleDelete(d.id)}>Delete</button>
+              <button onClick={()=>handleAddToSponsored(d.id)}>Sponsor</button>
             </div>
           </div>
         </div>
@@ -57,4 +64,4 @@ const handleUserPostedProperties =async()=>{
   )
 }
 
-export default UserFavourite
+export default AgentPostedProperties

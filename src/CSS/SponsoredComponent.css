@@ -1,0 +1,49 @@
+.SponsoredComponetsWrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999999999;
+}
+
+.SponsoredComponets{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    height: 60%;
+    width: 60%;
+}
+
+.SponsoredComponet{
+    display: flex;
+    width: 80%;
+    height: 20%;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.SponsoredComponet button{
+    width: 10%;
+    height: 20%;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    transition: 350ms;
+    transform: scale(1);
+    border: none;
+    border-radius: 5px;
+}
+
+.SponsoredComponet button:hover{
+    transform: scale(1.05);
+}
+
+.SponsoredComponet button:active{
+    transform: scale(0.9);
+}

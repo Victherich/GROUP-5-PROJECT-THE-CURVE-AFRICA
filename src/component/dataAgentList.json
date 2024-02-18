@@ -1,0 +1,33 @@
+[
+    {
+      "name": "John Doe",
+      "address": "123 Main St, Cityville, State, 12345",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890"
+    },
+    {
+      "name": "Jane Smith",
+      "address": "456 Elm St, Townsville, State, 67890",
+      "email": "jane.smith@example.com",
+      "phone": "987-654-3210"
+    },
+    {
+      "name": "Alice Johnson",
+      "address": "789 Oak St, Villagetown, State, 54321",
+      "email": "alice.johnson@example.com",
+      "phone": "456-789-0123"
+    },
+    {
+      "name": "Bob Brown",
+      "address": "321 Pine St, Countryside, State, 13579",
+      "email": "bob.brown@example.com",
+      "phone": "789-012-3456"
+    },
+    {
+      "name": "Eva Garcia",
+      "address": "654 Maple St, Suburbia, State, 97531",
+      "email": "eva.garcia@example.com",
+      "phone": "012-345-6789"
+    }
+  ]
+  

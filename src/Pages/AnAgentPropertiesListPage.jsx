@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../CSS/ForSale.css'
 import SearchIcon from '../Images/searchIcon.png'
-import PropertyImg from '../Images/woodex6 1.png'
-import dataForRent from '../component/dataForRent.json'
+import PropertyImg from '../Images/images (1) 2.png'
+import data from "../component/data.json"
 import axios from 'axios'
 
-const ForRent = () => { 
+
+const AnAgentPropertiesListPage = () => {
   const [forSaleProperties,setForSaleProperties]=useState([])
   // console.log(forSaleProperties)
   const [search,setSearch]=useState('')
@@ -27,7 +28,7 @@ const ForRent = () => {
       const response = await axios.get(url)
     // console.log(response.data)
       // setForSaleProperties(response.data)
-      setForSaleProperties(dataForRent)
+      setForSaleProperties(data)
     }
     catch(error){
       console.error(error)
@@ -36,18 +37,20 @@ const ForRent = () => {
 
 
   const handleSearch = () => {
-    const filteredProperties = dataForRent.filter(property =>
+    const filteredProperties = data.filter(property =>
       property.names.toLowerCase().includes(search.toLowerCase()) ||
       property.location.toLowerCase().includes(search.toLowerCase())
     )
     setForSaleProperties(filteredProperties)
   }
+  
 
   const handleClearSearch = ()=>{
     setSearch('')
     setSort('')
-    setForSaleProperties(dataForRent)
+    setForSaleProperties(data)
   }
+
 
  useEffect(()=>{
     if(sort==="Highest Price First"){
@@ -64,7 +67,7 @@ const ForRent = () => {
 
   return (
     <div className='ForSale'> 
-      <h1 className='PropertyForSaleHeading'>Properties For Rent</h1>
+      <h1 className='PropertyForSaleHeading'>Properties by {"Agentname"}</h1>
       <div className='SearchAndFilter'>
         <div className='SearchWrap'>
           <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)} placeholder='Enter property name, type or location'/>
@@ -72,6 +75,7 @@ const ForRent = () => {
             <img src={SearchIcon} alt="SearchIcon"/>
           </div>
         </div>
+    
         <p>Sort By:</p>
         <select value={sort} onChange={(e)=>setSort(e.target.value)}>
         <option>-- Select --</option>
@@ -98,7 +102,7 @@ const ForRent = () => {
               <div className='ForSalePropertyNameAndPrice'>
                   <h4>{d.names}</h4>
                   <p><span>Category:</span> {d.category}</p>
-                  <p><span>Price:</span> N{d.price} /Yearly</p>
+                  <p><span>Price:</span> N{d.price}</p>
                   <p><span>Location:</span> {d.location}</p>
             </div>
             
@@ -115,7 +119,7 @@ const ForRent = () => {
   )
 }
 
-export default ForRent
+export default AnAgentPropertiesListPage
 
 
 

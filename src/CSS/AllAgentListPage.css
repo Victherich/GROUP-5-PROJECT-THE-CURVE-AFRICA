@@ -1,0 +1,76 @@
+.AllAgentsPage{
+    background-color: white;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.AnAgent{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 30vh;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 1px;
+    margin-top: 3vh;
+    font-size: 0.9rem;
+
+}
+
+.AnAgentLeft{
+    width: 15%;
+    height: 80%;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AnAgentLeft img{
+    width: 100%;
+    height: 100%;
+}
+
+.AnAgentRight{
+    width: 60%;
+    height: 80%;
+    /* background-color:red; */
+}
+
+.AnAgentRightUp{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 60%;
+}
+
+.AnAgentRightDown{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 40%;
+}
+
+.AnAgentRightDown button{
+    padding: 1.5%;
+    border-radius: 2px;
+    border: none;
+    background-color: #0E9AFF;
+    color: white;
+    font-weight: 600;
+    transform: scale(1);
+    transition: 350ms;
+    cursor: pointer;
+}
+
+.AnAgentRightDown button:hover{
+    transform: scale(1.05);
+}
+
+.AnAgentRightDown button:active{
+    transform: scale(0.9);
+}
