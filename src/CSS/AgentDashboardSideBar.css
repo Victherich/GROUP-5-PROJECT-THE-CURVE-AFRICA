@@ -1,0 +1,121 @@
+.AgentDashboardSidebar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: black;
+}
+
+.AgentDashboardSidebarUp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    width: 100%;
+    background-color:#8ACEFF;
+}
+
+.AgentDashboardSidebarUp img{
+    width: 50%;
+    height: 80%;
+}
+
+.AgentDashboardSidebarDown{
+    height: 83%;
+    width: 100%;
+    background-color: #8ACEFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0% 20%;
+}
+
+.AgentDashboardSidebarDownProfileWrap{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 55%;
+    height: 15%;
+    gap: 7%;
+    /* background-color: red; */
+}
+
+.AgentDashboardSidebarDownProfileWrap img{
+    width: 30%;
+}
+
+.AgentDashboardSidebarDownMenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 45%;
+    gap:5%
+}
+
+.AgentSideBarMenuP{
+    /* background-color: blue; */
+    padding: 5%;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 350ms;
+}
+
+.AgentSideBarMenuP:hover{
+    transform: scale(1.03);
+}
+
+.AgentSideBarMenuP:active{
+    transform: scale(0.9);
+}
+
+.ActiveAgentSideBarMenuP{
+    background-color: blue;
+    padding: 5%;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 350ms;
+    color: white;
+}
+
+.ActiveAgentSideBarMenuP:hover{
+    transform: scale(1.03);
+}
+
+.ActiveAgentSideBarMenuP:active{
+    transform: scale(0.9);
+}
+
+.AgentDashboardSidebarLogoutWrap{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: flex-end;   
+    padding-bottom: 15%; 
+}
+
+.AgentDashboardSidebarLogoutWrap p{
+    cursor: pointer;
+    transform: scale(1);
+    transition: 350ms;
+    
+    padding: 5%;
+    border-radius: 4px;
+}
+
+.AgentDashboardSidebarLogoutWrap p:hover{
+    transform: scale(1.06);   
+    background-color: blue;
+    color: white;
+}
+
+.AgentDashboardSidebarLogoutWrap p:active{
+    transform: scale(0.8);   
+}
