@@ -1,4 +1,4 @@
-.userbody {
+.agentbody {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -7,7 +7,7 @@
     background-color:  #0E9AFF;
 }
 
-.userform {
+.agentform {
     width: 40%;
     height: 50%;
     display: flex;
@@ -17,19 +17,19 @@
     flex-direction: column;
 }
 
-.userform h2 {
+.agentform h2 {
     font-size: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.usermain {
+.agentmain {
     width: 95%;
     height: 85%;
     display: flex;
     justify-content: space-between;
 }
 
-.userlogo {
+.agentlogo {
     width: 30%;
     height: 100%;
     display: flex;
@@ -37,12 +37,12 @@
     justify-content: center;
 }
 
-.userlogo img {
+.agentlogo img {
     width: 100%;
     height: 50%;
 }
 
-.userdivs {
+.agentdivs {
     width: 70%;
     height: 100%;
     display: flex;
@@ -51,7 +51,7 @@
     gap: 10px;
 }
 
-.userinput {
+.agentinput {
     width: 100%;
     height: 20%;
     display: flex;
@@ -59,19 +59,19 @@
     gap: 10px;
 }
 
-.userinput label {
+.agentinput label {
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.userinput input {
+.agentinput input {
     width: 80%;
     height: 70%;
     border: 1px solid gary;
     padding-left: 10px;
 }
 
-.userbtn {
+.agentbtn {
     width: 30%;
     height: 10%;
     font-size: 20px;
@@ -79,7 +79,7 @@
     background-color:  #0E9AFF;
 }
 
-.userdont {
+.agentdont {
     width: 80%;
     height: 7%;
     display: flex;

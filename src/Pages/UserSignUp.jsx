@@ -1,126 +1,42 @@
-// import React, { useState } from 'react';
-// import axios from 'axios'; 
-// import { useNavigate } from 'react-router-dom';
-// import { Context } from '../component/UserContext';
-// import { useContext } from 'react';
-// import Swal from 'sweetalert2';
-// import '../CSS/SignUp.css';
-// import { Link } from 'react-router-dom';
-
-
-
-// const SignUp = () => {
-//     const navigate = useNavigate();
-//     const { theme, user, login } = useContext(Context);
-//     const [formData, setFormData] = useState({
-//       firstName: '',
-//       lastName: '',
-//     });
-  
-
-//     console.log(formData)
-//     const [formVisible, setFormVisible] = useState(true);
-
-    
-
-//     const handleChange = (e) => {
-//       setFormData({ ...formData, [e.target.name]: e.target.value });
-//     };
-  
-//     const url = ""; // Provide the actual URL for your signup endpoint
-  
-//     const handleSignUp = async (e) => {
-//       e.preventDefault();
-      
-//       // Show SweetAlert loading animation
-//       const loadingSwal = Swal.fire({
-//         title: 'Signing Up...',
-//         allowOutsideClick: false,
-//         onBeforeOpen: () => {
-//           Swal.showLoading();
-//         },
-//       });
-  
-//       try {
-//         const response = await axios.post(url, formData);
-//         console.log(response.data);
-  
-//         // Close SweetAlert loading animation
-//         loadingSwal.close();
-  
-//         // Use SweetAlert to show success message
-//         Swal.fire({
-//           icon: 'success',
-//           title: 'Sign Up Successful!',
-//           text: response.data.message,
-//           allowOutsideClick: false,
-//         });
-  
-//         login(response.data.data);  
-//         navigate('/dashboard');
-//       } catch (error) {
-//         console.error(error.response.message);
-  
-//         // Close SweetAlert loading animation
-//         loadingSwal.close();
-  
-//         // Use SweetAlert to show error message
-//         Swal.fire({
-//           icon: 'error',
-//           title: 'Oops...',
-//           text: 'Something went wrong!',
-//           allowOutsideClick: false,
-//         });
-//       }
-//     };
-  
-//     return (
-//       <div className='SignUp'>
-//         <form onSubmit={handleSignUp}>
-//           {formVisible && (
-//             <div className='SignUpForm1'>
-//               <label>
-//                 First Name:
-//                 <input
-//                   type='text'
-//                   name='firstName'
-//                   value={formData.firstName}
-//                   onChange={handleChange}
-//                 />
-//               </label>
-//               <button onClick={() => setFormVisible(false)}>Next</button>
-//             </div>
-//           )}
-//           {!formVisible && (
-//             <div className='SignUpForm2'>
-//               <label>
-//                 Last Name:
-//                 <input
-//                   type='text'
-//                   name='lastName'
-//                   value={formData.lastName}
-//                   onChange={handleChange}
-//                 />
-//               </label>
-//               <button onClick={() => setFormVisible(true)}>Back</button>
-//               <button type='submit'>Sign Up</button>
-//             </div>
-//           )}
-//         </form>
-//         <p>Have an account?<Link to={'/'}>Log in</Link></p>
-//       </div>
-//     );
-//   };
-  
-//   export default SignUp;
-  
-
 import React from 'react'
+import logo from "../Images/image 8.png"
+import "../CSS/Login.css"
 
 const UserSignUp = () => {
   return (
-    <div>
-      User sign up
+    <div className='userbody'>
+    <div className='userform'>
+      <h2>Sign_Up </h2>
+      <div className='usermain'>
+        <div className='userlogo'>
+          <img src={logo} alt="" />
+        </div>
+        <div className='userdivs'>
+          <div className='userinput'>
+            <label htmlFor="">full_name</label>
+            <input type="text" placeholder='enter full name' />
+          </div>
+          <div className='userinput'>
+            <label htmlFor="">email address</label>
+            <input type="text" placeholder='enter email address' />
+          </div>
+          <div className='userinput'>
+            <label htmlFor="">Phone number</label>
+            <input type="text" placeholder='enter phone number' />
+          </div>
+          <div className='userinput'>
+            <label htmlFor="">password</label>
+            <input type="text" placeholder='enter password' />
+          </div>
+          <button className='userbtn'>Sign_Up</button>
+          <div className='userdont'>
+            <div className='thisdiv'></div>
+            <p>i agree to the terms and condition</p>
+          </div>
+          <p className='myspan'> have an account?  <span >Login</span> </p>
+        </div>
+      </div>
+    </div>
     </div>
   )
 }
