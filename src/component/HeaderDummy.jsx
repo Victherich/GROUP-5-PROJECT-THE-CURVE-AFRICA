@@ -11,7 +11,7 @@ const HeaderDummy = () => {
         <NavLink to={"/forrent"}>For Rent</NavLink>
         <NavLink to={"/allagentslistpage"}>Agents</NavLink>
         <NavLink to={"/agentdashboard"}>Post A Property</NavLink>
-        <NavLink to={"/userlogin"}>Login</NavLink>
+        <NavLink to={"/userdashboard"}>Login</NavLink>
         <NavLink to={"/usersignUp"}>Sign Up</NavLink>
     </div>
   )

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './component/Header';
 import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
-import Private from './component/Private';
-import FeaturedProperties from './component/FeaturedProperties';
+import AgentPrivate from './component/AgentPrivate';
+import UserPrivate from './component/UserPrivate';
 
 //all pages import 
 import LandingPage from './Pages/LandingPage'
@@ -30,14 +30,53 @@ import AnAgentPropertiesListPage from './Pages/AnAgentPropertiesListPage';
 import AllPropertiesListPage from './Pages/AllPropertiesListPage';
 import HeaderDummy from './component/HeaderDummy';
 import FooterDummy from './component/FooterDummy';
-const App = () => {
-  return (
+import { useContext } from 'react';
+import { UserContext } from './component/UserContext';
+import { AgentContext } from './component/AgentContext';
+import axios from 'axios';
 
-    <div>
-      
+const App = () => {
+  const {Userlogin}=useContext(UserContext)
+  const {Agentlogin}=useContext(AgentContext)
+
+useEffect(()=>{
+const storedUserToken=localStorage.getItem("UserToken")
+if(storedUserToken){
+  axios.defaults.headers.common["Authorization"]=`Bearer${storedUserToken}`;
+  Userlogin(storedUserToken)
+}
+},[UserLogin])
+
+useEffect(()=>{
+  const storedAgentToken=localStorage.getItem("AgentToken");
+  if(storedAgentToken){
+    axios.defaults.headers.common["Authorization"]=`Bearer${storedAgentToken}`;
+    AgentLogin(storedAgentToken)
+  }
+},[AgentLogin])
+
+
+
+const renderHeader = () => {
+  const currentPath = window.location.pathname;
+  const excludedPaths = ["/userdashboard", "/agentdashboard"];
+  if (!excludedPaths.includes(currentPath)) {
+    return <HeaderDummy />;
+  } else {
+    return null;
+  }
+};
+
+const renderFooter = ()=>{
+
+}
+
+  return (
+    <div>  
       <BrowserRouter>
-      <HeaderDummy/>
+      {renderHeader()}
           <Routes>
+          
                 {/* userPages */}
                 <Route path='/userlogin'  element={<UserLogin/>}/>
                 <Route path="/usersignUp" element={<UserSignUp/>}/>
@@ -51,8 +90,7 @@ const App = () => {
                 <Route path="/paymentoptions" element={<PaymentOptions/>} />
                 <Route path="/emailverificationpage" element={<EmailVerificationPage/>} />
                 <Route path="/allagentslistpage" element={<AllAgentsListPage/>} />
-                <Route path="/anagentpropertieslistpage" element={<AnAgentPropertiesListPage/>} />
-                <Route path="/userdashboard" element={<UserDashboard/>} /> 
+                <Route path="/anagentpropertieslistpage" element={<AnAgentPropertiesListPage/>} /> 
                 <Route path="/propertydetailpage" element={<PropertyDetailPage/>} />
                 <Route path="/allpropertieslistpage" element={<AllPropertiesListPage/>} />
                 
@@ -60,15 +98,20 @@ const App = () => {
                 {/* AgentPages */}
                 <Route path="/agentlogin" element={<AgentLogin/>} />
                 <Route path="/agentsignup" element={<AgentSignUp/>} />
-                <Private path="/agentdashboard" >
-                  <Route  element={<AgentDashboard/>} />
-                </Private>
-                
                 <Route path="/agentforrentproertylistpage" element={<AnAgentForRentPropertyListPage/>} />
                 <Route path="/agentforsalepropertylistpage" element={<AnAgentForSalePropertiesListPage/>} />
                 <Route path="/termsandconditions" element={<TermsAndConditions/>} />
                 <Route path="/emailverificationpage" element={<EmailVerificationPage/>} />
-                <Route path="/propertydetailpage" element={<PropertyDetailPage/>} />  
+                <Route path="/propertydetailpage" element={<PropertyDetailPage/>} />
+              
+
+                <Route element={<AgentPrivate/>}>
+                  <Route  path="/agentdashboard" element={<AgentDashboard/>} />
+                </Route>
+                
+                <Route element={<UserPrivate/>}>
+                  <Route path="/userdashboard" element={<UserDashboard/>}/>
+                </Route>
           </Routes>  
           <FooterDummy/>  
       </BrowserRouter>

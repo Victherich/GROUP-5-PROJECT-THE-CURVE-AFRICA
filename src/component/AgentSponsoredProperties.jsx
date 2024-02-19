@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../CSS/AgentPostedProperties.css'
-import data from '../component/data.json'
 import axios from 'axios'
 import SponsoredImg from '../Images/HOUSE2-removebg-preview (1) 1.png'
+import { AgentContext } from './AgentContext'
 
 const AgentSponsoredProperties = () => {
-  const [agentPostedProperties,setAgentPostedProperties]=useState([])
+  const {sponsoredProperties}=useContext(AgentContext)
 
-  const url=""
+//   const url=""
 
-useEffect(()=>{
-    handleAgentPostedProperties()
-},[])
+// useEffect(()=>{
+//     handleAgentPostedProperties()
+// },[])
 
-const handleAgentPostedProperties =async()=>{
-   try{
-    const response = await axios.get(url)
-    console.log(response.data)
-      setAgentPostedProperties(data)
-   }catch(error){
-    console.error(error)
-   }
+// const handleAgentPostedProperties =async()=>{
+//    try{
+//     const response = await axios.get(url)
+//     console.log(response.data)
+//       setAgentPostedProperties(data)
+//    }catch(error){
+//     console.error(error)
+//    }
 
-}
+// }
 
 
 
@@ -30,7 +30,7 @@ const handleAgentPostedProperties =async()=>{
     <div className='PostedPropertiesWrap'>
       <h4>Sponsored Properties</h4>
       <div className='PostedProperties'>
-        {agentPostedProperties.map((d)=>(
+        {sponsoredProperties.map((d)=>(
           <div className='ForSaleProperty'>
           <div className='ForSalePropertyImgWrap'>
             <img src={SponsoredImg} alt="ForSalePropertyImg"/>

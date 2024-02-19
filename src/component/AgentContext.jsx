@@ -11,7 +11,7 @@ const [toggleAgentEditProfileUI,setToggleAgentEditProfileUI]=useState(false);
 const [toggleAgentChangePasswordUI,setToggleAgentChangePasswordUI]=useState(false)
 const [logoutWarning,setLogoutwarning]=useState(false);
 const [toggleAgentViewDetailpage,setToggleAgentViewDetailpage]=useState(false)
-const [AgentToken,setAgentToken]=useState(null);
+const [AgentToken,setAgentToken]=useState("yes");
 const [AgentId,setAgentId]=useState(null);
 const [Agent,setAgent]=useState(null)
 // console.log(AgentToken, AgentId, Agent)
@@ -36,6 +36,9 @@ const Agentlogout = useCallback(()=>{
   console.log("logout contex function")
 },[]);
 
+
+
+
   return (
     <AgentContext.Provider value={{
       AgentActiveMenu,
@@ -45,7 +48,7 @@ const Agentlogout = useCallback(()=>{
     toggleAgentEditProfileUI,
     setToggleAgentEditProfileUI,
     logoutWarning,setLogoutwarning,
-    Agentlogout,Agentlogin,AgentId,
+    Agentlogout,Agentlogin,AgentId,AgentToken,
     toggleAgentViewDetailpage,setToggleAgentViewDetailpage,
     sponsoredProperties,setSponsoredProperties,
     agentPostedProperties,setAgentPostedProperties

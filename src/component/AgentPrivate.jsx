@@ -4,13 +4,16 @@ import { UserContext } from './UserContext'
 import { useContext } from 'react'
 import { AgentContext } from './AgentContext'
 
-const Private = () => {
+
+const AgentPrivate = () => {
   const {AgentToken}=useContext(AgentContext)
   console.log(AgentToken)
 
-return{
-}   // return (user?<Outlet/>:<Navigate to='/'/>)
-
+return(
+  <div>
+      {AgentToken?<Outlet/>:<Navigate to="/agentlogin"/>}
+  </div>
+)
 }
 
-export default Private
+export default AgentPrivate

@@ -34,8 +34,8 @@ const [User,setUser]=useState(null)
 // console.log(UserToken, UserId, User)
 
 
-const Userlogin = useCallback((User)=>{ //receive response.data from handle login function
-  const {UserId,token} = User;
+const Userlogin = useCallback((UserId,token,User)=>{ //receive response.data from handle login function
+  // const {UserId,token} = User;
   setUserId(UserId)
   setUserToken(token)
   setUser(User)
@@ -60,8 +60,8 @@ const Userlogout = useCallback(()=>{
     toggleUserEditProfileUI,
     setToggleUserEditProfileUI,
     logoutWarning,setLogoutwarning,
-    Userlogout,Userlogin,UserId,
-    toggleUserViewDetailpage,setToggleUserViewDetailpage
+    Userlogout,Userlogin,UserId,UserToken,
+    toggleUserViewDetailpage,setToggleUserViewDetailpage,
     }}>
         {children}
     </UserContext.Provider>

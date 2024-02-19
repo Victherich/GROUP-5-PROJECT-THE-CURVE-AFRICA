@@ -8,6 +8,7 @@ import { userContext } from '../component/UserContext'
 import { AgentContext } from '../component/AgentContext'
 
 
+
 const ForSale = () => {
   const [forSaleProperties,setForSaleProperties]=useState([])
   // console.log(forSaleProperties)
@@ -97,6 +98,7 @@ const ForSale = () => {
 
   return (
     <div className='ForSale'> 
+    {/* <button onClick={UserLogin(123456789)}>CheckLogion</button> */}
     <button type="button" onClick={payKorapay}> Pay </button>
       <h1 className='PropertyForSaleHeading'>Properties For Sale</h1>
       <div className='SearchAndFilter'>
