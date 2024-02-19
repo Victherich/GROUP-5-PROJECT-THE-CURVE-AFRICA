@@ -26,6 +26,7 @@ import TermsAndConditions from './Pages/TermsAndConditions'
 import UserDashboard from './Pages/UserDashboard'
 import AnAgentForRentPropertyListPage from './Pages/AnAgentForRentPropertyListPage';
 import AnAgentForSalePropertiesListPage from './Pages/AnAgentForSalePropertiesListPage';
+import AgentKYC from './Pages/AgentKYC';
 
 const App = () => {
   return (
@@ -48,7 +49,7 @@ const App = () => {
       <LandingPage/>
       <ForSale/>
       <ForRent/>
-      <AboutUs/>
+      {/* <AboutUs/>
       <ContactUs/>
       <Disclaimer/>
       <TermsAndConditions/>
@@ -59,18 +60,19 @@ const App = () => {
       <AnAgentForRentPropertyListPage/>
       <AnAgentForSalePropertiesListPage/> 
       <UserDashboard/> 
-      <PropertyDetailPage/>
+      <PropertyDetailPage/> */}
       
 
       {/* AgentPages */}
       <AgentLogin/>
       <AgentSignUp/>
-      <AgentDashboard/>
+      <AgentKYC/>
+      {/* <AgentDashboard/>
       <AnAgentForRentPropertyListPage/>
       <AnAgentForSalePropertiesListPage/>
       <TermsAndConditions/>
       <EmailVerificationPage/>
-      <PropertyDetailPage/>
+      <PropertyDetailPage/> */}
     </div>
   )
 }

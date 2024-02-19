@@ -1,9 +1,38 @@
 import React from 'react'
+import "../CSS/Footer.css"
+import linkedin from "../Images/entypo-social_linkedin.png"
+import twitter from "../Images/twitter.png"
+import instagram from "../Images/dashicons_instagram.png"
+import facebook from "../Images/facebook.png"
 
 const Footer = () => {
   return (
-    <div>
-      Footer
+    <div className='footer'>
+      <div className='footermain'>
+        <div className='footwrite'>
+          <h1>Company</h1>
+          <div className='line'></div>
+          <span>Contact Us</span>
+          <span>Private policy</span>
+          <span>Disclaimer</span>
+        </div>
+        <div className='footwrite'>
+          <h1>Contact Us</h1>
+          <div className='line'></div>
+          <span>Email : homehub@gmail.com</span>
+          <span>phone : +2347063798113</span>
+        </div>
+        <div className='footwrite'>
+          <h1>Follow Us</h1>
+          <div className='line'></div>
+          <div className='footwriteimages'>
+            <img src={linkedin} alt="" />
+            <img src={twitter} alt="" />
+            <img src={instagram} alt="" />
+            <img src={facebook} alt="" />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
