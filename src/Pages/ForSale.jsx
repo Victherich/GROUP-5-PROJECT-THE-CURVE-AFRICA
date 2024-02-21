@@ -6,6 +6,8 @@ import dataForSale from '../component/dataForSale.json'
 import axios from 'axios'
 import { userContext } from '../component/UserContext'
 import { AgentContext } from '../component/AgentContext'
+import Header from '../component/Header'
+import Footer from '../component/Footer'
 
 
 
@@ -97,9 +99,10 @@ const ForSale = () => {
  
 
   return (
+    <div className='ForSaleWrap'>
+    <Header/>
     <div className='ForSale'> 
-    {/* <button onClick={UserLogin(123456789)}>CheckLogion</button> */}
-    <button type="button" onClick={payKorapay}> Pay </button>
+  
       <h1 className='PropertyForSaleHeading'>Properties For Sale</h1>
       <div className='SearchAndFilter'>
         <div className='SearchWrap'>
@@ -146,6 +149,8 @@ const ForSale = () => {
         </div>
         ))}
       </div>
+    </div>
+    <Footer/>
     </div>
   )
 }

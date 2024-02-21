@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../CSS/Header.css'
 import Vector from "../Images/Vector.png"
 import image8 from "../Images/image 8.png"
+import { NavLink } from 'react-router-dom';
 
 
 const Header = () => {
@@ -14,15 +15,16 @@ const Header = () => {
         <img src={image8} alt="" />
       </div>
       <div className='second'>
-        <span className='sec'>Home</span>
-        <span>For Sale</span>
-        <span>For Rent</span>
-        <span>Agents</span>
-        <span>Post a Property</span>
+        <NavLink to={"/"} className='sec'>Home</NavLink>
+        <NavLink to={"/forsale"}>For Sale</NavLink>
+        <NavLink to={"/forrent"}>For Rent</NavLink>
+        <NavLink to={"/allagentslistpage"}>Agents</NavLink>
+        <NavLink to={"/agentdashboard"}>Post a Property</NavLink>
+        <NavLink to={"/userdashboard"}>Login</NavLink>
       </div>
       <div className='third'>
         <img src={Vector} alt="" />
-        <span>Sign_Up</span>
+        <NavLink to={"/usersignUp"}>Sign_Up</NavLink>
       </div>
 
       <div className='fourth' onClick={()=>setBurger(!burger)}>

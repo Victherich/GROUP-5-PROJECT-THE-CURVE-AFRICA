@@ -6,8 +6,12 @@
 }
 
 .swal2-popup {
-    background-color: greenyellow;
-    width: 50%;
+    /* background-color: greenyellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
     height: 70%;
    
   }
@@ -15,8 +19,7 @@
 .swal2-popup .swal2-title {
     font-family: sans-serif;
     font-size: 26px;
-    
-   
+    color: blue;   
   }
   
   .swal2-popup .swal2-text {

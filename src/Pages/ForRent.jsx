@@ -4,6 +4,8 @@ import SearchIcon from '../Images/searchIcon.png'
 import PropertyImg from '../Images/woodex6 1.png'
 import dataForRent from '../component/dataForRent.json'
 import axios from 'axios'
+import Header from '../component/Header'
+import Footer from '../component/Footer'
 
 const ForRent = () => { 
   const [forSaleProperties,setForSaleProperties]=useState([])
@@ -63,7 +65,9 @@ const ForRent = () => {
  
 
   return (
-    <div className='ForSale'> 
+    <div className='ForSaleWrap'>
+      <Header/>
+        <div className='ForSale'> 
       <h1 className='PropertyForSaleHeading'>Properties For Rent</h1>
       <div className='SearchAndFilter'>
         <div className='SearchWrap'>
@@ -111,6 +115,8 @@ const ForRent = () => {
         </div>
         ))}
       </div>
+    </div>
+    <Footer/>
     </div>
   )
 }

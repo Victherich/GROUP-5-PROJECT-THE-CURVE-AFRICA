@@ -6,6 +6,8 @@ import dataAgentList from '../component/dataAgentList.json'
 import axios from 'axios'
 import '../CSS/AllAgentListPage.css'
 import AgentImg from '../Images/pic1 1.png'
+import Header from '../component/Header'
+import Footer from '../component/Footer'
 
 const AllAgentListPage = () => {
  
@@ -48,7 +50,10 @@ const AllAgentListPage = () => {
   }
 
   return (
-    <div className='ForSale'> 
+
+    <div className='ForSaleWrap'>
+      <Header/>
+        <div className='ForSale'> 
       <h1 className='PropertyForSaleHeading'>All Agents</h1>
       <div className='SearchAndFilter'>
         <div className='SearchWrap'>
@@ -88,6 +93,8 @@ const AllAgentListPage = () => {
         </div>
         ))}
       </div>
+    </div>
+    <Footer/>
     </div>
   )
 }

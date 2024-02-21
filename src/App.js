@@ -28,8 +28,6 @@ import AnAgentForRentPropertyListPage from './Pages/AnAgentForRentPropertyListPa
 import AnAgentForSalePropertiesListPage from './Pages/AnAgentForSalePropertiesListPage';
 import AnAgentPropertiesListPage from './Pages/AnAgentPropertiesListPage';
 import AllPropertiesListPage from './Pages/AllPropertiesListPage';
-import HeaderDummy from './component/HeaderDummy';
-import FooterDummy from './component/FooterDummy';
 import { useContext } from 'react';
 import { UserContext } from './component/UserContext';
 import { AgentContext } from './component/AgentContext';
@@ -57,24 +55,13 @@ useEffect(()=>{
 
 
 
-const renderHeader = () => {
-  const currentPath = window.location.pathname;
-  const excludedPaths = ["/userdashboard", "/agentdashboard"];
-  if (!excludedPaths.includes(currentPath)) {
-    return <HeaderDummy />;
-  } else {
-    return null;
-  }
-};
 
-const renderFooter = ()=>{
 
-}
+
 
   return (
     <div>  
       <BrowserRouter>
-      {renderHeader()}
           <Routes>
           
                 {/* userPages */}
@@ -112,8 +99,7 @@ const renderFooter = ()=>{
                 <Route element={<UserPrivate/>}>
                   <Route path="/userdashboard" element={<UserDashboard/>}/>
                 </Route>
-          </Routes>  
-          <FooterDummy/>  
+          </Routes>
       </BrowserRouter>
     </div>
   )

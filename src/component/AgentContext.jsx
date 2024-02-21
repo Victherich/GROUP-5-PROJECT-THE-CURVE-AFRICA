@@ -11,7 +11,7 @@ const [toggleAgentEditProfileUI,setToggleAgentEditProfileUI]=useState(false);
 const [toggleAgentChangePasswordUI,setToggleAgentChangePasswordUI]=useState(false)
 const [logoutWarning,setLogoutwarning]=useState(false);
 const [toggleAgentViewDetailpage,setToggleAgentViewDetailpage]=useState(false)
-const [AgentToken,setAgentToken]=useState("yes");
+const [AgentToken,setAgentToken]=useState(null);
 const [AgentId,setAgentId]=useState(null);
 const [Agent,setAgent]=useState(null)
 // console.log(AgentToken, AgentId, Agent)
