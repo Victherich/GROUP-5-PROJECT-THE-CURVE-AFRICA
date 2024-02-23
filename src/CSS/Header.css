@@ -1,12 +1,14 @@
 .Header{
     width:100%;
-    height: 10vh;
+    height: 10%;
     background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: space-between;
     /* gap: 320px; */
-    padding: 10px 20px;
+    padding-right: 40px;
+    padding-left: 20px;
+    padding-top: 10px;
     position: absolute;
     z-index: 1;
     top: 1;
@@ -51,29 +53,99 @@
     align-items: center;
     /* background-color: white; */
     justify-content: space-between;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
 
-    @media screen and (max-width:768px) {
-        width: 65%;
-     }
-     @media screen and (min-width:1137px) {
+    @media screen and (min-width:1137px) {
         width: 60%;
     }
     @media screen and (max-width:1024px) {
         width: 60%;
     }
+
+    @media screen and (max-width:768px) {
+        display: none;
+     }
+    
     @media screen and (max-width:414px) {
         display: none;
     }
     
 }
 
-.second span {
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
+.second :nth-child(1) {
+    text-decoration: none;
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(7, 7, 7);
+    font-weight: 800;
+    -webkit-text-stroke:0.5px white;
     @media screen and (max-width:1024px) {
-        font-size: 14px;
+        font-weight: 700;
+    }
+    @media screen and (max-width:768px) {
+        font-size: 18px;
+    }
+
+}
+.second :nth-child(2) {
+    text-decoration: none;
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(7, 7, 7);
+    font-weight: 800;
+    -webkit-text-stroke:0.5px white;
+    @media screen and (max-width:1024px) {
+        font-weight: 700;
+    }
+    @media screen and (max-width:768px) {
+        font-size: 18px;
+    }
+
+}
+.second :nth-child(3) {
+    text-decoration: none;
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(7, 7, 7);
+    font-weight: 800;
+    -webkit-text-stroke: 0.5px white;
+    @media screen and (max-width:1024px) {
+        font-weight: 700;
+    }
+    @media screen and (max-width:768px) {
+        font-size: 18px;
+    }
+
+}
+.second :nth-child(4) {
+    text-decoration: none;
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(7, 7, 7);
+    font-weight: 800;
+    -webkit-text-stroke: 0.5px white;
+    @media screen and (max-width:1024px) {
+        font-weight: 700;
+    }
+    @media screen and (max-width:768px) {
+        font-size: 18px;
+    }
+}
+.second :nth-child(5) {
+    text-decoration: none;
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(7, 7, 7);
+    font-weight: 800;
+    -webkit-text-stroke: 0.5px rgb(184, 173, 173);
+    @media screen and (max-width:1024px) {
+        font-weight: 700;
+    }
+    @media screen and (max-width:768px) {
+        font-size: 18px;
     }
 }
 
@@ -81,10 +153,30 @@
     color: #0653C8;
 }
 
+.thirddad {
+    width: 12%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and (max-width:1024px) {
+        width: 20%;
+    }
+    @media screen and (max-width:768px) {
+        width: 25%;
+        margin-left: 10px;
+    }
+    @media screen and (max-width:414px) {
+        width: 45%;
+    }
+
+}
+
 .third {
-    width: 4.5%;
+    width: 45%;
     height: 50%;
-    background-color: white;
+    background-color: blue;
     display: flex;
     align-items: center;
     gap: 3px;
@@ -94,17 +186,17 @@
     border-radius: 5px;
 
     @media screen and (max-width:1024px) {
-        width: 10%;
+        width: 50%;
     }
     @media screen and (max-width:768px) {
-        width: 13%;
+        width: 70%;
    }
   
 @media screen and (max-width:414px) {
-    width: 25%;
+    width: 65%;
 }
 @media screen and (max-width:320px) {
-    width: 33%;
+    width: 62%;
 }
 
 }
@@ -114,6 +206,12 @@
     height: 50%;
     background-color: white;
     display: none;
+    @media screen and (max-width:768px) {
+        width: 5%;
+        height: 50%;
+        display: flex;
+        border-radius: 5px;
+    }
 
     @media screen and (max-width:414px) {
         width: 7%;
@@ -122,6 +220,7 @@
     }
     @media screen and (max-width:320px) {
         width: 8%;
+        height: 45%;
     }
 }
 .fourthdiv {
@@ -151,4 +250,35 @@
     width: 20px;
     height: 3px;
     background-color: black;
+}
+
+.logintext {
+    color: white;
+    font-weight: 900;
+    font-size: 26px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none;
+    @media screen and (max-width:1024px) {
+        font-weight: 500;
+    }
+    @media screen and (max-width:768px) {
+        font-size: 18px;
+        color: blue;
+    }
+    @media screen and (max-width:414px) {
+        font-size: 15px;
+        color: blue;
+    }
+}
+
+.signuptext {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    @media screen and (max-width:414px) {
+        font-size: 15px;
+    }
+    @media screen and (max-width:320px) {
+        font-size: 12px;
+    }
 }

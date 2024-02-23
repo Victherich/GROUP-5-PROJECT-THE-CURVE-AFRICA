@@ -9,6 +9,9 @@ import img7 from "../Images/seventh.webp"
 import img8 from "../Images/eight.jpg"
 import img9 from "../Images/ninth.webp"
 import img10 from "../Images/tenth.jpg"
+// import love from "../Images/love.png"
+import img14 from "../Images/image 14.png"
+import img15 from "../Images/image 15.png"
 
 
 
@@ -19,7 +22,7 @@ const LandingPage = () => {
       <Header/>
       <div className='hero'>
         <div className='heroright'>
-          <h1>Find a comfortable <br /> <span> home </span> for your family.</h1>
+          <h1>Find a <span>comfortable </span>  <br /> home for your family.</h1>
           <p>You need a home? We are ready to help you find a <br /> suitable home. </p>
 
           <div className='herolast'>
@@ -51,6 +54,9 @@ const LandingPage = () => {
 
         <div className='featured21'>
             <div className='featured31'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg1'>
                     <img src={img6} alt="" />
                 </div>
@@ -64,12 +70,14 @@ const LandingPage = () => {
                     </div>
                     <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
 
             <div className='featured31'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg1'>
                     <img src={img7} alt="" />
                 </div>
@@ -83,12 +91,14 @@ const LandingPage = () => {
                     </div>
                     <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
 
             <div className='featured31'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg1'>
                     <img src={img8} alt="" />
                 </div>
@@ -102,12 +112,14 @@ const LandingPage = () => {
                     </div>
                     <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
 
             <div className='featured31'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg1'>
                     <img src={img9} alt="" />
                 </div>
@@ -121,12 +133,14 @@ const LandingPage = () => {
                     </div>
                     <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
 
             <div className='featured31'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg1'>
                     <img src={img10} alt="" />
                 </div>
@@ -140,13 +154,38 @@ const LandingPage = () => {
                     </div>
                     <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
         </div>
         <div className='featured111'>
             <h1>View more</h1>
+        </div>
+    </div>
+    <div className='choose'>
+        <h1>Why Choose Us?</h1>
+        <div className='choose1'>
+            <div className='choosediv'>
+                <div className='chooseimg'>
+                    <img src={img14} alt="" />
+                </div>
+                <div className='choosetext'>
+                    <span>Get your Properties esposed to our <br /> massive network of social <br /> media followers.</span>
+                    <p>With our platform your listing for sale or rent <br /> will gain traction and generate leads like never <br /> 
+                     before join us and amplify your real estate <br /> success. </p>
+                </div>
+            </div>
+            <div className='choosediv1'>
+                <div className='choosetext1'>
+                    <span>Get free post sponsorship as an <br /> Agent. </span>
+                    <p>As an agent, unlock five days of complimentary <br /> post sponsorship on our platform. <br /> 
+                     Reach potential clients effectively and efficiently. <br /> Start boosting your listings today.  </p>
+                </div>
+
+                <div className='chooseimg1'>
+                    <img src={img15} alt="" />
+                </div>
+            </div>
         </div>
     </div>
       <Footer/>

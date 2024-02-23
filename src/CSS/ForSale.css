@@ -261,17 +261,13 @@
 .ForSalePropertyButtonsWrap{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap:5%;
     width: 100%;
     padding: 0% 3%;
     /* background-color: red; */
 }
 
-.ForSalePropertyButtonsWrap :nth-child(2){
-    background-color: whitesmoke;
-    color: #0653C8  ;
-    border: 0.5px solid #0653C8;
-}
 
 .ForSalePropertyButtonsWrap button{
     /* padding: 4%; */
@@ -284,7 +280,7 @@
     color: whitesmoke;
     transform: scale(1);
     transition: 350ms;
-    font-size: 0.7rem;
+    font-size: 1.2rem;
 }
 
 .ForSalePropertyButtonsWrap button:hover{
