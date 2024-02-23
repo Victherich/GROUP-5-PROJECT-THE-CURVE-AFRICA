@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "../CSS/AgentLogin.css";
 import logo from "../Images/image 8.png";
 import axios from 'axios';
@@ -11,6 +11,7 @@ const AgentSignUp = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [formFlip, setFormFlip] = useState(true);
   const [imgTitle,setImgTitle]=useState("Click to Upload")
+  const [imgTitle2,setImgTitle2]=useState("Click to Upload")
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -22,7 +23,7 @@ const AgentSignUp = () => {
     documentImage: null,
     regCert: null,
   });
-
+// console.log(formData.documentImage.name)
   console.log(formData);
 
   const handleChange = (e) => {
@@ -33,6 +34,13 @@ const AgentSignUp = () => {
     setFormData({ ...formData, [e.target.name]: e.target.files[0] });
     setImgTitle(e.target.files[0].name)
   };
+
+  const handleImageChange2 = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+    setImgTitle2(e.target.files[0].name)
+  };
+
+
 
   const url = 'https://homehub-coxc.onrender.com/api/signup';
 
@@ -206,11 +214,11 @@ const AgentSignUp = () => {
                   type="file"
                   name="regCert"
                   accept="image/*"
-                  onChange={handleImageChange}
+                  onChange={handleImageChange2}
                   placeholder='select registration certificate' 
                   required 
                   style={{display:"none"}}/>
-                  <label className="AgentClickToUpload" htmlFor="registrationCertificate">{imgTitle}</label>
+                  <label className="AgentClickToUpload" htmlFor="registrationCertificate">{imgTitle2}</label>
               </div>
               <div className='AgreeTermsAndConditionsWrap'>
               <input

@@ -12,9 +12,8 @@ const Footer = () => {
         <div className='footwrite'>
           <h1>Company</h1>
           <div className='line'></div>
-          <span>Contact Us</span>
-          <span>Private policy</span>
-          <span>Disclaimer</span>
+          <span>Privacy policy</span>
+          
         </div>
         <div className='footwrite'>
           <h1>Contact Us</h1>
@@ -32,7 +31,14 @@ const Footer = () => {
             <img src={facebook} alt="" />
           </div>
         </div>
+        <div className='footwrite'>
+          <h1>Partners</h1>
+          <div className='line'></div>
+          <span>Kora pay</span>
+          <span>The Curve Africa</span>
+        </div>
       </div>
+      <div style={{color:"black",backgroundColor:"white",width:"100vw"}}>Send us an email to Advertise with Us</div>
     </div>
   )
 }

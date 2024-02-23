@@ -8,8 +8,6 @@ import img6 from "../Images/sixth.jpg"
 import img7 from "../Images/seventh.webp"
 import img8 from "../Images/eight.jpg"
 import img9 from "../Images/ninth.webp"
-import img10 from "../Images/tenth.jpg"
-// import love from "../Images/love.png"
 import img14 from "../Images/image 14.png"
 import img15 from "../Images/image 15.png"
 
@@ -138,26 +136,7 @@ const LandingPage = () => {
                 </div>
             </div>
 
-            <div className='featured3'>
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
-                <div className='featuredimg'>
-                    <img src={img10} alt="" />
-                </div>
-
-                <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 </div>
     <div className='featured111'>

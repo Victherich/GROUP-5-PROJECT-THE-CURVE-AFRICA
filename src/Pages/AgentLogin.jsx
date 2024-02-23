@@ -64,7 +64,7 @@ const AgentLogin = () => {
   };
 
 
-  const url = '';
+  const url = 'https://homehub-coxc.onrender.com/api/login';
 
   const handleSubmit = async (e) => {
       e.preventDefault();
@@ -83,9 +83,7 @@ const AgentLogin = () => {
       Swal.showLoading();
 
       try {
-        const response = await axios.post(url, formDataA, {
-          headers: { 'Content-Type': 'multipart/form-data' }
-        });
+        const response = await axios.post(url, formDataA);
         console.log(response.data);
         alert(response.data.message);
         loadingAlert.close();
@@ -128,7 +126,9 @@ const AgentLogin = () => {
                   onChange={handleChange}
                   placeholder='Enter password' required />
               </div>
-              <button className='AgentSignUpNextButton' style={{height:"11%"}}>Login</button>
+              <button type="submit"
+              className='AgentSignUpNextButton' 
+              style={{height:"11%"}}>Login</button>
               <p className='myspan'>Don't have an account?  
               <Link to={"/agentsignup"} className='AgentFormPage1Link'> Sign Up</Link></p>
             </div>
