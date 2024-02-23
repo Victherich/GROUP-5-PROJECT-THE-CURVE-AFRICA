@@ -20,11 +20,13 @@ const Header = () => {
         <NavLink to={"/forrent"}>For Rent</NavLink>
         <NavLink to={"/allagentslistpage"}>Agents</NavLink>
         <NavLink to={"/agentdashboard"}>Post a Property</NavLink>
-        <NavLink to={"/userdashboard"}>Login</NavLink>
       </div>
-      <div className='third'>
-        <img src={Vector} alt="" />
-        <NavLink to={"/usersignUp"}>Sign_Up</NavLink>
+      <div className='thirddad'>
+        <NavLink to={"/userdashboard"} className="logintext">Login</NavLink>
+        <div className='third'>
+            <img src={Vector} alt="" />
+            <NavLink to={"/usersignUp"} className="signuptext">Sign_Up</NavLink>
+        </div>
       </div>
 
       <div className='fourth' onClick={()=>setBurger(!burger)}>

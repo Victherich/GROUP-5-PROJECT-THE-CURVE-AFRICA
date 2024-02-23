@@ -109,7 +109,6 @@ const ForRent = () => {
             
             <div className='ForSalePropertyButtonsWrap'>
               <button>View</button>
-              <button>Add to Favourite</button>
             </div>
           </div>
         </div>

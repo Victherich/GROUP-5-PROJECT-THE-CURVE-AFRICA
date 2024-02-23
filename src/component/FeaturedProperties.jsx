@@ -6,6 +6,7 @@ import img2 from "../Images/second.jpg"
 import img3 from "../Images/third.jpg"
 import img4 from "../Images/fourth.jpeg"
 import img5 from "../Images/fifth.jpg"
+// import love from "../Images/love.png"
 
 const FeaturedProperties = () => {
   return (
@@ -16,6 +17,9 @@ const FeaturedProperties = () => {
 
         <div className='featured2'>
             <div className='featured3'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg'>
                     <img src={img1} alt="" />
                 </div>
@@ -29,12 +33,15 @@ const FeaturedProperties = () => {
                     </div>
                     <div className='featuredbtndiv'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
 
             <div className='featured3'>
+
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg'>
                     <img src={img2} alt="" />
                 </div>
@@ -48,12 +55,14 @@ const FeaturedProperties = () => {
                     </div>
                     <div className='featuredbtndiv'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
 
             <div className='featured3'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg'>
                     <img src={img3} alt="" />
                 </div>
@@ -67,12 +76,14 @@ const FeaturedProperties = () => {
                     </div>
                     <div className='featuredbtndiv'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
 
             <div className='featured3'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg'>
                     <img src={img4} alt="" />
                 </div>
@@ -86,12 +97,14 @@ const FeaturedProperties = () => {
                     </div>
                     <div className='featuredbtndiv'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
 
             <div className='featured3'>
+                {/* <div className='love'>
+                    <img src={love} alt="" />
+                </div> */}
                 <div className='featuredimg'>
                     <img src={img5} alt="" />
                 </div>
@@ -105,7 +118,6 @@ const FeaturedProperties = () => {
                     </div>
                     <div className='featuredbtndiv'>
                         <button className='view'>View</button>
-                        <button className='add'>Add to favourite</button>
                     </div>
                 </div>
             </div>
