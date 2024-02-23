@@ -21,7 +21,7 @@ const handleLogout = async (e)=>{
     console.log("logout");
     setLogoutwarning(false);
     Agentlogout()
-    // navigate('/') // use later
+    navigate('/') // use later
   }catch(error){
     console.error(error)
     console.log("error logging out")

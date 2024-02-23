@@ -1,74 +1,95 @@
-import React, { useState } from 'react'
-import logo from '../Images/image 8.png'
-import "../CSS/Login.css"
+import React, { useContext, useState } from 'react';
+import "../CSS/AgentLogin.css";
+import logo from "../Images/image 8.png";
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../component/UserContext';
 
 const UserLogin = () => {
+  const { Userlogin } = useContext(UserContext);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const loginDetails = {
-    email : "",
-    password : ""
-  }
+  console.log(formData);
 
-  const [details,setDetails] = useState(loginDetails)
-  const [loginError, setLoginError] = useState()
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
 
-  const handleInputValue = (e)=>{
-    // const inputDetails = e.target.value
-    const { name, value} = e.target;
-    setDetails({...details, [name]: value})
-  }
+  const url = '';
 
-  const  handleLogin = ()=>{
-    setLoginError(validate(details))
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      const formDataA = new FormData();
+      formDataA.append("email", formData.email);
+      formDataA.append("password", formData.password);
+
+      const loadingAlert = Swal.fire({
+        title: "Loading",
+        text: "Please wait...",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: false
+      });
+
+      Swal.showLoading();
+
+      try {
+        const response = await axios.post(url, formDataA);
+        console.log(response.data);
+        alert(response.data.message);
+        loadingAlert.close();
+        Userlogin(response.data.user.id, response.data.user);
+      } catch (error) {
+        console.error(error);
+        loadingAlert.close();
+      }
     
-  }
- 
-
-  const validate =(value)=>{
-    const errors = {}
-    console.log(value)
-
-    if (!value){
-      errors.email = "email must be filled"    
-    }
-
-    if (!value){
-      errors.password = "password must be filled"    
-    }
-
-    console.log(errors.email)
-    
-  }
+  };
 
   return (
-    <div className='userbody'>
-        <div className='userform'>
-          <h2>Login </h2>
-          <div className='usermain'>
-            <div className='userlogo'>
-              <img src={logo} alt="" />
+    <div className='agentbody'>
+      <Link to={"/"} className='AgentlogoWrap'>
+        <img src={logo} alt="" />
+      </Link>
+      <div className='agentformWrap'>
+        <form onSubmit={handleSubmit} className='agentForm' style={{height:"60%"}}>
+            <div className='AgentFormPage1'>
+              <div className='SignUpHeadingWrap'>
+              <img src={logo}/><h1>Login</h1>
+              </div>
+      
+              <div className='agentinput' style={{height:"22%"}}>
+                <label htmlFor="">Email address</label>
+                <input
+                  type="text"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder='example@gmail.com' required />
+              </div>
+              
+              <div className='agentinput' style={{height:"22%"}}>
+                <label htmlFor="">Password</label>
+                <input
+                  type="text"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder='Enter password' required />
+              </div>
+              <button className='AgentSignUpNextButton' style={{height:"11%"}}>Login</button>
+              <p className='myspan'>Don't have an account?  
+              <Link to={"/usersignUp"} className='AgentFormPage1Link'> Sign Up</Link></p>
             </div>
-            <div className='userdivs'>
-              <div className='userinput'>
-                <label >email address</label>
-                <input type="text" placeholder='enter email address' name='email' value={details.email} onChange={handleInputValue} />
-              </div>
-              <div className='userinput'>
-                <label htmlFor="">password</label>
-                <input type="text" placeholder='enter password' name='password' value={details.password} onChange={handleInputValue} />
-              </div>
-              <button className='userbtn' onClick={handleLogin}>Login</button>
-              <div className='userdont'>
-                <div className='thisdiv'></div>
-                <p className='myspan'>Don't have an account?  <span >Sign-Up</span> </p>
-              </div>
-              <p>Forgot password</p>
-            </div>
-          </div>
-        </div>
+        </form>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserLogin
+export default UserLogin;

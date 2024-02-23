@@ -10,6 +10,7 @@ const AgentSignUp = () => {
   const { Agentlogin } = useContext(AgentContext);
   const [isChecked, setIsChecked] = useState(false);
   const [formFlip, setFormFlip] = useState(true);
+  const [imgTitle,setImgTitle]=useState("Click to Upload")
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -30,6 +31,7 @@ const AgentSignUp = () => {
 
   const handleImageChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+    setImgTitle(e.target.files[0].name)
   };
 
   const url = 'https://homehub-coxc.onrender.com/api/signup';
@@ -71,21 +73,27 @@ const AgentSignUp = () => {
         loadingAlert.close();
       }
     } else {
-      alert("Please agree to terms and conditions");
+      Swal.fire({
+        text:"Please agree to terms and conditions",
+        icon:"warning",
+        showConfirmButton:true,
+      })
       e.preventDefault();
     }
   };
 
   return (
     <div className='agentbody'>
-      <div className='AgentlogoWrap'>
+      <Link to={"/"} className='AgentlogoWrap'>
         <img src={logo} alt="" />
-      </div>
+      </Link>
       <div className='agentformWrap'>
         <form onSubmit={handleSubmit} className='agentForm'>
           {formFlip ? (
             <div className='AgentFormPage1'>
-              <h1>Sign Up as Agent </h1>
+              <div className='SignUpHeadingWrap'>
+              <img src={logo}/><h1>Sign Up as Agent </h1>
+              </div>
               <div className='agentinput'>
                 <label htmlFor="">Full name</label>
                 <input
@@ -131,7 +139,7 @@ const AgentSignUp = () => {
                   onChange={handleChange}
                   placeholder='Confirm password' required />
               </div>
-              <button
+              <button className='AgentSignUpNextButton'
                 type="button"
                 onClick={() => {
                   if (
@@ -143,14 +151,21 @@ const AgentSignUp = () => {
                   ) {
                     setFormFlip(false);
                   } else {
-                    alert("Please fill all the empty fields");
+                    Swal.fire({
+                      icon:"warning",
+                      // title:"Please fill all the empty fields",
+                      text:"Please fill all the empty fields",
+                      showConfirmButton:true,
+                    })
                   }
                 }}>Next</button>
-              <p className='myspan'>Already have an account?</p>  <Link to={"/agentlogin"}>Login</Link>
+              <p className='myspan'>Already have an account?  <Link to={"/agentlogin"} className='AgentFormPage1Link'>Login</Link></p>
             </div>
           ) : (
-            <div className='AgentFormPage2'>
-              <h2>Agent KYC information </h2>
+            <div className='AgentFormPage1'>
+              <div className='SignUpHeadingWrap'>
+              <img src={logo}/><h1>Agent KYC information </h1>
+              </div>
               <div className='agentinput'>
                 <label htmlFor="">Company Name</label>
                 <input
@@ -160,7 +175,7 @@ const AgentSignUp = () => {
                   onChange={handleChange}
                   placeholder='eg. Thompson Real Estates' required />
               </div>
-              <div className='agentinputWrap'>
+              <div className='agentinput'>
                 <label htmlFor="">Address</label>
                 <input
                   type="text"
@@ -170,32 +185,46 @@ const AgentSignUp = () => {
                   placeholder='No. 23 Alfred street lekki phase 1 Lagos Nigeria' required />
               </div>
               <div className='agentinput'>
-                <label htmlFor="">Identity Document</label>
+                <label style={{color:"#0000FF",fontWeight:"500"}} htmlFor="" >Upload Identity Document</label><div style={{height:"1.5vh"}}></div>
                 <input
-                  type="file"
-                  name="documentImage"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  placeholder='select document image' required />
+    id="identityDocument"
+    type="file"
+    name="documentImage"
+    accept="image/*"
+    onChange={handleImageChange}
+    style={{ display: 'none' }} // or visibility: 'hidden'
+    required
+/>
+<label className="AgentClickToUpload" htmlFor="identityDocument">{imgTitle}</label>
+
               </div>
               <div className='agentinput'>
-                <label htmlFor=""> Company Registration Certificate</label>
+                <label style={{color:"#0000FF",fontWeight:"500"}} htmlFor=""> Company Registration Certificate</label><div style={{height:"1.5vh"}}></div>
                 <input
+                
+                id="registrationCertificate"
                   type="file"
                   name="regCert"
                   accept="image/*"
                   onChange={handleImageChange}
-                  placeholder='select registration certificate' required />
+                  placeholder='select registration certificate' 
+                  required 
+                  style={{display:"none"}}/>
+                  <label className="AgentClickToUpload" htmlFor="registrationCertificate">{imgTitle}</label>
               </div>
+              <div className='AgreeTermsAndConditionsWrap'>
               <input
                 type='checkbox'
                 checked={isChecked}
                 onChange={() => setIsChecked(!isChecked)} />
               <p>I agree to the terms and conditions</p>
+              </div>
+              <div className='KYCButtons'>
               <button onClick={() => setFormFlip(true)}>Back</button>
               <button
                 type="submit"
-                className='agentbtn'>Sign Up</button>
+                >Sign Up</button>
+              </div>
             </div>
           )}
         </form>
