@@ -16,10 +16,10 @@ const Header = () => {
       </div>
       <div className='second'>
         <NavLink to={"/"} className='sec'>Home</NavLink>
-        <NavLink to={"/forsale"}>For Sale</NavLink>
-        <NavLink to={"/forrent"}>For Rent</NavLink>
-        <NavLink to={"/allagentslistpage"}>Agents</NavLink>
-        <NavLink to={"/agentdashboard"}>Post a Property</NavLink>
+        <NavLink to={"/forsale"} className='sec'>For Sale</NavLink>
+        <NavLink to={"/forrent"} className='sec'>For Rent</NavLink>
+        <NavLink to={"/allagentslistpage"} className='sec'>Agents</NavLink>
+        <NavLink to={"/agentdashboard"} className='sec'>Post a Property</NavLink>
       </div>
       <div className='thirddad'>
         <NavLink to={"/userdashboard"} className="logintext">Login</NavLink>
