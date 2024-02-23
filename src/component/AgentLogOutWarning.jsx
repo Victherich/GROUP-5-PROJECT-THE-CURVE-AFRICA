@@ -4,7 +4,7 @@ import { AgentContext } from './AgentContext';
 import { useContext } from 'react';
 import '../CSS/LogOutWarning.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 const AgentLogOutWarning = () => {
@@ -21,7 +21,7 @@ const handleLogout = async (e)=>{
     console.log("logout");
     setLogoutwarning(false);
     Agentlogout()
-    navigate('/') // use later
+    // navigate('/') // use later
   }catch(error){
     console.error(error)
     console.log("error logging out")
