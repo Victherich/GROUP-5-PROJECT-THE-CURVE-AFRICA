@@ -73,11 +73,17 @@ useEffect(()=>{
        {
         burger ?
          ( <div className='related'>
-          <span className='sec'>Home</span>
-          <span>For Sale</span>
-          <span>For Rent</span>
-          <span>Agents</span>
-          <span>Post a Property</span>
+              <NavLink to={"/"} 
+                  className={headerActive==="home"?"sec2":"sec"}
+              >Home</NavLink>
+          <NavLink to={"/forsale"} 
+                  className={headerActive==="ForSale"?"sec2":"sec"}
+          >For Sale</NavLink>
+          <NavLink to={"/forrent"} 
+                  className={headerActive==="ForRent"?"sec2":"sec"}
+          >For Rent</NavLink>
+          <NavLink to={"/allagentslistpage"} className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
+          <NavLink to={"/agentdashboard"} className='sec'>Post a Property</NavLink>
         </div>) : null
       }
        </>

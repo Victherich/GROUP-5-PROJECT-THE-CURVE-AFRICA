@@ -139,7 +139,7 @@ const ForSale = () => {
                   <h4>{d.names}</h4>
                   <p><span>Category:</span> {d.category}</p>
                   <p><span>Price:</span> N{d.price}</p>
-                  <p><span>Location:</span> {d.location}</p>
+                  <p><span>Location:</span> {d.location}</p>  
             </div>    
             <div className='ForSalePropertyButtonsWrap'>
               <button>View</button>
