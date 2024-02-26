@@ -6,11 +6,13 @@ import DetailImg3 from '../Images/images (7).jpg'
 import DetailImg4 from '../Images/images (1) 2.png'
 import DetailImg5 from '../Images/pic1 1.png'
 import DetailImg6 from '../Images/woodex6 1.png'
+import { useHistory } from 'react-router-dom';
 
 
 
 
 const PropertyDetailPage = () => {
+  // const history = useHistory();
 const [ImgDisplay,setImgDisplay]=useState(null)
 const [imgMonitor,setImgMonitor]=useState(null)
 useEffect(()=>{
@@ -28,6 +30,14 @@ useEffect(()=>{
     setImgDisplay(DetailImg1)
   }
 },[imgMonitor])
+
+
+
+
+const handleBack = () => {
+  window.history.back();
+};
+
 
   return (
     
@@ -70,7 +80,7 @@ useEffect(()=>{
             <p><span>Email: </span>Johnbright@gmail.com</p>
             <p><span>Phone no.: </span>0901234567</p>
             <br/>
-            <button>Back</button>
+            <button onClick={handleBack}>Back</button>
         </div>
       </div>
     </div>

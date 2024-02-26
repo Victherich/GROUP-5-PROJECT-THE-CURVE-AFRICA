@@ -21,6 +21,8 @@ useEffect(()=>{
     setHeaderActive("ForRent")
   }else if(path==="/allagentslistpage"){
     setHeaderActive("Agents")
+  }else if(path==="/allpropertieslistpage"){
+    setHeaderActive(null)
   }
 },[location])
 
