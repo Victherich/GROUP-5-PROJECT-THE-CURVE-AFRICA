@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import ProfileIcon from '../Images/profile icon.png'
 import HomeHubLogo from '../Images/HomeHub Logo.svg'
 import AgentLogOutWarning from './AgentLogOutWarning'
+import { Link } from 'react-router-dom'
 
 const AgentDashboardSideBar = () => {
   const {AgentActiveMenu,setAgentActiveMenu,logoutWarning,setLogoutwarning}=useContext(AgentContext)
@@ -12,16 +13,19 @@ const AgentDashboardSideBar = () => {
  
   return (
     <div className='AgentDashboardSidebar'>
-      <div className='AgentDashboardSidebarUp'>
+      <Link to={"/"} className='AgentDashboardSidebarUp'>
         <img src={HomeHubLogo} alt="AgentDashboardSidebarLogo"/>
-      </div>
+      </Link>
       <div className='AgentDashboardSidebarDown'>
-          <div className='AgentDashboardSidebarDownProfileWrap'>
+          {/* <div className='AgentDashboardSidebarDownProfileWrap'>
               <img src={ProfileIcon} alt="AgentProfileLogo"/><p>Hi, Clara</p>
-          </div>
+          </div> */}
           <div className='AgentDashboardSidebarDownMenu'>
-              <p onClick={()=>setAgentActiveMenu("account")} className={AgentActiveMenu==="account"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Account</p>
-              <p onClick={()=>setAgentActiveMenu("post a property")} className={AgentActiveMenu==="post a property"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Post a Property</p>
+              <p onClick={()=>setAgentActiveMenu("account")} 
+              className={AgentActiveMenu==="account"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}
+              >Hi, Clara</p>
+
+              {/* <p onClick={()=>setAgentActiveMenu("post a property")} className={AgentActiveMenu==="post a property"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Post a Property</p> */}
               <p onClick={()=>setAgentActiveMenu('posted property')} className={AgentActiveMenu==='posted property'?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Posted Properties</p>
               <p onClick={()=>setAgentActiveMenu("sponsored property")} className={AgentActiveMenu==="sponsored property"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Sponsored Properties</p>
           </div>

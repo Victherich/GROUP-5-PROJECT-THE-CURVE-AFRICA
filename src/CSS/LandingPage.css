@@ -25,15 +25,15 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding-left: 30px;
-    padding-top: 250px;
-    gap: 15px;
+    padding-left: 5%;
+    padding-top: 20vh;
+    gap: 3vh;
 
     @media screen and (max-width:1024px) {
         padding-top: 150px;
     }
     @media screen and (max-width:768px) {
-        padding-top: 150px;
+        padding-top: 100px;
     }
    
     @media screen and (max-width:414px) {
@@ -45,7 +45,7 @@
 }
 
 .heroright h1 {
-    font-size: 70px;
+    font-size: 3.5rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 650;
 
@@ -53,7 +53,7 @@
         font-size: 30px;
     }
     @media screen and (max-width:768px) {
-        font-size: 30px;
+        font-size: 27px;
     }
     
     @media screen and (max-width:414px) {
@@ -69,10 +69,10 @@
 }
 
 .heroright p {
-    font-size: 25px;
+    font-size: 1.2rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     @media screen and (max-width:768px) {
-        font-size: 20px;
+        font-size: 17px;
     }
     @media screen and (max-width:414px) {
         font-size: 14px;
@@ -84,12 +84,12 @@
 
 .herolast {
     width: 80%;
-    height: 20%;
-    /* background-color: red; */
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     @media screen and (max-width:414px) {
-        height: 50%;
+        height: 40%;
+        width: 99%;
         gap: 10px;
         flex-wrap: wrap;
     }
@@ -103,7 +103,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 2px 1px 2px 1px ;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px ;
+    @media screen and (max-width:768px) {
+        width: 35%;
+    }
     @media screen and (max-width:414px) {
         width: 45%;
         height: 50%;
@@ -114,6 +117,9 @@
 
 .herolast1 h2 {
     font-size: 20px;
+    @media screen and (max-width:768px) {
+        font-size: 18px;
+    }
     @media screen and (max-width:414px) {
         font-size: 14px;
     }
@@ -122,6 +128,9 @@
 
 .herolast1 p {
     font-size: 18px;
+    @media screen and (max-width:768px) {
+        font-size: 12px;
+    }
     @media screen and (max-width:414px) {
         font-size: 10px;
     }
@@ -143,14 +152,20 @@
 
 .featureddiv1 {
     width:100%;
-    height: 70vh;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
     gap: 20px;
     @media screen and (max-width:768px) {
-        margin-top: 650px;
+        margin-top: 600px;
+    }
+    @media screen and (max-width:414px) {
+        margin-top: 750px;
+    }
+    @media screen and (max-width:320px) {
+        margin-top: 600px;
     }
 }
 
@@ -180,7 +195,7 @@
 }
 
 .featured111 {
-    width: 95%;
+    width: 100%;
     height: 10%;
     display: flex;
     color: #0653C8;
@@ -191,12 +206,33 @@
     font-weight: 600;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 0.8rem;
     @media screen and (max-width:768px) {
-        margin-top: 550px;
+        margin-top: 50px;
+        font-size: 12px;
     }
     @media screen and (max-width:414px) {
         font-size: 8px;
+        margin-top: 100px;
     }
+    @media screen and (max-width:320px) {
+        margin-top: 30px;
+    }
+    transition: 350ms;
+}
+
+.featured111 h1:hover{
+    transform: scale(1.05);
+    text-decoration: underline;
+}
+
+.featured111 h1:active{
+    transform: scale(0.9);
+}
+
+.featured111 h1{
+    cursor: pointer;
+    transition: 350ms;
 }
 
 .featured21 {
@@ -216,20 +252,21 @@
 }
 
 .featured31 {
-    width: 17.5%;
-    height: 100%;
+    width: 17.5vw;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 2px ;
     @media screen and (max-width:768px) {
         width: 28%;
+        height: 60vh;
     }
     @media screen and (max-width:414px) {
         width: 43%;
-        height: 70%;
+        height: 50vh;
     }
     @media screen and (max-width:320px) {
-        height: 75%;
+        height: 45vh;
     }
 }
 
@@ -296,16 +333,16 @@
 
 .featuredbtndiv1 {
     width: 90%;
-    height: 15%;
+    height: 20%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 30px;
 }
 
 
 .view {
-    width: 30%;
+    width: 40%;
     height: 100%;
     background-color:  #0E9AFF;
     color: white;
@@ -319,17 +356,180 @@
     }
 }
 
-.add {
-    width: 60%;
-    height: 100%;
-    background-color:  #0E9AFF;
-    color: white;
-    border: none;
-    border-radius: 5px; 
+
+.choose {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:5%;
+    align-items: center;
+    /* padding-top: 2vh ; */
+    background-color: rgb(250, 250, 250);
+    @media screen and (max-width:320px) {
+        height: 50vh;
+    }
+}
+
+.choose h1 {
+    font-size: 2.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    @media screen and (max-width:768px) {
+        font-size: 25px;
+    }
     @media screen and (max-width:414px) {
-        font-size: 11px;
+        font-size: 20px;
     }
     @media screen and (max-width:320px) {
-        font-size: 9px;
+        font-size: 16px;
+    }
+}
+
+.choose1 {
+    width: 60%;
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+    /* padding-top: 30px; */
+    flex-direction: column;
+    /* background-color: red; */
+
+    @media screen and (max-width:768px) {
+        width: 100%;
+    }
+    @media screen and (max-width:414px) {
+        width: 100%;
+    }
+    @media screen and (max-width:320px) {
+        width: 100%;
+    }
+}
+
+.choosediv {
+    width: 100%;
+    height: 40%;
+    display: flex;
+
+}
+
+.chooseimg {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.chooseimg img {
+    width: 70%;
+    height: 100%;
+    @media screen and (max-width:414px) {
+        width: 95%;
+    }
+}
+
+.choosetext {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.choosetext span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #0653C8;
+    @media screen and (max-width:768px) {
+        font-size: 18px;
+    }
+    @media screen and (max-width:414px) {
+        font-size: 12px;
+    }
+    @media screen and (max-width:320px) {
+        font-size: 10px;
+    }
+}
+
+.choosetext p {
+    font-size: 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    @media screen and (max-width:768px) {
+        font-size: 15px;
+    }
+    @media screen and (max-width:414px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width:320px) {
+        font-size: 7.5px;
+    }
+}
+
+.choosediv1 {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    margin-top: 20px;
+}
+
+.choosetext1 {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 7%;
+    /* background-color: blue; */
+    @media screen and (max-width:768px) {
+        padding-left: 50px;
+    }
+    @media screen and (max-width:414px) {
+        padding-left:5px;
+    }
+   
+}
+
+.choosetext1 span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #0653C8;
+    @media screen and (max-width:768px) {
+        font-size: 18px;
+    }
+    @media screen and (max-width:414px) {
+        font-size: 12px;
+    }
+    @media screen and (max-width:320px) {
+        font-size: 10px;
+    }
+}
+
+.choosetext1 p {
+    font-size: 1 rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    @media screen and (max-width:768px) {
+        font-size: 15px;
+    }
+    @media screen and (max-width:414px) {
+        font-size: 10px;
+    }
+    @media screen and (max-width:320px) {
+        font-size: 7.5px;
+    }
+}
+
+.chooseimg1 {
+    width: 50%;
+    height: 100%;
+}
+
+.chooseimg1 img {
+    width: 70%;
+    height: 100%;
+    @media screen and (max-width:414px) {
+        width: 100%;
     }
 }

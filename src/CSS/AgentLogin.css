@@ -4,9 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* position: relative; */
-    /* background-color:  #0E9AFF; */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
 }
 
 .agentformWrap {
@@ -25,27 +24,70 @@
     align-items: center;
     flex-direction: column;
     width: 40%;
-    height: 95%;
+    height: 90%;
     background-color:#FAFAFA;
-    /* box-shadow: 0px 0px 3px 0px; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
     margin-right: 11%;
+
+    @media screen and (max-width:1024px){ 
+        width: 50%;
+    }
+
+    @media screen and (max-width:769px){ 
+        width: 65%;
+    }
+    
+    @media screen and (max-width:660px){ 
+        font-size: 0.8rem;
+        margin-right: 0;
+        margin-left: 10%;
+        text-align: center;
+        
+    }
+
+    @media screen and (max-width:530px){ 
+        font-size: 0.7rem;
+        margin-right: 0;
+        text-align: center; 
+    }
+    
+    @media screen and (max-width:414px){ 
+        font-size: 0.7rem;
+        margin:none;
+        text-align: center;
+        width: 90%;
+    }
 }
 
 .AgentlogoWrap{
     width: 10%;
     height: 100%;
     display: flex;
-    /* align-items: center; */
-    justify-content: flex-start;
+    /* align-items: center;  */
+    /* align-items: flex-start; */
+    /* justify-content: flex-start; */
     /* background-color: red; */
+    @media screen and (max-width:660px){ 
+        display: none;
+        height: 15%;
+    }
+
+    
 }
 
 .AgentlogoWrap img {
     width: 100%;
-    height: 13%;
+    height: 14%;
     margin-top: 10%;
+
+    
+    @media screen and (max-width:900px){ 
+        width: 160%;
+    /* height: 100%; */
+    }
+
+    
 }
 
 .AgentFormPage1{
@@ -61,10 +103,54 @@
 .AgentFormPage1 h1{
     color: #0000FF;
     font-weight: 600 ;
+    margin-bottom: 3%;
+    /* -webkit-text-stroke: 0.5px red; */
+
+    @media screen and (max-width:660px){ 
+        /* font-size: 1.6rem; */
+    }
 }
 
+.AgentSignUpNextButton{
+    width: 40%;
+    height: 7%;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #0E9AFF, #024D83);
+    border: none;
+    color: #FAFAFA;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 350ms;
+    font-weight: bold;
+}
 
-.agentinput {
+.AgentSignUpNextButton:hover{
+    transform: scale(1.05);
+}
+
+.AgentSignUpNextButton:active{
+    transform: scale(0.9);
+}
+
+.AgentFormPage1 p{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.AgentFormPage1Link{
+    color: #0000FF;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 350ms;
+}
+
+.AgentFormPage1Link:hover{
+    transform: scale(1.1);
+}
+
+.agentinput{
     width: 100%;
     height: 13%;
     display: flex;
@@ -79,21 +165,41 @@
     font-weight: 400;
 }
 
-
-
-.agentinput input{
+.agentinput input,.AgentClickToUpload{
     width: 100%;
     height: 50%;
-    border: 1px solid #0000FF;
+    /* border: 1px solid #9BD5FF; */
+    border: 1px solid #0E9AFF;
     padding-left: 10px;
     background-color:#F8FBFD;
     border-radius: 5px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    
+}
 
+/* .identityDocument{
+    border: none;
+} */
+
+/* .identityDocument:hover{
+    border:1px solid whitesmoke;
+} */
+
+.agentinput input:hover{
+    outline:1px solid #0000FF;   
+}
+
+.AgentClickToUpload:hover{
+    cursor:pointer;
+    transform: scale(1.05);
+    transition: 350ms;
 }
 
 .agentbtn {
     width: 30%;
-    height: 10%;
+    height: 100%;
     font-size: 20px;
     color: white;
     background-color:  #0E9AFF;
@@ -126,3 +232,66 @@
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.SignUpHeadingWrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.SignUpHeadingWrap img{
+    display: none;
+    @media screen and (max-width:660px) {
+        display: block;
+        width: 40%;
+    }
+}
+
+.AgreeTermsAndConditionsWrap{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
+
+.AgreeTermsAndConditionsWrap input:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: 350ms;
+}
+
+.KYCButtons{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 8%;
+    /* background-color: red; */
+}
+
+.KYCButtons button{
+    width: 35%;
+    border-radius: 5px;
+    background:  linear-gradient(to bottom, #0E9AFF, #024D83);
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 350ms;
+    transform: scale(1);
+}
+
+.KYCButtons :nth-child(1){
+    background:#FAFAFA;
+    border: 1px solid #0000FF;  
+    color: #0000FF;
+}
+
+.KYCButtons button:hover{
+    transform: scale(1.05);
+}
+
+.KYCButtons button:active{
+    transform: scale(0.9);
+}
+
+

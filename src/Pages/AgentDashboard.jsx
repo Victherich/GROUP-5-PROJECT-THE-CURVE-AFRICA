@@ -33,12 +33,13 @@ const AgentDashboard = () => {
             setToggleAgentChangePasswordUI={setToggleAgentChangePasswordUI}
             toggleAgentEditProfileUI={toggleAgentEditProfileUI}
             setToggleAgentEditProfileUI={setToggleAgentEditProfileUI}/>}
-            {AgentActiveMenu==="post a property"&&<AgentPostAPropertyPage/>}
+            
             {AgentActiveMenu==="posted property"&&<AgentPostedProperties/>}
             {AgentActiveMenu==="sponsored property"&&<AgentSponsoredProperties/>}
       </div>
       {logoutWarning&&<AgentLogOutWarning/>}
-      {toggleAgentViewDetailpage&&<AgentViewDetailPage/>}
+      {AgentActiveMenu==="post a property"&&<AgentPostAPropertyPage/>}
+      {/* {toggleAgentViewDetailpage&&<AgentViewDetailPage/>} */}
     </div>
   )
 }

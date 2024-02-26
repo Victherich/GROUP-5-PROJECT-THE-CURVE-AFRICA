@@ -1,17 +1,20 @@
 import React, { useContext } from 'react'
-import AgentChangePasswordUI from './AgentChangePasswordUI'
+// import AgentChangePasswordUI from './AgentChangePasswordUI'
 import AgentEditProfileUI from './AgentEditProfileUI'
 import '../CSS/Account.css'
-import AccountLogo from '../Images/HomeHub Logo.svg'
+// import AccountLogo from '../Images/HomeHub Logo.svg'
 import { AgentContext } from './AgentContext'
 
 
 const AgentAccount = ({toggleAgentChangePasswordUI,
   setToggleAgentChangePasswordUI,
   toggleAgentEditProfileUI,
-  setToggleAgentEditProfileUI}) => {
-    const{AgentId}=useContext(AgentContext)
-
+  setToggleAgentEditProfileUI,
+  
+  }) => {
+    const{AgentId,setAgentActiveMenu,Agent}=useContext(AgentContext)
+    // const data=JSON.Parse(Agent)
+    console.log(Agent[0].fullName) 
 
 const handleAgentChangePasswordUI=()=>{
   setToggleAgentChangePasswordUI(!toggleAgentChangePasswordUI)
@@ -25,17 +28,22 @@ const handleAgentEditProfileUI=()=>{
 
   return (
     <div className='Account'>
-      <h4>Agent Account</h4>
+      
       <div className='AccountUp'>
           <div className='AccountUpLeft'>
-              <p><span>Name: </span>Clara John</p>
+          <h3>Agent Account</h3>
+              <p><span>Name: </span>{Agent.fullName}</p>
               <p><span>Company Name: </span>France Real estate Nigeria</p>
               <p><span>Address: </span>No. 2 New hub avenue</p>
               <p><span>Email: </span>clara@gmail.com</p>
               <p><span>Phone no.: </span>01234567</p>
           </div>
           <div className='AccountUpRight'>
-              <img src={AccountLogo} alt="Logo"/>
+              {/* <img src={AccountLogo} alt="Logo"/> */}
+              <button 
+              className='Makeanewpost'
+              onClick={()=>setAgentActiveMenu("post a property")}
+              > + Make a new post</button>
           </div>
       </div>
       <div className='AccountDown'>

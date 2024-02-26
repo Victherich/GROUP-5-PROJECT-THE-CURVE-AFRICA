@@ -1,8 +1,6 @@
 .ForSaleWrap{
     display: flex;
-    flex-direction: column;
-    
-    
+    flex-direction: column;    
 }
 
 .ForSale{
@@ -182,13 +180,13 @@
 
 .ForSaleProperties{
     display: flex;
-    width: 100%;
+    width: 80%;
     height:max-content;
     /* background-color: #0653C8; */
     justify-content: center;
     align-items: center;
     padding: 2%;
-    gap:2%; 
+    gap:5%; 
     /* overflow-y: scroll; */
     flex-wrap: wrap;
 }
@@ -198,12 +196,12 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    width: 18%;
+    width: 20%;
     height: 50vh;
     background-color: whitesmoke;
-    box-shadow: 0px 0px 2px ;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px ;
     margin-bottom: 5vh;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
 }
 
@@ -231,17 +229,17 @@
     align-items: center;
     width: 100%;
     height: 50%;
-    /* background-color: blue; */
+    /* background-color: blue;   */
 }
 
 .ForSalePropertyNameAndPrice{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
     flex-direction: column;
-    height: 55%;
-    gap: 10%;
+    height: 50%;
+    gap: 5%;
     /* background-color: red; */
 }
 
@@ -261,6 +259,7 @@
 .ForSalePropertyButtonsWrap{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap:5%;
     width: 100%;
     padding: 0% 3%;
@@ -268,10 +267,11 @@
 }
 
 .ForSalePropertyButtonsWrap :nth-child(2){
-    background-color: whitesmoke;
-    color: #0653C8  ;
-    border: 0.5px solid #0653C8;
+    background-color: white;
+    color: #0653C8;
+    border: 1px solid #0653C8;
 }
+
 
 .ForSalePropertyButtonsWrap button{
     /* padding: 4%; */
@@ -284,7 +284,8 @@
     color: whitesmoke;
     transform: scale(1);
     transition: 350ms;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
 .ForSalePropertyButtonsWrap button:hover{
