@@ -10,9 +10,11 @@ const AgentAccount = ({toggleAgentChangePasswordUI,
   setToggleAgentChangePasswordUI,
   toggleAgentEditProfileUI,
   setToggleAgentEditProfileUI,
+  
   }) => {
-    const{AgentId,setAgentActiveMenu}=useContext(AgentContext)
-
+    const{AgentId,setAgentActiveMenu,Agent}=useContext(AgentContext)
+    // const data=JSON.Parse(Agent)
+    console.log(Agent[0].fullName) 
 
 const handleAgentChangePasswordUI=()=>{
   setToggleAgentChangePasswordUI(!toggleAgentChangePasswordUI)
@@ -30,7 +32,7 @@ const handleAgentEditProfileUI=()=>{
       <div className='AccountUp'>
           <div className='AccountUpLeft'>
           <h3>Agent Account</h3>
-              <p><span>Name: </span>Clara John</p>
+              <p><span>Name: </span>{Agent.fullName}</p>
               <p><span>Company Name: </span>France Real estate Nigeria</p>
               <p><span>Address: </span>No. 2 New hub avenue</p>
               <p><span>Email: </span>clara@gmail.com</p>
