@@ -30,6 +30,7 @@ useEffect(()=>{
 },[imgMonitor])
 
   return (
+    
     <div className='ForSale'> 
       <h1 className='PropertyForSaleHeading'>Property Detail</h1>      
       <div className='Line'></div>
