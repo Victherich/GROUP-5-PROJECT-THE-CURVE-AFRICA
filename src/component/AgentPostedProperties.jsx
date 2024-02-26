@@ -6,19 +6,24 @@ import PostedImg from '../Images/woodex6 1.png'
 import { AgentContext } from './AgentContext'
 import '../CSS/SponsorUI.css'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import AgentViewDetailPage from './AgentViewDetailPage'
 
 const AgentPostedProperties = () => {
   const navigate = useNavigate()
-  const { agentPostedProperties, 
-    setAgentPostedProperties, 
+  const {
     setToggleAgentViewDetailpage,
+    toggleAgentViewDetailpage,
     setSponsoredProperties,
     sponsoredProperties } = useContext(AgentContext)
 
+    //posted properties array
+    const [agentPostedProperties,setAgentPostedProperties]=useState([])
+
+    //fetching posted properties from api
   useEffect(() => {
     handleAgentPostedProperties()
   }, [])
-
   const handleAgentPostedProperties = async () => {
     try {
       // const response = await axios.get(url)
@@ -29,10 +34,12 @@ const AgentPostedProperties = () => {
     }
   }
 
+  //delete posted properties
   const handleDelete = (id) => {
     setAgentPostedProperties(agentPostedProperties.filter((e) => e.id !== id))
   }
 
+  //open sponsored UI
   const handleOpenSponsorUI = (id) => {
     const updatedProperties = agentPostedProperties.map(item => {
       if (item.id === id) {
@@ -43,7 +50,7 @@ const AgentPostedProperties = () => {
     setAgentPostedProperties(updatedProperties)
   }
 
-
+//close sponsored UI
   const handleCloseSponsorUI =(id)=>{
     const updatedProperties = agentPostedProperties.map((item)=>{
       if(item.id===id){
@@ -54,12 +61,11 @@ const AgentPostedProperties = () => {
     setAgentPostedProperties(updatedProperties)
   }
 
-
+//sponsored payment logic
 const [amountValue,setAmountValue]=useState(null)
 const [isCheckedA,setIsCheckedA]=useState(false)
 const [isCheckedB,setIsCheckedB]=useState(false)
 const [isCheckedC,setIsCheckedC]=useState(false)
-
 useEffect(()=>{
   if(isCheckedA===true){
     setAmountValue(10000)
@@ -71,16 +77,17 @@ useEffect(()=>{
     setAmountValue(null)
   }
 },[isCheckedA,isCheckedB,isCheckedC])
-
 // console.log(amountValue)
-
 function payKorapay(id) {
   const key = `key${Math.random()}`;
   if (amountValue == null) {
-    alert("Please select a category you wish to pay for by checking one of the boxes");
+    // alert("Please select a category you wish to pay for by checking one of the boxes");
+    Swal.fire({
+      icon:"warning",
+      text:"Please select a category you wish to pay for by checking one of the boxes",
+    })
     return; // Exit the function early if amountValue is null
   }
-
   try {
     window.Korapay.initialize({
       key: "pk_test_eR5xsWZRG1XfPVe8JvDJyHQWR1nieyBU2DaE5dBm", // replace with the api key you generated
@@ -111,11 +118,43 @@ function payKorapay(id) {
   }
 }
 
-
+//adding frpm posted property array to sposnsored proerties array
  const handleSponsor = (id)=>{
   const propertyToSponsor=agentPostedProperties.find((e)=>e.id===id)
   setSponsoredProperties([...sponsoredProperties,propertyToSponsor])
 }
+
+// declaring selected View item
+const [selectedViewItem,setSelectedViewItem]=useState({}) 
+
+//open view propert UI
+const handleOpenView = (id) => {
+  const updatedProperties = agentPostedProperties.map(item => {
+    if (item.id === id) {
+      return { ...item, openView: true }
+    }
+    return item
+  })
+  setAgentPostedProperties(updatedProperties)
+
+  // finidg selected view item and updated its state
+  const viewItem=agentPostedProperties.find((e)=>e.id===id)
+  setSelectedViewItem(viewItem)
+  }
+ 
+
+//close view property
+const handleCloseView = (id)=>{
+  const updatedProperties=agentPostedProperties.map((item)=>{
+    if(item.id===id){
+      return{...item,openView:false}
+    }
+    return item
+  })
+  setAgentPostedProperties(updatedProperties)
+}
+
+
 
   return (
     <div className='PostedPropertiesWrap'>
@@ -128,17 +167,22 @@ function payKorapay(id) {
             </div>
             <div className='ForSalePropertyNamePriceButtonWrap'>
               <div className='ForSalePropertyNameAndPrice'>
-                <h4>{d.names}</h4>
+                <h4>{d.propertyType}</h4>
                 <p><span>Category:</span> {d.category}</p>
-                <p><span>Price:</span> N{d.price}</p>
-                <p><span>Location:</span> {d.location}</p>
+                <p><span>Price:</span> N{d.propertyAmount}</p>
+                <p><span>Location:</span> {d.propertyLocation}</p>
               </div>
               <div className='ForSalePropertyButtonsWrap'>
-                <button onClick={() => setToggleAgentViewDetailpage(true)}>View</button>
+                <button onClick={()=>handleOpenView(d.id)}>View</button>
                 <button onClick={() => handleDelete(d.id)}>Delete</button>
                 <button onClick={() => handleOpenSponsorUI(d.id)}>Sponsor</button>
               </div>
             </div>
+            {d.openView && <AgentViewDetailPage 
+            handleCloseView={handleCloseView} 
+            Itemid={d.id}
+            selectedViewItem={selectedViewItem}
+            />}
             {d.open && <div className='SponsorUIWrap'>
               <div className='SponsorUI'>
                 <h3>Sponsorship Categories</h3>
@@ -148,7 +192,7 @@ function payKorapay(id) {
                   type="checkbox"
                   checked={isCheckedA}
                   onChange={()=>{
-                    setIsCheckedA(true);
+                    setIsCheckedA(!isCheckedA);
                     setIsCheckedB(false);
                     setIsCheckedC(false);
                     }} />
@@ -162,7 +206,7 @@ function payKorapay(id) {
                   type="checkbox"
                   checked={isCheckedB}
                   onChange={()=>{
-                    setIsCheckedB(true);
+                    setIsCheckedB(!isCheckedB);
                     setIsCheckedA(false);
                     setIsCheckedC(false);
                   }}
@@ -179,7 +223,7 @@ function payKorapay(id) {
                   onChange={()=>{
                     setIsCheckedA(false);
                     setIsCheckedB(false);
-                    setIsCheckedC(true);
+                    setIsCheckedC(!isCheckedC);
                   }} />
                   <p><span>Month-long Showcase:</span>  Secure long-term success for your listing with a 
                   full month of premium sponsorship for only <strong>20,000 Naira</strong>, dominating the market and 
@@ -187,7 +231,7 @@ function payKorapay(id) {
                   
                 </div>
                 <div className='SponsorUIButtonswrap'>
-                <button onClick={()=>handleCloseSponsorUI(d.id)}>Back</button>
+                <button onClick={()=>handleCloseSponsorUI(d.id)}>Cancel</button>
                 <button onClick={()=>{payKorapay(d.id)}}>Pay</button>
                 {/* <button onClick={()=>handleSponsor(d.id)}>Test add</button> */}
                 </div>

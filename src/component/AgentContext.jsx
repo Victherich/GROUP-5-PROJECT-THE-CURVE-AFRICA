@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState,useEffect } from 'react'
 import { createContext } from 'react'
-
+import axios from 'axios';
 export const AgentContext = createContext();
 
 
@@ -11,22 +11,24 @@ const [toggleAgentEditProfileUI,setToggleAgentEditProfileUI]=useState(false);
 const [toggleAgentChangePasswordUI,setToggleAgentChangePasswordUI]=useState(false)
 const [logoutWarning,setLogoutwarning]=useState(false);
 const [toggleAgentViewDetailpage,setToggleAgentViewDetailpage]=useState(false)
-const [AgentToken,setAgentToken]=useState(null);
+const [AgentToken,setAgentToken]=useState(null||localStorage.getItem("AgentToken"));
 const [AgentId,setAgentId]=useState(null);
 const [Agent,setAgent]=useState(null)
-// console.log(AgentToken, AgentId, Agent)
+console.log(Agent)
 const [sponsoredProperties,setSponsoredProperties]=useState([])
-const [agentPostedProperties,setAgentPostedProperties]=useState([])
 
 
-const Agentlogin = useCallback((Agent)=>{ //receive response.data from handle login function
-  const {AgentId,token} = Agent;
-  setAgentId(AgentId)
+
+const Agentlogin = useCallback((token,agentinfo)=>{ //receive response.data from handle login function
+  // const {AgentId,token} = Agent;
+  // setAgentId(AgentId)
   setAgentToken(token)
-  setAgent(Agent)
-  localStorage.setItem("AgentToken",JSON.stringify(AgentToken)); //or try save to http cookie
-  console.log('login context function')
+  setAgent(agentinfo)
+  localStorage.setItem("AgentInfo",JSON.stringify(agentinfo))
+  localStorage.setItem("AgentToken",JSON.stringify(token)); //or try save to http cookie
 },[]);
+
+
 
 const Agentlogout = useCallback(()=>{
   setAgent(null)
@@ -51,7 +53,7 @@ const Agentlogout = useCallback(()=>{
     Agentlogout,Agentlogin,AgentId,AgentToken,
     toggleAgentViewDetailpage,setToggleAgentViewDetailpage,
     sponsoredProperties,setSponsoredProperties,
-    agentPostedProperties,setAgentPostedProperties
+    // agentPostedProperties,setAgentPostedProperties
     }}>
         {children}
     </AgentContext.Provider>

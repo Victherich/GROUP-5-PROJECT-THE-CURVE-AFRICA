@@ -1,16 +1,17 @@
 import React, { useContext } from 'react'
-import AgentChangePasswordUI from './AgentChangePasswordUI'
+// import AgentChangePasswordUI from './AgentChangePasswordUI'
 import AgentEditProfileUI from './AgentEditProfileUI'
 import '../CSS/Account.css'
-import AccountLogo from '../Images/HomeHub Logo.svg'
+// import AccountLogo from '../Images/HomeHub Logo.svg'
 import { AgentContext } from './AgentContext'
 
 
 const AgentAccount = ({toggleAgentChangePasswordUI,
   setToggleAgentChangePasswordUI,
   toggleAgentEditProfileUI,
-  setToggleAgentEditProfileUI}) => {
-    const{AgentId}=useContext(AgentContext)
+  setToggleAgentEditProfileUI,
+  }) => {
+    const{AgentId,setAgentActiveMenu}=useContext(AgentContext)
 
 
 const handleAgentChangePasswordUI=()=>{
@@ -25,9 +26,10 @@ const handleAgentEditProfileUI=()=>{
 
   return (
     <div className='Account'>
-      <h4>Agent Account</h4>
+      
       <div className='AccountUp'>
           <div className='AccountUpLeft'>
+          <h3>Agent Account</h3>
               <p><span>Name: </span>Clara John</p>
               <p><span>Company Name: </span>France Real estate Nigeria</p>
               <p><span>Address: </span>No. 2 New hub avenue</p>
@@ -35,7 +37,11 @@ const handleAgentEditProfileUI=()=>{
               <p><span>Phone no.: </span>01234567</p>
           </div>
           <div className='AccountUpRight'>
-              <img src={AccountLogo} alt="Logo"/>
+              {/* <img src={AccountLogo} alt="Logo"/> */}
+              <button 
+              className='Makeanewpost'
+              onClick={()=>setAgentActiveMenu("post a property")}
+              > + Make a new post</button>
           </div>
       </div>
       <div className='AccountDown'>

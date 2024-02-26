@@ -28,7 +28,11 @@ const SponsoredComponent = () => {
 
     function payKorapay() {
         if(amountValue===null){
-            alert("Select sponsor category you wish to pay for")
+            // alert("Select sponsor category you wish to pay for")
+            Swal.fire({
+                icon:"warning",
+                text:"Please select the sponsor category you wish to pay for"
+            })
         }else{
             window.Korapay.initialize({
                 key: "pk_test_eR5xsWZRG1XfPVe8JvDJyHQWR1nieyBU2DaE5dBm", // replace with the api key you generated
@@ -56,9 +60,7 @@ const SponsoredComponent = () => {
         }
    }
     
-   const handleSponspored = ()=>{
-    
-   }
+  
 
   return (
     <div className='SponsoredComponentsWrap'>
@@ -86,7 +88,7 @@ const SponsoredComponent = () => {
                 setIsCheckedC(false)
                 }} />
             <p>ODouble Exposure Delight: Extend your property's spotlight for two weeks at an <br/>
-            unbeatable value of 15,000 Naira, maximizing your reach and generating more leads.</p>
+            unbeatable value of 15,000 Naira, maximizing your reach----- and generating more leads.</p>
             <button onClick={payKorapay}>Pay</button>
         </div>
         <div className='SponsoredComponent'>
@@ -94,9 +96,9 @@ const SponsoredComponent = () => {
             type="checkbox" 
             checked={isCheckedC}
             onChange={()=>{
-                setIsCheckedC(!isCheckedC)
-                setIsCheckedA(false)
-                setIsCheckedB(false)
+                setIsCheckedC(prevState=>!prevState);
+                // setIsCheckedA(false);
+                // setIsCheckedB(false);
                 }} />
             <p>Month-long Showcase: Secure long-term success for your listing with a full month <br/>
             of premium sponsorship for only 20,000 Naira, dominating the market and ensuring <br/>

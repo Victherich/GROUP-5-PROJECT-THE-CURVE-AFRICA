@@ -37,10 +37,10 @@ const AgentSponsoredProperties = () => {
           </div>
           <div className='ForSalePropertyNamePriceButtonWrap'>
               <div className='ForSalePropertyNameAndPrice'>
-                  <h4>{d.names}</h4>
+                  <h4>{d.propertyType}</h4>
                   <p><span>Category:</span> {d.category}</p>
-                  <p><span>Price:</span> N{d.price}</p>
-                  <p><span>Location:</span> {d.location}</p>
+                  <p><span>Price:</span> N{d.propertyAmount}</p>
+                  <p><span>Location:</span> {d.propertyLocation}</p>
             </div>    
             <div className='ForSalePropertyButtonsWrap'>
               <button>View</button>

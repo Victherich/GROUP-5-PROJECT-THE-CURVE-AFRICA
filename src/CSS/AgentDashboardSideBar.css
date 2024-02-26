@@ -54,8 +54,10 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    height: 45%;
-    gap:5%
+    height: 60%;
+    gap:5%;
+    padding-top: 20%;
+    /* background-color: red; */
 }
 
 .AgentSideBarMenuP{

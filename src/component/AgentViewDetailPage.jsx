@@ -3,47 +3,16 @@ import '../CSS/AgentPostAProperty.css'
 import '../CSS/AgentViewDetailPage.css'
 import axios from 'axios'
 import { AgentContext } from './AgentContext'
+import Swal from 'sweetalert2'
 
-
-//the page fetches the detail page from the api when view button is clicked and disaplays it 
-//on the edit form as initial state but not editable until enable edit check box is checked.
-//thyen after editing , we can click update edit button to run the put request and updtae the 
-//data. and then re runs the function that fetches the posted data display to update.
-// add onChange when enable edit is clicked.
-
-const AgentViewDetailPage = () => {
+const AgentViewDetailPage = ({handleCloseView,
+  Itemid,
+  selectedViewItem}) => {
   const {setToggleAgentViewDetailpage}=useContext(AgentContext)
-  const [receivedData,setReceivedData]=useState(null) // recieved data from api
-  // console.log(receivedData)
 
-  const ReceivedDataurl = "" // put the received data url here
-  const handleReceivedData = async()=>{
-    try{
-      const response= await axios.get(url)
-      console.log(response.data)
-      setReceivedData(response.data)
-    }catch(error){
-      console.error(error)
-    }
-  }
-
-const [formData,setFormData]=useState({
-  category:"",//assign corresponding received data propery value
-  propertyType:"", //assign corresponding received data propery value
-  propertyLocation:"", //assign corresponding received data propery value
-  propertyAmount:"", //assign corresponding received data propery value
-  propertyDescription:"", //assign corresponding received data propery value
-  pic1:null, //assign corresponding received data propery value
-  pic2:null, //assign corresponding received data propery value
-  pic3:null, //assign corresponding received data propery value
-  pic4:null, //assign corresponding received data propery value
-  pic5:null, //assign corresponding received data propery value
-  pic6:null, //assign corresponding received data propery value
-})
+//declaring formData
+const [formData,setFormData]=useState({...selectedViewItem})
 console.log(formData)
-//render each initial value to its corresponding form input
-
-
 
 //preview image while updateing form data
 const handlePicPreview=(e)=>{
@@ -53,7 +22,7 @@ const [picPreview,setPicPreview]=useState({})
 // console.log(picPreview)
 
 
-//update ing form data to be sent
+//updateing formData from form
 const handleChange = (e)=>{
   if(e.target.name.startsWith("pic")){
     setFormData({...formData,[e.target.name]:e.target.files[0]})
@@ -81,7 +50,16 @@ const handleSubmit =async(e)=>{
     formDataA.append("pic4",formData.pic4);
     formDataA.append("pic5",formData.pic5);
     formDataA.append("pic6",formData.pic6);
-  
+
+    const loadingAlert = Swal.fire({
+      title: "Loading",
+      text: "Please wait...",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false
+    });
+    Swal.showLoading();
+
   try{
     const response = await axios.put(url, formDataA, {
       headers: {
@@ -90,13 +68,25 @@ const handleSubmit =async(e)=>{
     });
 
     console.log(response.data)
+    loadingAlert.close()
+    Swal.fire({
+      icon:"success",
+      title:"Successful update",
+      showConfirmButton:true,
+    })
   }catch(error){
     console.error(error)
+    loadingAlert.close()
+    Swal.fire({
+      icon:"error",
+      title:"Something went wrong",
+      showConfirmButton:true,
+    })
   }
 }
 
-//handle Onchange toggle
-const [handleOnChange,setHandleOnChange] = useState(false)
+//handle Edit On toggle
+const [handleEdit,setHandleEdit] = useState(true)
 
   return (
       <>
@@ -105,52 +95,136 @@ const [handleOnChange,setHandleOnChange] = useState(false)
       <h4>Property Detail</h4>
       <div className='AgentPostAPropertyUp'>
         <div className='AgentPostAPropertyUpLeft'>
-          <select type="text" name="category" value={formData.category} onChange={handleChange} required>
-            <option>--Select Category--</option>
+          <select type="text" 
+          name="category" 
+          value={formData.category} 
+          disabled
+          onChange={handleChange} required>
+            <option>{formData.category}</option>
             <option value='for sale'>For Sale</option>
             <option value="for rent">For Rent</option>
           </select>
           
-          {handleOnChange?<input type="text" value={formData.propertyType} name="propertyType" onChange={handleChange} placeholder='Enter property type' required/>:
-          <input type="text" value={formData.propertyType} name="propertyType" placeholder='Enter property type' required/>}
-          <input type="text" value={formData.propertyLocation} name="propertyLocation" onChange={handleChange} placeholder='Enter property location' required/>
-          <div className='AmountAndYearly'><input type="text" value={formData.propertyAmount} name="propertyAmount" onChange={handleChange} placeholder='Enter Amount' required/></div> 
+          
+          <input type="text" 
+          value={formData.propertyType} 
+          name="propertyType" 
+          onChange={handleChange} 
+          placeholder='Enter property type' 
+          disabled={handleEdit}
+          required/>
+
+          <input type="text" 
+          value={formData.propertyLocation} 
+          name="propertyLocation" 
+          onChange={handleChange} 
+          placeholder='Enter property location' 
+          disabled={handleEdit}
+          required/>
+
+          <div className='AmountAndYearly'><input type="text" 
+          value={formData.propertyAmount} 
+          name="propertyAmount" 
+          onChange={handleChange} 
+          placeholder='Enter Amount' 
+          disabled={handleEdit}
+          required/></div> 
         </div>
         <div className='AgentPostAPropertyUpRight'>
             <p>Upload Property Pictures</p>
             <div className='AgentPostAPropertyUpRightUp'>
-              {/* for this image handling , tenary this inputs with just <img/> tag to show the image before enable editing , 
-          then after endbled editing , switch to this input and upload pictures for edit, this is because assigning value to
-          this input file tag throw error so we are not assigning value to them, but the value is already on other inputs 
-          which works well, so enabling onChnage , enables the editing, while tenarying the Img and file input tag enable editing 
-          for the pictures */}
-              <label htmlFor="pic1"><input type="file" id="pic1"  name="pic1" onChange={handleChange} hidden required/><div  className="Pic1">{picPreview.pic1?<img src={picPreview.pic1} alt="pic1"/>:<p>Click to <br/>upload</p>}</div></label>
-              <label htmlFor="pic2"><input type="file" id="pic2" name="pic2" onChange={handleChange} hidden required/><div  className="Pic1">{picPreview.pic2?<img src={picPreview.pic2} alt="pic2"/>:<p>Click to <br/>upload</p>}</div></label>
-              <label htmlFor="pic3"><input type="file" id="pic3" name="pic3" onChange={handleChange} hidden required/><div  className="Pic1">{picPreview.pic3?<img src={picPreview.pic3} alt="pic3"/>:<p>Click to <br/>upload</p>}</div></label>
+            
+              <label htmlFor="pic1">
+                <input type="file" id="pic1"  name="pic1" onChange={handleChange} 
+                hidden 
+                disabled={handleEdit} 
+                />
+                <div  className="Pic1">
+                  {picPreview.pic1?<img src={picPreview.pic1} alt="pic1"/>:
+                  <img src={formData.pic1} alt={formData.pic1}/>}
+                  </div>
+                </label>
+
+              <label htmlFor="pic2">
+                <input type="file" id="pic2" name="pic2" onChange={handleChange} 
+                hidden 
+                disabled={handleEdit} 
+                />
+                <div  className="Pic1">{picPreview.pic2?<img src={picPreview.pic2} alt="pic2"/>:
+                <img src={formData.pic2} alt={formData.pic2}/>}
+                </div>
+              </label>
+
+              <label htmlFor="pic3"><input type="file" id="pic3" name="pic3" onChange={handleChange} 
+              hidden 
+              disabled={handleEdit} 
+              />
+              <div  className="Pic1">{picPreview.pic3?<img src={picPreview.pic3} alt="pic3"/>:
+              <img src={formData.pic3} alt={formData.pic3}/>}
+              </div>
+              </label>
             </div>
+
             <div className='AgentPostAPropertyUpRightDown'>
-            <label htmlFor="pic4"><input type="file" id="pic4" name="pic4" onChange={handleChange} hidden required/><div  className="Pic1">{picPreview.pic4?<img src={picPreview.pic4} alt="pic4"/>:<p>Click to <br/>upload</p>}</div></label>
-            <label htmlFor="pic5"><input type="file" id="pic5" name="pic5" onChange={handleChange} hidden required/><div  className="Pic1">{picPreview.pic5?<img src={picPreview.pic5} alt="pic5"/>:<p>Click to <br/>upload</p>}</div></label>
-            <label htmlFor="pic6"><input type="file" id="pic6" name="pic6" onChange={handleChange} hidden required/><div  className="Pic1">{picPreview.pic6?<img src={picPreview.pic6} alt="pic6"/>:<p>Click to <br/>upload</p>}</div></label> 
+            <label htmlFor="pic4"><input type="file" id="pic4" name="pic4" onChange={handleChange} 
+            hidden 
+            disabled={handleEdit} 
+            />
+            <div  className="Pic1">{picPreview.pic4?<img src={picPreview.pic4} alt="pic4"/>:
+            <img src={formData.pic4} alt={formData.pic4}/>}
+            </div>
+            </label>
+
+            <label htmlFor="pic5"><input type="file" id="pic5" name="pic5" onChange={handleChange} 
+            hidden 
+            disabled={handleEdit} 
+            />
+            <div  className="Pic1">{picPreview.pic5?<img src={picPreview.pic5} alt="pic5"/>:
+            <img src={formData.pic5} alt={formData.pic5}/>}
+            </div>
+            </label>
+
+            <label htmlFor="pic6"><input type="file" id="pic6" name="pic6" onChange={handleChange} 
+            hidden 
+            disabled={handleEdit} 
+            />
+            <div  className="Pic1">{picPreview.pic6?<img src={picPreview.pic6} alt="pic6"/>:
+            <img src={formData.pic6} alt={formData.pic6}/>}
+            </div>
+            </label> 
+
             </div>
         </div>
       </div>
       <div className='AgentPostAPropertyMid'>
-          <input type="text" value={formData.propertyDescription} name="propertyDescription" onChange={handleChange} placeholder='Enter full description of property, terms and conditions, condition, payment mode etc' required/>
+          <input type="text" 
+          value={formData.propertyDescription} 
+          name="propertyDescription" 
+          onChange={handleChange} 
+          disabled={handleEdit}
+          placeholder='Enter full description of property, terms and conditions, condition, payment mode etc' 
+          required/>
       </div>
+
       <div className='AgentPostAPropertyDown'>
-          <p>Check the box to enable Editing >> </p><input type="checkbox" className='Checkbox' onChange={()=>setHandleOnChange(!handleOnChange)}/>
-          <button type='submit'>Update Edit</button>
-          <button>Sponsor</button>  
-          <button onClick={()=>setToggleAgentViewDetailpage(false)}>Back</button>
+          <p>Check the box to enable Editing >> </p>
+
+          <input type="checkbox" 
+          className='Checkbox' 
+          onChange={()=>setHandleEdit(!handleEdit)}
+          />
+          
+          <button 
+          type="button" 
+          onClick={()=>handleCloseView(Itemid)}
+          style={{backgroundColor:"white",color:"#0653C8",border:"1px solid #0653C8"}}>Cancel</button>
+          <button 
+          type='submit'>Update</button>  
       </div>
     </form>
     </div>
       </>
   )
 }
-
-//this input switching should work or other wise i implemet it as two differnet form switching 
-//one for without Onchange property , while the other with Onchange property.
 
 export default AgentViewDetailPage

@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import '../CSS/AgentPostAProperty.css'
 import axios from 'axios'
 import { useEffect } from 'react'
+import { useContext } from 'react'
+import { AgentContext } from './AgentContext'
 
 const AgentPostAPropertyPage = () => {
+  const {setAgentActiveMenu}=useContext(AgentContext)
 const [yearly,setYearly]=useState(false)
 
 
@@ -93,7 +96,7 @@ const handleSubmit =async(e)=>{
 }
 
   return (
-      <>
+      <div className='AgentPostAPropertyWrap'>
           <form className='AgentPostAProperty' onSubmit={handleSubmit}>
       <h4>Post A Property</h4>
       <div className='AgentPostAPropertyUp'>
@@ -125,10 +128,15 @@ const handleSubmit =async(e)=>{
           <input type="text" value={formData.propertyDescription} name="propertyDescription" onChange={handleChange} placeholder='Enter full description of property, terms and conditions, condition, payment mode etc' required/>
       </div>
       <div className='AgentPostAPropertyDown'>
+          <button type='button' 
+          onClick={()=>setAgentActiveMenu("account")}
+          style={{backgroundColor: "white",
+            color: "#0653C8",
+            border: "1px solid #0653C8",}}>Cancel</button>
           <button type='submit'>Post</button>
       </div>
     </form>
-      </>
+      </div>
   )
 }
 
