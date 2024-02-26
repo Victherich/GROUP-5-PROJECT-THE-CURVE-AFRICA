@@ -4,6 +4,8 @@ import SearchIcon from '../Images/searchIcon.png'
 import PropertyImg from '../Images/images (1) 2.png'
 import data from "../component/data.json"
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import Header from '../component/Header'
 
 
 const AllPropertiesListPage = () => {
@@ -25,7 +27,7 @@ const AllPropertiesListPage = () => {
 
   const forSaleData = async()=>{
     try{
-      const response = await axios.get(url)
+      // const response = await axios.get(url)
     // console.log(response.data)
       // setForSaleProperties(response.data)
       setForSaleProperties(data)
@@ -38,8 +40,8 @@ const AllPropertiesListPage = () => {
 
   const handleSearch = () => {
     const filteredProperties = data.filter(property =>
-      property.names.toLowerCase().includes(search.toLowerCase()) ||
-      property.location.toLowerCase().includes(search.toLowerCase())
+      property.propertyType.toLowerCase().includes(search.toLowerCase()) ||
+      property.propertyLocation.toLowerCase().includes(search.toLowerCase())
     )
     setForSaleProperties(filteredProperties)
   }
@@ -53,8 +55,8 @@ const AllPropertiesListPage = () => {
 
   useEffect(()=>{
     const filteredProperties = data.filter(property =>
-      property.names.toLowerCase().includes(search.toLowerCase()) ||
-      property.location.toLowerCase().includes(search.toLowerCase())
+      property.propertyType.toLowerCase().includes(search.toLowerCase()) ||
+      property.propertyLocation.toLowerCase().includes(search.toLowerCase())
     )
 
     if(minFilter==!null&&maxFilter==!null){
@@ -78,7 +80,9 @@ const AllPropertiesListPage = () => {
  
 
   return (
-    <div className='ForSale'> 
+    <div className='ForSaleWrap'>
+      <Header/>
+      <div className='ForSale'> 
       <h1 className='PropertyForSaleHeading'>All Properties</h1>
       <div className='SearchAndFilter'>
         <div className='SearchWrap'>
@@ -112,21 +116,22 @@ const AllPropertiesListPage = () => {
           </div>
           <div className='ForSalePropertyNamePriceButtonWrap'>
               <div className='ForSalePropertyNameAndPrice'>
-                  <h4>{d.names}</h4>
+                  <h4>{d.propertyType}</h4>
                   <p><span>Category:</span> {d.category}</p>
-                  <p><span>Price:</span> N{d.price}</p>
-                  <p><span>Location:</span> {d.location}</p>
+                  <p><span>Price:</span> N{d.propertyAmount}</p>
+                  <p><span>Location:</span> {d.propertyLocation}</p>
             </div>
             
             
             <div className='ForSalePropertyButtonsWrap'>
               <button>View</button>
-              <button>Add to Favourite</button>
+              {/* <button>Add to Favourite</button> */}
             </div>
           </div>
         </div>
         ))}
       </div>
+    </div>
     </div>
   )
 }

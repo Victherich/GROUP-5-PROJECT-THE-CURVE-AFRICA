@@ -10,11 +10,18 @@ import img8 from "../Images/eight.jpg"
 import img9 from "../Images/ninth.webp"
 import img14 from "../Images/image 14.png"
 import img15 from "../Images/image 15.png"
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 const LandingPage = () => {
+
+const navigate =useNavigate()
+const handleViewMore = ()=>{
+    navigate("/allpropertieslistpage")
+}
+
   return (
     <div>
       <Header/>
@@ -140,7 +147,7 @@ const LandingPage = () => {
         </div>
 </div>
     <div className='featured111'>
-            <h1>View more</h1>
+            <h1 onClick={handleViewMore}>View more</h1>
         </div><br/><br/>
     <div className='choose'>
         <h1>Why Choose Us?</h1>

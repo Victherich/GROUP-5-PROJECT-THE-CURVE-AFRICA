@@ -35,9 +35,30 @@ const AgentPostedProperties = () => {
   }
 
   //delete posted properties
-  const handleDelete = (id) => {
-    setAgentPostedProperties(agentPostedProperties.filter((e) => e.id !== id))
-  }
+  // const handleDelete = (id) => {
+  //   setAgentPostedProperties(agentPostedProperties.filter((e) => e.id !== id))
+  // }
+const handleDelete = (id) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    icon: 'warning',
+    confirmButtonText: 'Yes, delete it!',
+    showCancelButton: true,
+    // confirmButtonColor: '#3085d6',
+    // cancelButtonColor: '#d33',
+    
+  }).then((result) => {
+    if (result.isConfirmed) {
+      setAgentPostedProperties(agentPostedProperties.filter((e) => e.id !== id));
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      );
+    }
+  });
+};
+
 
   //open sponsored UI
   const handleOpenSponsorUI = (id) => {

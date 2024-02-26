@@ -40,13 +40,14 @@ const AgentLogin = () => {
         const response = await axios.post(url,formData);
         console.log(response.data);
         // alert(response.data.message);
-        Swal.fire({icon:"success",title:response.data.message,})
+        Swal.fire({icon:"success",title:response.data.message,showConfirmButton:true})
         loadingAlert.close();
         Agentlogin(response.data.token, response.data.agentExist);
         navigate("/agentdashboard")
       } catch (error) {
         console.error(error);
         loadingAlert.close();
+        Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false});
       }
     
   };
