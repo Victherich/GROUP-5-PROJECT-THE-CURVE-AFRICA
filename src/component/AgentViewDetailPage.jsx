@@ -139,7 +139,7 @@ const [handleOnChange,setHandleOnChange] = useState(false)
           <input type="text" value={formData.propertyDescription} name="propertyDescription" onChange={handleChange} placeholder='Enter full description of property, terms and conditions, condition, payment mode etc' required/>
       </div>
       <div className='AgentPostAPropertyDown'>
-          <p>Check the box to enable Editing >> </p><input type="checkbox" className='Checkbox' onChange={()=>setHandleOnChange(!handleOnChange)}/>
+          <p>Check the box to enable Editing  </p><input type="checkbox" className='Checkbox' onChange={()=>setHandleOnChange(!handleOnChange)}/>
           <button type='submit'>Update Edit</button>
           <button>Sponsor</button>  
           <button onClick={()=>setToggleAgentViewDetailpage(false)}>Back</button>

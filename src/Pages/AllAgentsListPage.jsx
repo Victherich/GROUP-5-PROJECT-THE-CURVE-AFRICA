@@ -90,6 +90,7 @@ const AllAgentListPage = () => {
                 <button>View Agent's Properties</button>
               </div>
           </div>
+          
         </div>
         ))}
       </div>
