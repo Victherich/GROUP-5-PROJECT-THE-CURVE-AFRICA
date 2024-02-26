@@ -52,92 +52,92 @@ const handleViewMore = ()=>{
         </div>
       </div>
       <FeaturedProperties/>
-      <div className='featureddiv'>
-        <div className='featured1'>
+      <div className='featureddiv1'>
+        <div className='featured11'>
             <h1>All Listing</h1>
         </div>
 
-        <div className='featured2'>
-            <div className='featured3'>
+        <div className='featured21'>
+            <div className='featured31'>
                 {/* <div className='love'>
                     <img src={love} alt="" />
                 </div> */}
-                <div className='featuredimg'>
+                <div className='featuredimg1'>
                     <img src={img6} alt="" />
                 </div>
 
-                <div className='featuredtext'>
+                <div className='featuredtext1'>
                     <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
+                    <div className='featuredtextspan1'>
                         <span>Category: For rent</span>
                         <span>Price: #900,000</span>
                         <span>Location: Lagos</span>
                     </div>
-                    <div className='featuredbtndiv'>
+                    <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
                     </div>
                 </div>
             </div>
 
-            <div className='featured3'>
+            <div className='featured31'>
 
                 {/* <div className='love'>
                     <img src={love} alt="" />
                 </div> */}
-                <div className='featuredimg'>
+                <div className='featuredimg1'>
                     <img src={img7} alt="" />
                 </div>
 
-                <div className='featuredtext'>
+                <div className='featuredtext1'>
                     <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
+                    <div className='featuredtextspan1'>
                         <span>Category: For rent</span>
                         <span>Price: #900,000</span>
                         <span>Location: Lagos</span>
                     </div>
-                    <div className='featuredbtndiv'>
+                    <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
                     </div>
                 </div>
             </div>
 
-            <div className='featured3'>
+            <div className='featured31'>
                 {/* <div className='love'>
                     <img src={love} alt="" />
                 </div> */}
-                <div className='featuredimg'>
+                <div className='featuredimg1'>
                     <img src={img8} alt="" />
                 </div>
 
-                <div className='featuredtext'>
+                <div className='featuredtext1'>
                     <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
+                    <div className='featuredtextspan1'>
                         <span>Category: For rent</span>
                         <span>Price: #900,000</span>
                         <span>Location: Lagos</span>
                     </div>
-                    <div className='featuredbtndiv'>
+                    <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
                     </div>
                 </div>
             </div>
 
-            <div className='featured3'>
+            <div className='featured31'>
                 {/* <div className='love'>
                     <img src={love} alt="" />
                 </div> */}
-                <div className='featuredimg'>
+                <div className='featuredimg1'>
                     <img src={img9} alt="" />
                 </div>
 
-                <div className='featuredtext'>
+                <div className='featuredtext1'>
                     <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
+                    <div className='featuredtextspan1'>
                         <span>Category: For rent</span>
                         <span>Price: #900,000</span>
                         <span>Location: Lagos</span>
                     </div>
-                    <div className='featuredbtndiv'>
+                    <div className='featuredbtndiv1'>
                         <button className='view'>View</button>
                     </div>
                 </div>
