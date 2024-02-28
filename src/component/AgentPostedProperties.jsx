@@ -15,22 +15,38 @@ const AgentPostedProperties = () => {
     setToggleAgentViewDetailpage,
     toggleAgentViewDetailpage,
     setSponsoredProperties,
-    sponsoredProperties,setAgentActiveMenu } = useContext(AgentContext)
+    sponsoredProperties,setAgentActiveMenu,Agent} = useContext(AgentContext)
 
-    //posted properties array
-    const [agentPostedProperties,setAgentPostedProperties]=useState([])
+// console.log(Agent)
+
+const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
+// console.log(parsedAgent._id)
+const [agentPostedProperties,setAgentPostedProperties]=useState([])
 
     //fetching posted properties from api
   useEffect(() => {
     handleAgentPostedProperties()
   }, [])
+  const url =`https://homehub-coxc.onrender.com/api/getAgentHouse/${parsedAgent._id}`
   const handleAgentPostedProperties = async () => {
+    const loadingAlert = Swal.fire({
+      title: "Loading",
+      text: "Please wait...",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false
+    });
+
+    Swal.showLoading();
     try {
-      // const response = await axios.get(url)
-      // console.log(response.data)
-      setAgentPostedProperties(data)
+      const response = await axios.get(url)
+      console.log(response.data)
+      setAgentPostedProperties(response.data.houses)
+      loadingAlert.close()
     } catch (error) {
       console.error(error)
+      loadingAlert.close()
+      Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false,timer:2000});
     }
   }
 
@@ -38,7 +54,7 @@ const AgentPostedProperties = () => {
   // const handleDelete = (id) => {
   //   setAgentPostedProperties(agentPostedProperties.filter((e) => e.id !== id))
   // }
-const handleDelete = (id) => {
+const handleDelete = (_id) => {
   Swal.fire({
     title: 'Are you sure?',
     icon: 'warning',
@@ -49,7 +65,7 @@ const handleDelete = (id) => {
     
   }).then((result) => {
     if (result.isConfirmed) {
-      setAgentPostedProperties(agentPostedProperties.filter((e) => e.id !== id));
+      setAgentPostedProperties(agentPostedProperties.filter((e) => e._id !== _id));
       Swal.fire(
         'Deleted!',
         'Your file has been deleted.',
@@ -61,9 +77,9 @@ const handleDelete = (id) => {
 
 
   //open sponsored UI
-  const handleOpenSponsorUI = (id) => {
+  const handleOpenSponsorUI = (_id) => {
     const updatedProperties = agentPostedProperties.map(item => {
-      if (item.id === id) {
+      if (item._id === _id) {
         return { ...item, open: true }
       }
       return item
@@ -72,9 +88,9 @@ const handleDelete = (id) => {
   }
 
 //close sponsored UI
-  const handleCloseSponsorUI =(id)=>{
+  const handleCloseSponsorUI =(_id)=>{
     const updatedProperties = agentPostedProperties.map((item)=>{
-      if(item.id===id){
+      if(item._id===_id){
         return {...item,open:false}
       }
       return item
@@ -140,8 +156,8 @@ function payKorapay(id) {
 }
 
 //adding frpm posted property array to sposnsored proerties array
- const handleSponsor = (id)=>{
-  const propertyToSponsor=agentPostedProperties.find((e)=>e.id===id)
+ const handleSponsor = (_id)=>{
+  const propertyToSponsor=agentPostedProperties.find((e)=>e._id===_id)
   setSponsoredProperties([...sponsoredProperties,propertyToSponsor])
 }
 
@@ -149,9 +165,9 @@ function payKorapay(id) {
 const [selectedViewItem,setSelectedViewItem]=useState({}) 
 
 //open view propert UI
-const handleOpenView = (id) => {
+const handleOpenView = (_id) => {
   const updatedProperties = agentPostedProperties.map(item => {
-    if (item.id === id) {
+    if (item._id === _id) {
       return { ...item, openView: true }
     }
     return item
@@ -159,7 +175,7 @@ const handleOpenView = (id) => {
   setAgentPostedProperties(updatedProperties)
 
   // finidg selected view item and updated its state
-  const viewItem=agentPostedProperties.find((e)=>e.id===id)
+  const viewItem=agentPostedProperties.find((e)=>e._id===_id)
   setSelectedViewItem(viewItem)
   }
  
@@ -186,21 +202,21 @@ const handleCloseView = (id)=>{
       </div>
       <div className='PostedProperties'>
         {agentPostedProperties.map((d) => (
-          <div key={d.id} className='ForSaleProperty'>
+          <div key={d._id} className='ForSaleProperty'>
             <div className='ForSalePropertyImgWrap'>
               <img src={PostedImg} alt="ForSalePropertyImg" />
             </div>
             <div className='ForSalePropertyNamePriceButtonWrap'>
               <div className='ForSalePropertyNameAndPrice'>
-                <h4>{d.propertyType}</h4>
-                <p><span>Category:</span> {d.category}</p>
-                <p><span>Price:</span> N{d.propertyAmount}</p>
-                <p><span>Location:</span> {d.propertyLocation}</p>
+                <h4>{d.type}</h4>
+                <p><span>Category:</span> {d.category==="65c7c1c8a356276634186c7d"?"For Sale":"For Rent"}</p>
+                <p><span>Price:</span> N {d.amount}</p>
+                <p><span>Location:</span> {d.location}</p>
               </div>
               <div className='ForSalePropertyButtonsWrap'>
-                <button onClick={()=>handleOpenView(d.id)}>View</button>
-                <button onClick={() => handleDelete(d.id)}>Delete</button>
-                <button onClick={() => handleOpenSponsorUI(d.id)}>Sponsor</button>
+                <button onClick={()=>handleOpenView(d._id)}>View</button>
+                <button onClick={() => handleDelete(d._id)}>Delete</button>
+                <button onClick={() => handleOpenSponsorUI(d._id)}>Sponsor</button>
               </div>
             </div>
             {d.openView && <AgentViewDetailPage 
