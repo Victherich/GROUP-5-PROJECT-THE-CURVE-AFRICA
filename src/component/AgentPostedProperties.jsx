@@ -179,7 +179,11 @@ const handleCloseView = (id)=>{
 
   return (
     <div className='PostedPropertiesWrap'>
-      <h4>Posted Properties<button onClick={()=>setAgentActiveMenu("posted a property2")}>+ Make a new Post</button></h4>
+      <div className='PostedPropertiesTitle'>
+      <h4>Posted Properties</h4><button 
+      onClick={()=>setAgentActiveMenu("posted a property2")}
+      className='Makeanewpost'>+ Make a new Post</button>
+      </div>
       <div className='PostedProperties'>
         {agentPostedProperties.map((d) => (
           <div key={d.id} className='ForSaleProperty'>
