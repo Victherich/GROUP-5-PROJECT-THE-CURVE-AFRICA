@@ -15,7 +15,7 @@ const AgentPostedProperties = () => {
     setToggleAgentViewDetailpage,
     toggleAgentViewDetailpage,
     setSponsoredProperties,
-    sponsoredProperties } = useContext(AgentContext)
+    sponsoredProperties,setAgentActiveMenu } = useContext(AgentContext)
 
     //posted properties array
     const [agentPostedProperties,setAgentPostedProperties]=useState([])
@@ -179,7 +179,7 @@ const handleCloseView = (id)=>{
 
   return (
     <div className='PostedPropertiesWrap'>
-      <h4>Posted Properties</h4>
+      <h4>Posted Properties<button onClick={()=>setAgentActiveMenu("posted a property2")}>+ Make a new Post</button></h4>
       <div className='PostedProperties'>
         {agentPostedProperties.map((d) => (
           <div key={d.id} className='ForSaleProperty'>

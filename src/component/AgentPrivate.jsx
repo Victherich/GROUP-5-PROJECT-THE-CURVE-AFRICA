@@ -6,7 +6,7 @@ import { AgentContext } from './AgentContext'
 
 const AgentPrivate = () => {
   const {AgentToken}=useContext(AgentContext)
-  console.log(AgentToken)
+  // console.log(AgentToken)
 
 return(
   <div>

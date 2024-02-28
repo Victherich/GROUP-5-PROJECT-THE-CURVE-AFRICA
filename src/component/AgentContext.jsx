@@ -14,7 +14,7 @@ const [toggleAgentViewDetailpage,setToggleAgentViewDetailpage]=useState(false)
 const [AgentToken,setAgentToken]=useState(null||localStorage.getItem("AgentToken"));
 const [AgentId,setAgentId]=useState(null);
 const [Agent,setAgent]=useState(null||localStorage.getItem("AgentInfo"))
-console.log(Agent)
+// console.log(Agent)
 const [sponsoredProperties,setSponsoredProperties]=useState([])
 
 

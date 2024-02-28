@@ -79,8 +79,8 @@ const AgentAccount = ({
   // Parse Agent state if it's in JSON format
   const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
 
-  console.log(parsedAgent);
-  console.log(parsedAgent.fullName);
+  // console.log(parsedAgent);
+  // console.log(parsedAgent.fullName);
 
   const handleAgentChangePasswordUI = () => {
     setToggleAgentChangePasswordUI(!toggleAgentChangePasswordUI);

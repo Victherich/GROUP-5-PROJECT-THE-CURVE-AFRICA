@@ -47,7 +47,7 @@ const AgentLogin = () => {
       } catch (error) {
         console.error(error);
         loadingAlert.close();
-        Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false});
+        Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false,timer:2000});
       }
     
   };

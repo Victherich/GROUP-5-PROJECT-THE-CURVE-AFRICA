@@ -1,32 +1,46 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../CSS/ForSale.css'
 import SearchIcon from '../Images/searchIcon.png'
-import dataForSale from '../component/dataForSale.json'
-import dataAgentList from '../component/dataAgentList.json'
+// import dataForSale from '../component/dataForSale.json'
+// import dataAgentList from '../component/dataAgentList.json'
 import axios from 'axios'
 import '../CSS/AllAgentListPage.css'
 import AgentImg from '../Images/pic1 1.png'
 import Header from '../component/Header'
 import Footer from '../component/Footer'
+import Swal from 'sweetalert2'
 
 const AllAgentListPage = () => {
  
   const [allAgents,setAllAgents]=useState([])
+  const [allAgentsB,setAllAgentsB]=useState([])
   const [search,setSearch]=useState('')
 
-  const url=""
+  const url="https://homehub-coxc.onrender.com/api/getallagent"
 
   // const allAgents = dataAgentList
   
   const handleAllAgents = async()=>{
+    const loadingAlert = Swal.fire({
+      title: "Loading",
+      text: "Please wait...",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false
+    });
+
+    Swal.showLoading();
     try{
-      // const response = await axios.get(url)
-    // console.log(response.data)
-      // setForSaleProperties(response.data)
-      setAllAgents(dataAgentList)
+      const response = await axios.get(url)
+    console.log(response.data)
+    loadingAlert.close()
+      // setForSaleProperties(response.data.data)
+      setAllAgents(response.data.data)
     }
     catch(error){
       console.error(error)
+      loadingAlert.close()
+      Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
     }
   }
 
@@ -38,16 +52,21 @@ const AllAgentListPage = () => {
 
 
   const handleSearch = () => {
-    const filteredAgents = dataAgentList.filter(agents =>
-      agents.name.toLowerCase().includes(search.toLowerCase()) 
+    const filteredAgents = allAgents.filter(agents =>
+      agents.fullName.toLowerCase().includes(search.toLowerCase()) 
     )
-    setAllAgents(filteredAgents)
+    setAllAgentsB(filteredAgents)
   }
 
   const handleClearSearch = ()=>{
     setSearch('')
-    setAllAgents(dataAgentList)
+    setAllAgentsB(allAgents)
   }
+
+  // ensuring the assignment of allAgentsB
+  useEffect(()=>{
+    setAllAgentsB(allAgents);
+  },[allAgents])
 
   return (
 
@@ -74,17 +93,17 @@ const AllAgentListPage = () => {
       </div> 
 
       <div className='AllAgentsPage'>
-        {allAgents.map((allagents)=>(
-          <div className='AnAgent'>
-          <div className='AnAgentLeft'>
+        {allAgentsB.map((allagents)=>(
+          <div key={allagents.id} className='AnAgent'>
+          {/* <div className='AnAgentLeft'>
             <img src={AgentImg} alt="AngentImg"/>
-          </div>
+          </div> */}
           <div className='AnAgentRight'>
               <div className='AnAgentRightUp'>
-                  <h4>{allagents.name}</h4>
+                  <h4>{allagents.fullName}</h4>
                   <p>{allagents.address}</p>
                   <p>{allagents.email}</p>
-                  <p>{allagents.phone}</p>
+                  <p>{allagents.phoneNumber}</p>
               </div>
               <div className='AnAgentRightDown'>
                 <button>View Agent's Properties</button>

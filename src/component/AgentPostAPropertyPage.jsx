@@ -4,45 +4,60 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import { useContext } from 'react'
 import { AgentContext } from './AgentContext'
+import Swal from 'sweetalert2'
+
 
 const AgentPostAPropertyPage = () => {
-  const {setAgentActiveMenu}=useContext(AgentContext)
+  const {setAgentActiveMenu,AgentActiveMenu,AgentToken}=useContext(AgentContext)
 const [yearly,setYearly]=useState(false)
 
-
+console.log(AgentToken)
 const handleForRentAndYearly = (e)=>{
   if(e.target.value==="for rent"){
     setYearly(true)
-    setCategory1(5745694659869)
+    setCategory1("65c7c08e64efa9bc3de87364")
   }else if(e.target.value==="for sale"){
     setYearly(false)
-    setCategory1(88675897698795876)
+    setCategory1("65c7c1c8a356276634186c7d")
   }else{
     setCategory1(null)
   }
 }
-const [category1,setCategory1]=useState(null)
+const [category1,setCategory1]=useState("")
 
 useEffect(() => {
   setFormData(prevState => ({
     ...prevState,
-    category: category1
+    categoryId: category1
   }));
 }, [category1]);
 
-
-const [formData,setFormData]=useState({
-  category:category1, // pass the id here based on what is selected
-  propertyType:"",
-  propertyLocation:"",
-  propertyAmount:"",
-  propertyDescription:"",
+const [postImg,setPostImg]=useState({
   pic1:null,
   pic2:null,
   pic3:null,
   pic4:null,
   pic5:null,
   pic6:null,
+})
+
+// console.log(postImg)
+
+useEffect(() => {
+  setFormData(prevState => ({
+    ...prevState,
+    images: [postImg.pic1, postImg.pic2, postImg.pic3, postImg.pic4, postImg.pic5, postImg.pic6]
+  }));
+}, [postImg]);
+
+
+const [formData,setFormData]=useState({
+  categoryId:category1,
+  type:"",
+  location:"",
+  amount:"",
+  description:"",
+  images:[postImg.pic1,postImg.pic2,postImg.pic3,postImg.pic4,postImg.pic5,postImg.pic6]
 })
 
 console.log(formData)
@@ -55,7 +70,7 @@ const handlePicPreview=(e)=>{
 
 const handleChange = (e)=>{
   if(e.target.name.startsWith("pic")){
-    setFormData({...formData,[e.target.name]:e.target.files[0]})
+    setPostImg({...postImg,[e.target.name]:e.target.files[0]})
     handlePicPreview(e)
   }
   else{
@@ -66,32 +81,49 @@ const [picPreview,setPicPreview]=useState({})
 
 // console.log(picPreview)
 
-const url=""
+const url='https://homehub-coxc.onrender.com/api/postHouse'
+
 const handleSubmit =async(e)=>{
   e.preventDefault();
+  // axios.defaults.headers.common['Authorization'] = `Bearer ${AgentToken}`;
   const formDataA=new FormData();
-    formDataA.append('category',formData.category);
-    formDataA.append("propertyType",formData.propertyType);
-    formDataA.append("propertyLocation",formData.propertyLocation)
-    formDataA.append('propertyAmount',formData.propertyAmount);
-    formDataA.append('propertyDescription',formData.propertyDescription);
-    formDataA.append("pic1",formData.pic1);
-    formDataA.append("pic2",formData.pic2);
-    formDataA.append('pic3',formData.pic3);
-    formDataA.append("pic4",formData.pic4);
-    formDataA.append("pic5",formData.pic5);
-    formDataA.append("pic6",formData.pic6);
+    formDataA.append('categoryId',formData.categoryId);
+    formDataA.append("type",formData.type);
+    formDataA.append("location",formData.location);
+    formDataA.append("amount",formData.amount);
+    formDataA.append("description",formData.description);
+    formDataA.append("images",formData.images)
+   
+
+    const loadingAlert = Swal.fire({
+      title: "Loading",
+      text: "Please wait...",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false
+    });
+  
+    Swal.showLoading();
   
   try{
+    axios.defaults.headers.common['Authorization'] = `Bearer ${AgentToken}`
     const response = await axios.post(url, formDataA, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     });
-
     console.log(response.data)
+    loadingAlert.close();
+    Swal.fire({icon:'success',
+    title:"Post Successful",
+    showConfirmButton:true}).then((result)=>{
+    setAgentActiveMenu('posted property')
+    })
+
   }catch(error){
     console.error(error)
+    loadingAlert.close();
+    Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false,timer:2000})
   }
 }
 
@@ -106,9 +138,9 @@ const handleSubmit =async(e)=>{
             <option value='for sale'>For Sale</option>
             <option value="for rent">For Rent</option>
           </select>
-          <input type="text" value={formData.propertyType} name="propertyType" onChange={handleChange} placeholder='Enter property type' required/>
-          <input type="text" value={formData.propertyLocation} name="propertyLocation" onChange={handleChange} placeholder='Enter property location' required/>
-          <div className='AmountAndYearly'><input type="text" value={formData.propertyAmount} name="propertyAmount" onChange={handleChange} placeholder='Enter Amount' required/>{yearly&&<p>Ensure to enter <strong>Amount with duration</strong>. Example:1,000,000 Yearly or 1,000,000 Monthly</p>}</div> 
+          <input type="text" value={formData.type} name="type" onChange={handleChange} placeholder='Enter property type' required/>
+          <input type="text" value={formData.location} name="location" onChange={handleChange} placeholder='Enter property location' required/>
+          <div className='AmountAndYearly'><input type="text" value={formData.amount} name="amount" onChange={handleChange} placeholder='Enter Amount' required/>{yearly&&<p>Ensure to enter <strong>Amount with duration</strong>. Example:1,000,000 Yearly or 1,000,000 Monthly</p>}</div> 
         </div>
         <div className='AgentPostAPropertyUpRight'>
             <p>Upload Property Pictures</p>
@@ -125,14 +157,19 @@ const handleSubmit =async(e)=>{
         </div>
       </div>
       <div className='AgentPostAPropertyMid'>
-          <input type="text" value={formData.propertyDescription} name="propertyDescription" onChange={handleChange} placeholder='Enter full description of property, terms and conditions, condition, payment mode etc' required/>
+          <input type="text" value={formData.description} name="description" onChange={handleChange} placeholder='Enter full description of property, terms and conditions, condition, payment mode etc' required/>
       </div>
       <div className='AgentPostAPropertyDown'>
-          <button type='button' 
+          {AgentActiveMenu==="post a property"?<button type='button' 
           onClick={()=>setAgentActiveMenu("account")}
           style={{backgroundColor: "white",
             color: "#0653C8",
-            border: "1px solid #0653C8",}}>Cancel</button>
+            border: "1px solid #0653C8",}}>Cancel</button>:
+            <button type='button' 
+          onClick={()=>setAgentActiveMenu('posted property')}
+          style={{backgroundColor: "white",
+            color: "#0653C8",
+            border: "1px solid #0653C8",}}>Cancel</button>}
           <button type='submit'>Post</button>
       </div>
     </form>

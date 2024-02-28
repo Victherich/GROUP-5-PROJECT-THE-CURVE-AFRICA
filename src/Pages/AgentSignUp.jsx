@@ -76,14 +76,14 @@ const AgentSignUp = () => {
         });
         console.log(response.data);
         // alert(response.data.message);
-        Swal.fire({icon:"success",title:response.data.message,showConfirmButton:false})
+        Swal.fire({icon:"success",title:response.data.message,showConfirmButton:false,timer:2000})
         loadingAlert.close();
         navigate("/") //specify the welcome path
         // Agentlogin(response.data.agent.id, response.data.agent);
       } catch (error) {
         console.error(error);
         loadingAlert.close();
-        Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false})
+        Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false,timer:2000})
       }
     } else {
       Swal.fire({
