@@ -94,7 +94,7 @@ const AllAgentListPage = () => {
 
       <div className='AllAgentsPage'>
         {allAgentsB.map((allagents)=>(
-          <div key={allagents.id} className='AnAgent'>
+          <div key={allagents._id} className='AnAgent'>
           {/* <div className='AnAgentLeft'>
             <img src={AgentImg} alt="AngentImg"/>
           </div> */}
@@ -106,7 +106,7 @@ const AllAgentListPage = () => {
                   <p>{allagents.phoneNumber}</p>
               </div>
               <div className='AnAgentRightDown'>
-                <button>View Agent's Properties</button>
+                {/* <button>View Agent's Properties</button> */}
               </div>
           </div>
           

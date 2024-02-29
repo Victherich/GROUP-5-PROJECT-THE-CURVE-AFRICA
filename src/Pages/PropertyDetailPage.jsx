@@ -7,38 +7,61 @@ import DetailImg4 from '../Images/images (1) 2.png'
 import DetailImg5 from '../Images/pic1 1.png'
 import DetailImg6 from '../Images/woodex6 1.png'
 import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import { useContext } from 'react'
+import { AgentContext } from '../component/AgentContext'
 
 
 
 
 const PropertyDetailPage = () => {
-  // const history = useHistory();
+ const {propertyDetailObj}=useContext(AgentContext)
 const [ImgDisplay,setImgDisplay]=useState(null)
 const [imgMonitor,setImgMonitor]=useState(null)
-useEffect(()=>{
-  if(imgMonitor===2){
-    setImgDisplay(DetailImg2)
-  }else if(imgMonitor===3){
-    setImgDisplay(DetailImg3)
-  }else if(imgMonitor===4){
-    setImgDisplay(DetailImg4)
-  }else if(imgMonitor===5){
-    setImgDisplay(DetailImg5)
-  }else if(imgMonitor===6){
-    setImgDisplay(DetailImg6)
-  }else{
-    setImgDisplay(DetailImg1)
+const [oneAgentObj,setOneAgentObj]=useState({})
+
+
+  useEffect(()=>{
+    if(imgMonitor===2){
+      setImgDisplay(DetailImg2)
+    }else if(imgMonitor===3){
+      setImgDisplay(DetailImg3)
+    }else if(imgMonitor===4){
+      setImgDisplay(DetailImg4)
+    }else if(imgMonitor===5){
+      setImgDisplay(DetailImg5)
+    }else if(imgMonitor===6){
+      setImgDisplay(DetailImg6)
+    }else{
+      if (propertyDetailObj.images && propertyDetailObj.images.length > 0) {
+        setImgDisplay(propertyDetailObj.images[0]);
+      }
+    }
+  },[imgMonitor,propertyDetailObj])
+  
+  //back to previous page
+  const handleBack = () => {
+    window.history.back();
+  };
+
+  useEffect(()=>{
+    oneAgent(propertyDetailObj.agentId)
+  },[])
+
+const oneAgent =async (Id)=>{
+  try{
+    const response = await axios.get(`https://homehub-coxc.onrender.com/api/getOneAgent/${Id}`)
+    console.log(response.data)
+    setOneAgentObj(response.data.data)
+  }catch(error){
+      console.error(error)
   }
-},[imgMonitor])
+}
 
 
 
-
-const handleBack = () => {
-  window.history.back();
-};
-
-
+  
   return (
     
     <div className='ForSale'> 
@@ -50,12 +73,12 @@ const handleBack = () => {
       </div> 
 
       <div className='DetailPage'>
-        <h2>| 2 bedroom Duplex | N200,000 | Ikeja |</h2><br/>
+        <h2>| {propertyDetailObj.type} | N {propertyDetailObj.amount} | {propertyDetailObj.location} |{propertyDetailObj.category&&propertyDetailObj.category.type}|</h2><br/>
         <div className='DetailPageUp'>
           <img src={ImgDisplay} alt="DetailImg"/>
         </div>
         <div className='DetailPageMid'>
-            <img src={DetailImg1} alt="DetailImg1" onClick={()=>setImgMonitor(1)} />
+            {propertyDetailObj.images&&<img src={propertyDetailObj.images[0]} alt="DetailImg1" onClick={()=>setImgMonitor(1)} />}
             <img src={DetailImg2} alt="DetailImg2" onClick={()=>setImgMonitor(2)}  />
             <img src={DetailImg3} alt="DetailImg3" onClick={(e)=>setImgMonitor(3)} />
             <img src={DetailImg4} alt="DetailImg4" onClick={(e)=>setImgMonitor(4)} />
@@ -65,20 +88,15 @@ const handleBack = () => {
         <p className='ImageClickP'>Click on image to display larger view</p>
         <div className='DetailPageDown'>
             <h4>Full Description</h4>
-            <p>"Exquisite 3-bedroom, 2-bathroom haven nestled in a serene neighborhood.
-            This charming abode boasts modern amenities and stylish finishes throughout. 
-            Enjoy spacious living areas, a sleek kitchen with stainless steel appliances, 
-            and a private backyard oasis perfect for relaxation and entertaining. Conveniently 
-            located near schools, parks, and shopping centers, it offers both comfort and 
-            convenience. Ideal for families or those seeking a peaceful retreat. Don't miss the
-             opportunity to make this your dream home. Contact us for a viewing today!"</p>
+            <p>{propertyDetailObj.description}</p>
             <br/>
+            {/* <p>{propertyDetailObj.agentId}</p> */}
             <h4>Agent's Contact information:</h4>
-            <p><span>Name: </span>John Bright</p>
-            <p><span>Company Name: </span>John Bright Real Estates</p> 
-            <p><span>Address: </span>No. 2 crescent street lagos state nigeria</p>
-            <p><span>Email: </span>Johnbright@gmail.com</p>
-            <p><span>Phone no.: </span>0901234567</p>
+            <p><span>Name: </span>{oneAgentObj.fullName}</p>
+            <p><span>Company Name: </span>{oneAgentObj.companyName}</p> 
+            <p><span>Address: </span>{oneAgentObj.address}</p>
+            <p><span>Email: </span>{oneAgentObj.email}</p>
+            <p><span>Phone no.: </span>{oneAgentObj.phoneNumber}</p>
             <br/>
             <button onClick={handleBack}>Back</button>
         </div>

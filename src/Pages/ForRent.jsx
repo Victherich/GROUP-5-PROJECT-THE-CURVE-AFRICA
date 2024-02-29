@@ -146,6 +146,7 @@ const ForRent = () => {
   const [sort, setSort] = useState('');
   const [minFilter, setMinFilter] = useState(null);
   const [maxFilter, setMaxFilter] = useState(null);
+  const {propertyDetail}=useContext(AgentContext)
 
   const forSaleId = "65c7c08e64efa9bc3de87364" // only this id is the differece
 
@@ -203,9 +204,11 @@ const ForRent = () => {
     }
   }, [sort]);
 
-  const handleNavigate = (id) => {
-    navigate(`/propertydetailpage/${id}`); // Passing the id as a parameter in the route
-  };
+  const handleNavigate=(_id)=>{
+    navigate("/propertydetailpage")
+    propertyDetail(_id)
+    // {console.log(_id)}
+  }
 
 // ensuring the assignment of forsale propertyB
   useEffect(()=>{
@@ -243,7 +246,7 @@ const ForRent = () => {
 
         <div className='ForSaleProperties'>
           {forSalePropertiesB.map((d) => (
-            <div key={d.id} className='ForSaleProperty'>
+            <div key={d._id} className='ForSaleProperty'>
               <div className='ForSalePropertyImgWrap'>
                 <img src={d.images[0]} alt='ForSalePropertyImg' />
               </div>
@@ -261,7 +264,7 @@ const ForRent = () => {
                   </p>
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
-                  <button onClick={() => handleNavigate()}>View</button>
+                  <button onClick={() => handleNavigate(d._id)}>View</button>
                 </div>
               </div>
             </div>

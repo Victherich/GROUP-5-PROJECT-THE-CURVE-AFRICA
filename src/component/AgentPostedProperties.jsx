@@ -50,10 +50,8 @@ const [agentPostedProperties,setAgentPostedProperties]=useState([])
     }
   }
 
-  //delete posted properties
-  // const handleDelete = (id) => {
-  //   setAgentPostedProperties(agentPostedProperties.filter((e) => e.id !== id))
-  // }
+
+// delete posted property
 const handleDelete = (_id) => {
   Swal.fire({
     title: 'Are you sure?',
@@ -73,6 +71,15 @@ const handleDelete = (_id) => {
       );
     }
   });
+
+try{
+  const response = axios.delete(`https://homehub-coxc.onrender.com/api/deletehouse/${_id}`)
+
+}catch(error){
+  console.error(error)
+  Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false,timer:2000});
+}
+
 };
 
 
@@ -115,7 +122,7 @@ useEffect(()=>{
   }
 },[isCheckedA,isCheckedB,isCheckedC])
 // console.log(amountValue)
-function payKorapay(id) {
+function payKorapay(_id) {
   const key = `key${Math.random()}`;
   if (amountValue == null) {
     // alert("Please select a category you wish to pay for by checking one of the boxes");
@@ -141,8 +148,16 @@ function payKorapay(id) {
       onSuccess: function (data) {
         // Handle when payment is successful
         console.log(data);
-        handleSponsor(id);
-        navigate('/');
+        handleSponsor(_id);
+        // navigate('/');
+        setAgentActiveMenu("sponsored property")
+        Swal.fire({icon:"success",
+        title:"Payment Confirmation",
+        text:`Paid NGN ${amountValue} for sponsorship of post id no.: ${_id}`,
+        showConfirmButton:true,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      })
       },
       onFailed: function (data) {
         // Handle when payment fails
@@ -156,10 +171,38 @@ function payKorapay(id) {
 }
 
 //adding frpm posted property array to sposnsored proerties array
- const handleSponsor = (_id)=>{
-  const propertyToSponsor=agentPostedProperties.find((e)=>e._id===_id)
-  setSponsoredProperties([...sponsoredProperties,propertyToSponsor])
-}
+//  const handleSponsor = (_id)=>{
+//   const propertyToSponsor=agentPostedProperties.find((e)=>e._id===_id)
+//   setSponsoredProperties([...sponsoredProperties,propertyToSponsor])
+
+//   try{
+//     const response = axios.put(`https://homehub-coxc.onrender.com/api/sponsorPost/${_id}`)
+//     console.log(response.data)
+//   }catch(error){
+//     console.error
+
+//   }
+
+// }
+
+const handleSponsor = (_id) => {
+  const propertyToSponsor = agentPostedProperties.find((e) => e._id === _id);
+  if (!propertyToSponsor) {
+    console.error("Property not found.");
+    return;
+  }
+
+  setSponsoredProperties([...sponsoredProperties, propertyToSponsor]);
+
+  try {
+    const response = axios.put(`https://homehub-coxc.onrender.com/api/sponsorPost/${_id}`);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+    Swal.fire({ icon: "error", title: "Something went wrong", showConfirmButton: false, timer: 2000 });
+  }
+};
+
 
 // declaring selected View item
 const [selectedViewItem,setSelectedViewItem]=useState({}) 
@@ -181,9 +224,9 @@ const handleOpenView = (_id) => {
  
 
 //close view property
-const handleCloseView = (id)=>{
+const handleCloseView = (_id)=>{
   const updatedProperties=agentPostedProperties.map((item)=>{
-    if(item.id===id){
+    if(item._id===_id){
       return{...item,openView:false}
     }
     return item
@@ -204,7 +247,7 @@ const handleCloseView = (id)=>{
         {agentPostedProperties.map((d) => (
           <div key={d._id} className='ForSaleProperty'>
             <div className='ForSalePropertyImgWrap'>
-              <img src={PostedImg} alt="ForSalePropertyImg" />
+              <img src={d.images[0]} alt="ForSalePropertyImg" />
             </div>
             <div className='ForSalePropertyNamePriceButtonWrap'>
               <div className='ForSalePropertyNameAndPrice'>
@@ -214,7 +257,7 @@ const handleCloseView = (id)=>{
                 <p><span>Location:</span> {d.location}</p>
               </div>
               <div className='ForSalePropertyButtonsWrap'>
-                <button onClick={()=>handleOpenView(d._id)}>View</button>
+                {/* <button onClick={()=>handleOpenView(d._id)}>View</button> */}
                 <button onClick={() => handleDelete(d._id)}>Delete</button>
                 <button onClick={() => handleOpenSponsorUI(d._id)}>Sponsor</button>
               </div>
@@ -272,8 +315,8 @@ const handleCloseView = (id)=>{
                   
                 </div>
                 <div className='SponsorUIButtonswrap'>
-                <button onClick={()=>handleCloseSponsorUI(d.id)}>Cancel</button>
-                <button onClick={()=>{payKorapay(d.id)}}>Pay</button>
+                <button onClick={()=>handleCloseSponsorUI(d._id)}>Cancel</button>
+                <button onClick={()=>{payKorapay(d._id)}}>Pay</button>
                 {/* <button onClick={()=>handleSponsor(d.id)}>Test add</button> */}
                 </div>
               </div>

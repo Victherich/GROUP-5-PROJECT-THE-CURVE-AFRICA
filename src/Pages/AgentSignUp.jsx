@@ -76,9 +76,15 @@ const AgentSignUp = () => {
         });
         console.log(response.data);
         // alert(response.data.message);
-        Swal.fire({icon:"success",title:response.data.message,showConfirmButton:false,timer:2000})
+        Swal.fire({icon:"success",
+        title:"Welcome to HomeHub",
+        text:"Please click the link sent to your email",
+        showConfirmButton:false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      })
         loadingAlert.close();
-        navigate("/") //specify the welcome path
+        // navigate("/") //specify the welcome path
         // Agentlogin(response.data.agent.id, response.data.agent);
       } catch (error) {
         console.error(error);
@@ -94,6 +100,22 @@ const AgentSignUp = () => {
       e.preventDefault();
     }
   };
+
+
+
+//test
+const runAlert = ()=>{
+  Swal.fire({icon:"success",
+        title:"Welcome to HomeHub",
+        text:"Please click the link sent to your email",
+        showConfirmButton:false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      })
+}
+
+// runAlert()
+
 
   return (
     <div className='agentbody'>

@@ -47,13 +47,13 @@ useEffect(()=>{
         <NavLink to={"/allagentslistpage"} className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
         <NavLink to={"/agentdashboard"} className='sec'>Post a Property</NavLink>
       </div>
-      <div className='thirddad'>
+      {/* <div className='thirddad'>
         <NavLink to={"/userdashboard"} className="logintext">Login</NavLink>
 
         <div className='third'>
            <NavLink to={"/usersignUp"} className="signuptext">Sign Up</NavLink>
         </div>
-      </div>
+      </div> */}
 
       <div className='fourth' onClick={()=>setBurger(!burger)}>
         <div className='fourthdiv'>

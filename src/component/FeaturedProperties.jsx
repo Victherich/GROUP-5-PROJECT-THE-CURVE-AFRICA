@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import "../CSS/FeaturedProperties.css"
 import img1 from "../Images/first.jpg"
 import img2 from "../Images/second.jpg"
@@ -7,8 +7,52 @@ import img3 from "../Images/third.jpg"
 import img4 from "../Images/fourth.jpeg"
 // import img5 from "../Images/fifth.jpg"
 // import love from "../Images/love.png"
+import Swal from 'sweetalert2'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { AgentContext } from './AgentContext'
+import { useNavigate } from 'react-router-dom'
 
 const FeaturedProperties = () => {
+    const navigate = useNavigate();
+    const [featuredPropertiesArray,setFeaturedPropertiesArray]=useState([])
+    const{propertyDetail}=useContext(AgentContext) 
+
+    useEffect(()=>{
+        allListing() 
+ },[])
+ 
+ const url=`https://homehub-coxc.onrender.com/api/getallhouse`
+   const allListing = async () => {
+     const loadingAlert = Swal.fire({
+       title: "Loading",
+       text: "Please wait...",
+       allowOutsideClick: false,
+       allowEscapeKey: false,
+       showConfirmButton: false
+     });
+ 
+     Swal.showLoading();
+     try {
+       const response = await axios.get(url);
+       console.log(response.data)
+       loadingAlert.close();
+       setFeaturedPropertiesArray(response.data.data);
+       
+     } catch (error) {
+       console.error(error);
+       loadingAlert.close();
+      //  Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
+     }
+   };
+
+   const handleNavigate=(_id)=>{
+    navigate("/propertydetailpage")
+    propertyDetail(_id)
+    // {console.log(_id)}
+  }
+
+
   return (
     <div className='featureddiv'>
         <div className='featured1'>
@@ -16,93 +60,28 @@ const FeaturedProperties = () => {
         </div>
 
         <div className='featured2'>
-            <div className='featured3'>
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
+            {featuredPropertiesArray.slice(-4).map((d)=>(
+                <div key={d._id} className='featured3'>  
                 <div className='featuredimg'>
-                    <img src={img1} alt="" />
+                    <img src={d.images[0]} alt="featured Image" />
                 </div>
-
                 <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
+                    <h3>{d.type}</h3>
                     <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
+                        {d.category&&<span>Category: {d.category.type}</span>}
+                        <span>Price: N{d.amount}</span>
+                        <span>Location: {d.location}</span>
                     </div>
                     <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
+                        <button className='view' onClick={()=>handleNavigate(d._id)}>View</button>
                     </div>
                 </div>
             </div>
-
-            <div className='featured3'>
-
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
-                <div className='featuredimg'>
-                    <img src={img2} alt="" />
-                </div>
-
-                <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
-                    </div>
-                </div>
-            </div>
-
-            <div className='featured3'>
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
-                <div className='featuredimg'>
-                    <img src={img3} alt="" />
-                </div>
-
-                <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
-                    </div>
-                </div>
-            </div>
-
-            <div className='featured3'>
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
-                <div className='featuredimg'>
-                    <img src={img4} alt="" />
-                </div>
-
-                <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
-                    </div>
-                </div>
-            </div>
-
+            ))}
             
         </div>
 </div>
-)}
+)
+
+}
 export default FeaturedProperties

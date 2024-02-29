@@ -38,7 +38,7 @@ const Footer = () => {
           <span>The Curve Africa</span>
         </div>
       </div>
-      <div style={{color:"black",backgroundColor:"white",width:"100vw"}}>Send us an email to Advertise with Us</div>
+      {/* <div style={{color:"black",backgroundColor:"white",width:"100vw"}}>Send us an email to Advertise with Us</div> */}
     </div>
   )
 }

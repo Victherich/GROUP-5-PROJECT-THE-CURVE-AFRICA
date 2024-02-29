@@ -27,7 +27,7 @@ const AgentSponsoredProperties = () => {
 
 
 
-const handleDelete = (id) => {
+const handleDelete = (_id) => {
   Swal.fire({
     title: 'Are you sure?',
     icon: 'warning',
@@ -38,7 +38,7 @@ const handleDelete = (id) => {
     
   }).then((result) => {
     if (result.isConfirmed) {
-      setSponsoredProperties(sponsoredProperties.filter((e) => e.id !== id));
+      setSponsoredProperties(sponsoredProperties.filter((e) => e._id !== _id));
       Swal.fire(
         'Deleted!',
         'Your post has been deleted.',
@@ -53,20 +53,20 @@ const handleDelete = (id) => {
       <h4>Sponsored Properties</h4>
       <div className='PostedProperties'>
         {sponsoredProperties.map((d)=>(
-          <div className='ForSaleProperty'>
+          <div key={d._id} className='ForSaleProperty'>
           <div className='ForSalePropertyImgWrap'>
-            <img src={SponsoredImg} alt="ForSalePropertyImg"/>
+            <img src={d.images[0]} alt="ForSalePropertyImg"/>
           </div>
           <div className='ForSalePropertyNamePriceButtonWrap'>
               <div className='ForSalePropertyNameAndPrice'>
-                  <h4>{d.propertyType}</h4>
-                  <p><span>Category:</span> {d.category}</p>
-                  <p><span>Price:</span> N{d.propertyAmount}</p>
-                  <p><span>Location:</span> {d.propertyLocation}</p>
+                  <h4>{d.type}</h4>
+                  <p><span>Category:</span> {d.category==="65c7c1c8a356276634186c7d"?"For Sale":"For Rent"}</p>
+                  <p><span>Price:</span> N{d.amount}</p>
+                  <p><span>Location:</span> {d.location}</p>
             </div>    
             <div className='ForSalePropertyButtonsWrap'>
               {/* <button>View</button> */}
-              <button onClick={()=>handleDelete(d.id)}>Delete</button>
+              <button onClick={()=>handleDelete(d._id)}>Delete</button>
             </div>
           </div>
         </div>
