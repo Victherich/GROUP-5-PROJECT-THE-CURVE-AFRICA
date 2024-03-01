@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../CSS/Header.css'
-// import Vector from "../Images/Vector.png"
 import image8 from "../Images/image 8.png"
 import { NavLink, useLocation } from 'react-router-dom';
-import { Location } from 'react-router-dom';
 
 
 const Header = () => {
@@ -28,11 +26,12 @@ useEffect(()=>{
 
 
   return (
-    <div className='Header'>
-      <div className='first'>
+    <div className='HeaderWrap'>
+      <div className='HeaderA'>
+      <div className='ImageWrap'>
         <img src={image8} alt="" />
       </div>
-      <div className='second'>
+      <div className='MenuWrap'>
         <NavLink to={"/"} 
         className={headerActive==="home"?"sec2":"sec"}
         >Home</NavLink>
@@ -45,21 +44,13 @@ useEffect(()=>{
         className={headerActive==="ForRent"?"sec2":"sec"}
         >For Rent</NavLink>
         <NavLink to={"/allagentslistpage"} 
-        style={{backgroundColor:"rgba(225,225,225,0.5)",padding:"2px",borderRadius:"5px"}}
         className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
         <NavLink to={"/agentdashboard"} 
-        style={{backgroundColor:"rgba(225,225,225,0.5)",padding:"2px",borderRadius:"5px"}}
-        className='sec'>Post a Property</NavLink>
+        className='sec'>Become an Agent</NavLink>
       </div>
-      {/* <div className='thirddad'>
-        <NavLink to={"/userdashboard"} className="logintext">Login</NavLink>
 
-        <div className='third'>
-           <NavLink to={"/usersignUp"} className="signuptext">Sign Up</NavLink>
-        </div>
-      </div> */}
-
-      <div className='fourth' onClick={()=>setBurger(!burger)}>
+      
+      {/* <div className='fourth' onClick={()=>setBurger(!burger)}>
         <div className='fourthdiv'>
           <div className='fourthd'>
             <span className='fourth1'></span>
@@ -93,8 +84,9 @@ useEffect(()=>{
         </div>) : null
       }
        </>
-      </div>
+      </div> */}
       
+    </div>
     </div>
   )
 }

@@ -106,7 +106,7 @@ const url=`https://homehub-coxc.onrender.com/api/getallhouse`
                 </div>
                 <div className='featuredtext'>
                     <h3>{d.type}</h3>
-                    <div className='featuredtextspan'>
+                    <div className='featuredtextspanA'>
                         {d.category&&<span>Category: {d.category.type}</span>}
                         <span>Price: N{d.amount}</span>
                         <span>Location: {d.location}</span>

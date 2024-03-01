@@ -18,8 +18,8 @@ const Footer = () => {
         <div className='footwrite'>
           <h1>Contact Us</h1>
           <div className='line'></div>
-          <span>Email: homehub@gmail.com</span>
-          <span>phone: +2347063798113</span>
+          <span>Email : homehub@gmail.com</span>
+          <span>phone : +2347063798113</span>
         </div>
         <div className='footwrite'>
           <h1>Follow Us</h1>
@@ -31,14 +31,8 @@ const Footer = () => {
             <img src={facebook} alt="" />
           </div>
         </div>
-        <div className='footwrite'>
-          <h1>Partners</h1>
-          <div className='line'></div>
-          <span>Kora pay</span>
-          <span>The Curve Africa</span>
-        </div>
+       
       </div>
-      {/* <div style={{color:"black",backgroundColor:"white",width:"100vw"}}>Send us an email to Advertise with Us</div> */}
     </div>
   )
 }
