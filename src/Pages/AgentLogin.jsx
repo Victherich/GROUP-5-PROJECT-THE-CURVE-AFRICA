@@ -91,7 +91,7 @@ const AgentLogin = () => {
               <div className='agentinput' style={{height:"22%"}}>
                 <label htmlFor="">Password</label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
