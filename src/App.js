@@ -35,7 +35,7 @@ import axios from 'axios';
 
 const App = () => {
   const {Userlogin}=useContext(UserContext)
-  const {Agentlogin}=useContext(AgentContext)
+  const {Agentlogin,sponsoredProperties,setSponsoredProperties}=useContext(AgentContext)
 
 // useEffect(()=>{
 // const storedUserToken=localStorage.getItem("UserToken")
@@ -47,11 +47,13 @@ const App = () => {
 
 
 
-
+// useEffect(()=>{
+//   setSponsoredProperties(localStorage.getItem("sponsoredProperties"))
+// },[sponsoredProperties])
 
 
   return (
-    <div>  
+    <div className='App'>  
       <BrowserRouter>
           <Routes>
           

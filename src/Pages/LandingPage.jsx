@@ -22,7 +22,7 @@ import { AgentContext } from '../component/AgentContext'
 
 
 const LandingPage = () => {
-const {propertyDetail}=useContext(AgentContext)
+const {propertyDetail,sponsoredProperties}=useContext(AgentContext)
 const navigate =useNavigate()
 const handleViewMore = ()=>{
     navigate("/allpropertieslistpage")
@@ -64,7 +64,7 @@ const url=`https://homehub-coxc.onrender.com/api/getallhouse`
   }
 
   return (
-    <div>
+    <div className='LandingPage'>
       <Header/>
       <div className='hero'>
         <div className='heroright'>
@@ -92,7 +92,7 @@ const url=`https://homehub-coxc.onrender.com/api/getallhouse`
           <img src={house} alt="" />
         </div>
       </div>
-      <FeaturedProperties/>
+      {sponsoredProperties.length>0&&<FeaturedProperties/>}
       <div className='featureddiv1'>
         <div className='featured11'>
             <h1>All Listing</h1>
@@ -123,7 +123,8 @@ const url=`https://homehub-coxc.onrender.com/api/getallhouse`
             
             
         </div>
-</div>
+      </div>
+
     <div 
     style={{display:'flex',
             width:"100%"}}

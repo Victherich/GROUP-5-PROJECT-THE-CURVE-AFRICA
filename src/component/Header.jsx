@@ -44,8 +44,12 @@ useEffect(()=>{
         <NavLink to={"/forrent"} 
         className={headerActive==="ForRent"?"sec2":"sec"}
         >For Rent</NavLink>
-        <NavLink to={"/allagentslistpage"} className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
-        <NavLink to={"/agentdashboard"} className='sec'>Post a Property</NavLink>
+        <NavLink to={"/allagentslistpage"} 
+        style={{backgroundColor:"rgba(225,225,225,0.5)",padding:"2px",borderRadius:"5px"}}
+        className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
+        <NavLink to={"/agentdashboard"} 
+        style={{backgroundColor:"rgba(225,225,225,0.5)",padding:"2px",borderRadius:"5px"}}
+        className='sec'>Post a Property</NavLink>
       </div>
       {/* <div className='thirddad'>
         <NavLink to={"/userdashboard"} className="logintext">Login</NavLink>

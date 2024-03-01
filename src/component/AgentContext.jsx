@@ -16,7 +16,7 @@ const [AgentToken,setAgentToken]=useState(null||localStorage.getItem("AgentToken
 const [AgentId,setAgentId]=useState(null);
 const [Agent,setAgent]=useState(null||localStorage.getItem("AgentInfo"))
 // console.log(Agent)
-const [sponsoredProperties,setSponsoredProperties]=useState([])
+const [sponsoredProperties,setSponsoredProperties]=useState([]||localStorage.getItem("sponsoredProperties"))
 const [propertyDetailObj,setPropertyDetailObj]=useState({})
 
 
@@ -25,8 +25,8 @@ const Agentlogin = useCallback((token,agentinfo)=>{ //receive response.data from
   // setAgentId(AgentId)
   setAgentToken(token)
   setAgent(agentinfo)
-  // localStorage.setItem("AgentInfo",JSON.stringify(agentinfo))
-  // localStorage.setItem("AgentToken",JSON.stringify(token)); //or try save to http cookie
+  localStorage.setItem("AgentInfo",JSON.stringify(agentinfo))
+  localStorage.setItem("AgentToken",JSON.stringify(token)); //or try save to http cookie
 },[]);
 
 

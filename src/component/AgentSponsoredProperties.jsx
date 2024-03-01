@@ -55,7 +55,7 @@ const handleDelete = (_id) => {
         {sponsoredProperties.map((d)=>(
           <div key={d._id} className='ForSaleProperty'>
           <div className='ForSalePropertyImgWrap'>
-            <img src={d.images[0]} alt="ForSalePropertyImg"/>
+            {d.images&&<img src={d.images[0]} alt="ForSalePropertyImg"/>}
           </div>
           <div className='ForSalePropertyNamePriceButtonWrap'>
               <div className='ForSalePropertyNameAndPrice'>

@@ -123,6 +123,7 @@ useEffect(()=>{
 },[isCheckedA,isCheckedB,isCheckedC])
 // console.log(amountValue)
 function payKorapay(_id) {
+  console.log(_id)
   const key = `key${Math.random()}`;
   if (amountValue == null) {
     // alert("Please select a category you wish to pay for by checking one of the boxes");
@@ -148,7 +149,9 @@ function payKorapay(_id) {
       onSuccess: function (data) {
         // Handle when payment is successful
         console.log(data);
+        console.log(_id)
         handleSponsor(_id);
+        handleSponsorBackend(_id)
         // navigate('/');
         setAgentActiveMenu("sponsored property")
         Swal.fire({icon:"success",
@@ -170,21 +173,7 @@ function payKorapay(_id) {
   }
 }
 
-//adding frpm posted property array to sposnsored proerties array
-//  const handleSponsor = (_id)=>{
-//   const propertyToSponsor=agentPostedProperties.find((e)=>e._id===_id)
-//   setSponsoredProperties([...sponsoredProperties,propertyToSponsor])
-
-//   try{
-//     const response = axios.put(`https://homehub-coxc.onrender.com/api/sponsorPost/${_id}`)
-//     console.log(response.data)
-//   }catch(error){
-//     console.error
-
-//   }
-
-// }
-
+//adding from posted to sponsored
 const handleSponsor = (_id) => {
   const propertyToSponsor = agentPostedProperties.find((e) => e._id === _id);
   if (!propertyToSponsor) {
@@ -193,15 +182,21 @@ const handleSponsor = (_id) => {
   }
 
   setSponsoredProperties([...sponsoredProperties, propertyToSponsor]);
+  console.log(_id)
+  localStorage.setItem("sponsoredProperties",JSON.stringify([...sponsoredProperties, propertyToSponsor]))
+};
 
+const handleSponsorBackend = async(_id)=>{
+  console.log(_id)
   try {
-    const response = axios.put(`https://homehub-coxc.onrender.com/api/sponsorPost/${_id}`);
+    const response = await axios.put(`https://homehub-coxc.onrender.com/api/sponsorPost/${_id}`);
     console.log(response.data);
+    getSponsored()
   } catch (error) {
     console.error(error);
     Swal.fire({ icon: "error", title: "Something went wrong", showConfirmButton: false, timer: 2000 });
   }
-};
+}
 
 
 // declaring selected View item
@@ -234,7 +229,26 @@ const handleCloseView = (_id)=>{
   setAgentPostedProperties(updatedProperties)
 }
 
+const getSponsored = async()=>{
+  const loadingAlert = Swal.fire({
+    title: "Loading",
+    text: "Please wait...",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false
+  });
 
+  Swal.showLoading();
+  try{
+    const response=await axios.get('https://homehub-coxc.onrender.com/api/allSponsoredPost')
+    console.log(response.data)
+    loadingAlert.close()
+  }catch(error){
+    console.error(error)
+    loadingAlert.close()
+    // Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
+  }
+}
 
   return (
     <div className='PostedPropertiesWrap'>
@@ -317,6 +331,7 @@ const handleCloseView = (_id)=>{
                 <div className='SponsorUIButtonswrap'>
                 <button onClick={()=>handleCloseSponsorUI(d._id)}>Cancel</button>
                 <button onClick={()=>{payKorapay(d._id)}}>Pay</button>
+                {/* {console.log(d._id)} */}
                 {/* <button onClick={()=>handleSponsor(d.id)}>Test add</button> */}
                 </div>
               </div>

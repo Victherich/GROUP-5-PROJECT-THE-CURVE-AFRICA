@@ -92,22 +92,40 @@ const AllAgentListPage = () => {
         <p>Your dream home awaits, unlock the door with home hub...</p>
       </div> 
 
-      <div className='AllAgentsPage'>
+      <div className='AllAgentsPage' style={{width:"60%"}}>
         {allAgentsB.map((allagents)=>(
-          <div key={allagents._id} className='AnAgent'>
+          <div key={allagents._id} 
+          className='AnAgent'
+          style={{
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"Center",
+            flexDirection:"column",
+            textAlign:"center",
+            height:"18vh"
+          }}
+          >
+            
           {/* <div className='AnAgentLeft'>
             <img src={AgentImg} alt="AngentImg"/>
           </div> */}
-          <div className='AnAgentRight'>
+          <div className='AnAgentRight'
+          style={{
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"Center",
+            flexDirection:"column",
+            textAlign:"center",
+          }}>
               <div className='AnAgentRightUp'>
                   <h4>{allagents.fullName}</h4>
                   <p>{allagents.address}</p>
                   <p>{allagents.email}</p>
                   <p>{allagents.phoneNumber}</p>
               </div>
-              <div className='AnAgentRightDown'>
-                {/* <button>View Agent's Properties</button> */}
-              </div>
+              {/* <div className='AnAgentRightDown'>
+                <button>View Agent's Properties</button>
+              </div> */}
           </div>
           
         </div>

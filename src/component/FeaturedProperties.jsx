@@ -16,14 +16,14 @@ import { useNavigate } from 'react-router-dom'
 const FeaturedProperties = () => {
     const navigate = useNavigate();
     const [featuredPropertiesArray,setFeaturedPropertiesArray]=useState([])
-    const{propertyDetail}=useContext(AgentContext) 
+    const{propertyDetail,sponsoredProperties}=useContext(AgentContext) 
 
     useEffect(()=>{
-        allListing() 
+        featuredProperties() 
  },[])
  
- const url=`https://homehub-coxc.onrender.com/api/getallhouse`
-   const allListing = async () => {
+ const url='https://homehub-coxc.onrender.com/api/allSponsoredPost'
+   const featuredProperties = async () => {
      const loadingAlert = Swal.fire({
        title: "Loading",
        text: "Please wait...",
@@ -37,7 +37,7 @@ const FeaturedProperties = () => {
        const response = await axios.get(url);
        console.log(response.data)
        loadingAlert.close();
-       setFeaturedPropertiesArray(response.data.data);
+      //  setFeaturedPropertiesArray(response.data.data);
        
      } catch (error) {
        console.error(error);
@@ -60,7 +60,7 @@ const FeaturedProperties = () => {
         </div>
 
         <div className='featured2'>
-            {featuredPropertiesArray.slice(-4).map((d)=>(
+            {sponsoredProperties.slice(-4).map((d)=>(
                 <div key={d._id} className='featured3'>  
                 <div className='featuredimg'>
                     <img src={d.images[0]} alt="featured Image" />
