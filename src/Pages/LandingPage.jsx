@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from "../component/Header"
 import house from "../Images/compaY 1.png"
 import FeaturedProperties from '../component/FeaturedProperties'
@@ -10,20 +10,68 @@ import img8 from "../Images/eight.jpg"
 import img9 from "../Images/ninth.webp"
 import img14 from "../Images/image 14.png"
 import img15 from "../Images/image 15.png"
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AgentContext } from '../component/AgentContext'
 
 
 
 
 const LandingPage = () => {
+const {propertyDetail,sponsoredProperties}=useContext(AgentContext)
+const navigate =useNavigate()
+const handleViewMore = ()=>{
+    navigate("/allpropertieslistpage")
+}
+const [allListingArray,setAllListingArray]=useState([])
+useEffect(()=>{
+       allListing() 
+},[])
+
+const url=`https://homehub-coxc.onrender.com/api/getallhouse`
+  const allListing = async () => {
+    const loadingAlert = Swal.fire({
+      title: "Loading",
+      text: "Please wait...",
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false
+    });
+
+    Swal.showLoading();
+    try {
+      const response = await axios.get(url);
+      console.log(response.data)
+      loadingAlert.close();
+      setAllListingArray(response.data.data);
+      
+    } catch (error) {
+      console.error(error);
+      loadingAlert.close();
+    //   Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
+    }
+  };
+
+
+  const handleNavigate=(_id)=>{
+    navigate("/propertydetailpage")
+    propertyDetail(_id)
+    // {console.log(_id)}
+  }
+
   return (
-    <div>
+    <div className='LandingPage'>
       <Header/>
       <div className='hero'>
         <div className='heroright'>
           <h1>Find a <span>comfortable </span>  <br /> home for your family.</h1>
           <p>You need a home? We are ready to help you find a <br /> suitable home. </p>
 
-          <div className='herolast'>
+          <div  className='herolast'>
             <div className='herolast1'>
               <h2>1500+</h2>
               <p>Listed Properties</p>
@@ -44,103 +92,48 @@ const LandingPage = () => {
           <img src={house} alt="" />
         </div>
       </div>
-      <FeaturedProperties/>
-      <div className='featureddiv'>
-        <div className='featured1'>
+      {sponsoredProperties.length>0&&<FeaturedProperties/>}
+      <div className='featureddiv1'>
+        <div className='featured11'>
             <h1>All Listing</h1>
         </div>
 
-        <div className='featured2'>
-            <div className='featured3'>
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
-                <div className='featuredimg'>
-                    <img src={img6} alt="" />
+        <div className='featured21'>
+            {allListingArray.slice(-4).map((d)=>(
+                <div key={d._id} className='featured31'>
+                <div className='featuredimg1'>
+                    <img src={d.images[0]} alt="" />
                 </div>
-
                 <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
+                    <h3>{d.type}</h3>
                     <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
+                        {d.category&&<span>Category: {d.category.type}</span>}
+                        <span>Price: N{d.amount}</span>
+                        <span>Location: {d.location}</span>
                     </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
+                    
+                    <div className='featuredbtndiv1'>
+                        {/* <Link to={`/propertydetailpage/${d._id}`}>View</Link> */}
+                        <button className='view' onClick={()=>handleNavigate(d._id)}>View</button>
                     </div>
                 </div>
             </div>
-
-            <div className='featured3'>
-
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
-                <div className='featuredimg'>
-                    <img src={img7} alt="" />
-                </div>
-
-                <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
-                    </div>
-                </div>
-            </div>
-
-            <div className='featured3'>
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
-                <div className='featuredimg'>
-                    <img src={img8} alt="" />
-                </div>
-
-                <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
-                    </div>
-                </div>
-            </div>
-
-            <div className='featured3'>
-                {/* <div className='love'>
-                    <img src={love} alt="" />
-                </div> */}
-                <div className='featuredimg'>
-                    <img src={img9} alt="" />
-                </div>
-
-                <div className='featuredtext'>
-                    <h3>Park view Estate, Lagos</h3>
-                    <div className='featuredtextspan'>
-                        <span>Category: For rent</span>
-                        <span>Price: #900,000</span>
-                        <span>Location: Lagos</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view'>View</button>
-                    </div>
-                </div>
-            </div>
-
+            ))
+}
+            
             
         </div>
-</div>
-    <div className='featured111'>
-            <h1>View more</h1>
+      </div>
+
+    <div 
+    style={{display:'flex',
+            width:"100%"}}
+    className='featured111'>
+            <h1 
+            onClick={handleViewMore}
+            style={{cursor:"pointer",
+                    color:"#0E9AFF",
+                    }}>View more</h1>
         </div><br/><br/>
     <div className='choose'>
         <h1>Why Choose Us?</h1>

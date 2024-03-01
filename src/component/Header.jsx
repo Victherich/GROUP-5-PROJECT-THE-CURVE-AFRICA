@@ -21,6 +21,8 @@ useEffect(()=>{
     setHeaderActive("ForRent")
   }else if(path==="/allagentslistpage"){
     setHeaderActive("Agents")
+  }else if(path==="/allpropertieslistpage"){
+    setHeaderActive(null)
   }
 },[location])
 
@@ -42,16 +44,20 @@ useEffect(()=>{
         <NavLink to={"/forrent"} 
         className={headerActive==="ForRent"?"sec2":"sec"}
         >For Rent</NavLink>
-        <NavLink to={"/allagentslistpage"} className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
-        <NavLink to={"/agentdashboard"} className='sec'>Post a Property</NavLink>
+        <NavLink to={"/allagentslistpage"} 
+        style={{backgroundColor:"rgba(225,225,225,0.5)",padding:"2px",borderRadius:"5px"}}
+        className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
+        <NavLink to={"/agentdashboard"} 
+        style={{backgroundColor:"rgba(225,225,225,0.5)",padding:"2px",borderRadius:"5px"}}
+        className='sec'>Post a Property</NavLink>
       </div>
-      <div className='thirddad'>
+      {/* <div className='thirddad'>
         <NavLink to={"/userdashboard"} className="logintext">Login</NavLink>
 
         <div className='third'>
            <NavLink to={"/usersignUp"} className="signuptext">Sign Up</NavLink>
         </div>
-      </div>
+      </div> */}
 
       <div className='fourth' onClick={()=>setBurger(!burger)}>
         <div className='fourthdiv'>
@@ -73,11 +79,17 @@ useEffect(()=>{
        {
         burger ?
          ( <div className='related'>
-          <span className='sec'>Home</span>
-          <span>For Sale</span>
-          <span>For Rent</span>
-          <span>Agents</span>
-          <span>Post a Property</span>
+              <NavLink to={"/"} 
+                  className={headerActive==="home"?"sec2":"sec"}
+              >Home</NavLink>
+          <NavLink to={"/forsale"} 
+                  className={headerActive==="ForSale"?"sec2":"sec"}
+          >For Sale</NavLink>
+          <NavLink to={"/forrent"} 
+                  className={headerActive==="ForRent"?"sec2":"sec"}
+          >For Rent</NavLink>
+          <NavLink to={"/allagentslistpage"} className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
+          <NavLink to={"/agentdashboard"} className='sec'>Post a Property</NavLink>
         </div>) : null
       }
        </>

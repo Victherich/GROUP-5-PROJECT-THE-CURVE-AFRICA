@@ -5,6 +5,13 @@
     
 }
 
+/* .App{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+} */
+
 .swal2-popup {
     /* background-color: greenyellow; */
     display: flex;

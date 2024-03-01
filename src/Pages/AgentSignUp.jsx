@@ -5,9 +5,11 @@ import axios from 'axios';
 import { AgentContext } from '../component/AgentContext';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AgentSignUp = () => {
   const { Agentlogin } = useContext(AgentContext);
+  const navigate=useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const [formFlip, setFormFlip] = useState(true);
   const [imgTitle,setImgTitle]=useState("Click to Upload")
@@ -73,12 +75,21 @@ const AgentSignUp = () => {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
         console.log(response.data);
-        alert(response.data.message);
+        // alert(response.data.message);
+        Swal.fire({icon:"success",
+        title:"Welcome to HomeHub",
+        text:"Please click the link sent to your email",
+        showConfirmButton:false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      })
         loadingAlert.close();
-        Agentlogin(response.data.agent.id, response.data.agent);
+        // navigate("/") //specify the welcome path
+        // Agentlogin(response.data.agent.id, response.data.agent);
       } catch (error) {
         console.error(error);
         loadingAlert.close();
+        Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false,timer:2000})
       }
     } else {
       Swal.fire({
@@ -89,6 +100,22 @@ const AgentSignUp = () => {
       e.preventDefault();
     }
   };
+
+
+
+//test
+const runAlert = ()=>{
+  Swal.fire({icon:"success",
+        title:"Welcome to HomeHub",
+        text:"Please click the link sent to your email",
+        showConfirmButton:false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      })
+}
+
+// runAlert()
+
 
   return (
     <div className='agentbody'>

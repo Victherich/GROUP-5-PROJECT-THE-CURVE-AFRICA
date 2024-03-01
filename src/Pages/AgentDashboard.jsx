@@ -39,6 +39,7 @@ const AgentDashboard = () => {
       </div>
       {logoutWarning&&<AgentLogOutWarning/>}
       {AgentActiveMenu==="post a property"&&<AgentPostAPropertyPage/>}
+      {AgentActiveMenu==="posted a property2"&&<AgentPostAPropertyPage/>}
       {/* {toggleAgentViewDetailpage&&<AgentViewDetailPage/>} */}
     </div>
   )

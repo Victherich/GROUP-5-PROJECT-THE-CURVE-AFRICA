@@ -8,8 +8,10 @@ import AgentLogOutWarning from './AgentLogOutWarning'
 import { Link } from 'react-router-dom'
 
 const AgentDashboardSideBar = () => {
-  const {AgentActiveMenu,setAgentActiveMenu,logoutWarning,setLogoutwarning}=useContext(AgentContext)
+  const {AgentActiveMenu,setAgentActiveMenu,logoutWarning,setLogoutwarning,Agent}=useContext(AgentContext)
   // console.log(AgentActiveMenu)
+
+  const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
  
   return (
     <div className='AgentDashboardSidebar'>
@@ -23,7 +25,7 @@ const AgentDashboardSideBar = () => {
           <div className='AgentDashboardSidebarDownMenu'>
               <p onClick={()=>setAgentActiveMenu("account")} 
               className={AgentActiveMenu==="account"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}
-              >Hi, Clara</p>
+              >Hi, {parsedAgent.fullName}</p>
 
               {/* <p onClick={()=>setAgentActiveMenu("post a property")} className={AgentActiveMenu==="post a property"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Post a Property</p> */}
               <p onClick={()=>setAgentActiveMenu('posted property')} className={AgentActiveMenu==='posted property'?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Posted Properties</p>
