@@ -32,7 +32,6 @@ import { useContext } from 'react';
 import { UserContext } from './component/UserContext';
 import { AgentContext } from './component/AgentContext';
 import axios from 'axios';
-import VerifiedEmail from './Pages/VerifiedEmail';
 
 const App = () => {
   const {Userlogin}=useContext(UserContext)
