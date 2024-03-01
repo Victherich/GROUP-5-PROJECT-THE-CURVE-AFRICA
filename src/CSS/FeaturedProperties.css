@@ -26,6 +26,9 @@
     @media screen and (max-width:768px) {
         font-size: 16px;
     }
+    @media screen and (max-width:430px) {
+        font-size: 13px;
+    }
     @media screen and (max-width:414px) {
         font-size: 10px;
     }
@@ -59,13 +62,25 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px ;
     @media screen and (max-width:1024px) {
         height: 80%;
+        width: 24%;
     }
     @media screen and (max-width:768px) {
         width: 28%;
         height: 70%;
     }
+    @media screen and (max-width:430px) {
+        width: 42%;
+    }
     @media screen and (max-width:414px) {
         width: 43%;
+        height: 50vh;
+    }
+    @media screen and (max-width:390px) {
+        width: 42%;
+        height: 45vh;
+    }
+    @media screen and (max-width:375px) {
+        width: 40%;
         height: 50vh;
     }
     @media screen and (max-width:320px) {
@@ -109,6 +124,9 @@
     color: #0653C8;
     @media screen and (max-width:1024px) {
         font-size: 16px;
+    }
+    @media screen and (max-width:430px) {
+        font-size: 13px;
     }
     @media screen and (max-width:414px) {
         font-size: 12px;
