@@ -32,6 +32,7 @@ import { useContext } from 'react';
 import { UserContext } from './component/UserContext';
 import { AgentContext } from './component/AgentContext';
 import axios from 'axios';
+import VerifiedEmail from './Pages/VerifiedEmail';
 
 const App = () => {
   const {Userlogin}=useContext(UserContext)
@@ -59,8 +60,8 @@ const App = () => {
           <Routes>
           
                 {/* userPages */}
-                <Route path='/userlogin'  element={<UserLogin/>}/>
-                <Route path="/usersignUp" element={<UserSignUp/>}/>
+                <Route path='/userlogin/:verifiedemail'  element={<UserLogin/>}/>
+                <Route path="/usersignUp/verifiedemail" element={<UserSignUp/>}/>
                 <Route path ='/' element={<LandingPage/>}/>
                 <Route path="/forsale" element={<ForSale/>} />
                 <Route path="/forrent" element={<ForRent/>} />
@@ -74,6 +75,8 @@ const App = () => {
                 <Route path="/anagentpropertieslistpage" element={<AnAgentPropertiesListPage/>} /> 
                 <Route path="/propertydetailpage" element={<PropertyDetailPage/>} />
                 <Route path="/allpropertieslistpage" element={<AllPropertiesListPage/>} />
+                
+                
                 
 
                 {/* AgentPages */}

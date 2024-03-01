@@ -131,7 +131,7 @@ const UserSignUp = () => {
               <button className='AgentSignUpNextButton'
                 type="submit">Sign Up</button>
               <p className='myspan'>Already have an account?  
-              <Link to={"/userlogin"} className='AgentFormPage1Link'>Login</Link></p>
+              <Link to={"/verifiedemail"} className='AgentFormPage1Link'>Login</Link></p>
             </div>
         </form>
       </div>
