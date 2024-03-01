@@ -135,7 +135,7 @@ const ForSale = () => {
                     <img src={d.images[0]} alt="featured Image" />
                 </div>
                 <div className='featuredtext'>
-                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.7rem", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
+                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"1rem", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
                     <h3>{d.type}</h3>
                     <div className='featuredtextspan'>
                         {d.category&&<span>Category: {d.category.type}</span>}
