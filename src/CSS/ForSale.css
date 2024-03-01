@@ -230,6 +230,7 @@
 }
 
 .ForSaleProperty{
+    font-size: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -290,6 +291,7 @@
 .ForSalePropertyNameAndPrice h4{
     text-align: center   ;
     font-size: 0.9rem;
+    color: #0653C8;
     @media screen and (max-width:320px) {
         font-size: 0.7rem;
     }

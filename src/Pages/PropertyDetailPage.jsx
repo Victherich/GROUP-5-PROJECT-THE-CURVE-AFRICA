@@ -24,15 +24,15 @@ const [oneAgentObj,setOneAgentObj]=useState({})
 
   useEffect(()=>{
     if(imgMonitor===2){
-      setImgDisplay(DetailImg2)
+      setImgDisplay(propertyDetailObj.images[1])
     }else if(imgMonitor===3){
-      setImgDisplay(DetailImg3)
+      setImgDisplay(propertyDetailObj.images[2])
     }else if(imgMonitor===4){
-      setImgDisplay(DetailImg4)
+      setImgDisplay(propertyDetailObj.images[3])
     }else if(imgMonitor===5){
-      setImgDisplay(DetailImg5)
+      setImgDisplay(propertyDetailObj.images[4])
     }else if(imgMonitor===6){
-      setImgDisplay(DetailImg6)
+      setImgDisplay(propertyDetailObj.images[5])
     }else{
       if (propertyDetailObj.images && propertyDetailObj.images.length > 0) {
         setImgDisplay(propertyDetailObj.images[0]);
@@ -79,11 +79,16 @@ const oneAgent =async (Id)=>{
         </div>
         <div className='DetailPageMid'>
             {propertyDetailObj.images&&<img src={propertyDetailObj.images[0]} alt="DetailImg1" onClick={()=>setImgMonitor(1)} />}
-            <img src={DetailImg2} alt="DetailImg2" onClick={()=>setImgMonitor(2)}  />
-            <img src={DetailImg3} alt="DetailImg3" onClick={(e)=>setImgMonitor(3)} />
-            <img src={DetailImg4} alt="DetailImg4" onClick={(e)=>setImgMonitor(4)} />
-            <img src={DetailImg5} alt="DetailImg5" onClick={(e)=>setImgMonitor(5)} />
-            <img src={DetailImg6} alt="DetailImg6" onClick={(e)=>setImgMonitor(6)} />
+            {propertyDetailObj.images&&<img src={propertyDetailObj.images[1]} alt="DetailImg2" onClick={()=>setImgMonitor(2)} />}
+            {propertyDetailObj.images&&<img src={propertyDetailObj.images[2]} alt="DetailImg3" onClick={()=>setImgMonitor(3)} />}
+            {propertyDetailObj.images&&<img src={propertyDetailObj.images[3]} alt="DetailImg4" onClick={()=>setImgMonitor(4)} />}
+            {propertyDetailObj.images&&<img src={propertyDetailObj.images[4]} alt="DetailImg5" onClick={()=>setImgMonitor(5)} />}
+            {propertyDetailObj.images&&<img src={propertyDetailObj.images[5]} alt="DetailImg6" onClick={()=>setImgMonitor(6)} />}
+            {/* <img src={DetailImg2} alt="DetailImg2" onClick={()=>setImgMonitor(2)}  /> */}
+            {/* <img src={DetailImg3} alt="DetailImg3" onClick={(e)=>setImgMonitor(3)} /> */}
+            {/* <img src={DetailImg4} alt="DetailImg4" onClick={(e)=>setImgMonitor(4)} /> */}
+            {/* <img src={DetailImg5} alt="DetailImg5" onClick={(e)=>setImgMonitor(5)} /> */}
+            {/* <img src={DetailImg6} alt="DetailImg6" onClick={(e)=>setImgMonitor(6)} /> */}
         </div>
         <p className='ImageClickP'>Click on image to display larger view</p>
         <div className='DetailPageDown'>

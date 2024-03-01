@@ -128,7 +128,7 @@ const AgentAccount = ({
         </div>
       </div>
       <div className='AccountDown'>
-        <button onClick={handleAgentEditProfileUI}>Edit Profile</button>
+        {/* <button onClick={handleAgentEditProfileUI}>Edit Profile</button> */}
         {/* <button onClick={handleAgentChangePasswordUI}>Change Password</button>   */}
       </div>
       {/* {toggleAgentChangePasswordUI&&<AgentChangePasswordUI/>} */}

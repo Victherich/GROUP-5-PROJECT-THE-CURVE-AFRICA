@@ -104,9 +104,9 @@ const url=`https://homehub-coxc.onrender.com/api/getallhouse`
                 <div className='featuredimg1'>
                     <img src={d.images[0]} alt="" />
                 </div>
-                <div className='featuredtext1'>
+                <div className='featuredtext'>
                     <h3>{d.type}</h3>
-                    <div className='featuredtextspan1'>
+                    <div className='featuredtextspan'>
                         {d.category&&<span>Category: {d.category.type}</span>}
                         <span>Price: N{d.amount}</span>
                         <span>Location: {d.location}</span>
