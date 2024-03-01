@@ -25,8 +25,8 @@ const Agentlogin = useCallback((token,agentinfo)=>{ //receive response.data from
   // setAgentId(AgentId)
   setAgentToken(token)
   setAgent(agentinfo)
-  localStorage.setItem("AgentInfo",JSON.stringify(agentinfo))
-  localStorage.setItem("AgentToken",JSON.stringify(token)); //or try save to http cookie
+  // localStorage.setItem("AgentInfo",JSON.stringify(agentinfo))
+  // localStorage.setItem("AgentToken",JSON.stringify(token)); //or try save to http cookie
 },[]);
 
 
