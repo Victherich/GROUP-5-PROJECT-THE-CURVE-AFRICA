@@ -148,14 +148,14 @@ const ForRent = () => {
   const [maxFilter, setMaxFilter] = useState(null);
   const {propertyDetail,sponsoredProperties}=useContext(AgentContext)
 
-  const forSaleId = "65c7c08e64efa9bc3de87364" // only this id is the differece
+  const forRentId = "65e43670b24d39a99a1c06f9" // only this id is the differece
 
   useEffect(() => {
     forSaleData();
   }, []);
 
 
-  const url=`https://homehub-coxc.onrender.com/api/getHousebyCate/${forSaleId}`
+  const url=`https://homehub-coxc.onrender.com/api/getHousebyCate/${forRentId}`
   const forSaleData = async () => {
     const loadingAlert = Swal.fire({
       title: "Loading",
@@ -175,7 +175,7 @@ const ForRent = () => {
     } catch (error) {
       console.error(error);
       loadingAlert.close();
-      Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
+      Swal.fire({icon:"warning",title:error.data.message,timer:2000,showConfirmButton:false})
     }
   };
 

@@ -52,6 +52,35 @@ const FeaturedProperties = () => {
     // {console.log(_id)}
   }
 
+  const [allListingArray,setAllListingArray]=useState([])
+  useEffect(()=>{
+         allListing() 
+  },[])
+  
+  const url1=`https://homehub-coxc.onrender.com/api/getallhouse`
+    const allListing = async () => {
+      const loadingAlert = Swal.fire({
+        title: "Loading",
+        text: "Please wait...",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showConfirmButton: false
+      });
+  
+      Swal.showLoading();
+      try {
+        const response = await axios.get(url1);
+        console.log(response.data)
+        loadingAlert.close();
+        setAllListingArray(response.data.data);
+        
+      } catch (error) {
+        console.error(error);
+        loadingAlert.close();
+      //   Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
+      }
+    };
+
 
   return (
     <div className='featureddiv'>
@@ -59,8 +88,32 @@ const FeaturedProperties = () => {
             <h1>Featured Properties</h1>
         </div>
 
-        <div className='featured2'>
+        {sponsoredProperties.length>0&&<div className='featured2'>
             {sponsoredProperties.slice(-4).map((d)=>(
+                <div key={d._id} className='featured3'>  
+                <div className='featuredimg'>
+                    <img src={d.images[0]} alt="featured Image" />
+                </div>
+                <div className='featuredtext'>
+                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"1rem", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
+                    <h3>{d.type}</h3>
+                    <div className='featuredtextspanA'>
+                        {d.category&&<span>Category: {d.category.type}</span>}
+                        <span>Price: N{d.amount}</span>
+                        <span>Location: {d.location}</span>
+                    </div>
+                    <div className='featuredbtndiv'>
+                        <button className='view' onClick={()=>handleNavigate(d._id)}>View</button>
+                    </div>
+                </div>
+            </div>
+            ))}
+            
+        </div>}
+
+
+        <div className='featured2'>
+            {allListingArray.slice(-8).map((d)=>(
                 <div key={d._id} className='featured3'>  
                 <div className='featuredimg'>
                     <img src={d.images[0]} alt="featured Image" />

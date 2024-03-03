@@ -27,35 +27,10 @@ const navigate =useNavigate()
 const handleViewMore = ()=>{
     navigate("/allpropertieslistpage")
 }
-const [allListingArray,setAllListingArray]=useState([])
-useEffect(()=>{
-       allListing() 
-},[])
 
-const url=`https://homehub-coxc.onrender.com/api/getallhouse`
-  const allListing = async () => {
-    const loadingAlert = Swal.fire({
-      title: "Loading",
-      text: "Please wait...",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false
-    });
-
-    Swal.showLoading();
-    try {
-      const response = await axios.get(url);
-      console.log(response.data)
-      loadingAlert.close();
-      setAllListingArray(response.data.data);
-      
-    } catch (error) {
-      console.error(error);
-      loadingAlert.close();
-    //   Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
-    }
-  };
-
+const handleAgentArea = ()=>{
+  navigate("/agentlogin")
+}
 
   const handleNavigate=(_id)=>{
     navigate("/propertydetailpage")
@@ -69,9 +44,11 @@ const url=`https://homehub-coxc.onrender.com/api/getallhouse`
       <div className='hero'>
         <div className='heroright'>
           <h1>Find a <span>comfortable </span>  <br /> home for your family.</h1>
-          <p>You need a home? We are ready to help you find a <br /> suitable home. </p>
+          <p>Your dream home Awaits, Unlock the door with<br/>
+          <h2  style={{color:"#F90808"}}>HOME<span style={{color:"#0653C8"}}>HUB</span></h2></p>
+          <div className='HeroPostProperty'><p>Are you an Agent?</p><button onClick={handleAgentArea}>POST A PROPERTY</button></div>
 
-          <div  className='herolast'>
+          {/* <div  className='herolast'>
             <div className='herolast1'>
               <h2>1500+</h2>
               <p>Listed Properties</p>
@@ -86,54 +63,25 @@ const url=`https://homehub-coxc.onrender.com/api/getallhouse`
               <h2>1200+</h2>
               <p>Awards</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className='heroleft'>
           <img src={house} alt="" />
         </div>
       </div>
-      {sponsoredProperties.length>0&&<FeaturedProperties/>}
-      <div className='featureddiv1'>
-        <div className='featured11'>
-            <h1>All Listing</h1>
-        </div>
-
-        <div className='featured21'>
-            {allListingArray.slice(-4).map((d)=>(
-                <div key={d._id} className='featured31'>
-                <div className='featuredimg1'>
-                    <img src={d.images[0]} alt="" />
-                </div>
-                <div className='featuredtext'>
-                    <h3>{d.type}</h3>
-                    <div className='featuredtextspanA'>
-                        {d.category&&<span>Category: {d.category.type}</span>}
-                        <span>Price: N{d.amount}</span>
-                        <span>Location: {d.location}</span>
-                    </div>
-                    
-                    <div className='featuredbtndiv1'>
-                        {/* <Link to={`/propertydetailpage/${d._id}`}>View</Link> */}
-                        <button className='view' onClick={()=>handleNavigate(d._id)}>View</button>
-                    </div>
-                </div>
-            </div>
-            ))
-}
-            
-            
-        </div>
-      </div>
+      <FeaturedProperties/>
+      
 
     <div 
     style={{display:'flex',
-            width:"100%"}}
+            width:"100%",
+          marginTop:"10vh"}}
     className='featured111'>
             <h1 
             onClick={handleViewMore}
             style={{cursor:"pointer",
                     color:"#0E9AFF",
-                    }}>View more</h1>
+                    }}>View all Listing</h1>
         </div><br/><br/>
     <div className='choose'>
         <h1>Why Choose Us?</h1>
