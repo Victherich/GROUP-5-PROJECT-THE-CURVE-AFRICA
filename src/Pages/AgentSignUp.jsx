@@ -159,7 +159,7 @@ const runAlert = ()=>{
               <div className='agentinput'>
                 <label htmlFor="">Password</label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
@@ -168,7 +168,7 @@ const runAlert = ()=>{
               <div className='agentinput'>
                 <label htmlFor="">Confirm Password</label>
                 <input
-                  type="text"
+                  type="password"
                   name='confirmPassword'
                   value={formData.confirmPassword}
                   onChange={handleChange}
