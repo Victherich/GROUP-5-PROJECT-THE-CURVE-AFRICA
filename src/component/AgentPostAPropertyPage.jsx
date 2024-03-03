@@ -17,10 +17,10 @@ console.log(AgentToken)
 const handleForRentAndYearly = (e)=>{
   if(e.target.value==="for rent"){
     setYearly(true)
-    setCategory1("65c7c08e64efa9bc3de87364")
+    setCategory1("65e43670b24d39a99a1c06f9")
   }else if(e.target.value==="for sale"){
     setYearly(false)
-    setCategory1("65c7c1c8a356276634186c7d")
+    setCategory1("65e43620b24d39a99a1c06f7")
   }else{
     setCategory1(null)
   }

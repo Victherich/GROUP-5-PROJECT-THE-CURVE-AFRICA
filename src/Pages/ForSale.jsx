@@ -23,7 +23,7 @@ const ForSale = () => {
   const {propertyDetail,sponsoredProperties}=useContext(AgentContext)
 
 
-  const forSaleId = "65c7c1c8a356276634186c7d"
+  const forSaleId = "65e43620b24d39a99a1c06f7"
 
   useEffect(() => {
     forSaleData();
@@ -50,7 +50,7 @@ const ForSale = () => {
     } catch (error) {
       console.error(error);
       loadingAlert.close();
-      Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
+      Swal.fire({icon:"warning",title:error.data.message,timer:2000,showConfirmButton:false})
     }
   };
 
@@ -138,7 +138,7 @@ const ForSale = () => {
                 <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"1rem", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
                     <h3>{d.type}</h3>
                     <div className='featuredtextspan'>
-                        {d.category&&<span>Category: {d.category.type}</span>}
+                        {d.category&&<span>Category:{d.category==="65e43620b24d39a99a1c06f7"?"For Sale":"For Rent"}</span>}
                         <span>Price: N{d.amount}</span>
                         <span>Location: {d.location}</span>
                     </div>
@@ -161,7 +161,7 @@ const ForSale = () => {
                 <div className='ForSalePropertyNameAndPrice'>
                   <h4>{d.type}</h4>
                   <p>
-                    <span>Category:</span> {d.category==="65c7c1c8a356276634186c7d"?"For Sale":""}
+                    <span>Category:</span> {d.category==="65e43620b24d39a99a1c06f7"?"For Sale":""}
                   </p>
                   <p>
                     <span>Price:</span> N{d.amount}

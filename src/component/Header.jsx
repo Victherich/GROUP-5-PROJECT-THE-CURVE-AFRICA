@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../CSS/Header.css'
+import "../CSS/Header.css"
 import image8 from "../Images/image 8.png"
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -45,8 +45,8 @@ useEffect(()=>{
         >For Rent</NavLink>
         <NavLink to={"/allagentslistpage"} 
         className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
-        <NavLink to={"/agentdashboard"} 
-        className='sec'>Become an Agent</NavLink>
+        {/* <NavLink to={"/agentdashboard"} 
+        className='sec'>Become an Agent</NavLink> */}
       </div>
 
       
