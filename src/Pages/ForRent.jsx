@@ -246,35 +246,7 @@ const ForRent = () => {
         </div>
 
         <div className='ForSaleProperties'>
-        {sponsoredProperties.length>0&&<div className='featureddiv'>
-        {/* <div className='featured1'>
-            <p>Sponsored</p>
-        </div> */}
-
-        <div className='featured2'>
-            {sponsoredProperties.map((d)=>(
-                <div key={d._id} className='featured3'>  
-                <div className='featuredimg'>
-                    <img src={d.images[0]} alt="featured Image" />
-                </div>
-                <div className='featuredtext'>
-                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.7rem", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
-                    <h3>{d.type}</h3>
-                    <div className='featuredtextspan'>
-                        {d.category&&<span>Category: {d.category.type}</span>}
-                        <span>Price: N{d.amount}</span>
-                        <span>Location: {d.location}</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view' onClick={()=>handleNavigate(d._id)}>View</button>
-                    </div>
-                </div>
-                
-            </div>
-            ))}
-            
-        </div>
-</div>}
+        
           {forSalePropertiesB.map((d) => (
             <div key={d._id} className='ForSaleProperty'>
               <div className='ForSalePropertyImgWrap'>

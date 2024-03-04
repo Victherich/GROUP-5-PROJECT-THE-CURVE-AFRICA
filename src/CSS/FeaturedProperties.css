@@ -38,6 +38,28 @@
     }
 }
 
+.featured222{
+
+    width: 95%;
+    /* height: 60vh; */
+    display: flex;
+    justify-content:center;
+    gap:5%;
+    margin-top: 7vh;
+    flex-wrap: wrap;
+    /* background-color: red; */
+    @media screen and (max-width:768px) {
+        
+        gap: 54px;
+        /* justify-content: flex-start; */
+    }
+    @media screen and (max-width:320px) {
+        gap: 40px;
+    }
+
+
+}
+
 .featured2 {
     width: 95%;
     height: 60vh;

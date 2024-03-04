@@ -88,7 +88,7 @@ const FeaturedProperties = () => {
             <h1>Featured Properties</h1>
         </div>
 
-        {sponsoredProperties.length>0&&<div className='featured2'>
+        {sponsoredProperties.length>0&&<div className='featured222'>
             {sponsoredProperties.slice(-4).map((d)=>(
                 <div key={d._id} className='featured3'>  
                 <div className='featuredimg'>
