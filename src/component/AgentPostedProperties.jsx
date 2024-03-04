@@ -151,9 +151,9 @@ function payKorapay(_id) {
         console.log(data);
         console.log(_id)
         handleSponsor(_id);
-        handleSponsorBackend(_id)
+        // handleSponsorBackend(_id)
         // navigate('/');
-        setAgentActiveMenu("sponsored property")
+        
         Swal.fire({icon:"success",
         title:"Payment Confirmation",
         text:`Paid NGN ${amountValue} for sponsorship of post id no.: ${_id}`,
@@ -161,7 +161,9 @@ function payKorapay(_id) {
         allowOutsideClick: false,
         allowEscapeKey: false,
       })
+      setAgentActiveMenu("sponsored property")
       },
+
       onFailed: function (data) {
         // Handle when payment fails
         alert("Failed transaction");

@@ -175,7 +175,7 @@ const ForRent = () => {
     } catch (error) {
       console.error(error);
       loadingAlert.close();
-      Swal.fire({icon:"warning",title:error.data.message,timer:2000,showConfirmButton:false})
+      Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
     }
   };
 
@@ -228,9 +228,9 @@ const ForRent = () => {
             </div>
           </div>
 
-          <p>Sort By:</p>
+          {/* <p>Sort By:</p> */}
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
-            <option>-- Select --</option>
+            <option>--Sort--</option>
             <option value='Lowest Price First'>Lowest Price First</option>
             <option value='Highest Price First'>Highest Price First</option>
           </select>
@@ -242,6 +242,7 @@ const ForRent = () => {
             HOME<span>HUB</span>
           </h1>
           <p>Your dream home awaits, unlock the door with home hub...</p>
+          <p>NB: All rent properties prices are Annual</p>
         </div>
 
         <div className='ForSaleProperties'>

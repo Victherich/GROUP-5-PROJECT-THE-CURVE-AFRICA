@@ -50,7 +50,7 @@ const ForSale = () => {
     } catch (error) {
       console.error(error);
       loadingAlert.close();
-      Swal.fire({icon:"warning",title:error.data.message,timer:2000,showConfirmButton:false})
+      Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
     }
   };
 
@@ -105,9 +105,9 @@ const ForSale = () => {
             </div>
           </div>
 
-          <p>Sort By:</p>
+          {/* <p>Sort By:</p> */}
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
-            <option>-- Select --</option>
+            <option>-- Sort--</option>
             <option value='Lowest Price First'>Lowest Price First</option>
             <option value='Highest Price First'>Highest Price First</option>
           </select>
