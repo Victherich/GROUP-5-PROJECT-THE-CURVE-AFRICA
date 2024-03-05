@@ -136,7 +136,7 @@ const runAlert = ()=>{
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-                  placeholder='John Doe' required />
+                  placeholder='eg. John Doe' required />
               </div>
               <div className='agentinput'>
                 <label htmlFor="">Email address</label>
@@ -145,7 +145,7 @@ const runAlert = ()=>{
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder='example@gmail.com' required />
+                  placeholder='eg. example@gmail.com' required />
               </div>
               <div className='agentinput'>
                 <label htmlFor="">Phone number</label>
@@ -154,7 +154,7 @@ const runAlert = ()=>{
                   name='phoneNumber'
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  placeholder='234801234567' required />
+                  placeholder='eg. 08168864508' required />
               </div>
               <div className='agentinput'>
                 <label htmlFor="">Password</label>

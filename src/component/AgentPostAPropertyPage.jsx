@@ -155,9 +155,9 @@ const handleSubmit =async(e)=>{
             <option value='for sale'>For Sale</option>
             <option value="for rent">For Rent</option>
           </select>
-          <input type="text" value={formData.type} name="type" onChange={handleChange} placeholder='Enter property type' required/>
-          <input type="text" value={formData.location} name="location" onChange={handleChange} placeholder='Enter property location' required/>
-          <div className='AmountAndYearly'><input type="text" value={formData.amount} name="amount" onChange={handleChange} placeholder='Enter Amount' required/>{yearly&&<p>Ensure to enter <strong>Amount with duration</strong>. Example:1,000,000 Yearly or 1,000,000 Monthly</p>}</div> 
+          <input type="text" value={formData.type} name="type" onChange={handleChange} placeholder='Enter property type eg. Bungalo' required/>
+          <input type="text" value={formData.location} name="location" onChange={handleChange} placeholder='Enter property location eg. Ikeja' required/>
+          <div className='AmountAndYearly'><input type="text" value={formData.amount} name="amount" onChange={handleChange} placeholder='Enter Amount eg. 5000000' required/>{yearly&&<p>Ensure to enter <strong>yearly Amount</strong></p>}</div> 
         </div>
         <div className='AgentPostAPropertyUpRight'>
             <p>Upload Property Pictures</p>

@@ -37,8 +37,7 @@
         height: 55vh;
     }
     @media screen and (max-width:320px) {
-        /* height: 50vh; */
-        display: none;
+        height: 50vh;
     }
 }
 
@@ -508,22 +507,23 @@
     background-color: rgb(250, 250, 250);
     
     @media screen and (max-width:768px) {
-        height: 70vh;
+        height: 120vh;
     }
     @media screen and (max-width:414px) {
-        height: 50vh;
+        height: 90vh;
     }
     @media screen and (max-width:320px) {
-        height: 50vh;
+        height: 70vh;
     }
 }
 
 .choose h1 {
     font-size: 250%;
     height: 10%;
+    font-size: 3.5vw;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     @media screen and (max-width:768px) {
-        font-size: 25px;
+        font-size: 4vw;
     }
     @media screen and (max-width:430px) {
         font-size: 22px;
@@ -600,6 +600,11 @@
     justify-content: center;
     gap:5%;
     align-items: flex-start;
+    font-size: 1.5vw;
+    @media screen and (max-width:414px) {
+        font-size: 1vw;
+    }
+
 }
 
 .choosetext span {
@@ -741,56 +746,3 @@
 }
 
 
-.HeroPostProperty{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 62%;
-    /* background-color: red; */
-    @media screen and (max-width:1280px) {
-        width:70%;
-       
-
-    }
-    
-    @media screen and (max-width:1145px) {
-        width:60%;
-        /* margin-left: 20%; */
-    }
-
-    @media screen and (max-width:1071px) {
-        /* margin-right: 20%; */
-    }
-    @media screen and (max-width:954px) {
-        /* width:60%; */
-        /* background-color: red; */
-    }
-    @media screen and (max-width:900px) {
-        margin-left: 20%;
-    }
-}
-
-.HeroPostProperty button{
-    padding: 5%;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(to bottom,#7d92b3, #0653C8);
-    cursor: pointer;
-    transform: scale(1);
-    transition: 350ms;
-    @media screen and (max-width:414px) {
-        width:70%;
-        font-size:60%
-
-    }
-}
-
-.HeroPostProperty button:hover{
-    transform: scale(1.1);
-}
-
-.HeroPostProperty button:active{
-    transform: scale(0.9);
-}

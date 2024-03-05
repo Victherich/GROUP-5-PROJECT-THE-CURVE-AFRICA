@@ -119,6 +119,7 @@
     }
     @media screen and (max-width:414px) {
         width: 90%;
+        display: none;
         /* height: 45%; */
     }
 }
@@ -260,6 +261,7 @@
     flex-direction: column;
     width: 20%;
     height: 50vh;
+    font-size: 2vw;
     background-color: whitesmoke;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px ;
     margin-bottom: 5vh;
@@ -270,13 +272,20 @@
         width: 25%;
     }
     @media screen and (max-width:768px) {
-        width: 30%;
+        width: 37%;
     }
+    @media screen and (max-width:510px) {
+        width: 45%;
+    }
+
      @media screen and (max-width:430px) {
         width: 45%;
     }
     @media screen and (max-width:414px) {
-        width: 45%;
+        width: 49%;
+    }
+    @media screen and (max-width:360px) {
+        width: 55%;
     }
 }
 
