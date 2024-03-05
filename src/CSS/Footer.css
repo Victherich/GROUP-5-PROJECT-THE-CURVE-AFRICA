@@ -84,12 +84,14 @@
 }
 
 .footwriteimages {
-  width: 30%;
-  height: 10%;
+  width: 45%;
+  height: 2
+  5%;
+  /* background-color: red; */
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: space-between; 
+  gap: 10%; 
 
   @media screen and (max-width:768px) {
     justify-content: center;
