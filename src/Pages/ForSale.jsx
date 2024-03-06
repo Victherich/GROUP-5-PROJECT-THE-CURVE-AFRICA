@@ -129,9 +129,7 @@ const ForSale = () => {
           <p>Your dream home awaits, unlock the door with home hub...</p>
         </div>
 
-        <div className='ForSaleProperties'>
-
-    
+        <div className='ForSaleProperties'>    
           {reversedProperties.map((d) => (
             <div key={d._id} className='ForSaleProperty'>
               <div className='ForSalePropertyImgWrap'>

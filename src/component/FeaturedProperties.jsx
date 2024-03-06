@@ -15,15 +15,15 @@ import { useNavigate } from 'react-router-dom'
 
 const FeaturedProperties = () => {
     const navigate = useNavigate();
-    const [featuredPropertiesArray,setFeaturedPropertiesArray]=useState([])
+    const [sponsoredPropertiesArray,setSponsoredPropertiesArray]=useState([])
     const{propertyDetail,sponsoredProperties}=useContext(AgentContext) 
 
     useEffect(()=>{
-        featuredProperties() 
+      featuredSponsoredProperties() 
  },[])
  
  const url='https://homehub-coxc.onrender.com/api/allSponsoredPost'
-   const featuredProperties = async () => {
+   const featuredSponsoredProperties = async () => {
      const loadingAlert = Swal.fire({
        title: "Loading",
        text: "Please wait...",
@@ -37,7 +37,7 @@ const FeaturedProperties = () => {
        const response = await axios.get(url);
        console.log(response.data)
        loadingAlert.close();
-      //  setFeaturedPropertiesArray(response.data.data);
+       setSponsoredPropertiesArray(response.data.data);
        
      } catch (error) {
        console.error(error);
@@ -84,13 +84,13 @@ const FeaturedProperties = () => {
 
   return (
     <div className='featureddiv'>
-        <div className='featured1'>
+        <div className='featuredHeadingWrap'>
             <h1>Featured Properties</h1>
         </div>
 
-        {sponsoredProperties.length>0&&<div className='featured222'>
+        {/* {sponsoredProperties.length>0&&<div className='featuredPropertiesWrap'>
             {sponsoredProperties.slice(-4).map((d)=>(
-                <div key={d._id} className='featured3'>  
+                <div key={d._id} className='featuredProperty'>  
                 <div className='featuredimg'>
                     <img src={d.images[0]} alt="featured Image" />
                 </div>
@@ -109,12 +109,12 @@ const FeaturedProperties = () => {
             </div>
             ))}
             
-        </div>}
+        </div>} */}
 
 
-        <div className='featured2'>
+        {/* <div className='featuredPropertiesWrap'>
             {allListingArray.slice(-8).map((d)=>(
-                <div key={d._id} className='featured3'>  
+                <div key={d._id} className='featuredProperty2'>  
                 <div className='featuredimg'>
                     <img src={d.images[0]} alt="featured Image" />
                 </div>
@@ -132,7 +132,66 @@ const FeaturedProperties = () => {
             </div>
             ))}
             
+        </div> */}
+<div className='ForSaleProperties'>    
+          {allListingArray.slice(-4).map((d) => (
+            <div key={d._id} className='ForSaleProperty'>
+              <div className='ForSalePropertyImgWrap'>
+                <img src={d.images[0]} alt='ForSalePropertyImg' />
+              </div>
+              <div className='ForSalePropertyNamePriceButtonWrap'>
+                <div className='ForSalePropertyNameAndPrice'>
+                  <h4>{d.type}</h4>
+                  <p>
+                  {d.category&&<span>Category: {d.category.type}</span>}
+                  </p>
+                  <p>
+                    <span>Price:</span> N{d.amount}
+                  </p>
+                  <p>
+                    <span>Location:</span> {d.location}
+                  </p>
+                </div>
+                <div className='ForSalePropertyButtonsWrap'>
+                  <button onClick={() => handleNavigate(d._id)}>View</button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+
+
+
+<div className='ForSaleProperties'>    
+          {allListingArray.slice(-8).map((d) => (
+            <div key={d._id} className='ForSaleProperty'>
+              <div className='ForSalePropertyImgWrap'>
+                <img src={d.images[0]} alt='ForSalePropertyImg' />
+              </div>
+              <div className='ForSalePropertyNamePriceButtonWrap'>
+                <div className='ForSalePropertyNameAndPrice'>
+                  <h4>{d.type}</h4>
+                  <p>
+                  {d.category&&<span>Category: {d.category.type}</span>}
+                  </p>
+                  <p>
+                    <span>Price:</span> N{d.amount}
+                  </p>
+                  <p>
+                    <span>Location:</span> {d.location}
+                  </p>
+                </div>
+                <div className='ForSalePropertyButtonsWrap'>
+                  <button onClick={() => handleNavigate(d._id)}>View</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+
+
+
 </div>
 )
 
