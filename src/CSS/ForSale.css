@@ -207,8 +207,11 @@
 
 .HomeHubRedandBlueWrap h1{
     color:#F90808;
-    /* @media screen and (max-width:320px) {
-        font-size: 16px;
+    /* @media screen and (max-width:550px) {
+        font-size: 2.3vw;
+    }
+    @media screen and (max-width:450px) {
+        font-size: 4vw;
     } */
 }
 
@@ -340,6 +343,9 @@
     text-align: center   ;
     font-size: 1.4vw;
     color: #0653C8;
+    @media screen and (max-width:1071px) {
+        font-size: 1.6vw; 
+    }
     @media screen and (max-width:1024px) {
         font-size: 1.8vw;
     }
@@ -365,6 +371,9 @@
 
 .ForSalePropertyNameAndPrice p{
     font-size: 1.1vw;
+    @media screen and (max-width:1071px) {
+        font-size: 1.3vw; 
+    }
     @media screen and (max-width:1024px) {
         font-size: 1.3vw;
     }
@@ -425,7 +434,9 @@
     transition: 350ms;
     font-size: 1.1vw;
     font-weight: 500;
-
+    @media screen and (max-width:1071px) {
+        font-size: 1.3vw; 
+    }
     @media screen and (max-width:1024px) {
         font-size: 1.4vw;
     }
@@ -455,4 +466,12 @@
 
 .ForSalePropertyButtonsWrap button:active{
     transform: scale(0.9);
+}
+
+.sponsorTag{
+    background-color: #0653C8;
+    color:white;
+    font-size: 0.8vw;
+    padding:2px;
+    border-radius: 5px;
 }

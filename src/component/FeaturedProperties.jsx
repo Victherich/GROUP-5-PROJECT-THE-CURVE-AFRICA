@@ -142,7 +142,9 @@ const FeaturedProperties = () => {
               </div>
               <div className='ForSalePropertyNamePriceButtonWrap'>
                 <div className='ForSalePropertyNameAndPrice'>
-                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.8vw", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
+                <p 
+                className='sponsorTag'
+                >Sponsored</p>
                   <h4>{d.type}</h4>
                   <p>
                     <span>Category:</span> {d.category==="65e43620b24d39a99a1c06f7"?"For Sale":"For Rent"}
