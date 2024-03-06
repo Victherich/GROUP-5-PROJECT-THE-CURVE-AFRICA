@@ -79,11 +79,17 @@ const ForSale = () => {
     }
   }, [sort]);
 
-
 // ensuring the assignment of forsale propertyB
   useEffect(()=>{
     setForSalePropertiesB(forSaleProperties);
   },[forSaleProperties])
+
+
+  const [reversedProperties, setReversedProperties] = useState([]);
+
+  useEffect(() => {
+    setReversedProperties([...forSalePropertiesB].reverse());
+  }, [forSalePropertiesB]);
 
 
   const handleNavigate=(_id)=>{
@@ -91,6 +97,8 @@ const ForSale = () => {
     propertyDetail(_id)
     // {console.log(_id)}
   }
+
+
 
   return (
     <div className='ForSaleWrap'>
@@ -124,7 +132,7 @@ const ForSale = () => {
         <div className='ForSaleProperties'>
 
     
-          {forSalePropertiesB.map((d) => (
+          {reversedProperties.map((d) => (
             <div key={d._id} className='ForSaleProperty'>
               <div className='ForSalePropertyImgWrap'>
                 <img src={d.images[0]} alt='ForSalePropertyImg' />

@@ -64,7 +64,6 @@ const propertyDetail = async (_id) => {
 };
 
 
-
   return (
     <AgentContext.Provider value={{
       AgentActiveMenu,
@@ -77,7 +76,7 @@ const propertyDetail = async (_id) => {
     Agentlogout,Agentlogin,AgentId,AgentToken,
     toggleAgentViewDetailpage,setToggleAgentViewDetailpage,
     sponsoredProperties,setSponsoredProperties,propertyDetail,
-    propertyDetailObj
+    propertyDetailObj,
     // agentPostedProperties,setAgentPostedProperties
     }}>
         {children}

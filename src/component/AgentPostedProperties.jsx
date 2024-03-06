@@ -15,7 +15,7 @@ const AgentPostedProperties = () => {
     setToggleAgentViewDetailpage,
     toggleAgentViewDetailpage,
     setSponsoredProperties,
-    sponsoredProperties,setAgentActiveMenu,Agent} = useContext(AgentContext)
+    sponsoredProperties,setAgentActiveMenu,Agent,deleteSponsoredFromPostedProperty} = useContext(AgentContext)
 
 // console.log(Agent)
 
@@ -64,6 +64,7 @@ const handleDelete = (_id) => {
   }).then((result) => {
     if (result.isConfirmed) {
       setAgentPostedProperties(agentPostedProperties.filter((e) => e._id !== _id));
+      setSponsoredProperties(sponsoredProperties.filter((e)=>e._id!==_id));
       Swal.fire(
         'Deleted!',
         'Your file has been deleted.',
@@ -150,8 +151,8 @@ function payKorapay(_id) {
         // Handle when payment is successful
         console.log(data);
         console.log(_id)
-        handleSponsor(_id);
-        // handleSponsorBackend(_id)
+        // handleSponsor(_id);
+        handleSponsorBackend(_id)
         // navigate('/');
         
         Swal.fire({icon:"success",
@@ -176,24 +177,24 @@ function payKorapay(_id) {
 }
 
 //adding from posted to sponsored
-const handleSponsor = (_id) => {
-  const propertyToSponsor = agentPostedProperties.find((e) => e._id === _id);
-  if (!propertyToSponsor) {
-    console.error("Property not found.");
-    return;
-  }
+// const handleSponsor = (_id) => {
+//   const propertyToSponsor = agentPostedProperties.find((e) => e._id === _id);
+//   if (!propertyToSponsor) {
+//     console.error("Property not found.");
+//     return;
+//   }
 
-  setSponsoredProperties([...sponsoredProperties, propertyToSponsor]);
-  console.log(_id)
-  localStorage.setItem("sponsoredProperties",JSON.stringify([...sponsoredProperties, propertyToSponsor]))
-};
+//   setSponsoredProperties([...sponsoredProperties, propertyToSponsor]);
+//   console.log(_id)
+//   localStorage.setItem("sponsoredProperties",JSON.stringify([...sponsoredProperties, propertyToSponsor]))
+// };
 
 const handleSponsorBackend = async(_id)=>{
   console.log(_id)
   try {
     const response = await axios.put(`https://homehub-coxc.onrender.com/api/sponsorPost/${_id}`);
     console.log(response.data);
-    getSponsored()
+    // getSponsored()
   } catch (error) {
     console.error(error);
     Swal.fire({ icon: "error", title: "Something went wrong", showConfirmButton: false, timer: 2000 });
@@ -231,26 +232,30 @@ const handleCloseView = (_id)=>{
   setAgentPostedProperties(updatedProperties)
 }
 
-const getSponsored = async()=>{
-  const loadingAlert = Swal.fire({
-    title: "Loading",
-    text: "Please wait...",
-    allowOutsideClick: false,
-    allowEscapeKey: false,
-    showConfirmButton: false
-  });
+// const getSponsored = async()=>{
+//   const loadingAlert = Swal.fire({
+//     title: "Loading",
+//     text: "Please wait...",
+//     allowOutsideClick: false,
+//     allowEscapeKey: false,
+//     showConfirmButton: false
+//   });
 
-  Swal.showLoading();
-  try{
-    const response=await axios.get('https://homehub-coxc.onrender.com/api/allSponsoredPost')
-    console.log(response.data)
-    loadingAlert.close()
-  }catch(error){
-    console.error(error)
-    loadingAlert.close()
-    // Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
-  }
-}
+//   Swal.showLoading();
+//   try{
+//     const response=await axios.get('https://homehub-coxc.onrender.com/api/allSponsoredPost')
+//     console.log(response.data)
+//     loadingAlert.close()
+//   }catch(error){
+//     console.error(error)
+//     loadingAlert.close()
+//     // Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
+//   }
+// }
+
+
+
+
 
   return (
     <div className='PostedPropertiesWrap'>

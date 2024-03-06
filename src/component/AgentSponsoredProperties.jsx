@@ -6,8 +6,8 @@ import { AgentContext } from './AgentContext'
 import Swal from 'sweetalert2'
 
 const AgentSponsoredProperties = () => {
-  const {sponsoredProperties,setSponsoredProperties}=useContext(AgentContext)
-
+  const {sponsoredProperties,setSponsoredProperties,Agent}=useContext(AgentContext)
+  const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
 //   const url=""
 
 // useEffect(()=>{
@@ -26,27 +26,80 @@ const AgentSponsoredProperties = () => {
 // }
 
 
-
-const handleDelete = (_id) => {
-  Swal.fire({
-    title: 'Are you sure?',
-    icon: 'warning',
-    confirmButtonText: 'Yes, delete it!',
-    showCancelButton: true,
-    // confirmButtonColor: '#3085d6',
-    // cancelButtonColor: '#d33',
+//handle Delete sponsored from sponsored property from front end
+// const handleDelete = (_id) => {
+//   Swal.fire({
+//     title: 'Are you sure?',
+//     icon: 'warning',
+//     confirmButtonText: 'Yes, delete it!',
+//     showCancelButton: true,
+//     // confirmButtonColor: '#3085d6',
+//     // cancelButtonColor: '#d33',
     
-  }).then((result) => {
-    if (result.isConfirmed) {
-      setSponsoredProperties(sponsoredProperties.filter((e) => e._id !== _id));
-      Swal.fire(
-        'Deleted!',
-        'Your post has been deleted.',
-        'success'
-      );
-    }
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       setSponsoredProperties(sponsoredProperties.filter((e) => e._id !== _id));
+//       Swal.fire(
+//         'Deleted!',
+//         'Your post has been deleted.',
+//         'success'
+//       );
+//     }
+//   });
+// };
+
+//delet from backend
+const handleDelete = async (_id) => {
+  const loadingAlert = Swal.fire({
+    title: "Loading",
+    text: "Please wait...",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false
   });
-};
+
+  Swal.showLoading();
+  try{
+    const response = await axios.delete(`https://homehub-coxc.onrender.com/api/deletehouse/${_id}`)
+    console.log(response.data)
+    loadingAlert.close()
+    Swal.fire({icon:"success",title:"Your post has been deleted",timer:2000})
+    setSponsoredProperties(null)
+  }catch(error){
+    console.error(error)
+    // Swal.fire({icon:"error",title:"Something went wrong",timer:2000})
+  }
+}
+  
+
+
+useEffect(()=>{
+  getAgentSponsored()
+},[])
+
+const getAgentSponsored = async()=>{
+  const loadingAlert = Swal.fire({
+    title: "Loading",
+    text: "Please wait...",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false
+  });
+
+  Swal.showLoading();
+  try{
+    const response = await axios.get(`https://homehub-coxc.onrender.com/api/getSponsored/${parsedAgent._id}`)
+    console.log(response.data)
+    setSponsoredProperties(response.data.data)
+    loadingAlert.close()
+    
+  }catch(error){
+      console.error(error)
+      // Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false,timer:2000});
+      loadingAlert.close()
+      
+  }
+}
 
   return (
     <div className='PostedPropertiesWrap'>
@@ -66,7 +119,7 @@ const handleDelete = (_id) => {
             </div>    
             <div className='ForSalePropertyButtonsWrap'>
               {/* <button>View</button> */}
-              <button onClick={()=>handleDelete(d._id)}>Delete</button>
+              {/* <button onClick={()=>handleDelete(d._id)}>Delete</button> */}
             </div>
           </div>
         </div>

@@ -78,6 +78,13 @@ const AllPropertiesListPage = () => {
     }
   }, [sort]);
 
+
+  const [reversedProperties, setReversedProperties] = useState([]);
+
+  useEffect(() => {
+    setReversedProperties([...forSalePropertiesB].reverse());
+  }, [forSalePropertiesB]);
+
   const handleNavigate=(_id)=>{
     navigate("/propertydetailpage")
     propertyDetail(_id)
@@ -88,6 +95,8 @@ const AllPropertiesListPage = () => {
   useEffect(()=>{
     setForSalePropertiesB(forSaleProperties);
   },[forSaleProperties])
+
+const [propertyReverse,setPropertyReverse]=useState([])
 
   return (
     <div className='ForSaleWrap'>
@@ -150,7 +159,7 @@ const AllPropertiesListPage = () => {
         </div>
 </div>}
         <div className='ForSaleProperties'>
-          {forSalePropertiesB.map((d) => (
+          {reversedProperties.map((d) => (
             <div key={d._id} className='ForSaleProperty'>
               <div className='ForSalePropertyImgWrap'>
                 <img src={d.images[0]} alt='ForSalePropertyImg' />
