@@ -353,8 +353,8 @@ const AgentPostAPropertyPage = () => {
         loadingAlert.close();
         Swal.fire({
           icon: "error",
-          title: "Something went wrong",
-          showConfirmButton: false,
+          text: error.message,
+          showConfirmButton: true,
           timer: 2000
         });
       }

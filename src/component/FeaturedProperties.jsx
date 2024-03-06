@@ -12,17 +12,14 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { AgentContext } from './AgentContext'
 import { useNavigate } from 'react-router-dom'
+import "../CSS/ForSale.css"
 
 const FeaturedProperties = () => {
     const navigate = useNavigate();
     const [sponsoredPropertiesArray,setSponsoredPropertiesArray]=useState([])
     const{propertyDetail,sponsoredProperties}=useContext(AgentContext) 
-
-    useEffect(()=>{
-      featuredSponsoredProperties() 
- },[])
  
- const url='https://homehub-coxc.onrender.com/api/allSponsoredPost'
+
    const featuredSponsoredProperties = async () => {
      const loadingAlert = Swal.fire({
        title: "Loading",
@@ -34,7 +31,7 @@ const FeaturedProperties = () => {
  
      Swal.showLoading();
      try {
-       const response = await axios.get(url);
+       const response = await axios.get('https://homehub-coxc.onrender.com/api/allSponsored');
        console.log(response.data)
        loadingAlert.close();
        setSponsoredPropertiesArray(response.data.data);
@@ -45,6 +42,10 @@ const FeaturedProperties = () => {
       //  Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
      }
    };
+
+   useEffect(()=>{
+    featuredSponsoredProperties() 
+},[])
 
    const handleNavigate=(_id)=>{
     navigate("/propertydetailpage")
@@ -134,16 +135,17 @@ const FeaturedProperties = () => {
             
         </div> */}
 <div className='ForSaleProperties'>    
-          {allListingArray.slice(-4).map((d) => (
+          {sponsoredPropertiesArray.slice(-4).map((d) => (
             <div key={d._id} className='ForSaleProperty'>
               <div className='ForSalePropertyImgWrap'>
                 <img src={d.images[0]} alt='ForSalePropertyImg' />
               </div>
               <div className='ForSalePropertyNamePriceButtonWrap'>
                 <div className='ForSalePropertyNameAndPrice'>
+                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.8vw", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
                   <h4>{d.type}</h4>
                   <p>
-                  {d.category&&<span>Category: {d.category.type}</span>}
+                    <span>Category:</span> {d.category==="65e43620b24d39a99a1c06f7"?"For Sale":"For Rent"}
                   </p>
                   <p>
                     <span>Price:</span> N{d.amount}
