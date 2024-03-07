@@ -151,7 +151,7 @@ function payKorapay(_id) {
         // Handle when payment is successful
         console.log(data);
         console.log(_id)
-        // handleSponsor(_id);
+        handleSponsor(_id);
         handleSponsorBackend(_id)
         // navigate('/');
         
@@ -177,17 +177,17 @@ function payKorapay(_id) {
 }
 
 //adding from posted to sponsored
-// const handleSponsor = (_id) => {
-//   const propertyToSponsor = agentPostedProperties.find((e) => e._id === _id);
-//   if (!propertyToSponsor) {
-//     console.error("Property not found.");
-//     return;
-//   }
+const handleSponsor = (_id) => {
+  const propertyToSponsor = agentPostedProperties.find((e) => e._id === _id);
+  if (!propertyToSponsor) {
+    console.error("Property not found.");
+    return;
+  }
 
-//   setSponsoredProperties([...sponsoredProperties, propertyToSponsor]);
-//   console.log(_id)
-//   localStorage.setItem("sponsoredProperties",JSON.stringify([...sponsoredProperties, propertyToSponsor]))
-// };
+  setSponsoredProperties([...sponsoredProperties, propertyToSponsor]);
+  console.log(_id)
+  // localStorage.setItem("sponsoredProperties",JSON.stringify([...sponsoredProperties, propertyToSponsor]))
+};
 
 const handleSponsorBackend = async(_id)=>{
   console.log(_id)
