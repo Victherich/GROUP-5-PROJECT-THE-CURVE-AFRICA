@@ -1,0 +1,12 @@
+.HeaderDummy{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 15vh;
+    background-color: blue;
+}
+
+.HeaderDummy p{
+    cursor: pointer;
+}

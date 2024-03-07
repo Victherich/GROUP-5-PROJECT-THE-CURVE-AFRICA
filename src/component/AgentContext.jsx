@@ -12,6 +12,8 @@ const [toggleAgentEditProfileUI,setToggleAgentEditProfileUI]=useState(false);
 const [toggleAgentChangePasswordUI,setToggleAgentChangePasswordUI]=useState(false)
 const [logoutWarning,setLogoutwarning]=useState(false);
 const [toggleAgentViewDetailpage,setToggleAgentViewDetailpage]=useState(false)
+
+
 const [AgentToken,setAgentToken]=useState(null||localStorage.getItem("AgentToken"));
 const [AgentId,setAgentId]=useState(null);
 const [Agent,setAgent]=useState(null||localStorage.getItem("AgentInfo"))
@@ -37,6 +39,7 @@ const Agentlogout = useCallback(()=>{
   setAgentToken(null)
   localStorage.removeItem("AgentToken")
   console.log("logout contex function")
+  
 },[]);
 
 const propertyDetail = async (_id) => {
@@ -76,7 +79,7 @@ const propertyDetail = async (_id) => {
     Agentlogout,Agentlogin,AgentId,AgentToken,
     toggleAgentViewDetailpage,setToggleAgentViewDetailpage,
     sponsoredProperties,setSponsoredProperties,propertyDetail,
-    propertyDetailObj,
+    propertyDetailObj,setAgentToken,
     // agentPostedProperties,setAgentPostedProperties
     }}>
         {children}

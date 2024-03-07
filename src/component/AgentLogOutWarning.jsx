@@ -46,6 +46,12 @@ const AgentLogOutWarning = () => {
     }
   };
 
+  // const handleLogout = ()=>{
+  //   Agentlogout();
+  //   navigate('/');
+  //   setLogoutwarning(false);
+  // }
+
   const handleCancel = () => {
     setLogoutwarning(false);
   };

@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import AgentPrivate from './component/AgentPrivate';
 import UserPrivate from './component/UserPrivate';
+import ScrollToTop from './component/ScrollToTop';
 
 //all pages import 
 import LandingPage from './Pages/LandingPage'
@@ -35,15 +36,15 @@ import axios from 'axios';
 
 const App = () => {
   const {Userlogin}=useContext(UserContext)
-  const {Agentlogin,sponsoredProperties,setSponsoredProperties}=useContext(AgentContext)
+  const {Agentlogin,sponsoredProperties,setSponsoredProperties,setAgentToken}=useContext(AgentContext)
 
 // useEffect(()=>{
-// const storedUserToken=localStorage.getItem("UserToken")
-// if(storedUserToken){
-//   axios.defaults.headers.common["Authorization"]=`Bearer${storedUserToken}`;
-//   Userlogin(storedUserToken)
+// const storedAgentToken=localStorage.getItem("AgentToken")
+// if(storedAgentToken){
+//   // axios.defaults.headers.common["Authorization"]=`Bearer${storedUserToken}`;
+//   setAgentToken(storedAgentToken)
 // }
-// },[UserLogin])
+// },[AgentLogin])
 
 
 
@@ -55,6 +56,7 @@ const App = () => {
   return (
     <div className='App'>  
       <BrowserRouter>
+      <ScrollToTop/>
           <Routes>
           
                 {/* userPages */}

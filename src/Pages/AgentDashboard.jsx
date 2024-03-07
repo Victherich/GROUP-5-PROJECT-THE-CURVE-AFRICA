@@ -12,16 +12,30 @@ import '../CSS/AgentDashboard.css'
 import AgentPostedProperties from '../component/AgentPostedProperties'
 import AgentLogOutWarning from '../component/AgentLogOutWarning'
 import AgentViewDetailPage from '../component/AgentViewDetailPage'
+import { useEffect } from 'react'
 
 
 const AgentDashboard = () => {
+
+
   const {AgentActiveMenu,
     toggleAgentChangePasswordUI,
     setToggleAgentChangePasswordUI,
     toggleAgentEditProfileUI,
     setToggleAgentEditProfileUI,
   logoutWarning,
-  toggleAgentViewDetailpage,Agent}=useContext(AgentContext)
+  toggleAgentViewDetailpage,Agent,setAgentToken}=useContext(AgentContext)
+
+
+  useEffect(()=>{
+    const storedAgentToken=localStorage.getItem("AgentToken")
+    if(storedAgentToken){
+      // axios.defaults.headers.common["Authorization"]=`Bearer${storedUserToken}`;
+      setAgentToken(storedAgentToken)
+    }
+    },[])
+
+
   return (
     <div className='AgentDashboard'>
       <div className='AgentDashboardLeft'>
