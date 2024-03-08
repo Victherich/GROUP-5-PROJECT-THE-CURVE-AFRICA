@@ -152,17 +152,10 @@ function payKorapay(_id) {
         console.log(data);
         console.log(_id)
         handleSponsor(_id);
-        handleSponsorBackend(_id)
-        // navigate('/');
-        
-        Swal.fire({icon:"success",
-        title:"Payment Confirmation",
-        text:`Paid NGN ${amountValue} for sponsorship of post id no.: ${_id}`,
-        showConfirmButton:true,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-      })
-      setAgentActiveMenu("sponsored property")
+        handleSponsorBackend(_id,amountValue);
+
+       
+      setAgentActiveMenu("sponsored property");
       },
 
       onFailed: function (data) {
@@ -189,11 +182,19 @@ const handleSponsor = (_id) => {
   // localStorage.setItem("sponsoredProperties",JSON.stringify([...sponsoredProperties, propertyToSponsor]))
 };
 
-const handleSponsorBackend = async(_id)=>{
+const handleSponsorBackend = async(_id,amountValue)=>{
   console.log(_id)
   try {
     const response = await axios.put(`https://homehub-coxc.onrender.com/api/sponsorPost/${_id}`);
     console.log(response.data);
+
+    Swal.fire({icon:"success",
+    title:"Payment Confirmation",
+    text:`Paid NGN ${amountValue} for sponsorship of post id no.: ${_id}`,
+    showConfirmButton:true,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  });
     // getSponsored()
   } catch (error) {
     console.error(error);
