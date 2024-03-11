@@ -1,241 +1,3 @@
-.hero {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    background-color: whitesmoke;
-    /* align-items: center; */
-    @media screen and (max-width:1024px) {
-        height: 100vh;
-    }
-
-    @media screen and (max-width:950px) {
-        height: 100vh;
-    }
-
-    @media screen and (max-width:900px) {
-        justify-content: center;
-        text-align: center;
-        
-    }
-    @media screen and (max-width:768px) {
-        width: 100vw;
-        height: 60vh;
-    }
-    @media screen and (max-width:470px) {
-        height: 70vh;
-    }
-    @media screen and (max-width:430px) {
-        height: 70vh;
-    }
-    
-    @media screen and (max-width:414px) {
-        height: 55vh;
-    }
-    @media screen and (max-width:320px) {
-        height: 50vh;
-    }
-}
-
-.heroright {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-left: 5%;
-    padding-top: 20vh;
-    gap: 3vh;
-
-    @media screen and (max-width:1024px) {
-        padding-top: 150px;
-    }
-    @media screen and (max-width:900px) {
-        width: 80%;
-    }
-
-    @media screen and (max-width:768px) {
-        padding-top: 100px;
-    }
-    @media screen and (max-width:430px) {
-        padding-top: 130px;
-    }
-   
-    @media screen and (max-width:414px) {
-        padding-top: 95px;
-    }
-    @media screen and (max-width:320px) {
-        padding-top: 50px;
-    }
-}
-
-.heroright h1 {
-    font-size: 3.8rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 650;   
-    @media screen and (max-width:1071px) {
-        font-size: 300%;
-    }
-
-    @media screen and (max-width:1024px) {
-        font-size: 250%;
-    }
-    @media screen and (max-width:954px) {
-        font-size: 200%;    
-    }
-    @media screen and (max-width:768px) {
-        font-size: 27px;
-    }
-    @media screen and (max-width:430px) {
-        font-size: 20px;
-    }
-    
-    @media screen and (max-width:414px) {
-        font-size: 16px;
-    }
-    @media screen and (max-width:320px) {
-        margin-top: 5vh;
-        font-size: 12px;
-        
-    }
-}
-
-.hero h1 > span {
-    color: #0653C8;
-}
-
-.heroright p {
-    font-size: 1.5rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    @media screen and (max-width:768px) {
-        font-size: 17px;
-    }
-    @media screen and (max-width:430px) {
-        font-size: 15px;
-    }
-    @media screen and (max-width:414px) {
-        font-size: 14px;
-    }
-    @media screen and (max-width:320px) {
-        font-size: 10px;
-    }
-}
-
-.herolast {
-    width: 80%;
-    height: 10vh;
-    display: flex;
-    justify-content: space-between;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    @media screen and (max-width:768px) {
-        width: 90%;
-    }
-    @media screen and (max-width:430px) {
-        height: 20%;
-        width: 99%;
-        /* flex-wrap: wrap; */
-    }
-    @media screen and (max-width:414px) {
-        height: 40%;
-        width: 99%;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-    @media screen and (max-width:320px) {
-        width: 100%;
-    }
-}
-
-.herolast1{
-    text-align: center;
-    width: 30%;
-    height: 100%;
-    background-color: white;
-    padding: 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px ;
-    @media screen and (max-width:768px) {
-        width: 35%;
-    }
-    @media screen and (max-width:430px) {
-        width: 45%;
-    }
-    @media screen and (max-width:414px) {
-        width: 45%;
-        height: 50%;
-        gap: 10px;
-    }
-    @media screen and (max-width:320px) {
-        width: 45%;
-        gap: 5px;
-    }
-
-   
-}
-
-.herolast1 h2 {
-    font-size: 1rem;
-    @media screen and (max-width:768px) {
-        font-size: 18px;
-    }
-    @media screen and (max-width:430px) {
-        font-size: 15px;
-    }
-    @media screen and (max-width:414px) {
-        font-size: 14px;
-    }
-    @media screen and (max-width:320px) {
-        font-size: 9px;
-    }
-
-
-}
-
-.herolast1 p {
-    font-size: 18px;
-    @media screen and (max-width:768px) {
-        font-size: 12px;
-    }
-    @media screen and (max-width:430px) {
-        font-size: 11px;
-    }
-    @media screen and (max-width:414px) {
-        font-size: 10px;
-    }
-    @media screen and (max-width:390px) {
-        font-size: 9.9px;
-    }
-    @media screen and (max-width:375px) {
-        font-size: 8.5px;
-    }
-    @media screen and (max-width:320px) {
-        font-size: 7px;
-    }
-    
-}
-
-.heroleft {
-    width: 50%;
-    height: 100%;
-    display: flex; 
-    /* background-color: blue; */
-    @media screen and (max-width:900px){
-        display: none;
-    }
-    @media screen and (max-width:768px){
-        display: none;
-    }
-}
-
-.heroleft img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-
 
 /* New Css */
 
@@ -246,8 +8,8 @@
     background-color: whitesmoke;
     justify-content: center;
     align-items: center;
-    /* align-items: center; */
-    @media screen and (max-width:768px) {
+    font-size: 2vw;
+    /* @media screen and (max-width:768px) {
         height: 95vh;
     }
     @media screen and (max-width:600px) {
@@ -258,7 +20,7 @@
     }
     @media screen and (max-width:370px) {
         height: 60vh;
-    }
+    } */
 }
 
 
@@ -270,41 +32,21 @@
     padding-left: 5%;
     padding-top: 20vh;
     gap: 3vh;
-    /* background-color: red; */
 
-
-    @media screen and (max-width:1024px) {
-        /* padding-top: 150px; */
-    }
-    @media screen and (max-width:900px) {
-        /* width: 80%; */
-    }
-
-    @media screen and (max-width:768px) {
-        /* padding-top: 100px; */
+    /* @media screen and (max-width:768px) {
         width: 100%;
         text-align: center;
-    }
-    @media screen and (max-width:430px) {
-        /* padding-top: 130px; */
-    }
-   
-    @media screen and (max-width:414px) {
-        /* padding-top: 95px; */
-    }
-    @media screen and (max-width:320px) {
-        /* padding-top: 50px; */
-    }
+    } */
 }
 
 .HeroLeft h1 {
-    font-size: 4.5vw;
+    /* font-size: 4.5vw; */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 650;   
 
-    @media screen and (max-width:768px) {
+    /* @media screen and (max-width:768px) {
         font-size:8vw;
-    }
+    } */
    
 }
 
@@ -313,23 +55,24 @@
 }
 
 .HeroLeft p {
-    font-size: 2vw;
+    /* font-size: 2vw; */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-     @media screen and (max-width:768px) {
+     /* @media screen and (max-width:768px) {
         font-size: 3vw;
-    }
+    } */
    
 }
 
 
 .HeroPostProperty{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 5%;
     align-items: center;
-    width: 80%;
+    width: 100%;
     /* background-color: red; */
 
-    @media screen and (max-width:768px) {
+    /* @media screen and (max-width:768px) {
         width:70%;
         margin-left: 20%;
         font-size: 3vw;
@@ -337,35 +80,14 @@
 
     @media screen and (max-width:414px) {
         font-size: 8vw;
-    }
-
-    /* @media screen and (max-width:1280px) {
-        width:70%;
-       
-
-    }
-    
-    @media screen and (max-width:1145px) {
-        width:60%;
-       
-    }
-
-    @media screen and (max-width:1071px) {
-        
-    }
-    @media screen and (max-width:954px) {
-       
-    } */
-    /* @media screen and (max-width:900px) {
-        margin-left: 20%;
     } */
 }
 
 .HeroPostProperty p{
-    font-size: 2vw;
-    @media screen and (max-width:768px) {
+    /* font-size: 2vw; */
+    /* @media screen and (max-width:768px) {
         font-size: 4vw;
-    }
+    } */
 
 }
 
@@ -379,10 +101,10 @@
     cursor: pointer;
     transform: scale(1);
     transition: 350ms;
-    @media screen and (max-width:768px) {
+    /* @media screen and (max-width:768px) {
         font-size:2vw;
 
-    }
+    } */
 }
 
 .HeroPostProperty button:hover{
@@ -397,19 +119,128 @@
 .HeroRight {
     width: 50%;
     height: 100%;
-    display: flex; 
     /* background-color: blue; */
-    @media screen and (max-width:900px){
-        /* display: none; */
+    display: flex; 
+    /* @media screen and (max-width:900px){
+
         height: 90vh;
     }
     @media screen and (max-width:768px){
         display: none;
-    }
+    } */
 }
 
 .HeroRight img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+
+
+@media screen and (max-width:1280px){
+    .Hero{
+        height: 70vh;
+    }
+}
+
+@media screen and (max-width:884px){
+    .Hero{
+        height: 50vh;
+        font-size: 2.1vw;
+    }
+    .HeroLeft{
+        padding-top: 15vh;
+    }
+}
+
+@media screen and (max-width:834px){
+    .Hero{
+        height: 60vh;
+        font-size: 2.8vw;
+    }
+    .HeroLeft{
+        padding-top: 10vh;
+    }
+    .HeroPostProperty{
+        gap: 1%;
+    }
+}
+
+
+@media screen and (max-width:800px){
+
+    .Hero{
+        height: 55vh;
+        font-size: 2.8vw;
+
+    }
+    .HeroLeft{
+        padding-top: 10vh;
+    }
+    .HeroPostProperty{
+        gap: 1%;
+    }
+}
+
+@media screen and (max-width:768px){
+
+    .Hero{
+        height: 55vh;
+        font-size: 3vw;
+
+    }
+    .HeroRight{
+        display: none !important;
+    }
+    .HeroLeft{
+        width: 70%;
+        text-align: center;
+        padding-top: 15vh;
+        padding-left: 0;
+    }
+    .HeroPostProperty{
+        gap: 5%;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:428px){
+    .Hero{
+        font-size: 4.6vw;
+        height: 60vh;
+    }
+    .HeroLeft{
+        width: 100%;
+        
+    }
+}
+
+@media screen and (max-width:412px){
+    .Hero{
+        font-size: 5vw;
+        height: 65vh;
+    }
+}
+
+@media screen and (max-width:412px){
+    .Hero{
+        font-size: 5vw;
+        height: 70vh;
+    }
+}
+
+@media screen and (max-width:320px){
+    .Hero{
+        font-size: 5vw;
+        height: 85vh;
+    }
+    .HeroLeft{
+        width: 100%;
+        
+    }
+    .HeroPostProperty{
+        width: 90%;
+    }
 }

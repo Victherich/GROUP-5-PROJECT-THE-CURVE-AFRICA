@@ -38,13 +38,13 @@ const App = () => {
   const {Userlogin}=useContext(UserContext)
   const {Agentlogin,sponsoredProperties,setSponsoredProperties,setAgentToken}=useContext(AgentContext)
 
-// useEffect(()=>{
-// const storedAgentToken=localStorage.getItem("AgentToken")
-// if(storedAgentToken){
-//   // axios.defaults.headers.common["Authorization"]=`Bearer${storedUserToken}`;
-//   setAgentToken(storedAgentToken)
-// }
-// },[AgentLogin])
+useEffect(()=>{
+const storedAgentToken=localStorage.getItem("AgentToken")
+if(storedAgentToken){
+  // axios.defaults.headers.common["Authorization"]=`Bearer${storedUserToken}`;
+  setAgentToken(storedAgentToken)
+}
+},[])
 
 
 

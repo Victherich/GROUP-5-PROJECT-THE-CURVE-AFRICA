@@ -8,6 +8,7 @@
     position: fixed;
     top: 0;
     z-index: 1;
+    font-size: 1.5vw;
 }
 
 .HeaderA {
@@ -38,7 +39,7 @@
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
-    font-size: 120%;
+    /* font-size: 120%; */
 }
 
 
@@ -60,61 +61,46 @@
 .sec2 {
     color: #0653C8;
     text-decoration: none;
-    transition: 350ms;
+    transition: 350ms;  
     transform: scale(1);
 }
 
-@media screen and (max-width: 850px){
+@media screen and (max-width: 1280px){
+    .HeaderWrap{
+        font-size: 2vw;
+    }
+}
+
+@media screen and (max-width: 884px){
+    .HeaderWrap{
+        font-size: 3vw;
+        height: 9vh;
+    }
     .MenuWrap{
-        width: 70%;
+        width:70% ;
     }
-}
-
-
-
-@media screen and (max-width: 768px) {
-    .HeaderA {
-        width: 90%;
-    }
-
-    .ImageWrap{
-        width: 10%;
-    }
-    .MenuWrap {
-        width: 60%;
-    }
-}
-
-@media screen and (max-width: 600px) {
     .ImageWrap {
-        width: 15%;
+        width: 20%;
+        height: 80%;
     }
-
-    .MenuWrap {
-        width: 80%;
-    }
-
 }
 
-@media screen and (max-width:450px) {
+
+
+@media screen and (max-width: 768px){
+    .HeaderWrap{
+        font-size: 3.2vw;
+    }
+}
+
+@media screen and (max-width: 428px){
+    .HeaderWrap{
+        font-size: 3.5vw;
+    }
+    .HeaderA{
+        width: 95%;
+    }
     .MenuWrap{
-        font-size: 100%;
+        width:75% ;
     }
-}
-
-@media screen and (max-width: 414px) {
-    .ImageWrap {
-        display: none;
-    }
-
-    .MenuWrap {
-        width: 100%;
-        justify-content: space-around;
-        font-size: 95%;
-    }
-    .HeaderA {
-        justify-content: center ;
-        
-    }
-
 }
