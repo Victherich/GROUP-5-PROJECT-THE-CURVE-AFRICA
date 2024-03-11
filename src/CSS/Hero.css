@@ -101,6 +101,7 @@
     cursor: pointer;
     transform: scale(1);
     transition: 350ms;
+    /* font-size: 1.1vw; */
     /* @media screen and (max-width:768px) {
         font-size:2vw;
 
@@ -142,6 +143,10 @@
     .Hero{
         height: 70vh;
     }
+    .HeroPostProperty button{
+        /* font-size: 1.5vw; */
+    }
+    
 }
 
 @media screen and (max-width:884px){
@@ -151,6 +156,9 @@
     }
     .HeroLeft{
         padding-top: 15vh;
+    }
+    .HeroPostProperty button{
+        /* font-size: 1.7vw; */
     }
 }
 
@@ -164,6 +172,9 @@
     }
     .HeroPostProperty{
         gap: 1%;
+    }
+    .HeroPostProperty button{
+        /* font-size: 1.9vw; */
     }
 }
 
@@ -210,6 +221,7 @@
     .Hero{
         font-size: 4.6vw;
         height: 60vh;
+        padding: 0% 2%;
     }
     .HeroLeft{
         width: 100%;
