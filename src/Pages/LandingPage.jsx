@@ -49,7 +49,7 @@ const handleAgentArea = ()=>{
     <div 
     style={{display:'flex',
             width:"100%",
-          marginTop:"10vh",
+          marginTop:"1vh",
         height:"10vh"}}
     className='featured111'>
             <h1 
@@ -60,7 +60,7 @@ const handleAgentArea = ()=>{
         </div><br/><br/>
     <div className='choose'>
         <h1>Why Choose Us?</h1>
-        <div className='choose1'>
+        <div className='chooseItems'>
             <div className='choosediv'>
                 <div className='chooseimg'>
                     <img src={img14} alt="" />
@@ -71,14 +71,14 @@ const handleAgentArea = ()=>{
                      before join us and amplify your real estate <br /> success. </p>
                 </div>
             </div>
-            <div className='choosediv1'>
+            <div className='choosediv'>
                 <div className='choosetext'>
-                    <span>Get free post sponsorship as an <br /> Agent. </span>
+                    <span>Get free post sponsorship as an Agent. </span>
                     <p>As an agent, unlock five days of complimentary <br /> post sponsorship on our platform. <br /> 
                      Reach potential clients effectively and efficiently. <br /> Start boosting your listings today.  </p>
                 </div>
 
-                <div className='chooseimg1'>
+                <div className='chooseimg'>
                     <img src={img15} alt="" />
                 </div>
             </div>

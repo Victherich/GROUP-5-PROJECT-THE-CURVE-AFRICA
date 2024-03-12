@@ -589,10 +589,10 @@
 @media screen and (max-width:428px) {
     .ForSaleProperties{
         width: 100%;
-        gap: 3.5%;
+        /* gap: 3.5%; */
     }
     .ForSaleProperty{
-        width: 85%;
+        width: 75%;
         height: 55vh;
     }
     .ForSalePropertyNameAndPrice h4{
@@ -610,7 +610,7 @@
     
 }
 
-@media screen and (max-width:320px) {
+/* @media screen and (max-width:320px) {
     .ForSaleProperties{
         width: 100%;
         gap: 3.5%;
@@ -632,4 +632,4 @@
         font-size:5vw;
     }
     
-}
+} */
