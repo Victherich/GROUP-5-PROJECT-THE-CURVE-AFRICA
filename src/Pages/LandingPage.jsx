@@ -53,6 +53,7 @@ const handleAgentArea = ()=>{
         height:"10vh"}}
     className='featured111'>
             <h1 
+            className='VeiwAllListing'
             onClick={handleViewMore}
             style={{cursor:"pointer",
                     color:"#0E9AFF",

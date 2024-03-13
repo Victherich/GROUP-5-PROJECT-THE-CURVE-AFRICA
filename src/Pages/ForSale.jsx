@@ -72,14 +72,14 @@ const ForSale = () => {
 
   useEffect(() => {
     if (sort === 'Highest Price First') {
-      setForSalePropertiesB([...forSalePropertiesB].sort((a, b) => b.price - a.price));
+      setForSalePropertiesB([...forSalePropertiesB].sort((a, b) => b.amount - a.amount));
     } else if (sort === 'Lowest Price First') {
-      setForSalePropertiesB([...forSalePropertiesB].sort((a, b) => a.price - b.price));
+      setForSalePropertiesB([...forSalePropertiesB].sort((a, b) => a.amount - b.amount));
     } else {
       handleSearch();
     }
   }, [sort]);
-
+console.log(sort)
 // ensuring the assignment of forsale propertyB
   useEffect(()=>{
     setForSalePropertiesB(forSaleProperties);
@@ -91,6 +91,8 @@ const ForSale = () => {
   useEffect(() => {
     setReversedProperties([...forSalePropertiesB].reverse());
   }, [forSalePropertiesB]);
+
+ 
 
 
   const handleNavigate=(_id)=>{
@@ -115,8 +117,8 @@ const ForSale = () => {
       const response = await axios.get('https://homehub-coxc.onrender.com/api/allSponsored');
       console.log(response.data)
       loadingAlert.close();
-      setSponsoredPropertiesArray(response.data.data);
       
+      setSponsoredPropertiesArray(response.data.data);
     } catch (error) {
       console.error(error);
       loadingAlert.close();
@@ -166,7 +168,9 @@ const ForSale = () => {
               </div>
               <div className='ForSalePropertyNamePriceButtonWrap'>
                 <div className='ForSalePropertyNameAndPrice'>
-                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.8vw", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
+                <span
+                className='sponsorTag'
+                >Sponsored</span>
                   <h4>{d.type}</h4>
                   <p>
                     <span>Category:</span> {d.category==="65e43620b24d39a99a1c06f7"?"For Sale":"For Rent"}

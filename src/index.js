@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserContextProvider from './component/UserContext';
 import AgentContextProvider from './component/AgentContext';
+import { Provider } from 'react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -25,11 +25,15 @@ const AgentDashboardSideBar = () => {
           <div className='AgentDashboardSidebarDownMenu'>
               <p onClick={()=>setAgentActiveMenu("account")} 
               className={AgentActiveMenu==="account"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}
-              >Hi, {parsedAgent.fullName}</p>
+              ><span>Hi, {parsedAgent.fullName.slice(0,6)}</span><img className="MenuIcon"src={ProfileIcon} alt="icon"/></p>
 
-              {/* <p onClick={()=>setAgentActiveMenu("post a property")} className={AgentActiveMenu==="post a property"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Post a Property</p> */}
-              <p onClick={()=>setAgentActiveMenu('posted property')} className={AgentActiveMenu==='posted property'?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Posted Properties</p>
-              <p onClick={()=>setAgentActiveMenu("sponsored property")} className={AgentActiveMenu==="sponsored property"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Sponsored Properties</p>
+              <p onClick={()=>setAgentActiveMenu('posted property')} 
+              className={AgentActiveMenu==='posted property'?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}
+              ><span>Posted Properties</span><img className="MenuIcon"src="" alt="icon"/></p>
+
+              <p onClick={()=>setAgentActiveMenu("sponsored property")} 
+              className={AgentActiveMenu==="sponsored property"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}
+              ><span>Sponsored Properties</span><img className="MenuIcon"src="" alt="icon"/></p>
           </div>
           <div className='AgentDashboardSidebarLogoutWrap'>
               <p onClick={()=>setLogoutwarning(!logoutWarning)}>Logout</p>

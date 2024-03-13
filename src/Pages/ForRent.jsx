@@ -278,7 +278,7 @@ const ForRent = () => {
             HOME<span>HUB</span>
           </h1>
           <p>Your dream home awaits, unlock the door with home hub...</p>
-          <p style={{fontSize:"1.8vw"}}>NB: All rent property prices are Annual</p>
+          <p>NB: All rent property prices are Annual</p>
         </div>
 
         <div className='ForSaleProperties'>    
