@@ -138,6 +138,12 @@
     }   
 }
 
+@media screen and (max-width:834px){
+    .AgentDashboardSidebar{
+        font-size: 2.5vw;
+    }   
+}
+
 @media screen and (max-width:768px){
     .AgentDashboardSidebar{
         font-size: 2.5vw;
@@ -153,6 +159,9 @@
         width: 100%;
     }
     .AgentDashboardSidebarDownMenu span{
+        display: none;
+    }
+    .AgentDashboardSidebarLogoutWrap span{
         display: none;
     }
 }

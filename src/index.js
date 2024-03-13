@@ -5,16 +5,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserContextProvider from './component/UserContext';
 import AgentContextProvider from './component/AgentContext';
-import { Provider } from 'react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store,persistor } from "./Features/Store"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <AgentContextProvider>
-          <UserContextProvider>
-              <App />
-        </UserContextProvider>
-      </AgentContextProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AgentContextProvider>
+              <UserContextProvider>
+                  <App />
+            </UserContextProvider>
+          </AgentContextProvider>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 

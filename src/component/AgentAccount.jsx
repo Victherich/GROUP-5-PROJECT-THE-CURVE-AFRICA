@@ -67,6 +67,7 @@
 import React, { useContext } from 'react';
 import AgentEditProfileUI from './AgentEditProfileUI';
 import { AgentContext } from './AgentContext';
+import { useSelector } from 'react-redux';
 
 const AgentAccount = ({
   toggleAgentChangePasswordUI,
@@ -78,9 +79,10 @@ const AgentAccount = ({
 
   // Parse Agent state if it's in JSON format
   const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
-
   // console.log(parsedAgent);
   // console.log(parsedAgent.fullName);
+
+  const AgentUser = useSelector(state=>state.user)
 
   const handleAgentChangePasswordUI = () => {
     setToggleAgentChangePasswordUI(!toggleAgentChangePasswordUI);
@@ -99,23 +101,23 @@ const AgentAccount = ({
           <h3>Agent Account</h3>
           <p>
             <span>Name: </span>
-            {parsedAgent.fullName}
+            {AgentUser.fullName}
           </p>
           <p>
             <span>Company Name: </span>
-            {parsedAgent.companyName}
+            {AgentUser.companyName}
           </p>
           <p>
             <span>Address: </span>
-            {parsedAgent.address}
+            {AgentUser.address}
           </p>
           <p>
             <span>Email: </span>
-            {parsedAgent.email}
+            {AgentUser.email}
           </p>
           <p>
             <span>Phone no.: </span>
-            {parsedAgent.phoneNumber}
+            {AgentUser.phoneNumber}
           </p>
         </div>
         <div className='AccountUpRight'>

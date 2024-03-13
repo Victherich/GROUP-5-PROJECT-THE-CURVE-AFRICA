@@ -8,6 +8,7 @@ import '../CSS/SponsorUI.css'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import AgentViewDetailPage from './AgentViewDetailPage'
+import { useSelector } from 'react-redux'
 
 const AgentPostedProperties = () => {
   const navigate = useNavigate()
@@ -21,13 +22,16 @@ const AgentPostedProperties = () => {
 
 const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
 // console.log(parsedAgent._id)
+const AgentUser = useSelector(state=>state.user)
+
+
 const [agentPostedProperties,setAgentPostedProperties]=useState([])
 
     //fetching posted properties from api
   useEffect(() => {
     handleAgentPostedProperties()
   }, [])
-  const url =`https://homehub-coxc.onrender.com/api/getAgentHouse/${parsedAgent._id}`
+  const url =`https://homehub-coxc.onrender.com/api/getAgentHouse/${AgentUser._id}`
   const handleAgentPostedProperties = async () => {
     const loadingAlert = Swal.fire({
       title: "Loading",

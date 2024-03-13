@@ -243,6 +243,14 @@
     }
 }
 
+@media screen and (max-width:390px){
+    .Hero{
+        font-size: 5vw;
+        height: 75vh;
+    }
+}
+
+
 @media screen and (max-width:320px){
     .Hero{
         font-size: 5vw;

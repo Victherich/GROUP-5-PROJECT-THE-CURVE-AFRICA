@@ -4,10 +4,12 @@ import axios from 'axios'
 import SponsoredImg from '../Images/HOUSE2-removebg-preview (1) 1.png'
 import { AgentContext } from './AgentContext'
 import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
 
 const AgentSponsoredProperties = () => {
   const {sponsoredProperties,setSponsoredProperties,Agent}=useContext(AgentContext)
   const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
+const AgentUser = useSelector(state=>state.user)
 //   const url=""
 
 // useEffect(()=>{
@@ -88,7 +90,7 @@ const getAgentSponsored = async()=>{
 
   Swal.showLoading();
   try{
-    const response = await axios.get(`https://homehub-coxc.onrender.com/api/getSponsored/${parsedAgent._id}`)
+    const response = await axios.get(`https://homehub-coxc.onrender.com/api/getSponsored/${AgentUser._id}`)
     console.log(response.data)
     setSponsoredProperties(response.data.data)
     loadingAlert.close()

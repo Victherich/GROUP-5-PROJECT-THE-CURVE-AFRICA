@@ -5,6 +5,9 @@ import '../CSS/LogOutWarning.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logout } from '../Features/Slice';
 
 const AgentLogOutWarning = () => {
   const { setLogoutwarning, Agentlogout, AgentToken } = useContext(AgentContext);
@@ -12,6 +15,9 @@ const AgentLogOutWarning = () => {
   console.log(AgentToken);
 
   const parsedAgentToken = typeof Agent === 'string' ? JSON.parse(AgentToken) : AgentToken;
+
+  const Dispatch = useDispatch()
+  const AgentUserToken = useSelector(state=>state.userToken)
 
   const AgentlogoutUrl = 'https://homehub-coxc.onrender.com/api/logout';
 
@@ -27,13 +33,15 @@ const AgentLogOutWarning = () => {
     });
     Swal.showLoading();
     try {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${AgentToken}`;
+      axios.defaults.headers.common['Authorization'] = `Bearer ${AgentUserToken}`;
       const response = await axios.post(AgentlogoutUrl);
       console.log(response.data);
       console.log("logout");
       setLogoutwarning(false);
-      Agentlogout();
-      navigate('/');
+      // navigate('/');
+      // Agentlogout();
+      Dispatch(logout())
+      
       loadingAlert.close();
       Swal.fire({icon:"success",title:"Logout Successful",showConfirmButton:false,timer:2000})
     } catch (error) {

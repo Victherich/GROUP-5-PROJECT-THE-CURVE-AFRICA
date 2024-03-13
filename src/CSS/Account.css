@@ -118,6 +118,12 @@
     }   
 }
 
+@media screen and (max-width:834px){
+    .Account{
+        font-size: 3vw;
+    }   
+}
+
 @media screen and (max-width:768px){
     .Account{
         font-size: 3vw;

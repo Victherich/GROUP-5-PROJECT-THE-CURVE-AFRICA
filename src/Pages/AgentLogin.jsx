@@ -6,10 +6,14 @@ import { AgentContext } from '../component/AgentContext';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../Features/Slice';
+import { useSelector } from 'react-redux';
 
 const AgentLogin = () => {
   const { Agentlogin } = useContext(AgentContext);
   const navigate = useNavigate();
+  const Dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -42,8 +46,12 @@ const AgentLogin = () => {
         // alert(response.data.message);
         Swal.fire({icon:"success",title:response.data.message,showConfirmButton:true})
         loadingAlert.close();
-        Agentlogin(response.data.token, response.data.agentExist);
+        // Agentlogin(response.data.token, response.data.agentExist);
+        const user = response.data.agentExist
+        const token = response.data.token
+        Dispatch(login({user,token}))
         navigate("/agentdashboard")
+        // console.log(token)
       } catch (error) {
         console.error(error);
         loadingAlert.close();
@@ -64,6 +72,15 @@ const AgentLogin = () => {
   //     AgentLogin(storedAgentToken)
   //   }
   // }
+
+  //ensureing navigation back to dashboard after going back to home page and also preventing throttle navigation
+  //during logout
+  const AgentUserToken = useSelector(state=>state.userToken)
+useEffect(()=>{
+  if(AgentUserToken){
+    navigate("/agentdashboard")
+  } 
+},[])
 
   return (
     <div className='agentbody'>
