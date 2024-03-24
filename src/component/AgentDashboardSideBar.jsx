@@ -22,7 +22,7 @@ const AgentDashboardSideBar = () => {
  
   return (
     <div className='AgentDashboardSidebar'>
-      <Link to={"/"} className='AgentDashboardSidebarUp'>
+      <Link title="Back to Home" to={"/"} className='AgentDashboardSidebarUp'>
         <img src={HomeHubLogo} alt="AgentDashboardSidebarLogo"/>
       </Link>
       <div className='AgentDashboardSidebarDown'>

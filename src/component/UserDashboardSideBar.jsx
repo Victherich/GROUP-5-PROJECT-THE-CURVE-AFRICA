@@ -5,14 +5,21 @@ import { useContext } from 'react'
 import ProfileIcon from '../Images/profile icon.png'
 import HomeHubLogo from '../Images/HomeHub Logo.svg'
 import UserLogOutWarning from './UserLogoutUI'
+import { useNavigate } from 'react-router-dom'
 
 const UserDashboardSideBar = () => {
   const {UserActiveMenu,setUserActiveMenu,setLogoutwarning,logoutWarning}=useContext(UserContext)
   console.log(UserActiveMenu)
 
+  const navigate=useNavigate()
+
+  const handleNavigate=()=>{
+    navigate('/')
+  }
+
   return (
     <div className='AgentDashboardSidebar'>
-      <div className='AgentDashboardSidebarUp'>
+      <div title="Back to Home" onClick={handleNavigate} className='AgentDashboardSidebarUp'>
         <img src={HomeHubLogo} alt="AgentDashboardSidebarLogo"/>
       </div>
       <div className='AgentDashboardSidebarDown'>

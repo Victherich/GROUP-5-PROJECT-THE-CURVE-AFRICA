@@ -6,20 +6,20 @@ import PostedImg from '../Images/woodex6 1.png'
 import { UserContext } from './UserContext'
 
 const UserFavourite = () => {
-  const [UserPostedProperties,setUserPostedProperties]=useState([])
+  const [userFavourites,setuserFavourites]=useState([])
   const {setToggleUserViewDetailpage}=useContext(UserContext)
 
   const url=""
 
 useEffect(()=>{
-    handleUserPostedProperties()
+    handleuserFavourites()
 },[])
 
-const handleUserPostedProperties =async()=>{
+const handleuserFavourites =async()=>{
    try{
     const response = await axios.get(url)
     console.log(response.data)
-      setUserPostedProperties(data)
+      setuserFavourites(data)
    }catch(error){
     console.error(error)
    }
@@ -32,7 +32,7 @@ const handleUserPostedProperties =async()=>{
     <div className='PostedPropertiesWrap'>
       <h4>User Favourite</h4>
       <div className='PostedProperties'>
-        {UserPostedProperties.map((d)=>(
+        {userFavourites.map((d)=>(
           <div className='ForSaleProperty'>
           <div className='ForSalePropertyImgWrap'>
             <img src={PostedImg} alt="ForSalePropertyImg"/>

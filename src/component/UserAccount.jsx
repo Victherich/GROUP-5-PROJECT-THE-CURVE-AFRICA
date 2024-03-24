@@ -38,7 +38,7 @@ const handleUserEditProfileUI=()=>{
           </div>
       </div>
       <div className='AccountDown'>
-          <button onClick={handleUserEditProfileUI}>Edit Info</button>
+          {/* <button onClick={handleUserEditProfileUI}>Edit Info</button> */}
           {/* <button onClick={handleUserChangePasswordUI}>Change Password</button> */}
           
       </div>  

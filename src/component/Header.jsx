@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "../CSS/Header.css"
 import image8 from "../Images/image 8.png"
 import { NavLink, useLocation } from 'react-router-dom';
+import { UserContext } from './UserContext';
 
 
 const Header = () => {
   const location = useLocation()
   const [burger, setBurger] = useState(false)
   const [headerActive,setHeaderActive]=useState("home")
+  const {UserToken}=useContext(UserContext)
 
 useEffect(()=>{
   const path=location.pathname;
@@ -45,6 +47,17 @@ useEffect(()=>{
         >For Rent</NavLink>
         <NavLink to={"/allagentslistpage"} 
         className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
+
+        {UserToken?<div className='SignUpLoginWrap'>
+        <NavLink to={"/userdashboard"}>Hi ,Clara</NavLink>
+        </div>
+        :
+        <div className='SignUpLoginWrap'>
+        <NavLink to={"/usersignUp"}>Sign up</NavLink>
+        <NavLink to={'/userlogin'}>Login</NavLink>
+        </div>}
+        
+      
         {/* <NavLink to={"/agentdashboard"} 
         className='sec'>Become an Agent</NavLink> */}
       </div>

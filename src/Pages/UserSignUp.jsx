@@ -23,9 +23,62 @@ const UserSignUp = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [fullNameError, setFullNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
+
+  //form Validation
+  let isValid = true;
+const validateForm = () => {
+      
+      if (formData.fullName.length < 5) {
+        setFullNameError("Full name must be minimum of 5 characters");
+        isValid = false;
+      } else {
+        setFullNameError("");
+      }
+  
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        setEmailError("Please enter a valid email address");
+        isValid = false;
+      } else {
+        setEmailError("");
+      }
+  
+      const phoneRegex = /^\d{11}$/;
+      if (!phoneRegex.test(formData.phoneNumber)) {
+        setPhoneNumberError("Phone number must be 11 digits");
+        isValid = false;
+      } else {
+        setPhoneNumberError("");
+      }
+
+      if (formData.password.length<8) {
+          setPasswordError("Password must be minimum of 8 characters")
+          isValid = false;
+      }else {
+        setPasswordError("");
+      }
+  
+      if (formData.password !== formData.confirmPassword) {
+        setConfirmPasswordError("Passwords do not match");
+        isValid = false;
+      } else {
+        setConfirmPasswordError("");
+      }
+  
+      return isValid;
+    };
+
+
   const url = '';
 
   const handleSubmit = async (e) => {
+    validateForm();
     if (isChecked === true) {
       e.preventDefault();
       const formDataA = new FormData();
@@ -85,6 +138,8 @@ const UserSignUp = () => {
                   onChange={handleChange}
                   placeholder='John Doe' required />
               </div>
+              {fullNameError && <p style={{ color: 'red', fontSize: 'small' }}>{fullNameError}</p>}
+
               <div className='agentinput'>
                 <label htmlFor="">Email address</label>
                 <input
@@ -94,6 +149,7 @@ const UserSignUp = () => {
                   onChange={handleChange}
                   placeholder='example@gmail.com' required />
               </div>
+              {emailError && <p style={{ color: 'red', fontSize: 'small' }}>{emailError}</p>}
               <div className='agentinput'>
                 <label htmlFor="">Phone number</label>
                 <input
@@ -103,6 +159,8 @@ const UserSignUp = () => {
                   onChange={handleChange}
                   placeholder='234801234567' required />
               </div>
+              {phoneNumberError && <p style={{ color: 'red', fontSize: 'small' }}>{phoneNumberError}</p>}
+
               <div className='agentinput'>
                 <label htmlFor="">Password</label>
                 <input
@@ -112,6 +170,8 @@ const UserSignUp = () => {
                   onChange={handleChange}
                   placeholder='Enter password' required />
               </div>
+              {passwordError && <p style={{ color: 'red', fontSize: 'small' }}>{passwordError}</p>}
+
               <div className='agentinput'>
                 <label htmlFor="">Confirm Password</label>
                 <input
@@ -121,6 +181,8 @@ const UserSignUp = () => {
                   onChange={handleChange}
                   placeholder='Confirm password' required />
               </div>
+              {confirmPasswordError && <p style={{ color: 'red', fontSize: 'small' }}>{confirmPasswordError}</p>}
+
               <div className='AgreeTermsAndConditionsWrap'>
               <input
                 type='checkbox'
