@@ -20,6 +20,7 @@ const [Agent,setAgent]=useState(null||localStorage.getItem("AgentInfo"))
 // console.log(Agent)
 const [sponsoredProperties,setSponsoredProperties]=useState([]||localStorage.getItem("sponsoredProperties"))
 const [propertyDetailObj,setPropertyDetailObj]=useState({})
+const [seekLandingpageOnLogout,setSeekLandingPageoNLogout]=useState(false)
 
 
 const Agentlogin = useCallback((token,agentinfo)=>{ //receive response.data from handle login function
@@ -81,6 +82,7 @@ const propertyDetail = async (_id) => {
     sponsoredProperties,setSponsoredProperties,propertyDetail,
     propertyDetailObj,setAgentToken,
     // agentPostedProperties,setAgentPostedProperties
+    seekLandingpageOnLogout,setSeekLandingPageoNLogout
     }}>
         {children}
     </AgentContext.Provider>

@@ -31,6 +31,7 @@ const [toggleUserViewDetailpage,setToggleUserViewDetailpage]=useState(false)
 const [UserToken,setUserToken]=useState(null);
 const [UserId,setUserId]=useState("User name");
 const [User,setUser]=useState(null)
+const [favourite,setFavourite]=useState(false)
 // console.log(UserToken, UserId, User)
 
 
@@ -62,6 +63,7 @@ const Userlogout = useCallback(()=>{
     logoutWarning,setLogoutwarning,
     Userlogout,Userlogin,UserId,UserToken,
     toggleUserViewDetailpage,setToggleUserViewDetailpage,
+    favourite,setFavourite
     }}>
         {children}
     </UserContext.Provider>

@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../Features/Slice';
 
 const AgentLogOutWarning = () => {
-  const { setLogoutwarning, Agentlogout, AgentToken } = useContext(AgentContext);
+  const { setLogoutwarning, Agentlogout, AgentToken,setSeekLandingPageoNLogout} = useContext(AgentContext);
   const navigate = useNavigate();
   console.log(AgentToken);
 
@@ -41,9 +41,10 @@ const AgentLogOutWarning = () => {
       // navigate('/');
       // Agentlogout();
       Dispatch(logout())
-      
+      setSeekLandingPageoNLogout(true)
       loadingAlert.close();
       Swal.fire({icon:"success",title:"Logout Successful",showConfirmButton:false,timer:2000})
+      
     } catch (error) {
       console.error(error);
       console.log("error logging out");

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "../CSS/AgentLogin.css";
 import logo from "../Images/image 8.png";
 import axios from 'axios';
@@ -17,7 +17,7 @@ const UserSignUp = () => {
     confirmPassword: "",
   });
 
-  console.log(formData);
+  // console.log(formData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +28,12 @@ const UserSignUp = () => {
   const [phoneNumberError, setPhoneNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [termsError,setTermsError]=useState("")
 
+
+useEffect(()=>{
+  validateForm()
+},[formData,isChecked])
 
   //form Validation
   let isValid = true;
@@ -70,23 +75,30 @@ const validateForm = () => {
       } else {
         setConfirmPasswordError("");
       }
+
+      if(isChecked!==true){
+        setTermsError("Please agree with terms and conditions");
+        isValid = false
+      }else{
+        setTermsError('');
+      }
   
       return isValid;
     };
 
 
-  const url = '';
+  const url = 'https://homehub-coxc.onrender.com/api/user' ;
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     validateForm();
-    if (isChecked === true) {
-      e.preventDefault();
-      const formDataA = new FormData();
-      formDataA.append("fullName", formData.fullName);
-      formDataA.append("email", formData.email);
-      formDataA.append("phoneNumber", formData.phoneNumber);
-      formDataA.append("password", formData.password);
-      formDataA.append("confirmPassword", formData.confirmPassword);
+    if (isValid === true) {
+      // const formDataA = new FormData();
+      // formDataA.append("fullName", formData.fullName);
+      // formDataA.append("email", formData.email);
+      // formDataA.append("phoneNumber", formData.phoneNumber);
+      // formDataA.append("password", formData.password);
+      // formDataA.append("confirmPassword", formData.confirmPassword);
 
       const loadingAlert = Swal.fire({
         title: "Loading",
@@ -99,23 +111,32 @@ const validateForm = () => {
       Swal.showLoading();
 
       try {
-        const response = await axios.post(url, formDataA);
+        const response = await axios.post(url, formData);
         console.log(response.data);
-        alert(response.data.message);
+        // alert(response.data.message);
         loadingAlert.close();
-        Userlogin(response.data.user.id, response.data.user);
+        Swal.fire({
+          title:response.data.message,
+          text:"login successful",
+          showConfirmButton:false,
+          timer:2000,
+        })
+        // Userlogin(response.data.user.id, response.data.user);
       } catch (error) {
         console.error(error);
         loadingAlert.close();
+        alert(error)
       }
-    } else {
-      Swal.fire({
-        icon:"warning",
-        text:"Please agree to terms and conditions",
-        showConfirmButton:true,
-      })
-      e.preventDefault();
-    }
+    } 
+    
+    // else {
+    //   Swal.fire({
+    //     icon:"warning",
+    //     text:"Please agree to terms and conditions",
+    //     showConfirmButton:true,
+    //   })
+    //   e.preventDefault();
+    // }
   };
 
   return (
@@ -190,10 +211,11 @@ const validateForm = () => {
                 onChange={() => setIsChecked(!isChecked)} />
               <p>I agree to the terms and conditions</p>
               </div>
+              {termsError && <p style={{ color: 'red', fontSize: 'small' }}>{termsError}</p>}
               <button className='AgentSignUpNextButton'
                 type="submit">Sign Up</button>
               <p className='myspan'>Already have an account?  
-              <Link to={"/userlogin"} className='AgentFormPage1Link'>Login</Link></p>
+              <Link to={"/userlogin"} className='AgentFormPage1Link'> Login</Link></p>
             </div>
         </form>
       </div>

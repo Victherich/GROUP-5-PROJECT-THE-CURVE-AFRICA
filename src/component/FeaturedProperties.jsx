@@ -13,11 +13,16 @@ import axios from 'axios'
 import { AgentContext } from './AgentContext'
 import { useNavigate } from 'react-router-dom'
 import "../CSS/ForSale.css"
+import favouriteIcon1 from "../Images/light Blue favourite stroke icon.png"
+import favouriteIcon2 from "../Images/Blue favourite stroke icon.png"
+import favouriteIcon3 from "../Images/Blue favourite fill icon.png"
+import { UserContext } from './UserContext'
 
 const FeaturedProperties = () => {
     const navigate = useNavigate();
     const [sponsoredPropertiesArray,setSponsoredPropertiesArray]=useState([])
     const{propertyDetail,sponsoredProperties}=useContext(AgentContext) 
+    const {UserToken,favourite,setFavourite}=useContext(UserContext)
  
 
    const featuredSponsoredProperties = async () => {
@@ -82,58 +87,20 @@ const FeaturedProperties = () => {
       }
     };
 
+    const handleAddToFavourite = ()=>{
+
+    }
+
+    const handleRemoveFromFavourite=()=>{
+
+    }
+
 
   return (
     <div className='featureddiv'>
         <div className='featuredHeadingWrap'>
             <h1>Featured Properties</h1>
         </div>
-
-        {/* {sponsoredProperties.length>0&&<div className='featuredPropertiesWrap'>
-            {sponsoredProperties.slice(-4).map((d)=>(
-                <div key={d._id} className='featuredProperty'>  
-                <div className='featuredimg'>
-                    <img src={d.images[0]} alt="featured Image" />
-                </div>
-                <div className='featuredtext'>
-                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"1rem", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
-                    <h3>{d.type}</h3>
-                    <div className='featuredtextspanA'>
-                        {d.category&&<span>Category: {d.category.type}</span>}
-                        <span>Price: N{d.amount}</span>
-                        <span>Location: {d.location}</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view' onClick={()=>handleNavigate(d._id)}>View</button>
-                    </div>
-                </div>
-            </div>
-            ))}
-            
-        </div>} */}
-
-
-        {/* <div className='featuredPropertiesWrap'>
-            {allListingArray.slice(-8).map((d)=>(
-                <div key={d._id} className='featuredProperty2'>  
-                <div className='featuredimg'>
-                    <img src={d.images[0]} alt="featured Image" />
-                </div>
-                <div className='featuredtext'>
-                    <h3>{d.type}</h3>
-                    <div className='featuredtextspanA'>
-                        {d.category&&<span>Category: {d.category.type}</span>}
-                        <span>Price: N{d.amount}</span>
-                        <span>Location: {d.location}</span>
-                    </div>
-                    <div className='featuredbtndiv'>
-                        <button className='view' onClick={()=>handleNavigate(d._id)}>View</button>
-                    </div>
-                </div>
-            </div>
-            ))}
-            
-        </div> */}
 <div className='ForSaleProperties'>    
           {sponsoredPropertiesArray.slice(-4).map((d) => (
             <div key={d._id} className='ForSaleProperty'>
@@ -158,6 +125,9 @@ const FeaturedProperties = () => {
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
                   <button onClick={() => handleNavigate(d._id)}>View</button>
+                  {UserToken?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
+                  {UserToken&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={handleAddToFavourite}/>:""}
+                  {UserToken&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" onClick={handleRemoveFromFavourite}/>:""}
                 </div>
               </div>
             </div>
@@ -187,6 +157,9 @@ const FeaturedProperties = () => {
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
                   <button onClick={() => handleNavigate(d._id)}>View</button>
+                  {UserToken?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
+                  {UserToken&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={handleAddToFavourite}/>:""}
+                  {UserToken&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" onClick={handleRemoveFromFavourite}/>:""}
                 </div>
               </div>
             </div>

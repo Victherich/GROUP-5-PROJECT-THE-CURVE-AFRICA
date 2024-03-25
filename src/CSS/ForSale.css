@@ -398,16 +398,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:5%;
+    gap:15%;
     width: 100%;
     padding: 0% 3%;
     /* background-color: red; */
 }
 
 .ForSalePropertyButtonsWrap :nth-child(2){
-    background-color: white;
-    color: #0653C8;
-    border: 1px solid #0653C8;
+    cursor: pointer;
+    /* background-color: white; */
+    /* color: #0653C8; */
+    /* border: 1px solid #0653C8; */
 }
 
 
@@ -450,8 +451,8 @@
     } */
 }
 
-.ForSalePropertyButtonsWrap button:hover{
-    transform: scale(1.03);
+.ForSalePropertyButtonsWrap button:hover, .ForSalePropertyButtonsWrap :nth-child(2):hover{
+    transform: scale(1.08);
 }
 
 .ForSalePropertyButtonsWrap button:active{

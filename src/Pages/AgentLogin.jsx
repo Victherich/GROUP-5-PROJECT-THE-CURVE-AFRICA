@@ -11,7 +11,8 @@ import { login } from '../Features/Slice';
 import { useSelector } from 'react-redux';
 
 const AgentLogin = () => {
-  const { Agentlogin } = useContext(AgentContext);
+  const { Agentlogin,seekLandingpageOnLogout,setSeekLandingPageoNLogout } = useContext(AgentContext);
+  
   const navigate = useNavigate();
   const Dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -25,6 +26,15 @@ const AgentLogin = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const AgentUserToken = useSelector(state=>state.userToken)
+useEffect(()=>{
+  if(AgentUserToken){
+    navigate("/agentdashboard")
+  } else if(seekLandingpageOnLogout===true){
+    navigate("/")
+  }
+},[])
+// console.log(seekLandingpageOnLogout)
 
   const url = 'https://homehub-coxc.onrender.com/api/login';
 
@@ -44,7 +54,7 @@ const AgentLogin = () => {
         const response = await axios.post(url,formData);
         console.log(response.data);
         // alert(response.data.message);
-        Swal.fire({icon:"success",title:response.data.message,showConfirmButton:true})
+        Swal.fire({icon:"success",title:response.data.message,showConfirmButton:false,timer:2000})
         loadingAlert.close();
         // Agentlogin(response.data.token, response.data.agentExist);
         const user = response.data.agentExist
@@ -75,12 +85,8 @@ const AgentLogin = () => {
 
   //ensureing navigation back to dashboard after going back to home page and also preventing throttle navigation
   //during logout
-  const AgentUserToken = useSelector(state=>state.userToken)
-useEffect(()=>{
-  if(AgentUserToken){
-    navigate("/agentdashboard")
-  } 
-},[])
+  
+  
 
   return (
     <div className='agentbody'>

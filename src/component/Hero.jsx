@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import house from "../Images/compaY 1.png"
 import '../CSS/Hero.css'
+import { AgentContext } from './AgentContext'
 
 
 const Hero = () => {
+  const {seekLandingpageOnLogout,setSeekLandingPageoNLogout}=useContext(AgentContext)
     const navigate=useNavigate()
     const handleAgentArea = ()=>{
         navigate("/agentlogin")
       }
       
-
+useEffect(()=>{
+  setSeekLandingPageoNLogout(false)
+},[])
 
 
   return (
