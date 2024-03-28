@@ -79,7 +79,7 @@ const handleAddToFavourite=async(_id)=>{
   }catch(error){
     console.error(error);
     loadingAlert.close()
-    Swal.fire({icon:"error",text:response.data.error.message,showConfirmButton:false,timer:2000})
+    // Swal.fire({icon:"error",text:response.data.error.message,showConfirmButton:false,timer:2000})
   }
 }
 

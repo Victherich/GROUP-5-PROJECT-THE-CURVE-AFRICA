@@ -123,7 +123,7 @@ const FeaturedProperties = () => {
                   <button onClick={() => handleNavigate(d._id)}>View</button>
                   {userUserId?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
                   {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={handleAddToFavourite}/>:""}
-                  {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" onClick={handleRemoveFromFavourite}/>:""}
+                  {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" />:""}
                 </div>
               </div>
             </div>
@@ -154,8 +154,8 @@ const FeaturedProperties = () => {
                 <div className='ForSalePropertyButtonsWrap'>
                   <button onClick={() => handleNavigate(d._id)}>View</button>
                   {userUserId?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
-                  {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={()=>handleAddToFavourite(d._id)}/ >:""}
-                  {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" onClick={handleRemoveFromFavourite}/>:""}
+                  {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={()=>handleAddToFavourite(d._id)} />:""}
+                  {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon"/>:""}
                 </div>
               </div>
             </div>
