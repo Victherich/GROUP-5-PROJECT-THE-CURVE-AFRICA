@@ -5,8 +5,13 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../component/UserContext';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userUserLogin } from '../Features/Slice';
 
 const UserSignUp = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { Userlogin } = useContext(UserContext);
   const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
@@ -29,10 +34,13 @@ const UserSignUp = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [termsError,setTermsError]=useState("")
+  const [signUpFirstClick,setSignUpFirstClick]=useState(false)
 
 
 useEffect(()=>{
-  validateForm()
+  if(signUpFirstClick===true){
+    validateForm()
+  }
 },[formData,isChecked])
 
   //form Validation
@@ -87,10 +95,11 @@ const validateForm = () => {
     };
 
 
-  const url = 'https://homehub-coxc.onrender.com/api/user' ;
+  const url = 'https://homehub-coxc.onrender.com/api/user/usersignup' ;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSignUpFirstClick(true)
     validateForm();
     if (isValid === true) {
       // const formDataA = new FormData();
@@ -116,16 +125,22 @@ const validateForm = () => {
         // alert(response.data.message);
         loadingAlert.close();
         Swal.fire({
-          title:response.data.message,
-          text:"login successful",
+          title:"Sign up successfull",
+          text:response.data.message,
           showConfirmButton:false,
-          timer:2000,
+          timer:2000, 
         })
-        // Userlogin(response.data.user.id, response.data.user);
+        const user = response.data.user
+        const id = response.data.user._id
+        dispatch(userUserLogin({user,id}))
+        navigate("/userdashboard")
       } catch (error) {
         console.error(error);
         loadingAlert.close();
         alert(error)
+        Swal.fire({
+          icon:"error",text:error.response.data.message,showConfirmButton:true
+        })
       }
     } 
     

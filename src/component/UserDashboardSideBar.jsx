@@ -6,8 +6,10 @@ import ProfileIcon from '../Images/profile icon.png'
 import HomeHubLogo from '../Images/HomeHub Logo.svg'
 import UserLogOutWarning from './UserLogoutUI'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const UserDashboardSideBar = () => {
+  const User = useSelector(state=>state.userUser)
   const {UserActiveMenu,setUserActiveMenu,setLogoutwarning,logoutWarning}=useContext(UserContext)
   console.log(UserActiveMenu)
 
@@ -24,7 +26,7 @@ const UserDashboardSideBar = () => {
       </div>
       <div className='AgentDashboardSidebarDown'>
           <div className='AgentDashboardSidebarDownProfileWrap'>
-              <img src={ProfileIcon} alt="UserProfileLogo"/><p>Hi, User</p>
+              <img src={ProfileIcon} alt="UserProfileLogo"/><p>Hi, {User.fullName.slice(0,5)}</p>
           </div>
           <div className='AgentDashboardSidebarDownMenu'>
               <p onClick={()=>setUserActiveMenu("account")} className={UserActiveMenu==="account"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}>Account</p>

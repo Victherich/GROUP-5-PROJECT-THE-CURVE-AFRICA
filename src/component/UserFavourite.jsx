@@ -4,8 +4,10 @@ import data from './data.json'
 import axios from 'axios'
 import PostedImg from '../Images/woodex6 1.png'
 import { UserContext } from './UserContext'
+import { useSelector } from 'react-redux'
 
 const UserFavourite = () => {
+  const User = useSelector(state=>state.userUser)
   const [userFavourites,setuserFavourites]=useState([])
   const {setToggleUserViewDetailpage}=useContext(UserContext)
 
@@ -32,7 +34,7 @@ const handleuserFavourites =async()=>{
     <div className='PostedPropertiesWrap'>
       <h4>User Favourite</h4>
       <div className='PostedProperties'>
-        {userFavourites.map((d)=>(
+        {User.UserFavourite?.map((d)=>(
           <div className='ForSaleProperty'>
           <div className='ForSalePropertyImgWrap'>
             <img src={PostedImg} alt="ForSalePropertyImg"/>

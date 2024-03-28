@@ -3,17 +3,22 @@ import { useNavigate } from 'react-router-dom'
 import house from "../Images/compaY 1.png"
 import '../CSS/Hero.css'
 import { AgentContext } from './AgentContext'
+import { UserContext } from './UserContext'
 
 
 const Hero = () => {
   const {seekLandingpageOnLogout,setSeekLandingPageoNLogout}=useContext(AgentContext)
+  const {logOutHomeNavigate,setLogoutHomeNavigate}=useContext(UserContext)
     const navigate=useNavigate()
     const handleAgentArea = ()=>{
         navigate("/agentlogin")
       }
+  
       
+      //ending navigation to landing page on logout of both agent and user
 useEffect(()=>{
   setSeekLandingPageoNLogout(false)
+  setLogoutHomeNavigate(false)
 },[])
 
 

@@ -4,6 +4,7 @@ import image8 from "../Images/image 8.png"
 import { NavLink, useLocation } from 'react-router-dom';
 import { UserContext } from './UserContext';
 import Burger from "../Images/Burger Icon.png"
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
@@ -12,6 +13,8 @@ const Header = () => {
   const [headerActive,setHeaderActive]=useState("home")
   const {UserToken}=useContext(UserContext)
   const [burgerShow,setBurgerShow]=useState(false)
+  const UserId = useSelector(state=>state.userUserId)
+  const User = useSelector(state=>state.userUser)
 
 useEffect(()=>{
   const path=location.pathname;
@@ -50,8 +53,8 @@ useEffect(()=>{
         <NavLink to={"/allagentslistpage"} 
         className={headerActive==="Agents"?"sec2":"sec"}>Agents</NavLink>
 
-        {UserToken?<div className='SignUpLoginWrap'>
-        <NavLink to={"/userdashboard"}>Hi ,Clara</NavLink>
+        {UserId?<div className='SignUpLoginWrap'>
+        <NavLink to={"/userdashboard"}>Hi, {User.fullName.slice(0,5)}</NavLink>
         </div>
         :
         <div className='SignUpLoginWrap'>

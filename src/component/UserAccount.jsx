@@ -4,6 +4,7 @@ import AccountLogo from '../Images/HomeHub Logo.svg'
 import { UserContext } from './UserContext'
 import UserChangePasswordUI from './UserChangePasswordUI'
 import UserEditProfileUI from '../component/UserEditProfileUI'
+import { useSelector } from 'react-redux'
 
 
 const UserAccount = ({toggleUserChangePasswordUI,
@@ -11,6 +12,7 @@ const UserAccount = ({toggleUserChangePasswordUI,
   toggleUserEditProfileUI,
   setToggleUserEditProfileUI}) => {
     const{UserId}=useContext(UserContext)
+    const User = useSelector(state=>state.userUser)
 
 
 const handleUserChangePasswordUI=()=>{
@@ -28,10 +30,10 @@ const handleUserEditProfileUI=()=>{
       <h4>User Account</h4>
       <div className='AccountUp'>
           <div className='AccountUpLeft'>
-              <p><span>Name: </span>User Name</p>
-              <p><span>Address: </span>No. 2 New hub avenue</p>
-              <p><span>Email: </span>user@gmail.com</p>
-              <p><span>Phone no.: </span>01234567</p>
+              <p><span>Name: </span>{User.fullName}</p>
+              {/* <p><span>Address: </span>{User}</p> */}
+              <p><span>Email: </span>{User.email}</p>
+              <p><span>Phone no.: </span>{User.phoneNumber}</p>
           </div>
           <div className='AccountUpRight'>
               <img src={AccountLogo} alt="Logo"/>

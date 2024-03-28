@@ -17,12 +17,16 @@ import favouriteIcon1 from "../Images/light Blue favourite stroke icon.png"
 import favouriteIcon2 from "../Images/Blue favourite stroke icon.png"
 import favouriteIcon3 from "../Images/Blue favourite fill icon.png"
 import { UserContext } from './UserContext'
+import { useSelector } from 'react-redux'
+
 
 const FeaturedProperties = () => {
     const navigate = useNavigate();
     const [sponsoredPropertiesArray,setSponsoredPropertiesArray]=useState([])
     const{propertyDetail,sponsoredProperties}=useContext(AgentContext) 
-    const {UserToken,favourite,setFavourite}=useContext(UserContext)
+    const {UserToken,favourite,setFavourite,handleAddToFavourite}=useContext(UserContext)
+    const userUserId=useSelector(state=>state.userUserId)
+    console.log(userUserId)
  
 
    const featuredSponsoredProperties = async () => {
@@ -87,14 +91,6 @@ const FeaturedProperties = () => {
       }
     };
 
-    const handleAddToFavourite = ()=>{
-
-    }
-
-    const handleRemoveFromFavourite=()=>{
-
-    }
-
 
   return (
     <div className='featureddiv'>
@@ -125,9 +121,9 @@ const FeaturedProperties = () => {
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
                   <button onClick={() => handleNavigate(d._id)}>View</button>
-                  {UserToken?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
-                  {UserToken&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={handleAddToFavourite}/>:""}
-                  {UserToken&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" onClick={handleRemoveFromFavourite}/>:""}
+                  {userUserId?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
+                  {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={handleAddToFavourite}/>:""}
+                  {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" onClick={handleRemoveFromFavourite}/>:""}
                 </div>
               </div>
             </div>
@@ -157,9 +153,9 @@ const FeaturedProperties = () => {
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
                   <button onClick={() => handleNavigate(d._id)}>View</button>
-                  {UserToken?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
-                  {UserToken&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={handleAddToFavourite}/>:""}
-                  {UserToken&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" onClick={handleRemoveFromFavourite}/>:""}
+                  {userUserId?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
+                  {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={()=>handleAddToFavourite(d._id)}/ >:""}
+                  {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" onClick={handleRemoveFromFavourite}/>:""}
                 </div>
               </div>
             </div>
