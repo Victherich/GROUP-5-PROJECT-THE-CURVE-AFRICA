@@ -2,9 +2,8 @@
     width: 100%;
     height: 100vh;
     background-image: url("../Images/images\ \(12\).jpg");
-    /* background-image: url("../Images/"); */
-    position: relative;
-    z-index: -111;
+    position: fixed;
+    z-index: -111111;
     background-position:fixed;
     background-size: cover;
     overflow-y: scroll;

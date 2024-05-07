@@ -228,7 +228,7 @@
     background-color: whitesmoke;
     justify-content: center;
     align-items: center;
-
+    
 }
 
 
@@ -318,7 +318,7 @@
     width: 50%;
     height: auto;
     display: flex; 
-
+    z-index: 1;
 }
 
 .HeroRight img {
