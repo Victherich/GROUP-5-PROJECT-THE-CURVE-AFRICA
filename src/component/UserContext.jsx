@@ -60,6 +60,7 @@ const [logOutHomeNavigate,setLogoutHomeNavigate]=useState(false)
 
 const userToken = useSelector(state=>state.userUserToken)
 console.log(userToken)
+
 const handleAddToFavourite=async(_id)=>{
   const loadingAlert = Swal.fire({
     title: "Loading",
@@ -72,13 +73,15 @@ const handleAddToFavourite=async(_id)=>{
   Swal.showLoading();
   try{
     axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`
-    const response = await axios.get(`https://homehub-coxc.onrender.com/api/favoriteProperty/${_id}`)
+    const response = await axios.put(`https://homehub-coxc.onrender.com/api/favoriteProperty/${_id}`)
     console.log(response.data)
     loadingAlert.close();
     Swal.fire({icon:"success",title:"Item Added to your favourite",showConfirmButton:false,timer:2000})
+    alert ("ok ok ok ")
   }catch(error){
     console.error(error);
     loadingAlert.close()
+    alert("hey hey hey ")
     // Swal.fire({icon:"error",text:response.data.error.message,showConfirmButton:false,timer:2000})
   }
 }

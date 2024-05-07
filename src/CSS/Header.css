@@ -1,4 +1,4 @@
-.HeaderWrap {
+/* .HeaderWrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     background-color: #0E9AFF;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 11;
     font-size: 1.5vw;
 }
 
@@ -39,7 +39,6 @@
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
-    /* font-size: 120%; */
 }
 
 
@@ -154,18 +153,8 @@
     }
     .MenuWrap{
         display: none;
-        /* width:75% ;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 10%; */
     }
-    /* .SignUpLoginWrap{
-        width: 40%;
-    }
-    .SignUpLoginWrap a{
-        font-size: 3.3vw;
-    } */
+
     .Burger{
         display: block;
     }
@@ -184,8 +173,8 @@
         width: 70%;
         height: max-content;
         background-color: #0E9AFF
-        /* background-color: rgb(206, 206, 250); */
     }
+
     .HeaderMobile a{
         padding: 5%;
         border-bottom:1px solid white;
@@ -204,3 +193,319 @@
         color: white;
     }
 }
+ */
+
+
+
+/* New css */
+
+.HeaderWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: #0E9AFF;
+    position: fixed;
+    top: 0;
+    z-index: 11;
+    padding: 10px;
+}
+
+.HeaderA {
+    width: 95%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.ImageWrap {
+    width: 10%;
+    height: auto;
+}
+
+.ImageWrap img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.MenuWrap {
+    width: 70%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+}
+
+
+
+
+.sec{
+    text-decoration: none;
+    color: white;
+    transition: 350ms;
+    transform: scale(1);
+    font-size: 1.3rem;
+}
+
+.sec:hover{
+    transform: scale(1.05);
+}
+
+.sec:active{
+    transform: scale(0.9);
+}
+
+.sec2 {
+    color: #0653C8;
+    text-decoration: none;
+    transition: 350ms;  
+    transform: scale(1);
+    font-size: 1.3rem;
+}
+
+.SignUpLoginWrap{
+    width:25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SignUpLoginWrap a{
+    text-decoration: none;
+    color: white;
+    border: 1px solid blue;
+    font-weight: 500;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding: 5px 10px ;
+}
+
+.SignUpLoginWrap :nth-child(2){
+    background-color: rgba(255, 255, 255, 0.7);
+    color:blue;
+}
+
+.Burger{
+    display: none;
+    cursor: pointer;
+}
+
+.UserMobileNameDisplay{
+    display: none;
+}
+
+
+@media screen and (max-width:884px){
+    .MenuWrap{
+        width: 80%;
+    }
+    .SignUpLoginWrap{
+        width: 30%;
+    }
+    
+}
+
+@media screen and (max-width:768px){
+    .MenuWrap{
+        display: none;
+    }
+    .Burger{
+        display: flex;
+        width: 7%;
+    }
+    .Burger img{
+        width: 100%;
+    }
+    .HeaderMobile{
+        position: absolute;
+        right: 0;
+        top: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        font-weight: bold;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 60%;
+        height: 100vh;
+        background-color: #0e9bffe5
+    }
+    .HeaderMobile a{
+        width: 100%;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+    .SignUpLoginWrapMobile{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-around;
+        height: 15%;
+    }
+
+    .SignUpLoginWrapMobile a{
+        text-decoration: none;
+        color: white;
+        width: 100%;
+        font-size: 1.8rem;
+    }
+    .MenuLine{
+        width:100%;
+        height:0.5%;
+        background-color: lightblue;
+    }
+    
+    .ImageWrap{
+        width: 20%;
+    }
+
+    .UserMobileNameDisplay{
+        width: 20%;
+        display: block;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    }
+    
+    .UserMobileNameDisplay a{
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width:428px) {
+    .HeaderMobile{
+        width: 65%;
+    }
+    .HeaderMobile a{
+        font-size: 1.4rem;
+    }
+    .UserMobileNameDisplay a{
+        font-size: 1rem;
+    }
+    .Burger{
+        width: 9%;
+    }
+}
+
+@media screen and (max-width:360px) {
+    .HeaderMobile a{
+        font-size: 1.2rem;
+    }
+    .MenuLine{
+        width:100%;
+        background-color: lightblue;
+    }
+}
+
+/* @media screen and (max-width: 1280px){
+    .HeaderWrap{
+        font-size: 2vw;
+    }
+}
+
+@media screen and (max-width: 884px){
+    .HeaderWrap{
+        font-size: 3vw;
+        height: 9vh;
+    }
+    .MenuWrap{
+        width:75% ;
+    }
+    .ImageWrap {
+        width: 20%;
+        height: 80%;
+    }
+    .SignUpLoginWrap{
+        width: 25%;
+    }
+    .SignUpLoginWrap a{
+        font-size: 2vw;
+    }
+}
+
+
+
+@media screen and (max-width: 768px){
+
+    .HeaderWrap{
+        font-size: 3.2vw;
+    }
+    .HeaderA{
+        width: 98%;
+    }
+    .MenuWrap{
+        width: 79%;
+    }
+    .SignUpLoginWrap{
+        width: 28%;
+    }
+    .SignUpLoginWrap a{
+        font-size: 2.5vw;
+    }
+}
+
+@media screen and (max-width: 428px){
+    .HeaderWrap{
+        font-size: 3.5vw;
+        height: 12vh;
+        padding: 3% 0%;
+    }
+    .HeaderA{
+        width: 85%;
+    }
+
+    .ImageWrap {
+        width: 25%;
+    }
+    .MenuWrap{
+        display: none;
+    }
+
+    .Burger{
+        display: block;
+    }
+
+    .HeaderMobile{
+        position: absolute;
+        right: 0;
+        top: 13vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 6vw;
+        font-weight: bold;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        width: 70%;
+        height: max-content;
+        background-color: #0E9AFF
+    }
+
+    .HeaderMobile a{
+        padding: 5%;
+        border-bottom:1px solid white;
+        width: 100%;
+        text-align: center;
+    }
+
+    .SignUpLoginWrapMobile{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .SignUpLoginWrapMobile a{
+        text-decoration: none;
+        color: white;
+    }
+} */

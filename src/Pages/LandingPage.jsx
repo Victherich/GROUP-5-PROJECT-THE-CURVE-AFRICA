@@ -46,19 +46,12 @@ const handleAgentArea = ()=>{
       <FeaturedProperties/>
       
 
-    <div 
-    style={{display:'flex',
-            width:"100%",
-          marginTop:"1vh",
-        height:"10vh"}}
-    className='featured111'>
-            <h1 
-            className='VeiwAllListing'
-            onClick={handleViewMore}
-            style={{cursor:"pointer",
-                    color:"#0E9AFF",
-                    }}>View all Listing</h1>
-        </div><br/><br/>
+    <div className='ViewAllListingWrap'>
+            <h1 onClick={handleViewMore}>View all Listing</h1>
+        </div>
+        <br/>
+        <br/>
+
     <div className='choose'>
         <h1>Why Choose Us?</h1>
         <div className='chooseItems'>

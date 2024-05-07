@@ -22,6 +22,8 @@ const AgentLogin = () => {
 
   console.log(formData);
 
+  const [emailError,setEmailError]=useState("")
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -36,10 +38,30 @@ useEffect(()=>{
 },[])
 // console.log(seekLandingpageOnLogout)
 
+
+//form Validation
+let isValid = true;
+const validateForm = () => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        setEmailError("Please enter a valid email address");
+        isValid = false;
+      } else {
+        setEmailError("");
+      }
+  
+      return isValid;
+    };
+
+
   const url = 'https://homehub-coxc.onrender.com/api/login';
 
   const handleSubmit = async (e) => {
       e.preventDefault();
+      validateForm()
+      setFirstClick(true)
+      if(isValid===true){
+        
       const loadingAlert = Swal.fire({
         title: "Loading",
         text: "Please wait...",
@@ -65,7 +87,8 @@ useEffect(()=>{
       } catch (error) {
         console.error(error);
         loadingAlert.close();
-        Swal.fire({icon:"error",title:"Something went wrong",showConfirmButton:false,timer:2000});
+        Swal.fire({icon:"error",title:error.response.data.error,text:error.response.data.message,showConfirmButton:false,timer:2000});
+      }
       }
     
   };
@@ -87,6 +110,13 @@ useEffect(()=>{
   //during logout
   
   
+  const [firstClick,setFirstClick]=useState(false)
+useEffect(()=>{
+  if(firstClick===true){
+    validateForm()
+  }
+},[formData])
+
 
   return (
     <div className='agentbody'>
@@ -109,6 +139,7 @@ useEffect(()=>{
                   value={formData.email}
                   onChange={handleChange}
                   placeholder='example@gmail.com' required />
+                  <p style={{fontSize:"small",color:"red"}}>{emailError}</p>
               </div>
               
               <div className='agentinput' style={{height:"22%"}}>

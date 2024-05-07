@@ -1,57 +1,42 @@
-import React, { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import house from "../Images/compaY 1.png"
-import '../CSS/Hero.css'
-import { AgentContext } from './AgentContext'
-import { UserContext } from './UserContext'
-
+import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import house from "../Images/compaY 1.png";
+import '../CSS/Hero.css';
+import { AgentContext } from './AgentContext';
+import { UserContext } from './UserContext';
 
 const Hero = () => {
-  const {seekLandingpageOnLogout,setSeekLandingPageoNLogout}=useContext(AgentContext)
-  const {logOutHomeNavigate,setLogoutHomeNavigate}=useContext(UserContext)
-    const navigate=useNavigate()
-    const handleAgentArea = ()=>{
-        navigate("/agentlogin")
-      }
-  
-      
-      //ending navigation to landing page on logout of both agent and user
-useEffect(()=>{
-  setSeekLandingPageoNLogout(false)
-  setLogoutHomeNavigate(false)
-},[])
+  const { seekLandingpageOnLogout, setSeekLandingPageoNLogout } = useContext(AgentContext);
+  const { logOutHomeNavigate, setLogoutHomeNavigate } = useContext(UserContext);
+  const navigate = useNavigate();
 
+  // Function to handle navigation to agent login area
+  const handleAgentArea = () => {
+    navigate("/agentlogin");
+  };
+
+  // Setting up effects for landing page navigation after logout
+  useEffect(() => {
+    setSeekLandingPageoNLogout(false); // Resetting agent landing page seek
+    setLogoutHomeNavigate(false); // Resetting user home navigation on logout
+  }, []);
 
   return (
     <div className='Hero'>
-        <div className='HeroLeft'>
-          <h1>Find a <span>comfortable </span>  <br /> home for your family.</h1>
-          <p>Your dream home Awaits, Unlock the door with<br/>
-          <h2  style={{color:"#F90808"}}>HOME<span style={{color:"#0653C8"}}>HUB</span></h2></p>
-          <div className='HeroPostProperty'><p>Are you an Agent?</p><button onClick={handleAgentArea}>POST A PROPERTY</button></div>
-
-          {/* <div  className='herolast'>
-            <div className='herolast1'>
-              <h2>1500+</h2>
-              <p>Listed Properties</p>
-            </div>
-
-            <div className='herolast1'> 
-              <h2>6500+</h2>
-              <p>Happy Customers</p>
-            </div>
-
-            <div className='herolast1'>
-              <h2>1200+</h2>
-              <p>Awards</p>
-            </div>
-          </div> */}
-        </div>
-        <div className='HeroRight'>
-          <img src={house} alt="" />
+      <div className='HeroLeft'>
+        <h1>Find a <span>comfortable</span> <br /> home for your family.</h1>
+        <p>Your dream home awaits, Unlock the door with<br />
+          <h2 style={{ color: "#F90808" }}>HOME<span style={{ color: "#0653C8" }}>HUB</span></h2></p>
+        <div className='HeroPostProperty'>
+          <p>Are you an Agent?</p>
+          <button onClick={handleAgentArea}>POST A PROPERTY</button>
         </div>
       </div>
-  )
+      <div className='HeroRight'>
+        <img src={house} alt="" />
+      </div>
+    </div>
+  );
 }
 
-export default Hero
+export default Hero;

@@ -1,12 +1,6 @@
 
 import React, { useContext, useState } from 'react'
 import "../CSS/FeaturedProperties.css"
-import img1 from "../Images/first.jpg"
-import img2 from "../Images/second.jpg"
-import img3 from "../Images/third.jpg"
-import img4 from "../Images/fourth.jpeg"
-// import img5 from "../Images/fifth.jpg"
-// import love from "../Images/love.png"
 import Swal from 'sweetalert2'
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -122,7 +116,7 @@ const FeaturedProperties = () => {
                 <div className='ForSalePropertyButtonsWrap'>
                   <button onClick={() => handleNavigate(d._id)}>View</button>
                   {userUserId?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
-                  {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={handleAddToFavourite}/>:""}
+                  {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={()=>handleAddToFavourite(d._id)}/>:""}
                   {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" />:""}
                 </div>
               </div>

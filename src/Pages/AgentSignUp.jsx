@@ -33,6 +33,9 @@ const AgentSignUp = () => {
    const [phoneNumberError, setPhoneNumberError] = useState("");
    const [passwordError, setPasswordError] = useState("");
    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+   const [idDocError,setIdDocError]=useState("")
+   const [regDocError,setRegDocError]=useState("")
+   const [termsAndConditionsError,setTermsAndConditionsError]=useState("")
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,7 +56,7 @@ const AgentSignUp = () => {
 let isValid = true;
 const validateForm = () => {
       
-      if (formData.fullName.length < 5) {
+      if (formData.fullName===""||formData.fullName.length < 5) {
         setFullNameError("Full name must be minimum of 5 characters");
         isValid = false;
       } else {
@@ -61,7 +64,7 @@ const validateForm = () => {
       }
   
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
+      if (formData.email===""||!emailRegex.test(formData.email)) {
         setEmailError("Please enter a valid email address");
         isValid = false;
       } else {
@@ -69,14 +72,14 @@ const validateForm = () => {
       }
   
       const phoneRegex = /^\d{11}$/;
-      if (!phoneRegex.test(formData.phoneNumber)) {
+      if (formData.phoneNumber===""||!phoneRegex.test(formData.phoneNumber)) {
         setPhoneNumberError("Phone number must be 11 digits");
         isValid = false;
       } else {
         setPhoneNumberError("");
       }
 
-      if (formData.password.length<8) {
+      if (formData.password===""||formData.password.length<8) {
           setPasswordError("Password must be minimum of 8 characters")
           isValid = false;
       }else {
@@ -93,42 +96,81 @@ const validateForm = () => {
       return isValid;
     };
 
-const handleNext=()=>{
-    if (
-      formData.fullName &&
-      formData.email &&
-      formData.phoneNumber &&
-      formData.password &&
-      formData.confirmPassword
-    ) {
-      validateForm()
-      if(isValid){
-        setFormFlip(false);
+
+    // 2nd page form validation
+    let isValid2= true;
+    const validateForm2 = ()=>{
+
+      if (isChecked===false) {
+        setTermsAndConditionsError("Please agree to terms and conditions");
+        isValid2 = false;
+      } else {
+        setTermsAndConditionsError("");
       }
-    } 
-    else {
-      Swal.fire({
-        icon:"warning",
-        // title:"Please fill all the empty fields",
-        text:"Please fill all the empty fields",
-        showConfirmButton:true,
-      })
+
+      if (formData.documentImage===null) {
+        setIdDocError("Please upload Identity document");
+        isValid2 = false;
+      } else {
+        setIdDocError("");
+      }
+
+      if (formData.regCert===null) {
+        setRegDocError("Please upload registration document");
+        isValid2 = false;
+      } else {
+        setRegDocError("");
+      }
+
+      return isValid2;
     }
-}
+
+
+    //handling first click for Next button
+const [firstFormClick,setFirstFormClick]=useState(false)
+
+const handleNext=()=>{
+    validateForm()
+    setFirstFormClick(true)
+    if(isValid){
+      setFormFlip(false);
+    }
+    setFormData({
+      ...formData,
+      documentImage: null,
+      regCert: null
+    });
+  } 
+  
+useEffect(()=>{
+  if(firstFormClick===true){
+    validateForm()
+  }
+},[formData])
 
 
 
-
-
+    //handling first click for submit button
+    const [firstFormClick2,setFirstFormClick2]=useState(false)
+    
+      
+    useEffect(()=>{
+      if(firstFormClick2===true){
+        validateForm2()
+      }
+    },[formData,isChecked])
+    
 
 
 
   const url = 'https://homehub-coxc.onrender.com/api/signup';
 
   const handleSubmit = async (e) => {
-    
-    if (isChecked === true) {
-      e.preventDefault();
+    e.preventDefault();
+    validateForm2();
+    setFirstFormClick2(true)
+    if (isValid2 === true) {
+      
       const formDataA = new FormData();
       formDataA.append("fullName", formData.fullName);
       formDataA.append("email", formData.email);
@@ -174,14 +216,16 @@ const handleNext=()=>{
         text:error.response.data.message,showConfirmButton:true})
         }
       }
-    } else {
-      Swal.fire({
-        text:"Please agree to terms and conditions",
-        icon:"warning",
-        showConfirmButton:true,
-      })
-      e.preventDefault();
-    }
+    } 
+    
+    // else {
+    //   Swal.fire({
+    //     text:"Please agree to terms and conditions",
+    //     icon:"warning",
+    //     showConfirmButton:true,
+    //   })
+    //   e.preventDefault();
+    // }
   };
 
 
@@ -302,11 +346,12 @@ const runAlert = ()=>{
     accept="image/*"
     onChange={handleImageChange}
     style={{ display: 'none' }} // or visibility: 'hidden'
-    required
+    // required
 />
 <label className="AgentClickToUpload" htmlFor="identityDocument">{imgTitle}</label>
-
+              <p style={{color:"red",fontSize:"small"}}>{idDocError}</p>
               </div>
+
               <div className='agentinput'>
                 <label style={{color:"#0000FF",fontWeight:"500"}} htmlFor=""> Company Registration Certificate</label><div style={{height:"1.5vh"}}></div>
                 <input
@@ -317,9 +362,10 @@ const runAlert = ()=>{
                   accept="image/*"
                   onChange={handleImageChange2}
                   placeholder='select registration certificate' 
-                  required 
+                  // required 
                   style={{display:"none"}}/>
                   <label className="AgentClickToUpload" htmlFor="registrationCertificate">{imgTitle2}</label>
+                  <p style={{color:"red",fontSize:"small"}}>{regDocError}</p>
               </div>
               <div className='AgreeTermsAndConditionsWrap'>
               <input
@@ -328,6 +374,7 @@ const runAlert = ()=>{
                 onChange={() => setIsChecked(!isChecked)} />
               <p>I agree to the terms and conditions</p>
               </div>
+              <p style={{color:"red",fontSize:"small"}}>{termsAndConditionsError}</p>
               <div className='KYCButtons'>
               <button onClick={() => {setFormFlip(true);setImgTitle2("Click to Upload");setImgTitle("Click to Upload")}}>Back</button>
               <button

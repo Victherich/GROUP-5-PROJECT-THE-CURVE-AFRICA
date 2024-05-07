@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     width: 100%;
     height: 40vh;
     background-color: #0E9AFF;
@@ -16,19 +16,6 @@
     height: 80%;
     display: flex;
     justify-content: space-around;
- 
-    /* @media screen and (max-width:768px) {
-        width: 90%;
-    }
-
-    @media screen and (max-width:414px) {
-        width: 100%;
-     
-    }
-    @media screen and (max-width:320px) {
-        width: 100%;
-       
-    } */
 }
 
 .footwrite {
@@ -40,41 +27,16 @@
     text-align: left;
     color: rgba(255, 255, 255, 0.87);
     gap: 2%;
-
-    /* @media screen and (max-width:768px) {
-        width: 25%;
-    }
-    @media screen and (max-width:414px) {
-        width: 25%;
-    } */
 }
 
 .footwrite h1 {
     font-size: 2.5vw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* @media screen and (max-width:768px) {
-        font-size: 15px;
-    }
-    @media screen and (max-width:414px) {
-        font-size: 11px;
-    }
-    @media screen and (max-width:320px) {
-        font-size: 10px;
-    } */
 }
 
 .footwrite span {
     font-size: 1.5vw;
     font-weight: 500;
-    /* @media screen and (max-width:768px) {
-        font-size: 9px;
-    }
-    @media screen and (max-width:414px) {
-        font-size: 7.5px;
-    }
-    @media screen and (max-width:320px) {
-        font-size: 6px;
-    } */
 }
 
 .line {
@@ -90,18 +52,6 @@
   align-items: center;
   justify-content: center;
   justify-content: space-between; 
-
-  /* @media screen and (max-width:768px) {
-    justify-content: center;
-  }
-  @media screen and (max-width:414px) {
-    width: 15%;
-    height: 5%;
-    justify-content: center;
-}  
-@media screen and (max-width:320px) {
-    justify-content: center;
-} */
 }
 
 @media screen and (max-width:884px){
@@ -140,7 +90,6 @@
     .footwrite{
         text-align: center;
        width: 100%;
-       /* background-color: red; */
     }
     .footwrite h1{
         font-size: 6.5vw;
@@ -171,11 +120,87 @@
     .footwrite{
         text-align: center;
        width: 100%;
-       /* background-color: red; */
     }
     .footwriteimages{
         width: 50%;
         margin-top: 2vh;
     }
     
+}
+ */
+
+
+
+
+
+.footer {
+    width: 100%;
+    height: auto;
+    background-color: #0E9AFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+.footermain {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+
+.footwrite {
+    width: 30%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
+    color: rgba(255, 255, 255, 0.87);
+    gap:10px;
+}
+
+.footwrite h1 {
+    font-size: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footwrite span {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.line {
+    width: 30%;
+    height: 1px;
+    background-color: white;
+}
+
+.footwriteimages {
+  width: 40%;
+  gap: 20px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between; 
+}
+
+@media screen and (max-width:428px) {
+    .footermain{
+        flex-direction: column;
+        gap:100px;
+    }
+    .footwrite{
+        width: 100%;
+    }
+    .footwrite h1{
+        font-size: 1.7rem;
+    }
 }

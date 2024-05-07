@@ -1,4 +1,4 @@
-.agentbody {
+/* .agentbody {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -12,7 +12,6 @@
     width: 90%;
     height: 100%;
     display: flex;
-    /* background-color:blue; */
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -64,10 +63,7 @@
     width: 10%;
     height: 100%;
     display: flex;
-    /* align-items: center;  */
-    /* align-items: flex-start; */
-    /* justify-content: flex-start; */
-    /* background-color: red; */
+
     @media screen and (max-width:660px){ 
         display: none;
         height: 15%;
@@ -84,7 +80,6 @@
     
     @media screen and (max-width:900px){ 
         width: 160%;
-    /* height: 100%; */
     }
 
     
@@ -97,17 +92,14 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    /* background-color: aqua; */
 }
 
 .AgentFormPage1 h1{
     color: #0000FF;
     font-weight: 600 ;
     margin-bottom: 3%;
-    /* -webkit-text-stroke: 0.5px red; */
 
     @media screen and (max-width:660px){ 
-        /* font-size: 1.6rem; */
     }
 }
 
@@ -158,7 +150,6 @@
     justify-content: flex-start;
     align-items: center;
     align-items: flex-start;
-    /* background-color: red; */
 }
 
 .agentinput label{
@@ -168,24 +159,15 @@
 .agentinput input,.AgentClickToUpload{
     width: 100%;
     height: 50%;
-    /* border: 1px solid #9BD5FF; */
     border: 1px solid #0E9AFF;
     padding-left: 10px;
     background-color:#F8FBFD;
     border-radius: 5px;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     
 }
 
-/* .identityDocument{
-    border: none;
-} */
-
-/* .identityDocument:hover{
-    border:1px solid whitesmoke;
-} */
 
 .agentinput input:hover{
     outline:1px solid #0000FF;   
@@ -265,7 +247,6 @@
     justify-content: space-around;
     width: 100%;
     height: 8%;
-    /* background-color: red; */
 }
 
 .KYCButtons button{
@@ -295,3 +276,283 @@
 }
 
 
+
+ */
+
+
+
+
+/* New css */
+
+.agentbody {
+    width: 100%;
+    height: auto;
+    /* min-height: 100vh;   */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    overflow-y: scroll;
+    flex-direction: column;
+}
+
+.agentformWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* position: relative; */
+    margin-bottom:100px;
+}
+
+.agentForm{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    height: auto;
+    background-color:#FAFAFA;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.AgentlogoWrap{
+    width: 10%;
+    height: auto;
+    display: flex;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.AgentlogoWrap img {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+
+.AgentFormPage1{
+    display: flex;
+    width: 70%;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    
+}
+.AgentFormPage1 h1{
+    color: #0000FF;
+    font-weight: 600 ;
+    /* margin-bottom: 20px; */
+    font-size: 2rem;
+}
+
+.AgentSignUpNextButton{
+    padding: 10px 30px;
+    border-radius: 5px; 
+    background: linear-gradient(to bottom, #0E9AFF, #024D83);
+    border: none;
+    color: #FAFAFA;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 350ms;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.AgentSignUpNextButton:hover{
+    transform: scale(1.05);
+}
+
+.AgentSignUpNextButton:active{
+    transform: scale(0.9);
+}
+
+.AgentFormPage1 p{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.AgentFormPage1Link{
+    color: #0000FF;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transform: scale(1);
+    transition: 350ms;
+}
+
+.AgentFormPage1Link:hover{
+    transform: scale(1.1);
+}
+
+.agentinput{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    align-items: flex-start;
+}
+
+.agentinput label{
+    font-weight: 400;
+}
+
+.agentinput input,.AgentClickToUpload{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #0E9AFF;
+    padding-left: 10px;
+    background-color:#F8FBFD;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+.agentinput input:hover{
+    outline:1px solid #0000FF;   
+}
+
+.AgentClickToUpload:hover{
+    cursor:pointer;
+    transform: scale(1.05);
+    transition: 350ms;
+}
+
+.agentbtn {
+    width: 30%;
+    height: 100%;
+    font-size: 20px;
+    color: white;
+    background-color:  #0E9AFF;
+}
+
+/* .agentdont {
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+} */
+
+/* .thisdiv {
+    width:  15px;
+    height: 15px;
+    background-color: #0E9AFF;
+} */
+
+/* .myspan {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+/* .myspan span {
+    color: blue;
+} */
+
+/* .agentdivs p {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+.SignUpHeadingWrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.SignUpHeadingWrap img{
+    display: none;
+}
+
+.AgreeTermsAndConditionsWrap{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+}
+
+.AgreeTermsAndConditionsWrap input:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: 350ms;
+}
+
+.KYCButtons{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+}
+
+.KYCButtons button{
+    /* width: 35%; */
+    padding: 10px 20px;
+    border-radius: 5px;
+    background:  linear-gradient(to bottom, #0E9AFF, #024D83);
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 350ms;
+    transform: scale(1);
+}
+
+.KYCButtons :nth-child(1){
+    background:#FAFAFA;
+    border: 1px solid #0000FF;  
+    color: #0000FF;
+}
+
+.KYCButtons button:hover{
+    transform: scale(1.05);
+}
+
+.KYCButtons button:active{
+    transform: scale(0.9);
+}
+
+
+@media screen and (max-width:884px) {
+    .agentForm{
+        width: 70%;
+        margin-top: 80px;
+    }
+    .AgentlogoWrap{
+        width: 20%;
+    }   
+}
+
+@media screen and (max-width:428px) {
+    .agentForm{
+        width: 95%;
+        margin-top: 50px;
+    }
+    .AgentFormPage1{
+        width: 100%;
+    }
+    .agentinput input{
+        height: 40px;
+    }
+}
+
+
+@media screen and (max-width:320px) {
+    .AgentFormPage1 h1{
+        font-size: 1.5rem;
+    }    
+}
