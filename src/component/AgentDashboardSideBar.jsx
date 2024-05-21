@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux'
 import logoutIcon from "../Images/logout icon.svg"
 import postIcon from "../Images/post icon.svg"
 import sponsorIcon from '../Images/sponsor icon.svg'
+import { FaHSquare, FaPodcast, FaPowerOff, FaUser } from 'react-icons/fa'
+import { FaHouse, FaHouseFlag } from 'react-icons/fa6'
 
 const AgentDashboardSideBar = () => {
   const {AgentActiveMenu,setAgentActiveMenu,logoutWarning,setLogoutwarning,Agent}=useContext(AgentContext)
@@ -32,18 +34,31 @@ const AgentDashboardSideBar = () => {
           <div className='AgentDashboardSidebarDownMenu'>
               <p onClick={()=>setAgentActiveMenu("account")} 
               className={AgentActiveMenu==="account"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}
-              ><span>Hi, {AgentUser.fullName.slice(0,6)}</span><img className="MenuIcon"src={ProfileIcon} alt="icon"/></p>
+              ><FaUser/><span>Hi, {AgentUser.fullName.slice(0,6)}</span>
+              {/* <img className="MenuIcon"src={ProfileIcon} alt="icon"/> */}
+              
+              </p>
 
               <p onClick={()=>setAgentActiveMenu('posted property')} 
               className={AgentActiveMenu==='posted property'?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}
-              ><span>Posted Properties</span><img className="MenuIcon"src={postIcon} alt="icon"/></p>
+              ><FaHouse/> <span>Posts</span>
+              {/* <img className="MenuIcon"src={postIcon} alt="icon"/> */}
+              
+              </p>
 
               <p onClick={()=>setAgentActiveMenu("sponsored property")} 
               className={AgentActiveMenu==="sponsored property"?"ActiveAgentSideBarMenuP":'AgentSideBarMenuP'}
-              ><span>Sponsored Properties</span><img className="MenuIcon"src={sponsorIcon} alt="icon"/></p>
+              ><FaHouseFlag/>
+              <span>Sponsored posts</span>
+              {/* <img className="MenuIcon"src={sponsorIcon} alt="icon"/> */}
+              </p>
           </div>
           <div className='AgentDashboardSidebarLogoutWrap'>
-              <p onClick={()=>setLogoutwarning(!logoutWarning)}><span>Logout</span><img className="MenuIcon"src={logoutIcon} alt="icon"/></p>
+              <p onClick={()=>setLogoutwarning(!logoutWarning)}>
+                <FaPowerOff/>
+                <span>Logout</span>
+                {/* <img className="MenuIcon"src={logoutIcon} alt="icon"/> */}
+                </p>
           </div>          
       </div>
       

@@ -4,6 +4,7 @@
     height: 100%;
     position: relative;    
     /* background-color: whitesmoke; */
+    
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -20,7 +21,7 @@
     padding: 3%;
     width: 95%;
     height: 70%;
-    background-color: #def1ff;
+    /* background-color: #def1ff; */
 }
 
 .AccountUp span{
@@ -87,7 +88,8 @@
 .Makeanewpost{
     width: 50%;
     height: 20%;
-    background-color: #0E9AFF;
+    /* background-color: #0E9AFF; */
+    background-color: rgba(0, 0, 255, 0.5);
     border-radius: 3px;
     border: none;
     color: white;

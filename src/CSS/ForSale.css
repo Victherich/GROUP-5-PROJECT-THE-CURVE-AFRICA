@@ -72,11 +72,11 @@
     border-radius: 5px 0px 0px 5px;
     border: none;
     padding: 2%;
-    font-size: 1.5vw;
+    /* font-size: 1.5vw; */
 }
 
 .SearchAndFilter input::placeholder{
-    font-size: 1.3vw;
+    /* font-size: 1.3vw; */
 }
 
 .SearchIconWrap{
@@ -259,11 +259,12 @@
     align-items: center;
     flex-direction: column;
     width: 21%;
-    height: 55vh;
+    /* height: 55vh; */
+    height: auto;
     background-color: whitesmoke;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px ;
-    margin-bottom: 5vh;
-    font-size: 1.3vw;
+    margin-bottom: 40px;
+    /* font-size: 1.3rem; */
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* @media screen and (max-width:1071px) {
         width: 26%;  
@@ -294,7 +295,8 @@
 
 .ForSalePropertyImgWrap{
     width: 100%;
-    height: 45%;
+    /* height: 45%; */
+    height: auto;
     background-color: gray;
     display: flex;
     justify-content: center;
@@ -303,7 +305,8 @@
 
 .ForSalePropertyImgWrap img{
     width: 100%;
-    height: 100%;
+    height: 150px;
+    /* height: 100%; */
     
 }
 
@@ -314,7 +317,11 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 55%;
+    height: auto;
+    gap: 20px;
+    padding: 10px;
+    /* height: 55%; */
+    /* height: 600px; */
     /* background-color: blue;   */
 }
 
@@ -324,14 +331,15 @@
     align-items: center;
     width: 100%;
     flex-direction: column;
-    height: 50%;
-   gap: 5%;
+    height: auto;
+    /* height: 500px; */
+   gap: 5px;
     /* background-color: red; */
 }
 
 .ForSalePropertyNameAndPrice h4{
     text-align: center   ;
-    font-size: 1.4vw;
+    /* font-size: 1rem; */
     color: #0653C8;
     /* @media screen and (max-width:1071px) {
         font-size: 1.6vw; 
@@ -360,7 +368,7 @@
 }
 
 .ForSalePropertyNameAndPrice p{
-    font-size: 1.1vw;
+    /* font-size: 1rem; */
     /* @media screen and (max-width:1071px) {
         font-size: 1.3vw; 
     }
@@ -398,9 +406,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:15%;
+    gap:30px;
     width: 100%;
-    padding: 0% 3%;
+    /* padding: 0px 5px; */
     /* background-color: red; */
 }
 
@@ -414,8 +422,9 @@
 
 .ForSalePropertyButtonsWrap button{
     /* padding: 4%; */
-    width: 35%;
-    height: 5vh;
+    /* width: 35%; */
+    /* height: 5vh; */
+    padding: 5px 15px;
     cursor: pointer;
     border-radius: 2px;
     border: none;
@@ -423,7 +432,7 @@
     color: whitesmoke;
     transform: scale(1);
     transition: 350ms;
-    font-size: 1.2vw;
+    /* font-size: 1.3rem; */
     font-weight: 500;
     /* @media screen and (max-width:1071px) {
         font-size: 1.3vw; 
@@ -462,12 +471,40 @@
 .sponsorTag{
     background-color: #0653C8;
     color:white;
-    font-size: 1vw;
+    /* font-size: 1rem; */
     padding:2px;
     border-radius: 5px;
 }
 
-@media screen and (max-width:1280px) {
+
+@media screen and (max-width:884px) {
+    .ForSaleProperty{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .ForSaleProperty{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width:428px) {
+    .ForSaleProperty{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .ForSaleProperty{
+        width: 100%;
+        font-size: 1rem;
+    }
+    .ForSalePropertyButtonsWrap button{
+        font-size: 1rem;
+    }
+}
+/* @media screen and (max-width:1280px) {
     .ForSaleProperties{
         width: 100%;
         gap: 3%;
@@ -476,54 +513,54 @@
         width: 22%;
     }
     .ForSalePropertyNameAndPrice h4{
-        font-size: 1.8vw;
+        
     }
     .ForSalePropertyNameAndPrice p{
-        font-size: 1.7vw;
+        
     }
     .ForSalePropertyButtonsWrap button{
-        font-size: 1.7vw;
+       
     }
     .sponsorTag{
-        font-size: 1.5vw;
+       
     }
     .SearchWrap{
     
     }
     .SearchAndFilter input{
-        font-size: 1.7vw;
+    
     }
     .ClearSearchWrap button{
-        font-size: 1.2vw;
+    
     }
     .HomeHubRedandBlueWrap p{
-        font-size: 2vw;
+        
     }
     .SearchAndFilter input::placeholder{
-        font-size: 1.7vw;
+    
     }
-}
+} */
 
-@media screen and (max-width:884px) {
+/* @media screen and (max-width:884px) {
     .ForSaleProperties{
         width: 100%;
         gap: 5%;
     }
     .ForSaleProperty{
         width: 45%;
-        height: 50vh;
+
     }
     .ForSalePropertyNameAndPrice h4{
-        font-size: 3.5vw;
+        
     }
     .ForSalePropertyNameAndPrice p{
-        font-size: 2.8vw;
+
     }
     .ForSalePropertyButtonsWrap button{
-        font-size: 2.8vw;
+        
     }
     .sponsorTag{
-        font-size:2.4vw;
+        
     }
     .SearchAndFilter{
         height: 6vh;
@@ -532,21 +569,21 @@
       width: 40%;
     }
     .SearchAndFilter input{
-        font-size: 2.5vw;
+        
     }
     .ClearSearchWrap button{
-        font-size: 1.7vw;
+        
         padding: 0.8%;
     }
     .HomeHubRedandBlueWrap p{
-        font-size: 2.5vw;
+    
     }
     .SearchAndFilter input::placeholder{
-        font-size: 2.5vw;
+    
     }
-}
+} */
 
-@media screen and (max-width:834px) {
+/* @media screen and (max-width:834px) {
     .ForSaleProperties{
         width: 100%;
         gap: 5%;
@@ -556,16 +593,16 @@
         height: 50vh;
     }
     .ForSalePropertyNameAndPrice h4{
-        font-size: 3.9vw;
+        
     }
     .ForSalePropertyNameAndPrice p{
-        font-size: 3.2vw;
+        
     }
     .ForSalePropertyButtonsWrap button{
-        font-size: 3.2vw;
+        
     }
     .sponsorTag{
-        font-size:2.8vw;
+        
     }
     .SearchAndFilter{
         height: 6vh;
@@ -574,16 +611,16 @@
       width: 45%;
     }
     .SearchAndFilter input{
-        font-size: 2.8vw;
+        
     }
     .ClearSearchWrap button{
-        font-size: 2vw;
+        
         padding: 0.8%;
     }
     
-}
+} */
 
-@media screen and (max-width:800px) {
+/* @media screen and (max-width:800px) {
     .ForSaleProperties{
         width: 100%;
         gap: 3.5%;
@@ -593,21 +630,21 @@
         height: 50vh;
     }
     .ForSalePropertyNameAndPrice h4{
-        font-size: 4vw;
+        
     }
     .ForSalePropertyNameAndPrice p{
-        font-size: 3.4vw;
+        
     }
     .ForSalePropertyButtonsWrap button{
-        font-size: 3.5vw;
+        
     }
     .sponsorTag{
-        font-size:3vw;
+        
     }
     
-}
+} */
 
-@media screen and (max-width:768px) {
+/* @media screen and (max-width:768px) {
     .ForSaleProperties{
         width: 100%;
         gap: 3.5%;
@@ -617,16 +654,16 @@
         height: 55vh;
     }
     .ForSalePropertyNameAndPrice h4{
-        font-size: 4vw;
+        
     }
     .ForSalePropertyNameAndPrice p{
-        font-size: 3.4vw;
+
     }
     .ForSalePropertyButtonsWrap button{
-        font-size: 3.5vw;
+        
     }
     .sponsorTag{
-        font-size:3vw;
+        
     }
     .SearchAndFilter{
         height: 7vh;
@@ -635,40 +672,40 @@
       width: 50%;
     }
     .SearchAndFilter input{
-        font-size: 2.9vw;
+        
     }
     .ClearSearchWrap button{
-        font-size: 2vw;
+        
         padding: 0.8%;
     }
     .HomeHubRedandBlueWrap p{
-        font-size: 2.8vw;
+        
     }
     .SearchAndFilter input::placeholder{
-        font-size: 2.8vw;
+        
     }
-}
+} */
 
-@media screen and (max-width:428px) {
+/* @media screen and (max-width:428px) {
     .ForSaleProperties{
         width: 100%;
-        /* gap: 3.5%; */
+    
     }
     .ForSaleProperty{
         width: 75%;
         height: 55vh;
     }
     .ForSalePropertyNameAndPrice h4{
-        font-size: 6vw;
+        
     }
     .ForSalePropertyNameAndPrice p{
-        font-size: 5vw;
+        
     }
     .ForSalePropertyButtonsWrap button{
-        font-size: 5vw;
+        
     }
     .sponsorTag{
-        font-size:5vw;
+        
     }
     .SearchAndFilter{
         height: 8vh;
@@ -677,58 +714,56 @@
       width: 80%;
     }
     .SearchAndFilter input{
-        font-size: 4.5vw;
+        
     }
     .ClearSearchWrap button{
-        font-size: 3.5vw;
         padding: 1.5%;
     }
     .HomeHubRedandBlueWrap p{
-        font-size: 4.4vw;
         text-align: center;
     }
     .SearchAndFilter input::placeholder{
-        font-size: 4.5vw;
+    
     }
-}
+} */
 
-@media screen and (max-width:390px) {
+/* @media screen and (max-width:390px) {
     .SearchAndFilter input{
-        font-size: 4.5vw;
+    
     }
     .ClearSearchWrap button{
-        font-size: 3.5vw;
+    
         padding: 1.5%;
     }
     .HomeHubRedandBlueWrap p{
-        font-size: 5vw !important;
+    
         text-align: center;
     }
     .SearchAndFilter input::placeholder{
-        font-size: 4.5vw;
+    
     }
 }
 
 @media screen and (max-width:320px) {
     .ForSaleProperties{
         width: 100%;
-        /* gap: 3.5%; */
+    
     }
     .ForSaleProperty{
         width: 75%;
         height: 55vh;
     }
     .ForSalePropertyNameAndPrice h4{
-        font-size: 6vw;
+    
     }
     .ForSalePropertyNameAndPrice p{
-        font-size: 5vw;
+    
     }
     .ForSalePropertyButtonsWrap button{
-        font-size: 5vw;
+        
     }
     .sponsorTag{
-        font-size:5vw;
+    
     }
     .SearchAndFilter{
         height: 10vh;
@@ -737,11 +772,11 @@
       width: 90%;
     }
     .SearchAndFilter input{
-        font-size: 5vw;
+    
     }
     .ClearSearchWrap button{
-        font-size: 4vw;
+    
         padding: 1.5%;
     }
 }
-
+ */

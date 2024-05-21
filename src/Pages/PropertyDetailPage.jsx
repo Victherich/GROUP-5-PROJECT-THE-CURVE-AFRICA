@@ -6,7 +6,7 @@ import DetailImg3 from '../Images/images (7).jpg'
 import DetailImg4 from '../Images/images (1) 2.png'
 import DetailImg5 from '../Images/pic1 1.png'
 import DetailImg6 from '../Images/woodex6 1.png'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useContext } from 'react'
@@ -16,10 +16,12 @@ import { AgentContext } from '../component/AgentContext'
 
 
 const PropertyDetailPage = () => {
- const {propertyDetailObj}=useContext(AgentContext)
+  const navigate = useNavigate()
+ const {propertyDetailObj,oneAgentObj}=useContext(AgentContext)
 const [ImgDisplay,setImgDisplay]=useState(null)
 const [imgMonitor,setImgMonitor]=useState(null)
-const [oneAgentObj,setOneAgentObj]=useState({})
+// const [oneAgentObj,setOneAgentObj]=useState({})
+
 
 
   useEffect(()=>{
@@ -45,18 +47,8 @@ const [oneAgentObj,setOneAgentObj]=useState({})
     window.history.back();
   };
 
-  useEffect(()=>{
-    oneAgent(propertyDetailObj.agentId)
-  },[])
-
-const oneAgent =async (Id)=>{
-  try{
-    const response = await axios.get(`https://homehub-coxc.onrender.com/api/getOneAgent/${Id}`)
-    console.log(response.data)
-    setOneAgentObj(response.data.data)
-  }catch(error){
-      console.error(error)
-  }
+const handleContactUs = ()=>{
+  navigate("/contactus")
 }
 
 
@@ -103,7 +95,9 @@ const oneAgent =async (Id)=>{
             <p><span>Email: </span>{oneAgentObj.email}</p>
             <p><span>Phone no.: </span>{oneAgentObj.phoneNumber}</p>
             <br/>
-            <button onClick={handleBack}>Back</button>
+            <button onClick={handleContactUs}>Contact Now</button>
+            <br/>
+            <button style={{backgroundColor:"white",color:"blue", border:"1px solid blue"}} onClick={handleBack}>Back</button>
         </div>
       </div>
     </div>

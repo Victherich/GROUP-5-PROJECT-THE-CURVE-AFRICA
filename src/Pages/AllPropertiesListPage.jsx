@@ -20,7 +20,7 @@ const AllPropertiesListPage = () => {
   const [sort, setSort] = useState('');
   const [minFilter, setMinFilter] = useState(null);
   const [maxFilter, setMaxFilter] = useState(null);
-  const {propertyDetail,sponsoredProperties}=useContext(AgentContext)
+  const {propertyDetail,sponsoredProperties,oneAgent}=useContext(AgentContext)
   const [sponsoredPropertiesArray,setSponsoredPropertiesArray]=useState([])
 
   const forSaleId = "65c7c1c8a356276634186c7d"
@@ -54,20 +54,36 @@ const AllPropertiesListPage = () => {
     }
   };
 
-  const handleSearch = () => {
-    const filteredProperties = forSaleProperties.filter(
-      (property) =>
-        property.type.toLowerCase().includes(search.toLowerCase()) ||
-        property.location.toLowerCase().includes(search.toLowerCase())
-    );
-    setForSalePropertiesB(filteredProperties);
-  };
-
-  const handleClearSearch = () => {
-    setSearch('');
-    setSort('');
-    setForSalePropertiesB(forSaleProperties);
-  };
+    //search functionality
+    const handleSearch = () => {
+      if(search.length>=1){
+        const filteredProperties = forSaleProperties.filter(
+          (property) =>
+            property.type.toLowerCase().includes(search.toLowerCase()) ||
+            property.location.toLowerCase().includes(search.toLowerCase())
+        );
+        setForSalePropertiesB(filteredProperties);
+        setResultShow(true)
+  
+      }
+    };
+  
+    //declaring result show state
+    const [resultShow,setResultShow]=useState(false)
+  
+    //handling result number
+    const [resultNumber,setResultNumber]=useState(0)
+    useEffect(()=>{
+        setResultNumber(forSalePropertiesB.length)
+    },[forSalePropertiesB])
+  
+    const handleClearSearch = () => {
+      setSearch('');
+      setSort('');
+      setForSalePropertiesB(forSaleProperties);
+      setResultShow(false)
+    };
+  
 
   useEffect(() => {
     if (sort === 'Highest Price First') {
@@ -86,9 +102,10 @@ const AllPropertiesListPage = () => {
     setReversedProperties([...forSalePropertiesB].reverse());
   }, [forSalePropertiesB]);
 
-  const handleNavigate=(_id)=>{
+  const handleNavigate=(_id,agentId)=>{
     navigate("/propertydetailpage")
     propertyDetail(_id)
+    oneAgent(agentId)
     // {console.log(_id)}
   }
 
@@ -150,8 +167,9 @@ useEffect(()=>{
             <option value='Highest Price First'>Highest Price First</option>
           </select> */}
         </div>
-        <div className='ClearSearchWrap'>{search && <button onClick={handleClearSearch}>Clear Search / Sort</button>}</div>
-        <div className='Line'></div>
+        <div className='ClearSearchWrap'>{resultShow && <button onClick={handleClearSearch}>Clear Search / Sort</button>}</div>
+        {resultShow&&<p style={{margin:"20px",fontSize:"1.3rem",fontWeight:"bold",color:"#0653C8"}}>Search Result: Found ({resultNumber}) Properties</p>}
+        <div className='Line' style={{backgroundColor:"#0653C8"}}></div>
         <div className='HomeHubRedandBlueWrap'>
           <h1>
             HOME<span>HUB</span>
@@ -182,7 +200,7 @@ useEffect(()=>{
                   </p>
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
-                  <button onClick={() => handleNavigate(d._id)}>View</button>
+                  <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
                 </div>
               </div>
             </div>
@@ -190,7 +208,7 @@ useEffect(()=>{
         </div>
 
 
-
+        <div className='Line' style={{backgroundColor:"#0653C8"}}></div>
 
         <div className='ForSaleProperties'>
           {reversedProperties.map((d) => (
@@ -217,7 +235,7 @@ useEffect(()=>{
                   </p>
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
-                  <button onClick={() => handleNavigate(d._id)}>View</button>
+                  <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
                 </div>
               </div>
             </div>

@@ -198,22 +198,19 @@ useEffect(()=>{
         });
         console.log(response.data);
         // alert(response.data.message);
-        Swal.fire({icon:"success",
-        title:"Welcome to HomeHub",
-        text:"Please click the link sent to your email",
-        showConfirmButton:false,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-      })
+        
+        
         loadingAlert.close();
+        // navigate("/emailredirectpage")
         // navigate("/") //specify the welcome path
         // Agentlogin(response.data.agent.id, response.data.agent);
       } catch (error) {
         console.error(error);
         loadingAlert.close();
         if(error){
-          Swal.fire({icon:"error",text:error.response.data.error,
-        text:error.response.data.message,showConfirmButton:true})
+          navigate("/emailredirectpage")
+        //   Swal.fire({icon:"error",text:error.response.data.error,
+        // text:error.response.data.message,showConfirmButton:true})
         }
       }
     } 

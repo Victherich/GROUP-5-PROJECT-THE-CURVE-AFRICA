@@ -68,6 +68,19 @@ const propertyDetail = async (_id) => {
 };
 
 
+const [oneAgentObj,setOneAgentObj]=useState({})
+// get agent detail for detial page
+const oneAgent =async (agentId)=>{
+  try{
+    const response = await axios.get(`https://homehub-coxc.onrender.com/api/getOneAgent/${agentId}`)
+    console.log(response.data)
+    setOneAgentObj(response.data.data)
+  }catch(error){
+      console.error(error)
+  }
+}
+
+
   return (
     <AgentContext.Provider value={{
       AgentActiveMenu,
@@ -82,7 +95,7 @@ const propertyDetail = async (_id) => {
     sponsoredProperties,setSponsoredProperties,propertyDetail,
     propertyDetailObj,setAgentToken,
     // agentPostedProperties,setAgentPostedProperties
-    seekLandingpageOnLogout,setSeekLandingPageoNLogout
+    seekLandingpageOnLogout,setSeekLandingPageoNLogout,oneAgent,oneAgentObj
     }}>
         {children}
     </AgentContext.Provider>

@@ -10,25 +10,25 @@ const Footer = () => {
     <div className='footer'>
       <div className='footermain'>
         <div className='footwrite'>
-          <h1>Company</h1>
-          <div className='line'></div>
+          <h1>Company:</h1>
+          {/* <div className='line'></div> */}
           <span>Privacy policy</span>
           
         </div>
         <div className='footwrite'>
-          <h1>Contact Us</h1>
-          <div className='line'></div>
+          <h1>Contact:</h1>
+          {/* <div className='line'></div> */}
           <span>Email : homehub@gmail.com</span>
           <span>phone : +2347063798113</span>
         </div>
         <div className='footwrite'>
-          <h1>Follow Us</h1>
-          <div className='line'></div>
+          <h1>Follow Us:</h1>
+          {/* <div className='line'></div> */}
           <div className='footwriteimages'>
-            <img src={linkedin} alt="" />
-            <img src={twitter} alt="" />
-            <img src={instagram} alt="" />
-            <img src={facebook} alt="" />
+            <img onClick={()=>window.open("https://www/linkedin.com/homehub","_blank")} src={linkedin} alt="" />
+            <img onClick={()=>window.open("https://www/twitter.com/homehub","_blank")} src={twitter} alt="" />
+            <img onClick={()=>window.open("https://www/instagram.com/homehub","_blank")} src={instagram} alt="" />
+            <img onClick={()=>window.open("https://www/facebook.com/homehub","_blank")} src={facebook} alt="" />
           </div>
         </div>
        

@@ -26,6 +26,7 @@ import TermsAndConditions from './Pages/TermsAndConditions';
 import UserDashboard from './Pages/UserDashboard';
 import AnAgentPropertiesListPage from './Pages/AnAgentPropertiesListPage';
 import AllPropertiesListPage from './Pages/AllPropertiesListPage';
+import EmailRedirectPage from './Pages/EmailRedirectPage';
 
 
 const App = () => {
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="/anagentpropertieslistpage" element={<AnAgentPropertiesListPage />} />
           <Route path="/propertydetailpage" element={<PropertyDetailPage />} />
           <Route path="/allpropertieslistpage" element={<AllPropertiesListPage />} />
+          <Route path="/emailredirectpage" element={<EmailRedirectPage/>}/>
 
           {/* Routes for Agent Pages */}
           <Route path="/agentlogin" element={<AgentLogin />} />

@@ -5,18 +5,18 @@
     width: 100%;
     height: max-content;
     flex-direction: column;
-    /* background-color: red; */
-    margin-bottom: 15vh;
+
+    padding-bottom: 50px;
 }
 
 .DetailPageUp{
     display: flex;
     width: 50%;
-    height: 50vh;
+    height: 400px;
     background-color: gray;
     justify-content: center;
     align-items: center;
-    margin-bottom: 7vh;
+    margin-bottom: 100px;
 }
 
 .DetailPageUp img{
@@ -30,13 +30,13 @@
     justify-content: center;  
     align-items: center;
     width: 100%;
-    height: 9vh;
-    gap:2%
+    height: auto;
+    gap:3%
 }
 
 .DetailPageMid img{
-    width:3% ;
-    height: 90%;
+    width:6% ;
+    /* height: 90%; */
     background-color: grey;
     box-shadow: 0px 0px 2px;
     cursor: pointer;
@@ -45,7 +45,7 @@
 }
 
 .DetailPageMid img:hover{
-    transform: scale(1.04);
+    transform: scale(1.1);
 }
 
 .DetailPageMid img:active{
@@ -55,33 +55,33 @@
 .ImageClickP{
     color:#0653C8;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .DetailPageDown{
     width: 100%;
-    height: 50vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     padding: 0% 10%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 17px;
-    font-weight: 400;
+    font-size: 1rem;
+    /* font-weight: 500; */
 }
 
 
 .DetailPageDown h4{
     color:#0653C8;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 17px;
-    font-weight: 400;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .DetailPageDown button{
-    width: 15%;
-    padding: 1%;
+    width: 15% ;
+    padding: 8px;
     background-color: #0653C8;
-    border-radius: 2px;
+    border-radius: 5px;
     border: none;
     color: white;
     font-weight: bold;
@@ -101,11 +101,15 @@
 .DetailPageDown span{
     font-weight: 600;
 }
-@media screen and (max-width:768px){
+
+
+
+
+/* @media screen and (max-width:768px){
     .DetailPage{
        height: 50%;
        width: 90%;
-       /* background-color: aquamarine; */
+   
     }
     .DetailPageUp{
         display: flex;
@@ -125,9 +129,7 @@
         width: 90%;
         display: flex;
    
-        /* justify-content: space-between; */
-        /* flex-wrap: nowrap; */
-        /* background-color: blue; */
+  
     
     }
     .DetailPageMid img{
@@ -144,9 +146,7 @@
     .DetailPageDown{
         width: 90%;
         height: 50vh;
-        /* display: flex;
-        flex-direction: column;
-            padding: 0% 10%; */
+  
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 13px;
         font-weight: 400;
@@ -182,7 +182,7 @@
             .DetailPage{
                height: 50%;
                width: 90%;
-               /* background-color: rgb(234, 127, 255); */
+
             }
             .DetailPageUp{
                 display: flex;
@@ -202,9 +202,7 @@
                 width: 90%;
                 display: flex;
            
-                /* justify-content: space-between; */
-                /* flex-wrap: nowrap; */
-                /* background-color: blue; */
+
             
             }
             .DetailPageMid img{
@@ -221,9 +219,7 @@
             .DetailPageDown{
                 width: 90%;
                 height: 50vh;
-                /* display: flex;
-                flex-direction: column;
-                padding: 0% 10%; */
+
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 font-size: 13px;
                 font-weight: 400;
@@ -258,7 +254,7 @@
         .DetailPage{
             height: 50%;
             width: 90%;
-            /* background-color: rgb(138, 255, 127); */
+
          }
          .DetailPageUp{
              display: flex;
@@ -278,9 +274,7 @@
              width: 90%;
              display: flex;
         
-             /* justify-content: space-between; */
-             /* flex-wrap: nowrap; */
-             /* background-color: blue; */
+
          
          }
          .DetailPageMid img{
@@ -297,9 +291,7 @@
          .DetailPageDown{
              width: 90%;
              height: 50vh;
-             /* display: flex;
-             flex-direction: column;
-             padding: 0% 10%; */
+  
              font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
              font-size: 10px;
              font-weight: 400;
@@ -316,8 +308,7 @@
          }
          .Btns{
           font-size: 8px;
-          /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-          /* font-weight: 200; */
+
          }
          .ImageClickP{
             color:#0653C8;
@@ -346,7 +337,7 @@
             .DetailPage{
                 height: 50%;
                 width: 90%;
-                /* background-color: rgb(255, 127, 127); */
+           
              }
              .DetailPageUp{
                  display: flex;
@@ -366,9 +357,7 @@
                  width: 90%;
                  display: flex;
             
-                 /* justify-content: space-between; */
-                 /* flex-wrap: nowrap; */
-                 /* background-color: blue; */
+
              
              }
              .DetailPageMid img{
@@ -385,9 +374,7 @@
              .DetailPageDown{
                  width: 90%;
                  height: 50vh;
-                 /* display: flex;
-                 flex-direction: column;
-                 padding: 0% 10%; */
+
                  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                  font-size: 9px;
                  font-weight: 400;
@@ -413,8 +400,7 @@
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 font-weight: 700;
                 display: flex;
-                /* justify-content: center; */
-                /* align-items: center; */
+       
 
              }
              
@@ -432,4 +418,4 @@
     font-size: 5px;
 }
     }
-
+ */

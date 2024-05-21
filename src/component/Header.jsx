@@ -6,6 +6,7 @@ import { UserContext } from './UserContext';
 import Burger from "../Images/Burger Icon.png"
 import { useSelector } from 'react-redux';
 import "animate.css"
+import { FaBurger } from 'react-icons/fa6';
 
 const Header = () => {
   const location = useLocation();
@@ -28,6 +29,10 @@ const Header = () => {
       setHeaderActive("Agents");
     } else if (path === "/allpropertieslistpage") {
       setHeaderActive(null);
+    } else if (path === "/aboutus"){
+      setHeaderActive("AboutUs")
+    } else if (path === "/contactus"){
+      setHeaderActive("ContactUs")
     }
   }, [location]);
 
@@ -61,9 +66,13 @@ useEffect(()=>{
           <NavLink to={"/forsale"} className={headerActive === "ForSale" ? "sec2" : "sec"}>For Sale</NavLink>
           <NavLink to={"/forrent"} className={headerActive === "ForRent" ? "sec2" : "sec"}>For Rent</NavLink>
           <NavLink to={"/allagentslistpage"} className={headerActive === "Agents" ? "sec2" : "sec"}>Agents</NavLink>
+          <NavLink to={"/aboutus"} className={headerActive === "AboutUs" ? "sec2" : "sec"}>About Us</NavLink>
+          <NavLink to={"/contactus"} className={headerActive === "ContactUs" ? "sec2" : "sec"}>Contact Us</NavLink>
 
-          {/* Conditional rendering of user actions */}
-          {UserId ? (
+          
+        </div>
+        {/* Conditional rendering of user actions */}
+        {UserId ? (
             <div className='SignUpLoginWrap'>
               <NavLink to={"/userdashboard"}>Hi, {User.fullName.slice(0, 6)}</NavLink>
             </div>
@@ -73,7 +82,11 @@ useEffect(()=>{
               <NavLink to={'/userlogin'}>Login</NavLink>
             </div>
           )}
-        </div>
+          {/* Burger menu icon */}
+      <div className='Burger'>
+        <FaBurger style={{color:"white",fontSize:"1.3rem"}} onClick={() => setMobileMenuShow(!mobileMenuShow)} />
+        {/* <img src={Burger} alt="Burger" onClick={() => setMobileMenuShow(!mobileMenuShow)} /> */}
+      </div>
       </div>
 
 
@@ -81,10 +94,7 @@ useEffect(()=>{
               <NavLink to={"/userdashboard"}>Hi, {User.fullName.slice(0,6)}</NavLink>
             </div>}
 
-      {/* Burger menu icon */}
-      <div className='Burger'>
-        <img src={Burger} alt="Burger" onClick={() => setMobileMenuShow(!mobileMenuShow)} />
-      </div>
+      
 
       {/* Mobile menu */}
       {mobileMenuShow && (
@@ -98,7 +108,11 @@ useEffect(()=>{
           <div className='MenuLine'></div>
           <NavLink to={"/allagentslistpage"} className={headerActive === "Agents" ? "sec2" : "sec"}>Agents</NavLink>
           <div className='MenuLine'></div>
-
+          <NavLink to={"/aboutus"} className={headerActive === "AboutUs" ? "sec2" : "sec"}>About Us</NavLink>
+          <div className='MenuLine'></div>
+          <NavLink to={"/contactus"} className={headerActive === "ContactUs" ? "sec2" : "sec"}>Contact Us</NavLink>
+          <div className='MenuLine'></div>
+          
           {/* Conditional rendering of user actions */}
           {UserId ? (
             <div className='SignUpLoginWrapMobile'>

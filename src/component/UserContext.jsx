@@ -73,7 +73,9 @@ const handleAddToFavourite=async(_id)=>{
   Swal.showLoading();
   try{
     axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`
-    const response = await axios.put(`https://homehub-coxc.onrender.com/api/favoriteProperty/${_id}`)
+    // const response = await axios.put(`https://homehub-coxc.onrender.com/api/favoriteProperty/${_id}`)
+    const response = await axios.post(`https://homehub-coxc.onrender.com/api/user/addToFavorite/${_id}`)
+    
     console.log(response.data)
     loadingAlert.close();
     Swal.fire({icon:"success",title:"Item Added to your favourite",showConfirmButton:false,timer:2000})

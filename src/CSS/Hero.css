@@ -319,14 +319,44 @@
     height: auto;
     display: flex; 
     z-index: 1;
+    position: relative;
 }
 
 .HeroRight img {
     width: 100%;
-    height: auto;
+    height: 500px;
     object-fit: cover;
 }
 
+
+.CircleWrap{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    gap: 30px;
+    position: absolute;
+    bottom: -50px;
+    /* right: 2%; */
+    z-index: 111;
+}
+
+.Circle{
+    width: 10px;
+    height: 10px;
+    background-color: grey;
+    border-radius: 50px;
+}
+
+.CircleActive{
+    width: 17px;
+    height: 17px;
+    background-color: rgba(0, 0, 255, 0.5);
+    border-radius: 50px;
+}
 
 @media screen and (max-width:884px){
     .HeroRight{

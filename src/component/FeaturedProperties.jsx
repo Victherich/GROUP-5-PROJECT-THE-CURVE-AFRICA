@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux'
 const FeaturedProperties = () => {
     const navigate = useNavigate();
     const [sponsoredPropertiesArray,setSponsoredPropertiesArray]=useState([])
-    const{propertyDetail,sponsoredProperties}=useContext(AgentContext) 
+    const{propertyDetail,sponsoredProperties,oneAgent}=useContext(AgentContext) 
     const {UserToken,favourite,setFavourite,handleAddToFavourite}=useContext(UserContext)
     const userUserId=useSelector(state=>state.userUserId)
     console.log(userUserId)
@@ -50,9 +50,10 @@ const FeaturedProperties = () => {
     featuredSponsoredProperties() 
 },[])
 
-   const handleNavigate=(_id)=>{
+   const handleNavigate=(_id,agentId)=>{
     navigate("/propertydetailpage")
     propertyDetail(_id)
+    oneAgent(agentId)
     // {console.log(_id)}
   }
 
@@ -114,7 +115,7 @@ const FeaturedProperties = () => {
                   </p>
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
-                  <button onClick={() => handleNavigate(d._id)}>View</button>
+                  <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
                   {userUserId?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
                   {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={()=>handleAddToFavourite(d._id)}/>:""}
                   {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon" />:""}
@@ -146,7 +147,7 @@ const FeaturedProperties = () => {
                   </p>
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
-                  <button onClick={() => handleNavigate(d._id)}>View</button>
+                  <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
                   {userUserId?"":<img src={favouriteIcon1} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Please login to Add to favourites",showConfirmButton:false,timer:2000})}/>}
                   {userUserId&&favourite===false?<img src={favouriteIcon2} alt="FavouriteIcon" onClick={()=>handleAddToFavourite(d._id)} />:""}
                   {userUserId&&favourite===true?<img src={favouriteIcon3} alt="FavouriteIcon"/>:""}

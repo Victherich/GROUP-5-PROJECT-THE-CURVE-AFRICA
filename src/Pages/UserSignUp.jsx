@@ -127,8 +127,8 @@ const validateForm = () => {
         Swal.fire({
           title:"Sign up successfull",
           text:response.data.message,
-          showConfirmButton:false,
-          timer:2000, 
+          showConfirmButton:true,
+          // timer:2000, 
         })
         const user = response.data.user
         const id = response.data.user._id
