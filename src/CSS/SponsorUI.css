@@ -99,8 +99,9 @@
     border: 1px solid #0653C8;
 }
 .SponsorUIButtonswrap button{
-    width: 10%;
-    height:100%;
+    /* width: 10%; */
+    /* height:100%; */
+    padding: 10px 20px;
     background-color: #0E9AFF;
     color: white;
     font-weight: 600;
@@ -117,4 +118,27 @@
 
 .SponsorUIButtonswrap button:active{
     transform: scale(0.9);
+}
+
+
+@media screen and (max-width:884px) {
+    .SponsorUI{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:428px) {
+    .SponsorUI{
+        width: 95%;
+        height: 95%;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .SponsorUI{
+        width: 98%;
+        height: 98%;
+        font-size: 0.7rem;
+    }
 }

@@ -42,6 +42,7 @@ const handleuserFavourites =async()=>{
     console.log(response.data)
       setuserFavourites(response.data.data)
       loadingAlert.close();
+      userFavouritesAlert()
    }catch(error){
     console.error(error)
     Swal.fire({icon:"error",title:error.response.data.error,text:error.response.data.message,showConfirmButton:false,timer:2000});
@@ -63,7 +64,7 @@ const handleNavigate=(_id,agentId)=>{
 }
 
 
-const handleRemoveFromUserFavourites =async()=>{
+const handleRemoveFromUserFavourites =async(_id)=>{
   const loadingAlert = Swal.fire({
     title: "Loading",
     text: "Please wait...",
@@ -73,26 +74,43 @@ const handleRemoveFromUserFavourites =async()=>{
   });
 
   Swal.showLoading();
+  removeFromFavouritesFrontEnd(_id)
 
    try{
     axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
-    const response = await axios.get(url)
+    const response = await axios.post(`https://homehub-coxc.onrender.com/api/user/removeFavorite/${_id}`)
+    
     console.log(response.data)
-      setuserFavourites(response.data.data)
+      // setuserFavourites(response.data.data)
       loadingAlert.close();
+      Swal.fire({icon:"success",text:"Successfully removed",timer:2000,showConfirmButton:false})
+      
+
    }catch(error){
-    console.error(error)
-    Swal.fire({icon:"error",title:error.response.data.error,text:error.response.data.message,showConfirmButton:false,timer:2000});
+    console.error(error.response)
+    // Swal.fire({icon:"error",title:error.response.data.error,text:error.response.data.message,showConfirmButton:false,timer:2000});
+    Swal.fire({icon:"error",text:error.response.data,showConfirmButton:false,timer:2000});
     loadingAlert.close();
    }
 
+}
+
+const removeFromFavouritesFrontEnd =(_id)=>{
+    setuserFavourites(userFavourites.filter((e)=>e._id!==_id))
+}
+
+const userFavouritesAlert=()=>{
+  if(userFavourites.length===0){
+    return "you hae no faourite Property"  
+  }
 }
 
 
   return (
     <div className='PostedPropertiesWrap'>
       <h4>User Favourite</h4>
-      <div className='PostedProperties'>
+      {userFavourites?.length<=0&&<h4>You have no favourite property</h4>}
+      {userFavourites?.length>0&&<div className='PostedProperties'>
         {userFavourites?.map((d)=>(
           <div key={d._id} className='ForSaleProperty'>
           <div className='ForSalePropertyImgWrap'>
@@ -113,7 +131,7 @@ const handleRemoveFromUserFavourites =async()=>{
           </div>
         </div>
         ))}
-      </div>
+      </div>}
     </div>
   )
 }

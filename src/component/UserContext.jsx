@@ -78,13 +78,13 @@ const handleAddToFavourite=async(_id)=>{
     
     console.log(response.data)
     loadingAlert.close();
-    Swal.fire({icon:"success",title:"Item Added to your favourite",showConfirmButton:false,timer:2000})
-    alert ("ok ok ok ")
+    Swal.fire({icon:"success",text:"Successfully added to your favourites",showConfirmButton:false,timer:2000})
+    // alert ("ok ok ok ")
   }catch(error){
     console.error(error);
     loadingAlert.close()
-    alert("hey hey hey ")
-    // Swal.fire({icon:"error",text:response.data.error.message,showConfirmButton:false,timer:2000})
+    // alert("hey hey hey ")
+    Swal.fire({icon:"error",text:error.response.data.message,showConfirmButton:false,timer:2000})
   }
 }
 

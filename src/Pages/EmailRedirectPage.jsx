@@ -11,7 +11,7 @@ const EmailRedirectPage = () => {
         <div className='FormSubmitUi'style={{width:'100%',height:"100vh"}} >
         <img src={Logo} alt="Logo"/>
         <h1>Welcome to HomeHub !!!</h1> 
-        <p>We have sent a verification link to your email. Please go your email and click on the link to verify your account. After you've verified your account, go to the home page and click on the POST A PROPERTY button to login and start posting. Thanks</p>
+        <p>We have sent a verification link to your email. Please go your email and click on the link to verify your account. If you did'nt find the email in your inbox , kindly check your spam folder. Thanks</p>
         <button onClick={()=>navigate("/")}>Go to Home</button>
         
     </div>

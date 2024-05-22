@@ -37,7 +37,7 @@ const Hero = () => {
   },[])
 
 
-  console.log(HeroImgSelect)
+  // console.log(HeroImgSelect)
 
   return (
     <div className='Hero'>

@@ -402,7 +402,7 @@ const AgentPostAPropertyPage = () => {
           </div>
         </div>
         <div className='AgentPostAPropertyMid'>
-          <input type="text" value={formData.description} name="description" onChange={handleChange} placeholder='Enter full description of property, terms and conditions, condition, payment mode etc' required />
+          <textarea type="text" value={formData.description} name="description" onChange={handleChange} placeholder='Enter full description of property, terms and conditions, condition, payment mode etc' required />
         </div>
         <div className='AgentPostAPropertyDown'>
           {AgentActiveMenu === "post a property" ? <button type='button'

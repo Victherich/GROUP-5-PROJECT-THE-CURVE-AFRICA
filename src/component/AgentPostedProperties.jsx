@@ -193,7 +193,6 @@ const handleSponsorBackend = async(_id,amountValue)=>{
     console.log(response.data);
 
     Swal.fire({icon:"success",
-    title:"Payment Confirmation",
     text:`Paid NGN ${amountValue} for sponsorship of post id no.: ${_id}`,
     showConfirmButton:true,
     allowOutsideClick: false,

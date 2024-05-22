@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AgentContext } from '../component/AgentContext'
 import Hero from '../component/Hero'
+import AdertUI from '../component/AdertUI'
 
 
 
@@ -78,6 +79,7 @@ const handleAgentArea = ()=>{
             </div>
         </div>
     </div>
+    <AdertUI/>
       <Footer/>
     </div>
   )
