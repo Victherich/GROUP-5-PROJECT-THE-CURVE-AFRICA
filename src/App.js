@@ -27,6 +27,7 @@ import UserDashboard from './Pages/UserDashboard';
 import AnAgentPropertiesListPage from './Pages/AnAgentPropertiesListPage';
 import AllPropertiesListPage from './Pages/AllPropertiesListPage';
 import EmailRedirectPage from './Pages/EmailRedirectPage';
+import AdminDashboard from './Pages/AdminDashBoard';
 
 
 const App = () => {
@@ -72,6 +73,8 @@ const App = () => {
           <Route element={<UserPrivate />}>
             <Route path="/userdashboard" element={<UserDashboard />} />
           </Route>
+
+          <Route path="/admin" element={<AdminDashboard/>}/>
         </Routes>
       </BrowserRouter>
     </div>
