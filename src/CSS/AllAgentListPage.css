@@ -14,15 +14,13 @@
 .AnAgentWrap{
     display: flex;
     justify-content:center;
-    /* gap: 4%; */
+    padding: 20px;
     align-items: center;
     width: 40%;
-    height: 30vh;
+    height: auto;
     background-color: #eef4f8;
     box-shadow: #0000003d 0px 3px 8px ;
-    margin-top: 3vh;
-    font-size: 1.1vw;
-    /* background-color: red; */
+    margin: 10px;
 }
 
 .AnAgent{
@@ -30,7 +28,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 100%;
     text-align: center;
     /* background-color: red; */
 }
@@ -38,38 +36,10 @@
 .AnAgent span{
     font-weight: 600;
 }
-@media screen and (max-width:1280px){
-    .AllAgentsPage{
-        width: 100% !important;
-    }
-    .AnAgentWrap{
-        width: 40%;
-    }
-    .AnAgent{
-        font-size: 1.8vw;
-    }
-}
 
-@media screen and (max-width:884px){
-    .AllAgentsPage{
-        width: 100% !important;
-    }
-    .AnAgentWrap{
-        width: 40%;
-    }
-    .AnAgent{
-        font-size: 2.5vw;
-    }
-}
 
-@media screen and (max-width:428px){
-    .AllAgentsPage{
-        width: 100% !important;
-    }
+@media screen and (max-width:428px) {
     .AnAgentWrap{
-        width: 80%;
-    }
-    .AnAgent{
-        font-size: 4.2vw;
+        width: 100%;
     }
 }

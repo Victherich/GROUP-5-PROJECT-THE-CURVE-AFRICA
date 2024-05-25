@@ -6,9 +6,11 @@ import Ad1 from "../Images/Ad 1.jpg"
 import Ad2 from "../Images/Ad 2.png"
 import Ad3 from "../Images/Ad 3.jpg"
 import Ad4 from "../Images/Ad 4.jpg"
+import { useNavigate } from 'react-router-dom'
 
 
 const AdertUI = () => {
+  const navigate=useNavigate()
     const [AdNum,SetAdNum]=useState(0)
     
     useEffect(()=>{
@@ -30,7 +32,10 @@ const AdertUI = () => {
 
   return (
     <div className='AdertWrap'>
-        <h1>Advertise With Us !!!</h1>
+        <h1>Advertise With Us !!! <br/>
+        
+          </h1>
+          <p onClick={()=>navigate("/contactus")}>Contact Now</p>
     <div className='Adert'>
       <FaArrowLeft className='Arrow' onClick={handleLeft}/>
       {AdNum===0&&<img className="animate__animated animate__slideInLeft" src={Ad1} alt="Adert"/>}
@@ -50,6 +55,7 @@ const AdertUI = () => {
        <div className={AdNum===3?'CircleActive':'Circle'}>
        </div>              
 </div>
+
     </div>
   )
 }

@@ -201,7 +201,7 @@ import { AgentContext } from './AgentContext';
 import '../CSS/AgentPostAProperty.css';
 
 const AgentPostAPropertyPage = () => {
-  const { setAgentActiveMenu, AgentActiveMenu, AgentToken } = useContext(AgentContext);
+  const { setAgentActiveMenu, AgentActiveMenu, AgentToken, setPostAPropertyShow } = useContext(AgentContext);
   const [yearly, setYearly] = useState(false);
   const [category1, setCategory1] = useState('');
   const [categoryError, setCategoryError] = useState('');
@@ -406,14 +406,16 @@ const AgentPostAPropertyPage = () => {
         </div>
         <div className='AgentPostAPropertyDown'>
           {AgentActiveMenu === "post a property" ? <button type='button'
-            onClick={() => setAgentActiveMenu("account")}
+            // onClick={() => setAgentActiveMenu("account")}
+            onClick={()=>setPostAPropertyShow(false)}
             style={{
               backgroundColor: "white",
               color: "#0653C8",
               border: "1px solid #0653C8",
             }}>Cancel</button> :
             <button type='button'
-              onClick={() => setAgentActiveMenu('posted property')}
+              // onClick={() => setAgentActiveMenu('posted property')}
+              onClick={()=>setPostAPropertyShow(false)}
               style={{
                 backgroundColor: "white",
                 color: "#0653C8",

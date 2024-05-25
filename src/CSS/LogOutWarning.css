@@ -21,7 +21,9 @@
     align-items: center;
     flex-direction: column;
     gap: 20px;
+    padding: 20px;
     background-color:whitesmoke;
+    /* background-color: red; */
     /* position: absolute; */
     /* top:30%;
     left:180%; */
@@ -57,4 +59,12 @@
 
 .LogOutWarningButtons button:active{
     transform: scale(0.9);
+}
+
+
+@media screen and (max-width:768px) {
+    .LogOutWarning{
+        width: 80%;
+        text-align: center;
+    }      
 }

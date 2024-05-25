@@ -10,11 +10,14 @@ import { useSelector } from 'react-redux'
 import logoutIcon from "../Images/logout icon.svg"
 import postIcon from "../Images/post icon.svg"
 import sponsorIcon from '../Images/sponsor icon.svg'
-import { FaHSquare, FaPodcast, FaPowerOff, FaUser } from 'react-icons/fa'
+import { FaHSquare, FaPodcast, FaPowerOff, FaToggleOff, FaUser } from 'react-icons/fa'
 import { FaHouse, FaHouseCircleCheck, FaHouseFlag, FaUserLargeSlash, FaUsers } from 'react-icons/fa6'
 
+
 const AgentDashboardSideBar = () => {
-  const {AgentActiveMenu,setAgentActiveMenu,logoutWarning,setLogoutwarning,Agent}=useContext(AgentContext)
+  // const User = useSelector(state=>state.userUser)
+  const {AgentActiveMenu,setAgentActiveMenu,Agent,logoutWarning,setLogoutwarning,setSwitchDashboard,}=useContext(AgentContext)
+
   // console.log(AgentActiveMenu)
 
   const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
@@ -23,7 +26,7 @@ const AgentDashboardSideBar = () => {
   
  
   return (
-    <div className='AgentDashboardSidebar'>
+    <div className='AgentDashboardSidebar' style={{backgroundColor:"lightblue"}}>
       <Link title="Back to Home" to={"/"} className='AgentDashboardSidebarUp'>
         <img src={HomeHubLogo} alt="AgentDashboardSidebarLogo"/>
       </Link>
@@ -51,6 +54,13 @@ const AgentDashboardSideBar = () => {
               ><FaUsers/>
               <span>Users</span>
               {/* <img className="MenuIcon"src={sponsorIcon} alt="icon"/> */}
+              </p>
+
+              <p  onClick={()=>setSwitchDashboard(false)}
+              className='AgentSideBarMenuP'
+              ><FaToggleOff/>
+              <span>Switch to Agent</span>
+           
               </p>
           </div>
           <div className='AgentDashboardSidebarLogoutWrap'>

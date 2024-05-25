@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AgentAccount from '../component/AgentAccount'
 import AgentPostAPropertyPage from '../component/AgentPostAPropertyPage'
 import AgentSponsoredProperties from '../component/AgentSponsoredProperties'
@@ -10,9 +10,13 @@ import AgentPostedProperties from '../component/AgentPostedProperties'
 import AgentLogOutWarning from '../component/AgentLogOutWarning'
 import AgentViewDetailPage from '../component/AgentViewDetailPage'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import Swal from 'sweetalert2'
 
 
 const AgentDashboard = () => {
+
+  const AgentUser = useSelector(state=>state.user)
 
 
   const {AgentActiveMenu,
@@ -21,7 +25,7 @@ const AgentDashboard = () => {
     toggleAgentEditProfileUI,
     setToggleAgentEditProfileUI,
   logoutWarning,
-  toggleAgentViewDetailpage,Agent,setAgentToken}=useContext(AgentContext)
+  toggleAgentViewDetailpage,Agent,setAgentToken,PostAPropertyShow,setPostAPropertyShow}=useContext(AgentContext)
 
 
   useEffect(()=>{
@@ -33,8 +37,13 @@ const AgentDashboard = () => {
     },[])
 
 
+   
+  
+
+
+
   return (
-    <div className='AgentDashboard'>
+    <div className='AgentDashboard animate__animated animate__slideInRight'>
       <div className='AgentDashboardLeft'>
         <AgentDashboardSideBar/>
       </div>
@@ -50,7 +59,8 @@ const AgentDashboard = () => {
       </div>
       {logoutWarning&&<AgentLogOutWarning/>}
       {AgentActiveMenu==="post a property"&&<AgentPostAPropertyPage/>}
-      {AgentActiveMenu==="posted a property2"&&<AgentPostAPropertyPage/>}
+      {/* {AgentActiveMenu==="posted a property2"&&AgentUser?.isGood?<AgentPostAPropertyPage/>:""} */}
+      {PostAPropertyShow&&<AgentPostAPropertyPage/>}
       {/* {toggleAgentViewDetailpage&&<AgentViewDetailPage/>} */}
     </div>
   )

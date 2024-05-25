@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AgentPrivate from './component/AgentPrivate';
@@ -28,9 +28,13 @@ import AnAgentPropertiesListPage from './Pages/AnAgentPropertiesListPage';
 import AllPropertiesListPage from './Pages/AllPropertiesListPage';
 import EmailRedirectPage from './Pages/EmailRedirectPage';
 import AdminDashboard from './Pages/AdminDashBoard';
+import { AgentContext } from './component/AgentContext';
+import { useSelector } from 'react-redux';
 
 
 const App = () => {
+  const {switchDashboard,setSwitchDashboard}=useContext(AgentContext)
+  const AgentUser = useSelector(state=>state.user)
 
 
   return (
@@ -66,7 +70,7 @@ const App = () => {
 
           {/* Nested routes for authenticated Agent */}
           <Route element={<AgentPrivate />}>
-            <Route path="/agentdashboard" element={<AgentDashboard />} />
+            <Route path="/agentdashboard" element={switchDashboard===true&&AgentUser?.isAdmin?<AdminDashboard/>:<AgentDashboard />} />
           </Route>
 
           {/* Nested routes for authenticated User */}

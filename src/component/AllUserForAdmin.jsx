@@ -46,7 +46,7 @@ const AllUserForAdmin = () => {
   
   
     const handleSearch = () => {
-      const filteredAgents = allUser.filter(user =>
+      const filteredUser = allUser.filter(user =>
         user.fullName.toLowerCase().includes(search.toLowerCase()) 
       )
       setAllUserB(filteredUser)
@@ -72,7 +72,7 @@ const AllUserForAdmin = () => {
           <div key={alluser._id} className='AnAgentWrap' style={{flexDirection:"column"}}>
           
               <div className='AnAgent'>
-                  <h3 style={{color:"#0653C8"}}>Company: {allagents.companyName}</h3>
+                  <h3 style={{color:"#0653C8"}}>Company: {alluser.companyName}</h3>
                   <p><span>Name: </span>{alluser.fullName}</p>
                   <p><span>Address:</span> {alluser.address}</p>
                   <p><span>Email:</span> {alluser.email}</p>

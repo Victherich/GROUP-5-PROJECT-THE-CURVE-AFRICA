@@ -204,6 +204,7 @@
     .footermain{
         flex-direction: column;
         gap:100px;
+        padding-left: 20px;
     }
     .footwrite{
         width: 100%;

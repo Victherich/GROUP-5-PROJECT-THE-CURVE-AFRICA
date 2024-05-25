@@ -75,7 +75,7 @@ const AgentAccount = ({
   toggleAgentEditProfileUI,
   setToggleAgentEditProfileUI,
 }) => {
-  const { AgentId, setAgentActiveMenu, Agent } = useContext(AgentContext);
+  const { AgentId, setAgentActiveMenu, Agent, handlePostAPropertyShow} = useContext(AgentContext);
 
   // Parse Agent state if it's in JSON format
   const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
@@ -123,7 +123,9 @@ const AgentAccount = ({
         <div className='AccountUpRight'>
           <button
             className='Makeanewpost'
-            onClick={() => setAgentActiveMenu('post a property')}>
+            // onClick={() => setAgentActiveMenu('post a property')}
+            onClick={handlePostAPropertyShow}
+            >
             {' '}
             + Make a new post
           </button>

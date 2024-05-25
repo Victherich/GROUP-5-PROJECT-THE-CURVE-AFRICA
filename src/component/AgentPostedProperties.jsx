@@ -16,7 +16,7 @@ const AgentPostedProperties = () => {
     setToggleAgentViewDetailpage,
     toggleAgentViewDetailpage,
     setSponsoredProperties,
-    sponsoredProperties,setAgentActiveMenu,Agent,deleteSponsoredFromPostedProperty} = useContext(AgentContext)
+    sponsoredProperties,setAgentActiveMenu,Agent,deleteSponsoredFromPostedProperty,handlePostAPropertyShow} = useContext(AgentContext)
 
 // console.log(Agent)
 
@@ -58,7 +58,7 @@ const [agentPostedProperties,setAgentPostedProperties]=useState([])
 // delete posted property
 const handleDelete = (_id) => {
   Swal.fire({
-    title: 'Are you sure?',
+    text: 'Are you sure?',
     icon: 'warning',
     confirmButtonText: 'Yes, delete it!',
     showCancelButton: true,
@@ -265,7 +265,9 @@ const handleCloseView = (_id)=>{
     <div className='PostedPropertiesWrap'>
       <div className='PostedPropertiesTitle'>
       <h4>Posted Properties</h4><button 
-      onClick={()=>setAgentActiveMenu("posted a property2")}
+      // onClick={()=>setAgentActiveMenu("posted a property2")
+        onClick={handlePostAPropertyShow}
+      
       className='Makeanewpost'>+ Make a new Post</button>
       </div>
       <div className='PostedProperties'>

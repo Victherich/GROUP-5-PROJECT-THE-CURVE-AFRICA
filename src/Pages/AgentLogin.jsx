@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../Features/Slice';
 import { useSelector } from 'react-redux';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const AgentLogin = () => {
   const { Agentlogin,seekLandingpageOnLogout,setSeekLandingPageoNLogout } = useContext(AgentContext);
@@ -118,6 +119,10 @@ useEffect(()=>{
 },[formData])
 
 
+
+//handling password show
+const [passwordShow,setPasswordShow]=useState('password')
+
   return (
     <div className='agentbody'>
       <Link to={"/"} className='AgentlogoWrap'>
@@ -142,14 +147,16 @@ useEffect(()=>{
                   <p style={{fontSize:"small",color:"red"}}>{emailError}</p>
               </div>
               
-              <div className='agentinput' style={{height:"22%"}}>
+              <div className='agentinput' style={{height:"22%",position:'relative'}}>
                 <label htmlFor="">Password</label>
                 <input
-                  type="password"
+                  type={passwordShow}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder='Enter password' required />
+                  placeholder='Enter password' required style={{position:'relative'}}/>
+                  {passwordShow==="text"?<FaEye onClick={()=>setPasswordShow("password")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>:
+                  <FaEyeSlash onClick={()=>setPasswordShow("text")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>}
               </div>
               <button type="submit"
               className='AgentSignUpNextButton' 

@@ -13,6 +13,9 @@ import { useEffect } from 'react'
 import AdminDashBoardSideBar from '../component/AdminDashBoardSideBar'
 import AllAgentsForAdmin from '../component/AllAgentsForAdmin'
 import AllUserForAdmin from '../component/AllUserForAdmin'
+import UserAccount from '../component/UserAccount'
+import UserLogOutWarning from '../component/UserLogoutUI'
+import { UserContext } from '../component/UserContext'
 
 
 const AdminDashboard = () => {
@@ -23,8 +26,9 @@ const AdminDashboard = () => {
     setToggleAgentChangePasswordUI,
     toggleAgentEditProfileUI,
     setToggleAgentEditProfileUI,
-  logoutWarning,
-  toggleAgentViewDetailpage,Agent,setAgentToken}=useContext(AgentContext)
+  
+  toggleAgentViewDetailpage,Agent,setAgentToken,logoutWarning}=useContext(AgentContext)
+
 
 
   useEffect(()=>{
@@ -37,7 +41,7 @@ const AdminDashboard = () => {
 
 
   return (
-    <div className='AgentDashboard'>
+    <div className='AgentDashboard animate__animated animate__slideInRight' style={{backgroundColor:"rgb(230,240,255)"}}>
       <div className='AgentDashboardLeft'>
     <AdminDashBoardSideBar/>
       </div>
@@ -52,6 +56,9 @@ const AdminDashboard = () => {
             {AgentActiveMenu==="sponsored property"&&<AllUserForAdmin/>}
       </div>
       {logoutWarning&&<AgentLogOutWarning/>}
+
+
+      {/* not in use here */}
       {AgentActiveMenu==="post a property"&&<AgentPostAPropertyPage/>}
       {AgentActiveMenu==="posted a property2"&&<AgentPostAPropertyPage/>}
       {/* {toggleAgentViewDetailpage&&<AgentViewDetailPage/>} */}

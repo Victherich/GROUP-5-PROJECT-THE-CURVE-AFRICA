@@ -8,6 +8,7 @@ import { UserContext } from '../component/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userUserLogin } from '../Features/Slice';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const UserSignUp = () => {
   const dispatch = useDispatch()
@@ -154,6 +155,12 @@ const validateForm = () => {
     // }
   };
 
+
+
+//handling password input show
+const [passwordShow,setPasswordShow]=useState("password")
+const [confirmPasswordShow,setConfirmPasswordShow]=useState("password")
+
   return (
     <div className='agentbody'>
       <Link to={"/"} className='AgentlogoWrap'>
@@ -197,25 +204,29 @@ const validateForm = () => {
               </div>
               {phoneNumberError && <p style={{ color: 'red', fontSize: 'small' }}>{phoneNumberError}</p>}
 
-              <div className='agentinput'>
+              <div className='agentinput' style={{position:"relative"}}>
                 <label htmlFor="">Password</label>
                 <input
-                  type="password"
+                  type={passwordShow}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder='Enter password' required />
+                  {passwordShow==="text"?<FaEye onClick={()=>setPasswordShow("password")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>:
+                  <FaEyeSlash onClick={()=>setPasswordShow("text")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>}
               </div>
               {passwordError && <p style={{ color: 'red', fontSize: 'small' }}>{passwordError}</p>}
 
-              <div className='agentinput'>
+              <div className='agentinput' style={{position:"relative"}}>
                 <label htmlFor="">Confirm Password</label>
                 <input
-                  type="password"
+                  type={confirmPasswordShow}
                   name='confirmPassword'
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder='Confirm password' required />
+                  {confirmPasswordShow==="text"?<FaEye onClick={()=>setConfirmPasswordShow("password")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>:
+                  <FaEyeSlash onClick={()=>setConfirmPasswordShow("text")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>}
               </div>
               {confirmPasswordError && <p style={{ color: 'red', fontSize: 'small' }}>{confirmPasswordError}</p>}
 

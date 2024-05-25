@@ -16,10 +16,10 @@ const Footer = () => {
           
         </div>
         <div className='footwrite'>
-          <h1>Contact:</h1>
+          <h1>Contacts:</h1>
           {/* <div className='line'></div> */}
-          <span>Email : homehub@gmail.com</span>
-          <span>phone : +2347063798113</span>
+          <span>homehub95@gmail.com</span>
+          <span>+2347063480314<br/> +2347063798113 </span>
         </div>
         <div className='footwrite'>
           <h1>Follow Us:</h1>
@@ -27,7 +27,7 @@ const Footer = () => {
           <div className='footwriteimages'>
             <img onClick={()=>window.open("https://www/linkedin.com/homehub","_blank")} src={linkedin} alt="" />
             <img onClick={()=>window.open("https://www/twitter.com/homehub","_blank")} src={twitter} alt="" />
-            <img onClick={()=>window.open("https://www/instagram.com/homehub","_blank")} src={instagram} alt="" />
+            <img onClick={()=>window.open("https://www.instagram.com/hubconnect_ng?igsh=MTN4ZWVnMTJmaW5zZw%3D%3D&utm_source=qr","_blank")} src={instagram} alt="" />
             <img onClick={()=>window.open("https://www/facebook.com/homehub","_blank")} src={facebook} alt="" />
           </div>
         </div>

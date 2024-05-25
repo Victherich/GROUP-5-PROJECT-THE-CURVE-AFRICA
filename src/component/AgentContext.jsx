@@ -2,6 +2,9 @@ import React, { useCallback, useState,useEffect } from 'react'
 import { createContext } from 'react'
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
+
+
 export const AgentContext = createContext();
 
 
@@ -21,6 +24,8 @@ const [Agent,setAgent]=useState(null||localStorage.getItem("AgentInfo"))
 const [sponsoredProperties,setSponsoredProperties]=useState([]||localStorage.getItem("sponsoredProperties"))
 const [propertyDetailObj,setPropertyDetailObj]=useState({})
 const [seekLandingpageOnLogout,setSeekLandingPageoNLogout]=useState(false)
+
+const AgentUser = useSelector(state=>state.user)
 
 
 const Agentlogin = useCallback((token,agentinfo)=>{ //receive response.data from handle login function
@@ -81,6 +86,21 @@ const oneAgent =async (agentId)=>{
 }
 
 
+//declaring DashBoard switching state
+const [switchDashboard,setSwitchDashboard]=useState(false)
+
+
+const [PostAPropertyShow,setPostAPropertyShow]=useState(false)
+const handlePostAPropertyShow = ()=>{
+  if(AgentUser?.isGood){
+    setPostAPropertyShow(true)
+  }
+  else{
+    setPostAPropertyShow(false)
+    Swal.fire({icon:"warning",text:"Your account is under review please try again later.",timer:2000,showConfirmButton:false})
+  }
+}
+
   return (
     <AgentContext.Provider value={{
       AgentActiveMenu,
@@ -95,7 +115,8 @@ const oneAgent =async (agentId)=>{
     sponsoredProperties,setSponsoredProperties,propertyDetail,
     propertyDetailObj,setAgentToken,
     // agentPostedProperties,setAgentPostedProperties
-    seekLandingpageOnLogout,setSeekLandingPageoNLogout,oneAgent,oneAgentObj
+    seekLandingpageOnLogout,setSeekLandingPageoNLogout,oneAgent,oneAgentObj,
+    switchDashboard,setSwitchDashboard,PostAPropertyShow,setPostAPropertyShow,handlePostAPropertyShow
     }}>
         {children}
     </AgentContext.Provider>

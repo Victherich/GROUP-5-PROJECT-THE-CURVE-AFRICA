@@ -8,6 +8,7 @@ import { UserContext } from '../component/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userUserLogin } from '../Features/Slice';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const UserLogin = () => {
   const dispatch = useDispatch()
@@ -113,6 +114,10 @@ useEffect(()=>{
     navigate("/")
   }
 
+
+  //handleimg password show
+  const [passwordShow,setPasswordShow]=useState("password")
+
   return (
     <div className='agentbody'>
       <Link to={"/"} className='AgentlogoWrap'>
@@ -136,14 +141,16 @@ useEffect(()=>{
                   <p style={{fontSize:"small",color:"red"}}>{emailError}</p>
               </div>
               
-              <div className='agentinput'>
+              <div className='agentinput' style={{position:"relative"}}>
                 <label htmlFor="">Password</label>
                 <input
-                  type="password"
+                  type={passwordShow}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder='Enter password' required />
+                  {passwordShow==="text"?<FaEye onClick={()=>setPasswordShow("password")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>:
+                  <FaEyeSlash onClick={()=>setPasswordShow("text")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>}
               </div>
               <button className='AgentSignUpNextButton'>Login</button>
               <p className='myspan'>Don't have an account?  

@@ -143,6 +143,7 @@
     transform: scale(1);
     transition: 350ms;
     background-color: #0E9AFF;
+    background-color: #0e9bffa1;
     color :white;
     font-weight: bold;
 }
@@ -223,6 +224,7 @@
 
 .HomeHubRedandBlueWrap p{
     font-style: italic;
+    text-align: center;
     /* @media screen and (max-width:320px) {
        font-size: 12px; 
     } */

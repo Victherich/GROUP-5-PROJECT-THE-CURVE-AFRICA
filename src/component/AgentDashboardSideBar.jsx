@@ -10,11 +10,11 @@ import { useSelector } from 'react-redux'
 import logoutIcon from "../Images/logout icon.svg"
 import postIcon from "../Images/post icon.svg"
 import sponsorIcon from '../Images/sponsor icon.svg'
-import { FaHSquare, FaPodcast, FaPowerOff, FaUser } from 'react-icons/fa'
-import { FaHouse, FaHouseFlag } from 'react-icons/fa6'
+import { FaHSquare, FaPodcast, FaPowerOff, FaToggleOn, FaUser } from 'react-icons/fa'
+import { FaHouse, FaHouseFlag, FaMobileButton, FaMobileScreenButton, FaTabletButton } from 'react-icons/fa6'
 
 const AgentDashboardSideBar = () => {
-  const {AgentActiveMenu,setAgentActiveMenu,logoutWarning,setLogoutwarning,Agent}=useContext(AgentContext)
+  const {AgentActiveMenu,setAgentActiveMenu,logoutWarning,setLogoutwarning,Agent,switchDashboard,setSwitchDashboard}=useContext(AgentContext)
   // console.log(AgentActiveMenu)
 
   const parsedAgent = typeof Agent === 'string' ? JSON.parse(Agent) : Agent;
@@ -52,7 +52,16 @@ const AgentDashboardSideBar = () => {
               <span>Sponsored posts</span>
               {/* <img className="MenuIcon"src={sponsorIcon} alt="icon"/> */}
               </p>
+
+              {AgentUser?.isAdmin?<p  onClick={()=>setSwitchDashboard(true)}
+              className='AgentSideBarMenuP'
+              ><FaToggleOn/>
+              <span>Switch to Admin</span>
+           
+              </p>:""}
           </div>
+      
+          {/* <p>{AgentUser.isAdmin}</p> */}
           <div className='AgentDashboardSidebarLogoutWrap'>
               <p onClick={()=>setLogoutwarning(!logoutWarning)}>
                 <FaPowerOff/>

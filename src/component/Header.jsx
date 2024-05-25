@@ -90,9 +90,9 @@ useEffect(()=>{
       </div>
 
 
-      {UserId&&<div className='UserMobileNameDisplay'>
+      {/* {UserId&&<div className='UserMobileNameDisplay'>
               <NavLink to={"/userdashboard"}>Hi, {User.fullName.slice(0,6)}</NavLink>
-            </div>}
+            </div>} */}
 
       
 

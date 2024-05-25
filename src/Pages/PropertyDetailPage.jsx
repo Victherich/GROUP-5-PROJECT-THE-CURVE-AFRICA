@@ -65,7 +65,7 @@ const handleContactUs = ()=>{
       </div> 
 
       <div className='DetailPage'>
-        <h2>| {propertyDetailObj.type} | N {propertyDetailObj.amount} | {propertyDetailObj.location} |{propertyDetailObj.category&&propertyDetailObj.category.type}|</h2><br/>
+        <h2 style={{textAlign:"center"}}>| {propertyDetailObj.type} | N {propertyDetailObj.amount} | {propertyDetailObj.location} |{propertyDetailObj.category&&propertyDetailObj.category.type}|</h2><br/>
         <div className='DetailPageUp'>
           <img src={ImgDisplay} alt="DetailImg"/>
         </div>

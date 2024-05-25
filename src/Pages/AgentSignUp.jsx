@@ -6,6 +6,7 @@ import { AgentContext } from '../component/AgentContext';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const AgentSignUp = () => {
   const { Agentlogin } = useContext(AgentContext);
@@ -201,16 +202,16 @@ useEffect(()=>{
         
         
         loadingAlert.close();
-        // navigate("/emailredirectpage")
+        navigate("/emailredirectpage")
         // navigate("/") //specify the welcome path
         // Agentlogin(response.data.agent.id, response.data.agent);
       } catch (error) {
         console.error(error);
         loadingAlert.close();
         if(error){
-          navigate("/emailredirectpage")
-        //   Swal.fire({icon:"error",text:error.response.data.error,
-        // text:error.response.data.message,showConfirmButton:true})
+          // navigate("/emailredirectpage")
+          Swal.fire({icon:"error",text:error.response.data.error,
+        text:error.response.data.message,showConfirmButton:true})
         }
       }
     } 
@@ -242,6 +243,13 @@ const runAlert = ()=>{
 }
 
 // runAlert()
+
+
+//handling password input show
+const [passwordShow,setPasswordShow]=useState("password")
+const [confirmPasswordShow,setConfirmPasswordShow]=useState("password")
+
+
 
 
   return (
@@ -286,25 +294,30 @@ const runAlert = ()=>{
                   placeholder='eg. 08168864508' required />
                   {phoneNumberError && <p style={{ color: 'red', fontSize: 'small' }}>{phoneNumberError}</p>}
               </div>
-              <div className='agentinput'>
+              <div className='agentinput' style={{position:"relative"}}>
                 <label htmlFor="">Password</label>
                 <input
-                  type="password"
+                  type={passwordShow}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder='Enter password' required />
                   {passwordError && <p style={{ color: 'red', fontSize: 'small' }}>{passwordError}</p>}
+
+                  {passwordShow==="text"?<FaEye onClick={()=>setPasswordShow("password")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>:
+                  <FaEyeSlash onClick={()=>setPasswordShow("text")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>}
               </div>
-              <div className='agentinput'>
+              <div className='agentinput' style={{position:"relative"}}>
                 <label htmlFor="">Confirm Password</label>
                 <input
-                  type="password"
+                  type={confirmPasswordShow}
                   name='confirmPassword'
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder='Confirm password' required />
                   {confirmPasswordError && <p style={{ color: 'red', fontSize: 'small' }}>{confirmPasswordError}</p>}
+                  {confirmPasswordShow==="text"?<FaEye onClick={()=>setConfirmPasswordShow("password")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>:
+                  <FaEyeSlash onClick={()=>setConfirmPasswordShow("text")} style={{color:"#0e9bffa1",fontSize:"1.5rem",cursor:"pointer",position:"absolute",top:"50%",right:"10px"}}/>}
               </div>
               <button className='AgentSignUpNextButton'
                 type="button"

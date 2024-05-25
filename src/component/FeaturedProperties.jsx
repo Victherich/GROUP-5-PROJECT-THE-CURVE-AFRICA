@@ -229,6 +229,8 @@ import favouriteIcon2 from "../Images/Blue favourite stroke icon.png"
 import favouriteIcon3 from "../Images/Blue favourite fill icon.png"
 import { UserContext } from './UserContext'
 import { useSelector } from 'react-redux'
+// import Badge from "../Images/verified-badge-with-ribbon-vector-10821278-removebg-preview.png"
+import Badge from "../Images/badge5.png"
 
 const FeaturedProperties = () => {
   const navigate = useNavigate();
@@ -251,6 +253,7 @@ const FeaturedProperties = () => {
       const response = await axios.get('https://homehub-coxc.onrender.com/api/allSponsored');
       loadingAlert.close();
       setSponsoredPropertiesArray(response.data.data);
+      console.log(response.data)
     } catch (error) {
       console.error(error);
       loadingAlert.close();
@@ -272,7 +275,8 @@ const FeaturedProperties = () => {
     allListing();
   }, []);
 
-  const url1 = `https://homehub-coxc.onrender.com/api/getallhouse`;
+  // const url1 = `https://homehub-coxc.onrender.com/api/getallhouse`;
+  const url1= `https://homehub-coxc.onrender.com/api/getSomeHouses`;
   const allListing = async () => {
     const loadingAlert = Swal.fire({
       title: "Loading",
@@ -297,6 +301,7 @@ const FeaturedProperties = () => {
   const userToken = useSelector(state => state.userUserToken);
   const [userFavourites, setUserFavourites] = useState([]);
   const url = "https://homehub-coxc.onrender.com/api/user/getAllFavorites";
+  // const url = "https://homehub-ten.vercel.app/api/getSomeHouses";
 
   useEffect(() => {
     handleUserFavourites();
@@ -320,13 +325,12 @@ const FeaturedProperties = () => {
       loadingAlert.close();
     } catch (error) {
       console.error(error);
-      Swal.fire({
-        icon: "error",
-        title: error.response.data.error,
-        text: error.response.data.message,
-        showConfirmButton: false,
-        timer: 2000
-      });
+      // Swal.fire({
+      //   icon: "error",
+      //   text: error.message,
+      //   showConfirmButton: false,
+      //   timer: 2000
+      // });
       loadingAlert.close();
     }
   };
@@ -372,7 +376,7 @@ const FeaturedProperties = () => {
       </div>
       <div className='ForSaleProperties'>
         {sponsoredPropertiesArray?.slice(-4).map((d) => (
-          <div key={d._id} className='ForSaleProperty'>
+          <div key={d._id} className='ForSaleProperty' style={{position:"relative"}}>
             <div className='ForSalePropertyImgWrap'>
               <img src={d.images[0]} alt='ForSalePropertyImg' />
             </div>
@@ -389,6 +393,7 @@ const FeaturedProperties = () => {
                 <p>
                   <span>Location:</span> {d.location}
                 </p>
+                
               </div>
               <div className='ForSalePropertyButtonsWrap'>
                 <button onClick={() => handleNavigate(d._id, d.agentId)}>View</button>
@@ -403,6 +408,7 @@ const FeaturedProperties = () => {
                 )}
               </div>
             </div>
+            {d.isVerified===false?<img style={{borderRadius:"50%", width:"30px",height:"30px",position:"absolute",top:"2%",right:"10px"}} src={Badge} alt="verified"/>:""}
           </div>
         ))}
       </div>
@@ -429,7 +435,7 @@ const FeaturedProperties = () => {
                 <button onClick={() => handleNavigate(d._id, d.agentId)}>View</button>
                 {userUserId ? (
                   isFavourite(d._id) ? (
-                    <img src={favouriteIcon3} alt="FavouriteIcon" />
+                    <img src={favouriteIcon3} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Item is already in favourite",timer:2000,showConfirmButton:false})}/>
                   ) : (
                     <img src={favouriteIcon2} alt="FavouriteIcon" onClick={() => handleAddToFavourite(d._id)} />
                   )
