@@ -11,6 +11,11 @@ import Header from '../component/Header';
 import Footer from '../component/Footer';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Badge from "../Images/badge5.png"
+import { useSelector } from 'react-redux';
+import favouriteIcon1 from "../Images/light Blue favourite stroke icon.png"
+import favouriteIcon2 from "../Images/Blue favourite stroke icon.png"
+import favouriteIcon3 from "../Images/Blue favourite fill icon.png"
 
 const AllPropertiesListPage = () => {
   const navigate = useNavigate();
@@ -22,6 +27,9 @@ const AllPropertiesListPage = () => {
   const [maxFilter, setMaxFilter] = useState(null);
   const {propertyDetail,sponsoredProperties,oneAgent}=useContext(AgentContext)
   const [sponsoredPropertiesArray,setSponsoredPropertiesArray]=useState([])
+
+
+  const userUserId = useSelector(state => state.userUserId);
 
   const forSaleId = "65c7c1c8a356276634186c7d"
 
@@ -145,6 +153,77 @@ useEffect(()=>{
  featuredSponsoredProperties() 
 },[])
 
+// Getting user favourites for comparison
+const userToken = useSelector(state => state.userUserToken);
+const [userFavourites, setUserFavourites] = useState([]);
+// const url = "https://homehub-coxc.onrender.com/api/user/getAllFavorites";
+// const url = "https://homehub-ten.vercel.app/api/getSomeHouses";
+
+useEffect(() => {
+  handleUserFavourites();
+}, []);
+
+const handleUserFavourites = async () => {
+  const loadingAlert = Swal.fire({
+    title: "Loading",
+    text: "Please wait...",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false
+  });
+
+  Swal.showLoading();
+
+  try {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
+    const response = await axios.get("https://homehub-coxc.onrender.com/api/user/getAllFavorites");
+    setUserFavourites(response.data.data);
+    loadingAlert.close();
+  } catch (error) {
+    console.error(error);
+    // Swal.fire({
+    //   icon: "error",
+    //   text: error.message,
+    //   showConfirmButton: false,
+    //   timer: 2000
+    // });
+    loadingAlert.close();
+  }
+};
+
+const handleAddToFavourite = async (propertyId) => {
+  try {
+    // Optimistically update the local state
+    setUserFavourites(prevFavourites => [...prevFavourites, { _id: propertyId }]);
+    // setUserFavourites([...userFavourites, { d }]);
+    // console.log(prevFavourites)
+    // setUserFavourites([...userFavourites,{ _id: propertyId }])
+    
+    axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
+    await axios.post(`https://homehub-coxc.onrender.com/api/user/addToFavorite/${propertyId}`);
+
+    
+    Swal.fire({
+      icon: "success",
+      text: "Added to favourites!",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  } catch (error) {
+    console.error(error);
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Could not add to favourites",
+      showConfirmButton: false,
+      timer: 2000
+    });
+  }
+};
+
+const isFavourite = (propertyId) => {
+  return userFavourites?.some(fav => fav._id === propertyId);
+};
 
 
   return (
@@ -181,13 +260,13 @@ useEffect(()=>{
 
         <div className='ForSaleProperties'>    
           {sponsoredPropertiesArray.map((d) => (
-            <div key={d._id} className='ForSaleProperty'>
+            <div key={d._id} className='ForSaleProperty' style={{position:"relative"}}>
               <div className='ForSalePropertyImgWrap'>
                 <img src={d.images[0]} alt='ForSalePropertyImg' />
               </div>
               <div className='ForSalePropertyNamePriceButtonWrap'>
                 <div className='ForSalePropertyNameAndPrice'>
-                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.8vw", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
+                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.8rem", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
                   <h4>{d.type}</h4>
                   <p>
                     <span>Category:</span> {d.category==="65e43620b24d39a99a1c06f7"?"For Sale":"For Rent"}
@@ -201,8 +280,18 @@ useEffect(()=>{
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
                   <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
+                  {userUserId ? (
+                  isFavourite(d._id) ? (
+                    <img src={favouriteIcon3} alt="FavouriteIcon" />
+                  ) : (
+                    <img src={favouriteIcon2} alt="FavouriteIcon" onClick={() => handleAddToFavourite(d._id)} />
+                  )
+                ) : (
+                  <img src={favouriteIcon1} alt="FavouriteIcon" onClick={() => Swal.fire({ icon: "warning", text: "Please login to Add to favourites", showConfirmButton: false, timer: 2000 })} />
+                )}
                 </div>
               </div>
+              {d.isVerified === true ? <img style={{ borderRadius: "50%", width: "30px", height: "30px", position: "absolute", top: "2%", right: "10px" }} src={Badge} alt="verified" /> : ""}
             </div>
           ))}
         </div>
@@ -212,7 +301,7 @@ useEffect(()=>{
 
         <div className='ForSaleProperties'>
           {reversedProperties.map((d) => (
-            <div key={d._id} className='ForSaleProperty'>
+            <div key={d._id} className='ForSaleProperty' style={{position:"relative"}}>
               <div className='ForSalePropertyImgWrap'>
                 <img src={d.images[0]} alt='ForSalePropertyImg' />
               </div>
@@ -236,8 +325,18 @@ useEffect(()=>{
                 </div>
                 <div className='ForSalePropertyButtonsWrap'>
                   <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
+                  {userUserId ? (
+                  isFavourite(d._id) ? (
+                    <img src={favouriteIcon3} alt="FavouriteIcon" />
+                  ) : (
+                    <img src={favouriteIcon2} alt="FavouriteIcon" onClick={() => handleAddToFavourite(d._id)} />
+                  )
+                ) : (
+                  <img src={favouriteIcon1} alt="FavouriteIcon" onClick={() => Swal.fire({ icon: "warning", text: "Please login to Add to favourites", showConfirmButton: false, timer: 2000 })} />
+                )}
                 </div>
               </div>
+              {d.isVerified === true ? <img style={{ borderRadius: "50%", width: "30px", height: "30px", position: "absolute", top: "2%", right: "10px" }} src={Badge} alt="verified" /> : ""}
             </div>
           ))}
         </div>

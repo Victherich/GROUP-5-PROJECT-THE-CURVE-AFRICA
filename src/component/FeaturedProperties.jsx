@@ -357,8 +357,7 @@ const FeaturedProperties = () => {
       console.error(error);
       Swal.fire({
         icon: "error",
-        title: "Error",
-        text: "Could not add to favourites",
+        text: error.message,
         showConfirmButton: false,
         timer: 2000
       });
@@ -382,7 +381,8 @@ const FeaturedProperties = () => {
             </div>
             <div className='ForSalePropertyNamePriceButtonWrap'>
               <div className='ForSalePropertyNameAndPrice'>
-                <span className='sponsorTag'>Sponsored</span>
+                {/* <span className='sponsorTag'>Sponsored</span> */}
+                <p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.8rem", padding:"2px", borderRadius:"5px"}}>Sponsored</p>
                 <h4>{d.type}</h4>
                 <p>
                   <span>Category:</span> {d.category === "65e43620b24d39a99a1c06f7" ? "For Sale" : "For Rent"}
@@ -408,13 +408,14 @@ const FeaturedProperties = () => {
                 )}
               </div>
             </div>
-            {d.isVerified===false?<img style={{borderRadius:"50%", width:"30px",height:"30px",position:"absolute",top:"2%",right:"10px"}} src={Badge} alt="verified"/>:""}
+            {d.isVerified === true ? <img style={{ borderRadius: "50%", width: "30px", height: "30px", position: "absolute", top: "2%", right: "10px" }} src={Badge} alt="verified" /> : ""}
+            {/* {d.isVerified===false?<img style={{borderRadius:"50%", width:"30px",height:"30px",position:"absolute",top:"2%",right:"10px"}} src={Badge} alt="verified"/>:""} */}
           </div>
         ))}
       </div>
       <div className='ForSaleProperties'>
         {allListingArray.slice(-8).map((d) => (
-          <div key={d._id} className='ForSaleProperty'>
+          <div key={d._id} className='ForSaleProperty' style={{position:"relative"}}>
             <div className='ForSalePropertyImgWrap'>
               <img src={d.images[0]} alt='ForSalePropertyImg' />
             </div>
@@ -444,6 +445,7 @@ const FeaturedProperties = () => {
                 )}
               </div>
             </div>
+            {d.isVerified === true ? <img style={{ borderRadius: "50%", width: "30px", height: "30px", position: "absolute", top: "2%", right: "10px" }} src={Badge} alt="verified" /> : ""}
           </div>
         ))}
       </div>

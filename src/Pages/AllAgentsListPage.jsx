@@ -75,12 +75,12 @@ const AllAgentListPage = () => {
         <div className='ForSale'> 
       <h1 className='PropertyForSaleHeading'>All Agents</h1>
       <div className='SearchAndFilter'>
-        <div className='SearchWrap'>
+        {/* <div className='SearchWrap'>
           <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)} placeholder='Enter property name, type or location'/>
           <div onClick={handleSearch} className='SearchIconWrap'>
             <img src={SearchIcon} alt="SearchIcon"/>
           </div>
-        </div>
+        </div> */}
         
       </div>
       <div className='ClearSearchWrap'>
