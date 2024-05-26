@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import Badge from "../Images/badge5.png"
 
 const AllAgentsForAdmin = () => {
 
@@ -68,9 +69,44 @@ const AllAgentsForAdmin = () => {
 
 
 //getting an agent houses 
-    const [anAgentHouses,setAnAgentHouses]=useState([])
 
-    const handleAnAgentHouses = async(_id)=>{
+//opening the modal and runung the get agent houses 
+
+const [toggleAgents,setToggleAgents]=useState(false) //hing and showing agents when an agenet houses modal is opened
+
+
+const handleAnAgentHouses1 =(_id)=>{
+      const updatedArray = allAgents.map((e)=>{
+        if(e._id===_id){
+          return{...e,openHouses:true}
+        }
+        return e
+      })
+      setAllAgents(updatedArray)
+      handleAnAgentHouses2(_id)
+      setToggleAgents(true)
+}
+
+
+//closing the modal for an agent houses
+const handleCloseAnAgentHouses =(_id)=>{
+  const updatedArray = allAgents.map((e)=>{
+    if(e._id===_id){
+      return {...e,openHouses:false}
+    }
+    return e
+  })
+  setAllAgents(updatedArray)
+  setToggleAgents(false)
+}
+
+
+
+    const [anAgentHouses,setAnAgentHouses]=useState([])
+    
+
+
+    const handleAnAgentHouses2 = async(_id)=>{
       const loadingAlert = Swal.fire({
         title: "Loading",
         text: "Please wait...",
@@ -81,11 +117,11 @@ const AllAgentsForAdmin = () => {
   
       Swal.showLoading();
       try{
-        const response = await axios.get(`https://homehub-coxc.onrender.com/api/getAgentHouses/${_id}`)
+        const response = await axios.get(`https://homehub-coxc.onrender.com/api/getAgentHouse/${_id}`)
       console.log(response.data)
       loadingAlert.close()
         // setForSaleProperties(response.data.data)
-        setAnAgentHouses(response.data.data)
+        setAnAgentHouses(response.data.houses)
       }
       catch(error){
         console.error(error)
@@ -226,12 +262,62 @@ const AllAgentsForAdmin = () => {
     }
 
 
+
+    //making a property verified
+    const handleMakePropertyVerified1 = (_id)=>{
+      Swal.fire({
+        text: 'Are you sure?',
+        icon: 'warning',
+        confirmButtonText: 'Yes "Make verified"',
+        showCancelButton: true,
+        // confirmButtonColor: '#3085d6',
+        // cancelButtonColor: '#d33',
+        
+      }).then((result) => {
+        if (result.isConfirmed) {
+          handleMakePropertyVerified2(_id)
+          // Swal.fire(
+          //   'Deleted!',
+          //   'Your file has been deleted.',
+          //   'success'
+          // );
+        }
+      });
+    }
+
+//handle make Agent isGood
+const handleMakePropertyVerified2 = async(_id)=>{
+  const loadingAlert = Swal.fire({
+    title: "Loading",
+    text: "Please wait...",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showConfirmButton: false
+  });
+
+  Swal.showLoading();
+  try{
+    axios.defaults.headers.common['Authorization'] = `Bearer ${AgentUserToken}`;
+    const response = await axios.put(`https://homehub-coxc.onrender.com/api//${_id}`)
+  console.log(response.data)
+  loadingAlert.close()
+  Swal.fire({icon:"success",text:"Property is now verified",timer:2000,showConfirmButton:false})
+  
+  }
+  catch(error){
+    console.error(error)
+    loadingAlert.close()
+    Swal.fire({icon:"warning",text:error.message,timer:2000,showConfirmButton:false})
+  }
+}
+
+
   return (
     <div className='PostedPropertiesWrap'>
       <div className='PostedPropertiesTitle'>
       <h4>Agents</h4>
       </div>
-      <div className='PostedProperties'>
+      <div className='PostedProperties' style={{position:"relative"}}>
       {allAgentsB.map((allagents)=>(
           <div key={allagents._id} className='AnAgentWrap' style={{flexDirection:"column"}}>
           
@@ -244,11 +330,55 @@ const AllAgentsForAdmin = () => {
               </div>
             <div style={{display:"flex",gap:"20px", marginTop:"10px",flexWrap:"wrap",justifyContent:"center",alignItems:"center"}}>
                 <button onClick={()=>handleDeleteAnAgent1(allagents._id)} style={{padding:"5px",border:"none",color:"white",backgroundColor:'rgba(0,0,255,0.5)',cursor:"pointer"}}>Delete Agent</button>
-                <button onClick={()=>handleMakeIsGood1(allagents._id)} style={{padding:"5px",border:"none",color:"white",backgroundColor:'rgba(0,0,255,0.5)',cursor:"pointer"}} >Make isGood</button>
+                <button onClick={()=>handleMakeIsGood1(allagents._id)} style={{padding:"5px",border:"none",color:"white",backgroundColor:allagents?.isGood?"green":'rgba(0,0,255,0.5)',cursor:"pointer"}} >{allagents?.isGood?"isGood ✔": "Make isGood"}</button>
                 {/* <button style={{padding:"5px",border:"none",color:"white",backgroundColor:'rgba(0,0,255,0.5)',cursor:"pointer"}}>Make Admin</button> */}
-                <button onClick={()=>handleAnAgentHouses(allagents._id)} style={{padding:"5px",border:"none",color:"white",backgroundColor:'rgba(0,0,255,0.5)',cursor:"pointer"}}>Houses</button>
+                <button onClick={()=>handleAnAgentHouses1(allagents._id)} style={{padding:"5px",border:"none",color:"white",backgroundColor:'rgba(0,0,255,0.5)',cursor:"pointer"}}>Houses</button>
+                
                 
             </div>
+            {!allagents?.isVerified&&<p style={{color:"red"}}>Agent account is not verified</p>}
+            
+            {allagents?.openHouses&&<div className='ForSaleProperties' 
+            style={{
+                overflowY:"scroll",
+                width:"100%",
+                height:"100vh",
+                backgroundColor:"rgba(0,0,0,0.8)",
+                top:0,
+                left:0,
+                position:"fixed"
+            }}>    
+          {anAgentHouses?.map((d) => (
+            <div key={d._id} className='ForSaleProperty' style={{position:"relative"}}>
+              <div className='ForSalePropertyImgWrap'>
+                <img src={d.images[0]} alt='ForSalePropertyImg' />
+              </div>
+              <div className='ForSalePropertyNamePriceButtonWrap'>
+                <div className='ForSalePropertyNameAndPrice'>
+                {d.isSponsored&&<p style={{backgroundColor:"#0653C8", color:"white", fontSize:"0.8vw", padding:"2px", borderRadius:"5px"}}>Sponsored</p>}
+                  <h4>{d.type}</h4>
+                  <p>
+                    <span>Category:</span> {d.category==="65e43620b24d39a99a1c06f7"?"For Sale":"For Rent"}
+                  </p>
+                  <p>
+                    <span>Price:</span> N{d.amount}
+                  </p>
+                  <p>
+                    <span>Location:</span> {d.location}
+                  </p>
+                </div>
+                {d.isVerified===true?<img style={{borderRadius:"50%", width:"30px",height:"30px",position:"absolute",top:"2%",right:"10px"}} src={Badge} alt="verified"/>:""}
+                <div className='ForSalePropertyButtonsWrap'>
+                  <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
+                  <button onClick={() => handleMakePropertyVerified1(d._id)}>Make verified</button>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className='SubmitButtonWrap'>
+                            <button type="button" onClick={()=>handleCloseAnAgentHouses(allagents._id)}>Close</button>
+                            </div>
+        </div>}
         </div>
         ))}
       </div>
