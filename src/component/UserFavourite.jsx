@@ -45,7 +45,7 @@ const handleuserFavourites =async()=>{
       userFavouritesAlert()
    }catch(error){
     console.error(error)
-    Swal.fire({icon:"error",title:error.response.data.error,text:error.response.data.message,showConfirmButton:false,timer:2000});
+    Swal.fire({icon:"error",title:error.response.data.error,text:error.message,showConfirmButton:false,timer:2000});
     loadingAlert.close();
    }
 

@@ -138,9 +138,9 @@ const validateForm = () => {
       } catch (error) {
         console.error(error);
         loadingAlert.close();
-        alert(error)
+        // alert(error)
         Swal.fire({
-          icon:"error",text:error.response.data.message,showConfirmButton:true
+          icon:"error",title:error.message,text:error.response.data,showConfirmButton:true
         })
       }
     } 

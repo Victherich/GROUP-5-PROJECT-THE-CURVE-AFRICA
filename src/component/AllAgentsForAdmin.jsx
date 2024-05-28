@@ -621,8 +621,8 @@ const AllAgentsForAdmin = () => {
                             <button onClick={() => handleDeleteAnAgent1(allagents._id)} style={{ padding: "5px", border: "none", color: "white", backgroundColor: 'rgba(0,0,255,0.5)', cursor: "pointer" }}>Delete Agent</button>
                             <button onClick={() => handleMakeIsGood1(allagents._id)} style={{ padding: "5px", border: "none", color: "white", backgroundColor: allagents?.isGood ? "green" : 'rgba(0,0,255,0.5)', cursor: "pointer" }} >{allagents?.isGood ? "isGood ✔" : "Make isGood"}</button>
                             <button onClick={() => handleAnAgentHouses1(allagents._id)} style={{ padding: "5px", border: "none", color: "white", backgroundColor: 'rgba(0,0,255,0.5)', cursor: "pointer" }}>Houses</button>
-                            <button  style={{ padding: "5px", border: "none", color: "white", backgroundColor: 'rgba(0,0,255,0.5)', cursor: "pointer" }}>View Certificate Doc.</button>
-                            <button  style={{ padding: "5px", border: "none", color: "white", backgroundColor: 'rgba(0,0,255,0.5)', cursor: "pointer" }}>View ID Doc.</button>
+                            <button onClick={()=>window.open(allagents.regCert)} style={{ padding: "5px", border: "none", color: "white", backgroundColor: 'rgba(0,0,255,0.5)', cursor: "pointer" }}>View Certificate Doc.</button>
+                            <button onClick={()=>window.open(allagents.documentImage)} style={{ padding: "5px", border: "none", color: "white", backgroundColor: 'rgba(0,0,255,0.5)', cursor: "pointer" }}>View ID Doc.</button>
             
                         </div>
                         {!allagents?.isVerified && <p style={{ color: "red", textAlign: "center" }}>Agent account is not verified</p>}

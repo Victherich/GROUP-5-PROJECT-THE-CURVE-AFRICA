@@ -19,6 +19,7 @@ import { useContext } from 'react'
 import { AgentContext } from '../component/AgentContext'
 import Hero from '../component/Hero'
 import AdertUI from '../component/AdertUI'
+import WhyChooseUs from "../component/WhyChooseUs"
 
 
 
@@ -53,7 +54,7 @@ const handleAgentArea = ()=>{
         <br/>
         <br/>
 
-    <div className='choose'>
+    {/* <div className='choose'>
         <h1>Why Choose Us?</h1>
         <div className='chooseItems'>
             <div className='choosediv'>
@@ -78,7 +79,8 @@ const handleAgentArea = ()=>{
                 </div>
             </div>
         </div>
-    </div>
+    </div> */}
+    <WhyChooseUs/>
     <AdertUI/>
       <Footer/>
     </div>
