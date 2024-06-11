@@ -9,11 +9,14 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userUserLogin } from '../Features/Slice';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import LoadingUI from '../component/LoadingUI';
+import { AgentContext } from '../component/AgentContext';
 
 const UserSignUp = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { Userlogin } = useContext(UserContext);
+  const {loading,setLoading}=useContext(AgentContext)
   const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -110,21 +113,23 @@ const validateForm = () => {
       // formDataA.append("password", formData.password);
       // formDataA.append("confirmPassword", formData.confirmPassword);
 
-      const loadingAlert = Swal.fire({
-        title: "Loading",
-        text: "Please wait...",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showConfirmButton: false
-      });
+      // const loadingAlert = Swal.fire({
+      //   title: "Loading",
+      //   text: "Please wait...",
+      //   allowOutsideClick: false,
+      //   allowEscapeKey: false,
+      //   showConfirmButton: false
+      // });
 
-      Swal.showLoading();
+      // Swal.showLoading();
+      setLoading(true)
 
       try {
         const response = await axios.post(url, formData);
         console.log(response.data);
         // alert(response.data.message);
-        loadingAlert.close();
+        // loadingAlert.close();
+        setLoading(false)
         Swal.fire({
           title:"Sign up successfull",
           text:response.data.message,
@@ -137,7 +142,8 @@ const validateForm = () => {
         navigate("/userdashboard")
       } catch (error) {
         console.error(error);
-        loadingAlert.close();
+        // loadingAlert.close();
+        setLoading(false)
         // alert(error)
         Swal.fire({
           icon:"error",title:error.message,text:error.response.data,showConfirmButton:true
@@ -245,6 +251,7 @@ const [confirmPasswordShow,setConfirmPasswordShow]=useState("password")
             </div>
         </form>
       </div>
+      {loading&&<LoadingUI/>}
     </div>
   );
 };

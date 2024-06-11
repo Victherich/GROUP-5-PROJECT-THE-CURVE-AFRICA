@@ -16,6 +16,7 @@ import AllUserForAdmin from '../component/AllUserForAdmin'
 import UserAccount from '../component/UserAccount'
 import UserLogOutWarning from '../component/UserLogoutUI'
 import { UserContext } from '../component/UserContext'
+import LoadingUI from '../component/LoadingUI'
 
 
 const AdminDashboard = () => {
@@ -27,7 +28,7 @@ const AdminDashboard = () => {
     toggleAgentEditProfileUI,
     setToggleAgentEditProfileUI,
   
-  toggleAgentViewDetailpage,Agent,setAgentToken,logoutWarning}=useContext(AgentContext)
+  toggleAgentViewDetailpage,Agent,setAgentToken,logoutWarning,loading,setLoading}=useContext(AgentContext)
 
 
 
@@ -56,12 +57,13 @@ const AdminDashboard = () => {
             {AgentActiveMenu==="sponsored property"&&<AllUserForAdmin/>}
       </div>
       {logoutWarning&&<AgentLogOutWarning/>}
-
+    
 
       {/* not in use here */}
       {AgentActiveMenu==="post a property"&&<AgentPostAPropertyPage/>}
       {AgentActiveMenu==="posted a property2"&&<AgentPostAPropertyPage/>}
       {/* {toggleAgentViewDetailpage&&<AgentViewDetailPage/>} */}
+      
     </div>
   )
 }

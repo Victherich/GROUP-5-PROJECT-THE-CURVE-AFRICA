@@ -9,8 +9,11 @@ import AgentImg from '../Images/pic1 1.png'
 import Header from '../component/Header'
 import Footer from '../component/Footer'
 import Swal from 'sweetalert2'
+import { AgentContext } from '../component/AgentContext'
+import LoadingUI from '../component/LoadingUI'
 
 const AllAgentListPage = () => {
+  const {loading,setLoading}=useContext(AgentContext)
  
   const [allAgents,setAllAgents]=useState([])
   const [allAgentsB,setAllAgentsB]=useState([])
@@ -21,25 +24,28 @@ const AllAgentListPage = () => {
   // const allAgents = dataAgentList
   
   const handleAllAgents = async()=>{
-    const loadingAlert = Swal.fire({
-      title: "Loading",
-      text: "Please wait...",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false
-    });
+    // const loadingAlert = Swal.fire({
+    //   title: "Loading",
+    //   text: "Please wait...",
+    //   allowOutsideClick: false,
+    //   allowEscapeKey: false,
+    //   showConfirmButton: false
+    // });
 
-    Swal.showLoading();
+    // Swal.showLoading();
+    setLoading(true)
     try{
       const response = await axios.get(url)
     console.log(response.data)
-    loadingAlert.close()
+    // loadingAlert.close()
+    setLoading(false)
       // setForSaleProperties(response.data.data)
       setAllAgents(response.data.data)
     }
     catch(error){
       console.error(error)
-      loadingAlert.close()
+      // loadingAlert.close()
+      setLoading(false)
       Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
     }
   }
@@ -109,6 +115,7 @@ const AllAgentListPage = () => {
       </div>
     </div>
     <Footer/>
+    {loading&&<LoadingUI/>}
     </div>
   )
 }

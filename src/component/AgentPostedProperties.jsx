@@ -71,7 +71,6 @@ const handleDelete = (_id) => {
       setSponsoredProperties(sponsoredProperties.filter((e)=>e._id!==_id));
       Swal.fire(
         'Deleted!',
-        'Your file has been deleted.',
         'success'
       );
     }
@@ -264,11 +263,13 @@ const handleCloseView = (_id)=>{
   return (
     <div className='PostedPropertiesWrap'>
       <div className='PostedPropertiesTitle'>
-      <h4>Posted Properties</h4><button 
+      <h4>Posted Properties</h4>
+      
+      {/* <button 
       // onClick={()=>setAgentActiveMenu("posted a property2")
         onClick={handlePostAPropertyShow}
       
-      className='Makeanewpost'>+ Make a new Post</button>
+      className='Makeanewpost'>+ Make a new Post</button> */}
       </div>
       <div className='PostedProperties'>
         {agentPostedProperties.map((d) => (

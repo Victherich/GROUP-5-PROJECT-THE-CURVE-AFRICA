@@ -425,6 +425,7 @@ const AllAgentsForAdmin = () => {
             const response = await axios.get(url)
             loadingAlert.close()
             setAllAgents(response.data.data)
+            
             console.log(response.data)
         }
         catch (error) {
@@ -556,6 +557,8 @@ const AllAgentsForAdmin = () => {
             const response = await axios.delete(`https://homehub-coxc.onrender.com/api/deleteagent/${_id}`)
             loadingAlert.close()
             Swal.fire({ icon: "success", text: "Agent is deleted", timer: 2000, showConfirmButton: false })
+            const updatedArray= allAgents.filter((e)=>e._id!==_id)
+            setAllAgents(updatedArray)
         }
         catch (error) {
             console.error(error)

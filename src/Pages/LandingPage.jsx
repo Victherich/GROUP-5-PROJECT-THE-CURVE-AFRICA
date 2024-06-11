@@ -20,12 +20,14 @@ import { AgentContext } from '../component/AgentContext'
 import Hero from '../component/Hero'
 import AdertUI from '../component/AdertUI'
 import WhyChooseUs from "../component/WhyChooseUs"
+import GetBadge from '../component/GetBadge'
+import LoadingUI from '../component/LoadingUI'
 
 
 
 
 const LandingPage = () => {
-const {propertyDetail,sponsoredProperties}=useContext(AgentContext)
+const {propertyDetail,sponsoredProperties,loading,setLoading}=useContext(AgentContext)
 const navigate =useNavigate()
 const handleViewMore = ()=>{
     navigate("/allpropertieslistpage")
@@ -81,7 +83,9 @@ const handleAgentArea = ()=>{
         </div>
     </div> */}
     <WhyChooseUs/>
+    <GetBadge/>
     <AdertUI/>
+    {loading&&<LoadingUI/>}
       <Footer/>
     </div>
   )

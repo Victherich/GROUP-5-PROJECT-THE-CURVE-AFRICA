@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const AgentSignUp = () => {
-  const { Agentlogin } = useContext(AgentContext);
+  const { Agentlogin,loading,setLoading } = useContext(AgentContext);
   const navigate=useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const [formFlip, setFormFlip] = useState(true);

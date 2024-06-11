@@ -10,9 +10,10 @@ import { useDispatch } from 'react-redux';
 import { login } from '../Features/Slice';
 import { useSelector } from 'react-redux';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import LoadingUI from '../component/LoadingUI';
 
 const AgentLogin = () => {
-  const { Agentlogin,seekLandingpageOnLogout,setSeekLandingPageoNLogout } = useContext(AgentContext);
+  const { Agentlogin,seekLandingpageOnLogout,setSeekLandingPageoNLogout ,loading,setLoading} = useContext(AgentContext);
   
   const navigate = useNavigate();
   const Dispatch = useDispatch();
@@ -63,22 +64,25 @@ const validateForm = () => {
       setFirstClick(true)
       if(isValid===true){
         
-      const loadingAlert = Swal.fire({
-        title: "Loading",
-        text: "Please wait...",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showConfirmButton: false
-      });
+      // const loadingAlert = Swal.fire({
+      //   title: "Loading",
+      //   text: "Please wait...",
+      //   allowOutsideClick: false,
+      //   allowEscapeKey: false,
+      //   showConfirmButton: false
+      // });
 
-      Swal.showLoading();
+      // Swal.showLoading();
+      setLoading(true)
 
       try {
         const response = await axios.post(url,formData);
         console.log(response.data);
+        setLoading(false)
         // alert(response.data.message);
         Swal.fire({icon:"success",title:response.data.message,showConfirmButton:false,timer:2000})
-        loadingAlert.close();
+        // loadingAlert.close();
+        
         // Agentlogin(response.data.token, response.data.agentExist);
         const user = response.data.agentExist
         const token = response.data.token
@@ -87,7 +91,8 @@ const validateForm = () => {
         // console.log(token)
       } catch (error) {
         console.error(error);
-        loadingAlert.close();
+        // loadingAlert.close();
+        setLoading(false)
         Swal.fire({icon:"error",title:error.response.data.error,text:error.response.data.message,showConfirmButton:false,timer:2000});
       }
       }
@@ -166,6 +171,7 @@ const [passwordShow,setPasswordShow]=useState('password')
             </div>
         </form>
       </div>
+      {loading&&<LoadingUI/>}
     </div>
   );
 };

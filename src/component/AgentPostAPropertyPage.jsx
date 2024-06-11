@@ -199,9 +199,11 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { AgentContext } from './AgentContext';
 import '../CSS/AgentPostAProperty.css';
+import LoadingUI from './LoadingUI';
+import { useSelector } from 'react-redux';
 
 const AgentPostAPropertyPage = () => {
-  const { setAgentActiveMenu, AgentActiveMenu, AgentToken, setPostAPropertyShow } = useContext(AgentContext);
+  const { setAgentActiveMenu, AgentActiveMenu, AgentToken, setPostAPropertyShow,loading,setLoading } = useContext(AgentContext);
   const [yearly, setYearly] = useState(false);
   const [category1, setCategory1] = useState('');
   const [categoryError, setCategoryError] = useState('');
@@ -265,6 +267,10 @@ const AgentPostAPropertyPage = () => {
     setPicPreview({ ...picPreview, [e.target.name]: URL.createObjectURL(e.target.files[0]) });
   };
 
+
+  const AgentUser = useSelector(state=>state.user)
+  console.log(AgentUser)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -323,34 +329,41 @@ const AgentPostAPropertyPage = () => {
         }
       }
       
-      const loadingAlert = Swal.fire({
-        title: "Loading",
-        text: "Please wait...",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showConfirmButton: false
-      });
+      // const loadingAlert = Swal.fire({
+      //   title: "Loading",
+      //   text: "Please wait...",
+      //   allowOutsideClick: false,
+      //   allowEscapeKey: false,
+      //   showConfirmButton: false
+      // });
   
-      Swal.showLoading();
+      // Swal.showLoading();
+      setLoading(true)
   
       try {
-        const response = await axios.post('https://homehub-coxc.onrender.com/api/postHouse', formDataA, {
+        // const response = await axios.post('https://homehub-coxc.onrender.com/api/postHouse/', formDataA, {
+          const response = await axios.post(`https://homehub-coxc.onrender.com/api/postHouse/${AgentUser._id}`, formDataA, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         });
         console.log(response.data)
-        loadingAlert.close();
+        // loadingAlert.close();
+        setLoading(false)
         Swal.fire({
           icon: 'success',
           title: "Post Successful",
-          showConfirmButton: true
+          showConfirmButton: true,
         }).then((result) => {
           setAgentActiveMenu('posted property');
+          
         });
+
+        setPostAPropertyShow(false)
       } catch (error) {
         console.error(error);
-        loadingAlert.close();
+        // loadingAlert.close();
+        setLoading(false)
         Swal.fire({
           icon: "error",
           text: error.message,
@@ -424,6 +437,7 @@ const AgentPostAPropertyPage = () => {
           <button type='submit'>Post</button>
         </div>
       </form>
+      {loading&&<LoadingUI/>}
     </div>
   );
 };

@@ -11,13 +11,14 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useContext } from 'react'
 import { AgentContext } from '../component/AgentContext'
+import LoadingUI from '../component/LoadingUI'
 
 
 
 
 const PropertyDetailPage = () => {
   const navigate = useNavigate()
- const {propertyDetailObj,oneAgentObj}=useContext(AgentContext)
+ const {propertyDetailObj,oneAgentObj,loading,setLoading}=useContext(AgentContext)
 const [ImgDisplay,setImgDisplay]=useState(null)
 const [imgMonitor,setImgMonitor]=useState(null)
 // const [oneAgentObj,setOneAgentObj]=useState({})
@@ -100,6 +101,7 @@ const handleContactUs = ()=>{
             <button style={{backgroundColor:"white",color:"blue", border:"1px solid blue"}} onClick={handleBack}>Back</button>
         </div>
       </div>
+      {loading&&<LoadingUI/>}
     </div>
   )
 }

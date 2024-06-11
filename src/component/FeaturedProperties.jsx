@@ -235,28 +235,31 @@ import Badge from "../Images/badge5.png"
 const FeaturedProperties = () => {
   const navigate = useNavigate();
   const [sponsoredPropertiesArray, setSponsoredPropertiesArray] = useState([]);
-  const { propertyDetail, sponsoredProperties, oneAgent } = useContext(AgentContext);
-  const { UserToken, favourite, setFavourite} = useContext(UserContext);
+  const { propertyDetail, sponsoredProperties, oneAgent,loading,setLoading } = useContext(AgentContext);
+  const { UserToken, favourite, setFavourite,} = useContext(UserContext);
   const userUserId = useSelector(state => state.userUserId);
 
   const featuredSponsoredProperties = async () => {
-    const loadingAlert = Swal.fire({
-      title: "Loading",
-      text: "Please wait...",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false
-    });
+    // const loadingAlert = Swal.fire({
+    //   title: "Loading",
+    //   text: "Please wait...",
+    //   allowOutsideClick: false,
+    //   allowEscapeKey: false,
+    //   showConfirmButton: false
+    // });
 
-    Swal.showLoading();
+    // Swal.showLoading();
+    setLoading(true)
     try {
       const response = await axios.get('https://homehub-coxc.onrender.com/api/allSponsored');
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false)
       setSponsoredPropertiesArray(response.data.data);
       console.log(response.data)
     } catch (error) {
       console.error(error);
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false)
     }
   };
 
@@ -275,25 +278,28 @@ const FeaturedProperties = () => {
     allListing();
   }, []);
 
-  // const url1 = `https://homehub-coxc.onrender.com/api/getallhouse`;
-  const url1= `https://homehub-coxc.onrender.com/api/getSomeHouses`;
+  const url1 = `https://homehub-coxc.onrender.com/api/getallhouse`;
+  // const url1= `https://homehub-coxc.onrender.com/api/getSomeHouses`;
   const allListing = async () => {
-    const loadingAlert = Swal.fire({
-      title: "Loading",
-      text: "Please wait...",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false
-    });
+    // const loadingAlert = Swal.fire({
+    //   title: "Loading",
+    //   text: "Please wait...",
+    //   allowOutsideClick: false,
+    //   allowEscapeKey: false,
+    //   showConfirmButton: false
+    // });
 
-    Swal.showLoading();
+    // Swal.showLoading();
+    setLoading(true);
     try {
       const response = await axios.get(url1);
-      loadingAlert.close();
+      // loadingAlert.close();
       setAllListingArray(response.data.data);
+      setLoading(false)
     } catch (error) {
       console.error(error);
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false);
     }
   };
 
@@ -308,21 +314,23 @@ const FeaturedProperties = () => {
   }, []);
 
   const handleUserFavourites = async () => {
-    const loadingAlert = Swal.fire({
-      title: "Loading",
-      text: "Please wait...",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false
-    });
+    // const loadingAlert = Swal.fire({
+    //   title: "Loading",
+    //   text: "Please wait...",
+    //   allowOutsideClick: false,
+    //   allowEscapeKey: false,
+    //   showConfirmButton: false
+    // });
 
-    Swal.showLoading();
+    // Swal.showLoading();
+    setLoading(true)
 
     try {
       axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
       const response = await axios.get(url);
       setUserFavourites(response.data.data);
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false)
     } catch (error) {
       console.error(error);
       // Swal.fire({
@@ -331,22 +339,25 @@ const FeaturedProperties = () => {
       //   showConfirmButton: false,
       //   timer: 2000
       // });
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false)
     }
   };
 
   const handleAddToFavourite = async (propertyId) => {
     try {
       // Optimistically update the local state
-      setUserFavourites(prevFavourites => [...prevFavourites, { _id: propertyId }]);
+      
       // setUserFavourites([...userFavourites, { d }]);
       // console.log(prevFavourites)
       // setUserFavourites([...userFavourites,{ _id: propertyId }])
+      setLoading(true)
       
       axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
       await axios.post(`https://homehub-coxc.onrender.com/api/user/addToFavorite/${propertyId}`);
   
-      
+      setUserFavourites(prevFavourites => [...prevFavourites, { _id: propertyId }]);
+      setLoading(false)
       Swal.fire({
         icon: "success",
         text: "Added to favourites!",
@@ -355,6 +366,7 @@ const FeaturedProperties = () => {
       });
     } catch (error) {
       console.error(error);
+      setLoading(false)
       Swal.fire({
         icon: "error",
         text: error.message,
@@ -367,6 +379,12 @@ const FeaturedProperties = () => {
   const isFavourite = (propertyId) => {
     return userFavourites?.some(fav => fav._id === propertyId);
   };
+  
+  //handling the reversing of property array
+  const [reversedProperties, setReversedProperties] = useState([]);
+  useEffect(() => {
+    setReversedProperties([...allListingArray].reverse());
+  }, [allListingArray]);
 
   return (
     <div className='featureddiv'>
@@ -399,7 +417,7 @@ const FeaturedProperties = () => {
                 <button onClick={() => handleNavigate(d._id, d.agentId)}>View</button>
                 {userUserId ? (
                   isFavourite(d._id) ? (
-                    <img src={favouriteIcon3} alt="FavouriteIcon" />
+                    <img src={favouriteIcon3} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Item is already in favourite",timer:2000,showConfirmButton:false})}/>
                   ) : (
                     <img src={favouriteIcon2} alt="FavouriteIcon" onClick={() => handleAddToFavourite(d._id)} />
                   )
@@ -414,7 +432,7 @@ const FeaturedProperties = () => {
         ))}
       </div>
       <div className='ForSaleProperties'>
-        {allListingArray.slice(-8).map((d) => (
+        {reversedProperties.slice(0,8).map((d) => (
           <div key={d._id} className='ForSaleProperty' style={{position:"relative"}}>
             <div className='ForSalePropertyImgWrap'>
               <img src={d.images[0]} alt='ForSalePropertyImg' />

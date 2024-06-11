@@ -142,6 +142,7 @@ import { useSelector } from 'react-redux';
 import favouriteIcon1 from "../Images/light Blue favourite stroke icon.png"
 import favouriteIcon2 from "../Images/Blue favourite stroke icon.png"
 import favouriteIcon3 from "../Images/Blue favourite fill icon.png"
+import LoadingUI from '../component/LoadingUI';
 
 const ForRent = () => {
   const navigate = useNavigate();
@@ -151,7 +152,7 @@ const ForRent = () => {
   const [sort, setSort] = useState('');
   const [minFilter, setMinFilter] = useState(null);
   const [maxFilter, setMaxFilter] = useState(null);
-  const {propertyDetail,sponsoredProperties,oneAgent}=useContext(AgentContext)
+  const {propertyDetail,sponsoredProperties,oneAgent,loading,setLoading}=useContext(AgentContext)
   const [sponsoredPropertiesArray,setSponsoredPropertiesArray]=useState([])
 
   const userUserId = useSelector(state => state.userUserId);
@@ -165,42 +166,61 @@ const ForRent = () => {
 
   const url=`https://homehub-coxc.onrender.com/api/getHousebyCate/${forRentId}`
   const forSaleData = async () => {
-    const loadingAlert = Swal.fire({
-      title: "Loading",
-      text: "Please wait...",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false
-    });
+    // const loadingAlert = Swal.fire({
+    //   title: "Loading",
+    //   text: "Please wait...",
+    //   allowOutsideClick: false,
+    //   allowEscapeKey: false,
+    //   showConfirmButton: false
+    // });
 
-    Swal.showLoading();
+    // Swal.showLoading();
+    setLoading(true)
     try {
       const response = await axios.get(url);
       console.log(response.data)
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false)
       setForSaleProperties(response.data.category.house);
       
     } catch (error) {
       console.error(error);
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false)
       Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
     }
   };
+
+
+//running loading for search
+  const RunLoadingForSearch = ()=>{
+    
+    const intervalId1= setTimeout(()=>{
+      setLoading(true)
+    },100)
+    const intervalId2 = setTimeout(()=>{
+      setLoading(false)
+    },1000)
+
+    return ()=>{clearInterval(intervalId1);clearInterval(intervalId2)}
+  
+}
 
   const handleSearch = () => {
     
     if(search.length>=1){
 
-      const loadingAlert = Swal.fire({
-        title: "Loading",
-        text: "Please wait...",
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showConfirmButton: false,
-        timer:2000
-      });
+      // const loadingAlert = Swal.fire({
+      //   title: "Loading",
+      //   text: "Please wait...",
+      //   allowOutsideClick: false,
+      //   allowEscapeKey: false,
+      //   showConfirmButton: false,
+      //   timer:2000
+      // });
   
-      Swal.showLoading();
+      // Swal.showLoading();
+      RunLoadingForSearch();
       
       const filteredProperties = forSaleProperties.filter(
         (property) =>
@@ -231,15 +251,15 @@ const ForRent = () => {
     setResultShow(false)
   };
 
-  useEffect(() => {
-    if (sort === 'Highest Price First') {
-      setForSalePropertiesB([...forSalePropertiesB].sort((a, b) => b.price - a.price));
-    } else if (sort === 'Lowest Price First') {
-      setForSalePropertiesB([...forSalePropertiesB].sort((a, b) => a.price - b.price));
-    } else {
-      handleSearch();
-    }
-  }, [sort]);
+  // useEffect(() => {
+  //   if (sort === 'Highest Price First') {
+  //     setForSalePropertiesB([...forSalePropertiesB].sort((a, b) => b.price - a.price));
+  //   } else if (sort === 'Lowest Price First') {
+  //     setForSalePropertiesB([...forSalePropertiesB].sort((a, b) => a.price - b.price));
+  //   } else {
+  //     handleSearch();
+  //   }
+  // }, [sort]);
 
 // ensuring the assignment of forsale propertyB
   useEffect(()=>{
@@ -262,24 +282,27 @@ const ForRent = () => {
 
 //fetching sponsored properties in for rent page
   const featuredSponsoredProperties = async () => {
-    const loadingAlert = Swal.fire({
-      title: "Loading",
-      text: "Please wait...",
-      allowOutsideClick: false,
-      allowEscapeKey: false,
-      showConfirmButton: false
-    });
+    // const loadingAlert = Swal.fire({
+    //   title: "Loading",
+    //   text: "Please wait...",
+    //   allowOutsideClick: false,
+    //   allowEscapeKey: false,
+    //   showConfirmButton: false
+    // });
 
-    Swal.showLoading();
+    // Swal.showLoading();
+    setLoading(true)
     try {
       const response = await axios.get('https://homehub-coxc.onrender.com/api/allSponsored');
       console.log(response.data)
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false)
       setSponsoredPropertiesArray(response.data.data);
       
     } catch (error) {
       console.error(error);
-      loadingAlert.close();
+      // loadingAlert.close();
+      setLoading(false)
      //  Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
     }
   };
@@ -301,22 +324,25 @@ useEffect(() => {
 }, []);
 
 const handleUserFavourites = async () => {
-  const loadingAlert = Swal.fire({
-    title: "Loading",
-    text: "Please wait...",
-    allowOutsideClick: false,
-    allowEscapeKey: false,
-    showConfirmButton: false
-  });
+  // const loadingAlert = Swal.fire({
+  //   title: "Loading",
+  //   text: "Please wait...",
+  //   allowOutsideClick: false,
+  //   allowEscapeKey: false,
+  //   showConfirmButton: false
+  // });
 
-  Swal.showLoading();
+  // Swal.showLoading();
+  setLoading(true)
 
   try {
     axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
     const response = await axios.get("https://homehub-coxc.onrender.com/api/user/getAllFavorites");
     setUserFavourites(response.data.data);
-    loadingAlert.close();
+    // loadingAlert.close();
+    setLoading(false)
   } catch (error) {
+    setLoading(false)
     console.error(error);
     // Swal.fire({
     //   icon: "error",
@@ -324,7 +350,7 @@ const handleUserFavourites = async () => {
     //   showConfirmButton: false,
     //   timer: 2000
     // });
-    loadingAlert.close();
+    // loadingAlert.close();
   }
 };
 
@@ -335,11 +361,11 @@ const handleAddToFavourite = async (propertyId) => {
     // setUserFavourites([...userFavourites, { d }]);
     // console.log(prevFavourites)
     // setUserFavourites([...userFavourites,{ _id: propertyId }])
-    
+    setLoading(true)
     axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
     await axios.post(`https://homehub-coxc.onrender.com/api/user/addToFavorite/${propertyId}`);
 
-    
+    setLoading(false)
     Swal.fire({
       icon: "success",
       text: "Added to favourites!",
@@ -348,6 +374,7 @@ const handleAddToFavourite = async (propertyId) => {
     });
   } catch (error) {
     console.error(error);
+    setLoading(false)
     Swal.fire({
       icon: "error",
       text: error.message,
@@ -419,7 +446,7 @@ const isFavourite = (propertyId) => {
                   <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
                   {userUserId ? (
                   isFavourite(d._id) ? (
-                    <img src={favouriteIcon3} alt="FavouriteIcon" />
+                    <img src={favouriteIcon3} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Item is already in favourite",timer:2000,showConfirmButton:false})}/>
                   ) : (
                     <img src={favouriteIcon2} alt="FavouriteIcon" onClick={() => handleAddToFavourite(d._id)} />
                   )
@@ -459,7 +486,7 @@ const isFavourite = (propertyId) => {
                   <button onClick={() => handleNavigate(d._id,d.agentId)}>View</button>
                   {userUserId ? (
                   isFavourite(d._id) ? (
-                    <img src={favouriteIcon3} alt="FavouriteIcon" />
+                    <img src={favouriteIcon3} alt="FavouriteIcon" onClick={()=>Swal.fire({icon:"warning",text:"Item is already in favourite",timer:2000,showConfirmButton:false})}/>
                   ) : (
                     <img src={favouriteIcon2} alt="FavouriteIcon" onClick={() => handleAddToFavourite(d._id)} />
                   )
@@ -473,6 +500,7 @@ const isFavourite = (propertyId) => {
           ))}
         </div>
       </div>
+      {loading&&<LoadingUI/>}
       <Footer />
     </div>
   );

@@ -50,24 +50,27 @@ const Agentlogout = useCallback(()=>{
 
 const propertyDetail = async (_id) => {
   // console.log(_id)
-  const loadingAlert = Swal.fire({
-    title: "Loading",
-    text: "Please wait...",
-    allowOutsideClick: false,
-    allowEscapeKey: false,
-    showConfirmButton: false
-  });
+  // const loadingAlert = Swal.fire({
+  //   title: "Loading",
+  //   text: "Please wait...",
+  //   allowOutsideClick: false,
+  //   allowEscapeKey: false,
+  //   showConfirmButton: false
+  // });
 
-  Swal.showLoading();
+  // Swal.showLoading();
+  setLoading(true)
   try {
     const response = await axios.get(`https://homehub-coxc.onrender.com/api/gethouse/${_id}`);
     console.log(response.data)
-    loadingAlert.close();
+    // loadingAlert.close();
+    setLoading(false)
     setPropertyDetailObj(response.data.data)
     
   } catch (error) {
     console.error(error);
-    loadingAlert.close();
+    // loadingAlert.close();
+    setLoading(false)
     Swal.fire({icon:"warning",title:"Something went wrong",timer:2000,showConfirmButton:false})
   }
 };
@@ -101,6 +104,8 @@ const handlePostAPropertyShow = ()=>{
   }
 }
 
+const [loading,setLoading]=useState(false)
+
   return (
     <AgentContext.Provider value={{
       AgentActiveMenu,
@@ -116,7 +121,8 @@ const handlePostAPropertyShow = ()=>{
     propertyDetailObj,setAgentToken,
     // agentPostedProperties,setAgentPostedProperties
     seekLandingpageOnLogout,setSeekLandingPageoNLogout,oneAgent,oneAgentObj,
-    switchDashboard,setSwitchDashboard,PostAPropertyShow,setPostAPropertyShow,handlePostAPropertyShow
+    switchDashboard,setSwitchDashboard,PostAPropertyShow,setPostAPropertyShow,handlePostAPropertyShow,
+    loading,setLoading
     }}>
         {children}
     </AgentContext.Provider>

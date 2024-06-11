@@ -9,11 +9,14 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userUserLogin } from '../Features/Slice';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { AgentContext } from '../component/AgentContext';
+import LoadingUI from '../component/LoadingUI';
 
 const UserLogin = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { Userlogin,logOutHomeNavigate,setLogoutHomeNavigate } = useContext(UserContext);
+  const {loading,setLoading}=useContext(AgentContext)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -65,21 +68,23 @@ useEffect(()=>{
       validateForm()
       
       if(isValid===true){
-        const loadingAlert = Swal.fire({
-          title: "Loading",
-          text: "Please wait...",
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-          showConfirmButton: false
-        });
+        // const loadingAlert = Swal.fire({
+        //   title: "Loading",
+        //   text: "Please wait...",
+        //   allowOutsideClick: false,
+        //   allowEscapeKey: false,
+        //   showConfirmButton: false
+        // });
   
-        Swal.showLoading();
+        // Swal.showLoading();
+        setLoading(true)
   
         try {
           const response = await axios.post(url, formData);
           console.log(response.data);
           // alert(response.data.message);
-          loadingAlert.close();
+          // loadingAlert.close();
+          setLoading(false)
           Swal.fire({
             icon:"success",
             title:"Login Successful",
@@ -97,7 +102,8 @@ useEffect(()=>{
           // Userlogin(response.data.user.id, response.data.user);
         } catch (error) {
           console.error(error);
-          loadingAlert.close();
+          // loadingAlert.close();
+          setLoading(false)
           Swal.fire({icon:"error",text:error.response.data,showConfirmButton:true,timer:2000})
         }
       }
@@ -158,6 +164,7 @@ useEffect(()=>{
             </div>
         </form>
       </div>
+      {loading&&<LoadingUI/>}
     </div>
   );
 };
